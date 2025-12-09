@@ -38,17 +38,17 @@ Naur identified three aspects that theory encompasses, all of which transcend wh
 
 **For technical debt and system decay**: Systems degrade over time not because code rots but because theory is lost. New developers without the original theory make modifications that fight the system's inherent logic rather than working with it. This is why systems become "legacy"—the theory dies while code survives.
 
-**For AI-augmented development**: AI can generate code but cannot build theory. Over-reliance on AI-generated code without human understanding creates "theoretically orphaned implementations"—code that nobody truly understands. Developers must build theory about AI-generated code through review and comprehension, not just acceptance.
+**For AI-augmented development**: As of 2024-2025, AI systems generate code but do not build theory in Naur's sense—they produce artifacts without the explanatory understanding that enables intelligent modification. Over-reliance on AI-generated code without human understanding creates "theoretically orphaned implementations"—code that nobody truly understands. Developers must build theory about AI-generated code through review and comprehension, not just acceptance.
 
-**For theory-building activities**: Certain activities fundamentally build theory and must remain human-led: architecture definition, problem framing, design rationale capture, and modification judgement. Even when AI could technically perform these activities, doing so risks theory atrophy—developers losing the understanding necessary for intelligent system evolution.
+**For theory-building activities**: Certain activities fundamentally build theory and benefit from human leadership: architecture definition, problem framing, design rationale capture, and modification judgement. AI can support these activities through Partnership patterns with appropriate escalation, but organisations should deliberately preserve human engagement at theory-building decision points. Excessive automation of these activities risks theory atrophy—developers losing the understanding necessary for intelligent system evolution.
 
 ## Integration with Other Concepts
 
 - [**Information Composition Taxonomy**](./01_information_taxonomy.md): Theory is what makes tacit knowledge tacit—it's the understanding in developers' minds that resists complete articulation. Theory-building activities necessarily involve high tacit knowledge content.
 - [**Eight-Capability Taxonomy**](./03_capability_model.md): Some capabilities (Synthesise, Decide) contribute more to theory building than others (Transform, Preserve). Understanding which capabilities build theory helps identify where human engagement is essential.
 - [**Seven-Phase SDLC Model**](./04_7phase_SDLC.md): Theory building occurs throughout the lifecycle, not just during coding. Early phases build theory about the problem space; middle phases about solution structure; later phases about implementation and operation.
-- [**Actor Model**](./05_actor_model.md): Humans build theory through engagement with problems; AI cannot. This fundamental asymmetry determines which activities must remain human regardless of AI technical capabilities.
-- [**Five Collaboration Patterns**](./07_collaboration_patterns.md): Activities that build theory should favour Human-Only or Human-Led patterns even when AI could technically perform them, to preserve developers' understanding.
+- [**Actor Model**](./05_actor_model.md): Humans build theory through engagement with problems; current AI systems do not. This asymmetry shapes which activities benefit from human leadership, though well-designed escalation mechanisms enable AI participation while preserving human theory-building engagement.
+- [**Five Collaboration Patterns**](./07_collaboration_patterns.md): Activities that build theory benefit from Human-Only or Human-Led patterns to preserve developers' understanding. Partnership patterns with deliberate escalation at decision points can preserve theory building while leveraging AI capabilities for supporting work.
 - [**Information Loss at Transitions**](./08_transitions_info_loss.md): Theory loss at phase boundaries is severe because theory resists documentation. Explicit mitigation strategies are required to transfer theory across transitions.
 
 ## Evidence Base

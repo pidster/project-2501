@@ -41,9 +41,27 @@ For example, the Elicit step in requirements gathering might involve:
 
 Actor allocation decisions occur at the instance level, not the capability level. The eight capabilities are abstract operations; instances are their concrete executions against specific sources.
 
+### Capability Instance Definition
+
+A complete capability instance specification includes:
+
+| Element | Description |
+|---------|-------------|
+| **Capability** | Which of the eight (Elicit, Analyse, Synthesise, Transform, Validate, Decide, Generate, Preserve) |
+| **Knowledge type** | Formal, tacit, or emergent knowledge being operated upon |
+| **Source/target** | Where information comes from or goes to |
+| **Actor pattern** | Which collaboration pattern applies (see Concept 7) |
+| **Confidence assessment** | How certainty is measured for this instance |
+| **Escalation triggers** | What conditions cause handoff to human (for AI-Led/Partnership patterns) |
+| **Escalation context** | What information accompanies escalation |
+| **Feedback mechanism** | How decisions inform future automation |
+| **Completion criteria** | How sufficiency is determined |
+
+For AI-Led and Partnership patterns, escalation design is integral to the capability instance—not an exception handler but a planned component of normal operation.
+
 ## Key Implications
 
-**For task allocation**: Each capability spans a spectrum from formal to tacit variants, and actor suitability depends on where on that spectrum a specific instance falls. Eliciting from APIs or documents suits AI; eliciting unstated assumptions from stakeholders requires human social understanding. Transforming between formal representations suits AI; transforming tacit design rationale into explicit documentation requires human interpretation. Decide on rule-based criteria suits AI; Decide involving value trade-offs requires human judgement.
+**For task allocation**: Each capability spans a spectrum from formal to tacit variants, and actor suitability depends on where on that spectrum a specific instance falls. Eliciting from APIs or documents suits AI; eliciting unstated assumptions from stakeholders requires human social understanding. Transforming between formal representations suits AI; transforming tacit design rationale into explicit documentation requires human interpretation. Decide on rule-based criteria suits AI; Decide involving value trade-offs requires human judgement. For instances near the boundary, escalation mechanisms enable AI participation with human engagement for uncertain cases.
 
 **For skill development**: Rather than training for broad roles ("developer," "analyst"), organisations can identify specific capability gaps and target development. A junior developer might need to strengthen Analyse (recognising code patterns), Validate (testing judgement), and Synthesise (designing coherent modules) capabilities specifically.
 
@@ -73,7 +91,7 @@ The eight-capability taxonomy derives from cognitive task analysis research show
 - ⚠ **Capability boundaries**: Some capabilities (Analyse vs Synthesise, Validate vs Decide) have fuzzy boundaries requiring clearer operational definitions
 - ⚠ **Capability sequences**: Common sequences are observable but haven't been systematically catalogued across all activity types
 - ⚠ **Knowledge requirement mappings**: The knowledge types required for each capability are reasoned assertions requiring empirical validation through studies of actual practitioners
-- ⚠ **Capability-to-actor mapping**: Actor suitability is determined at the instance level by knowledge type, source type, and interaction mode — not at the capability category level. A single capability step within an activity typically comprises multiple instances requiring different actors. Completion criteria for capability steps often involve tacit sufficiency judgements.
+- ⚠ **Capability-to-actor mapping**: Actor suitability is determined at the instance level by knowledge type, source type, and interaction mode—not at the capability category level. A single capability step within an activity typically comprises multiple instances requiring different actors. Completion criteria for capability steps often involve tacit sufficiency judgements. Escalation mechanisms at the instance level require validation through studies of actual allocation and escalation practices.
 
 ---
 

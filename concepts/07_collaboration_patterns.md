@@ -8,11 +8,11 @@ The Five Collaboration Patterns describe how human and AI actors work together t
 
 | Pattern | Description | When Appropriate | Human Role | AI Role |
 |---------|-------------|------------------|------------|---------|
-| **Human-Only** | Humans provide capability; AI not involved | Activities requiring social interaction, value judgement, theory building, or accountability | Complete responsibility for providing capability | None—AI cannot contribute effectively |
+| **Human-Only** | Humans provide capability; AI not involved | Activities requiring social interaction, value judgement, theory building, or accountability; or where formalised criteria do not exist | Complete responsibility for providing capability | None—AI cannot contribute effectively |
 | **Human-Led** | Human provides core capability with AI analytical/informational support | Activities dominated by tacit knowledge but benefiting from AI data processing | Drives activity, makes judgements, interprets results | Provides information, analysis, suggestions for human consideration |
 | **Partnership** | Both actors contribute substantively; neither dominates | Activities with mixed knowledge types where both actors provide complementary capabilities | Provides tacit understanding, contextual interpretation, final judgement | Provides pattern recognition, consistency checking, formal transformations |
-| **AI-Led** | AI executes capability with human oversight and exception handling | Activities dominated by formal knowledge with clear success criteria | Reviews outputs, handles exceptions, makes final approval | Executes capability, applies rules consistently, generates outputs |
-| **AI-Only** | AI provides capability autonomously; human not involved | Activities operating purely on formal knowledge with mechanical verification | None—human oversight adds no value | Complete autonomous execution applying formal rules |
+| **AI-Led** | AI executes capability with human oversight and exception handling | Activities dominated by formal knowledge with clear success criteria | Reviews outputs, handles escalations, makes final approval, provides feedback for criteria refinement | Executes capability, applies rules consistently, generates outputs |
+| **AI-Only** | AI provides capability autonomously; human not involved | Activities operating purely on formal knowledge with mechanical verification and monitoring-based exception detection | None—human oversight adds no value | Complete autonomous execution applying formal rules |
 
 ## Capability-to-Pattern Mapping
 
@@ -29,6 +29,57 @@ Different capability instances have typical patterns based on the knowledge type
 | **Generate** | Partnership to AI-Led | Templates, patterns, domain knowledge | Creating novel solutions, ensuring intent is captured | Producing consistent artifacts at scale | Generation from specs enables AI; novelty needs humans |
 | **Preserve** | Partnership to AI-Led | Storage mechanisms, retrieval requirements, retention policies | Judging what matters, capturing rationale and context | Mechanically storing and organising artifacts | Mechanical preservation enables AI; rationale capture needs humans |
 
+## Escalation: The Dynamic Mechanism
+
+Collaboration patterns are not static assignments. **Escalation** is the mechanism that enables AI actors to operate autonomously within defined competence envelopes while ensuring human engagement when uncertainty exceeds acceptable thresholds.
+
+### Escalation Definition
+
+Escalation is the structured handoff from AI to human actor when:
+- Confidence in classification falls below threshold
+- Input falls outside known patterns
+- Criteria are incomplete or conflicting
+- Consequences of error exceed acceptable risk
+
+Effective escalation requires:
+1. **Trigger definition**: What conditions cause escalation
+2. **Context packaging**: What information accompanies the handoff
+3. **Recommendation provision**: AI's assessment despite uncertainty (where appropriate)
+4. **Feedback capture**: How human decisions inform future automation
+
+### Pattern-Specific Escalation Characteristics
+
+| Pattern | Escalation Characteristic |
+|---------|---------------------------|
+| **Human-Only** | No escalation mechanism—human is already the primary actor |
+| **Human-Led** | AI support may flag concerns or anomalies for human attention |
+| **Partnership** | Bidirectional—AI escalates uncertainty to human; human may delegate bounded subtasks back to AI |
+| **AI-Led** | Defined escalation triggers with structured handoff; human handles exceptions and edge cases |
+| **AI-Only** | Implicit escalation via monitoring, alerting, and exception handling systems |
+
+### The Automation Frontier
+
+The boundary between patterns is dynamic, not fixed. As organisations invest in formalising tacit knowledge:
+
+1. **Preserve captures rationale**: When humans make escalated decisions, the Preserve capability captures reasoning
+2. **Criteria accumulate**: Captured rationale becomes formalised decision criteria
+3. **AI envelope expands**: More instances shift from Human-Led → Partnership → AI-Led
+4. **Escalation rate decreases**: For stable domains, fewer cases require human intervention
+
+This creates a virtuous cycle: `Escalated Decision → Human Judgement → Preserve Rationale → Formalise Criteria → Expand AI Envelope`
+
+The cycle explains why the Preserve capability has strategic importance beyond mere documentation—it is the mechanism through which today's human judgements become tomorrow's automation.
+
+### Escalation Quality
+
+Poor escalation design undermines collaboration effectiveness:
+
+- **Under-escalation**: AI proceeds when it should not, causing errors that erode trust
+- **Over-escalation**: AI escalates excessively, providing little value and creating human bottlenecks
+- **Context-poor escalation**: Human receives insufficient information to decide efficiently, negating the benefit of AI processing
+
+Escalation design should be treated as a first-class concern when establishing AI-Led and Partnership patterns.
+
 ## Key Patterns in the Mapping
 
 **Instances requiring tacit knowledge lean toward human**: When Elicit, Synthesise, or Decide instances operate on tacit knowledge (social understanding, creative synthesis, value judgement), they strongly favour Human-Only or Human-Led patterns. However, these same capabilities can involve AI when operating on formal knowledge — AI can elicit from systems, synthesise structured summaries, and decide based on explicit criteria.
@@ -37,7 +88,7 @@ Different capability instances have typical patterns based on the knowledge type
 
 **Analysis bridges tacit and formal**: Analyse involves both pattern recognition (where AI excels through processing vast examples) and contextual interpretation (where humans excel through experience and understanding). This makes it suitable for Human-Led or Partnership patterns depending on how much context matters for the specific analysis.
 
-**Context determines actual patterns**: The "typical" patterns are starting points. Actual appropriate patterns depend on knowledge availability (is necessary knowledge formalised?), risk level (high-stakes decisions require more human involvement), trust level (teams build toward more AI participation over time), and context stability (novel situations require more human leadership).
+**Context determines actual patterns**: The "typical" patterns are starting points. Actual appropriate patterns depend on knowledge availability (is necessary knowledge formalised?), risk level (high-stakes decisions require more human involvement), trust level (teams build toward more AI participation over time), context stability (novel situations require more human leadership), and escalation maturity (well-designed escalation enables more AI-Led patterns).
 
 ## Key Implications
 
@@ -45,11 +96,13 @@ Different capability instances have typical patterns based on the knowledge type
 
 **For progressive automation**: Teams can increase AI participation over time by shifting patterns as trust builds. Start with Human-Led code generation (human writes logic, AI suggests completions), evolve to Partnership (iterative refinement), and eventually AI-Led (AI generates with human review) for well-understood domains. This respects that pattern appropriateness includes trust as a factor.
 
-**For understanding automation boundaries**: Human-Only and Human-Led patterns identify activities that must remain human-centric regardless of AI technical advancement. These aren't temporary limitations but fundamental boundaries based on knowledge types AI cannot access. Recognising these boundaries prevents over-automation that would eliminate necessary human theory building.
+**For understanding automation boundaries**: Human-Only and Human-Led patterns identify activities that currently require human-centric approaches due to tacit knowledge requirements or insufficient formalisation. These boundaries shift as organisations formalise criteria and develop mature escalation mechanisms. However, activities central to theory building warrant deliberate preservation of human engagement even when automation becomes technically feasible, to prevent skill atrophy and maintain human understanding.
 
 **For team skill development**: As AI handles more AI-Led capabilities, humans must develop skills in AI-dependent capabilities (Elicit, Synthesise, Decide) and in partnership capabilities where humans provide tacit understanding while AI handles formal manipulation. Training programmes should target capability-specific skills rather than generic roles.
 
 **For measuring collaboration effectiveness**: Different patterns have different success indicators. Human-Only effectiveness depends on expert performance. Partnership effectiveness depends on integration quality—how well human understanding combines with AI processing. AI-Led effectiveness depends on exception rate—how often humans must intervene. These pattern-specific indicators enable better assessment than generic "AI adoption" metrics.
+
+**For escalation design**: When establishing AI-Led or Partnership patterns, explicitly design escalation mechanisms. Define triggers (confidence thresholds, pattern novelty, policy gaps), specify context to package (relevant inputs, AI assessment, uncertainty source), establish feedback loops (how human decisions refine future automation), and monitor escalation rates as a health metric.
 
 **For orchestrating capability instances**: A single capability step within an activity typically requires multiple instances with different actor assignments and patterns. Requirements elicitation might involve AI-Led extraction from existing documentation, Partnership analysis of system logs, and Human-Only elicitation of stakeholder concerns — three instances of Elicit with three different patterns. Completion criteria for capability steps — determining when sufficient information has been gathered — typically require human judgement even when individual instances were AI-executed.
 
@@ -62,7 +115,7 @@ Different capability instances have typical patterns based on the knowledge type
 - [**Actor Model**](./05_actor_model.md): The patterns operationalise Concept 5's actor characteristics. Human and AI strengths and limitations determine which patterns are appropriate for which capabilities.
 - [**Phase-Specific Information Composition**](./06_phase_specific_composition.md): Concept 6's phase compositions predict pattern distributions—Initiation (75% tacit) will predominantly use Human-Only/Human-Led patterns; Implementation (55% formal) enables more Partnership/AI-Led patterns.
 - [**Information Loss at Transitions**](./08_transitions_info_loss.md): Pattern selection affects information loss. Human-Only patterns preserve tacit knowledge through direct engagement; AI-Only patterns risk losing rationale and context.
-- [**Phase-Aware Measurement**](./09_phase_aware_measurement.md): Different patterns require different measurement approaches. Human-Only: expert performance metrics. Partnership: integration quality. AI-Led: exception and accuracy rates.
+- [**Phase-Aware Measurement**](./09_phase_aware_measurement.md): Different patterns require different measurement approaches. Human-Only: expert performance metrics. Partnership: integration quality. AI-Led: exception rate, escalation rate, and post-escalation accuracy. AI-Only: monitoring alert rates and exception handling effectiveness.
 
 ## Evidence Base
 
@@ -77,6 +130,8 @@ Worker preference studies showing 50-30-20 distribution preferences (50% partner
 - ⚠ **Pattern effectiveness**: Comparative studies showing which patterns work better for which activities would strengthen the framework
 - ⚠ **Optimal pattern distribution**: Whether the emerging pattern distributions (more Partnership/AI-Led over time) represent optimal allocation needs longitudinal validation
 - ⚠ **Instance-level pattern selection**: The capability-to-pattern mapping represents typical cases; actual allocation occurs at the instance level based on knowledge type, source type, and interaction mode. Validation needed for how practitioners navigate instance-level pattern decisions.
+- ⚠ **Escalation mechanism effectiveness**: The escalation model is conceptually coherent but requires validation through studies of escalation design practices and their impact on collaboration effectiveness
+
 
 ---
 

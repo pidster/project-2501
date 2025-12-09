@@ -43,7 +43,7 @@ Activities and artifacts can be characterised by their approximate information c
 
 **For documentation strategy:** Formal information can and should be comprehensively documented. Tacit information requires supplementary approaches (mentoring, pair programming, communities of practice). Emergent information cannot be documented in advance but can be captured retrospectively.
 
-**For human-AI collaboration:** AI can effectively handle formal information but cannot process tacit or emergent knowledge. The information composition of an activity determines appropriate automation levels—formal-heavy activities enable AI-Led patterns, tacit-heavy activities require Human-Only or Human-Led patterns.
+**For human-AI collaboration:** AI operates effectively on formal information but cannot directly access tacit or emergent knowledge. The information composition of an activity influences appropriate automation levels—formal-heavy activities enable AI-Led patterns, while tacit-heavy activities typically require Human-Only or Human-Led patterns. However, well-designed escalation mechanisms (see Concept 7) enable AI participation in mixed-composition activities by ensuring human engagement when tacit judgement is required.
 
 **For measurement:** Formal-heavy activities support quantitative metrics. Tacit-heavy activities require qualitative assessment. Mixed-composition activities need hybrid measurement approaches.
 
@@ -56,7 +56,7 @@ Activities and artifacts can be characterised by their approximate information c
 - [**Theory-Building Principle**](./02_theory_building.md): Theory is tacit by nature—what makes certain knowledge tacit is that it represents theory in developers' minds
 - [**Eight-Capability Model**](./03_capability_model.md): Different capabilities require different knowledge types (Elicit/Synthesise require tacit; Transform/Preserve enable formal)
 - [**Seven-Phase SDLC**](04_7phase_SDLC.md): Each phase has characteristic information composition that shifts from tacit-heavy early to formal-heavy late
-- [**Actor Model**](./05_actor_model.md): Human and AI actors differ in their ability to process different knowledge types—humans can handle all three, AI only formal
+- [**Actor Model**](./05_actor_model.md): Human and AI actors differ in their knowledge access—humans can directly access all three types, AI only formal. Escalation mechanisms enable AI participation in activities involving tacit knowledge by ensuring human engagement at critical decision points.
 - [**Five Collaboration Patterns**](07_collaboration_patterns.md): Pattern selection depends on activity information composition
 - [**Phase-Specific Composition**](06_phase_specific_composition.md): Provides specific percentage estimates for each phase
 - [**Information Loss at Transitions**](./08_transitions_info_loss.md): Tacit and emergent information are disproportionately lost at phase boundaries

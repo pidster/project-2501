@@ -291,6 +291,33 @@ Mentor: [Mentor Name]
 5. How will this be maintained?
 ```
 
+### 4.3 AI-Assisted Decision Escalation Template
+
+When AI systems escalate decisions to humans, use this template to ensure sufficient context:
+```markdown
+# Escalation Record
+
+## Context
+**System/Process**: [What AI system is escalating]
+**Timestamp**: [When escalation occurred]
+**Trigger**: [Why escalation was triggered]
+
+## AI Assessment
+**Situation**: [What the AI understood about the situation]
+**Confidence Level**: [AI's self-assessed confidence, if available]
+**Recommendation**: [What the AI would have done, if applicable]
+**Uncertainty Source**: [Why the AI was uncertain]
+
+## Human Decision
+**Decision Made**: [What the human decided]
+**Rationale**: [Why this decision was made]
+**Applicable to Future**: [Should this become a rule for similar cases?]
+
+## Feedback
+- [ ] Decision documented for future reference
+- [ ] Criteria updated if applicable
+- [ ] Pattern added to AI training/rules if appropriate
+```
 
 ## 5. Technical Debt Documentation
 
@@ -550,6 +577,7 @@ Month 6:
 - Making security decisions
 - Defining API standards
 - Setting development practices
+- Defining AI escalation criteria
 
 ### Card 2: Documentation Priority Matrix
 ```
