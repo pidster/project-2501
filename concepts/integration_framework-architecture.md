@@ -42,7 +42,7 @@ Each of the thirteen included sources meets multiple criteria:
 5. **Conceptual contribution**: Adds distinct insight not available elsewhere
 
 **Quality Indicators:**
-- Peer review or equivalent validation process (10/13 peer-reviewed)
+- Peer review or equivalent validation process (9/13 peer-reviewed)
 - Large sample sizes where applicable (N>2,000 in multiple studies)
 - Triangulation across methods (mixed-methods studies valued)
 - Longitudinal or cross-sectional depth

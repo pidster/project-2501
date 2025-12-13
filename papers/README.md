@@ -38,9 +38,9 @@ Detailed analytical documents that extract key insights from primary sources and
 | [context-engineering-v2-companion.md](./context-engineering-v2-companion.md) | Analysis of Context Engineering 2.0 survey, tracing evolution from early NLP to LLM agents |
 | [illusion-of-thinking-companion.md](./illusion-of-thinking-companion.md) | Analysis of AI reasoning limitations and implications for human-AI collaboration |
 | [productivity-quality-companion.md](./productivity-quality-companion.md) | Analysis of productivity and quality research with measurement framework implications |
-| **trist-bamforth-1951-companion.md** | ⚠️ **TO CREATE**: Analysis of the founding STS paper, joint optimisation principle, and framework integration |
-| **cherns-1976-companion.md** | ⚠️ **TO CREATE**: Analysis of nine STS design principles and their application to AI-augmented development |
-| **baxter-sommerville-2011-companion.md** | ⚠️ **TO CREATE**: Analysis of STS bridge to software engineering and STSE framework |
+| [trist-bamforth-1951-companion.md](./trist-bamforth-1951-companion.md) | Analysis of the founding STS paper, joint optimisation principle, and framework integration |
+| [cherns-1976-companion.md](./cherns-1976-companion.md) | Analysis of nine STS design principles and their application to AI-augmented development (based on secondary sources; PDF pending) |
+| [baxter-sommerville-2011-companion.md](./baxter-sommerville-2011-companion.md) | Analysis of STS bridge to software engineering and STSE framework |
 
 ### Reference Documents
 
@@ -71,7 +71,7 @@ Each source meets multiple criteria:
 - Distinct conceptual contribution
 
 **Quality Indicators:**
-- Peer review or equivalent validation (10/13 core sources are peer-reviewed)
+- Peer review or equivalent validation (9/13 core sources are peer-reviewed)
 - Large sample sizes where applicable (N>2,000 in multiple studies)
 - Triangulation across methods
 - Longitudinal or cross-sectional depth
