@@ -20,6 +20,9 @@ Academic papers providing foundational research and evidence.
 | [developer-thriving.pdf](./developer-thriving.pdf) | Hicks et al. (2024). "Developer Thriving" — Four sociocognitive factors for resilient productivity (N=1,282) |
 | [hicks-hevesi-cumulative-culture-theory.pdf](./hicks-hevesi-cumulative-culture-theory.pdf) | Hicks & Hevesi (2024). Cumulative culture theory applied to software development |
 | [context-engineering-v2.pdf](./context-engineering-v2.pdf) | Hua et al. (2025). "Context Engineering 2.0" — Survey of context engineering for LLMs/agents |
+| [trist-bamforth-1951-longwall-coal.pdf](./trist-bamforth-1951-longwall-coal.pdf) | Trist, E.L. & Bamforth, K.W. (1951). "Some Social and Psychological Consequences of the Longwall Method of Coal-Getting" — Seminal paper founding socio-technical systems theory |
+| [baxter-sommerville-2011-sts-systems-engineering.pdf](./baxter-sommerville-2011-sts-systems-engineering.pdf) | Baxter, G. & Sommerville, I. (2011). "Socio-technical systems: From design methods to systems engineering" — Primary bridge paper for STS in software engineering |
+| **cherns-1976-sociotechnical-design-principles.pdf** | ⚠️ **TO OBTAIN**: Cherns, A.B. (1976). "The Principles of Sociotechnical Design" — Nine foundational design principles. *Requires institutional access (Human Relations, SAGE)* |
 
 ### Companion Analyses
 
@@ -35,6 +38,9 @@ Detailed analytical documents that extract key insights from primary sources and
 | [context-engineering-v2-companion.md](./context-engineering-v2-companion.md) | Analysis of Context Engineering 2.0 survey, tracing evolution from early NLP to LLM agents |
 | [illusion-of-thinking-companion.md](./illusion-of-thinking-companion.md) | Analysis of AI reasoning limitations and implications for human-AI collaboration |
 | [productivity-quality-companion.md](./productivity-quality-companion.md) | Analysis of productivity and quality research with measurement framework implications |
+| **trist-bamforth-1951-companion.md** | ⚠️ **TO CREATE**: Analysis of the founding STS paper, joint optimisation principle, and framework integration |
+| **cherns-1976-companion.md** | ⚠️ **TO CREATE**: Analysis of nine STS design principles and their application to AI-augmented development |
+| **baxter-sommerville-2011-companion.md** | ⚠️ **TO CREATE**: Analysis of STS bridge to software engineering and STSE framework |
 
 ### Reference Documents
 
@@ -65,19 +71,22 @@ Each source meets multiple criteria:
 - Distinct conceptual contribution
 
 **Quality Indicators:**
-- Peer review or equivalent validation (7/10 core sources are peer-reviewed)
+- Peer review or equivalent validation (10/13 core sources are peer-reviewed)
 - Large sample sizes where applicable (N>2,000 in multiple studies)
 - Triangulation across methods
 - Longitudinal or cross-sectional depth
 
 ### Temporal Coverage
 
-The collection deliberately spans four decades:
+The collection deliberately spans seven decades:
 
 | Era | Sources | Contribution |
 |-----|---------|--------------|
+| **1951** | Trist & Bamforth (1951) | Founding of socio-technical systems theory; joint optimisation principle |
+| **1976** | Cherns (1976) | Nine actionable STS design principles |
 | **1985-1990** | Naur (1985), Wegner (1986) | Foundational theory on individual cognition and team memory |
 | **1994** | Nonaka (1994) | Knowledge creation and conversion models |
+| **2011** | Baxter & Sommerville (2011) | STS bridge to software systems engineering |
 | **2013-2019** | Ryan & O'Connor (2013), Meyer et al. (2019) | Empirical measurement instruments and validation |
 | **2022-2024** | Storey et al. (2022), Hicks et al. (2024) | Developer experience frameworks and thriving factors |
 | **2025** | Context Engineering 2.0, Illusion of Thinking | AI era considerations and limitations |
