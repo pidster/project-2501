@@ -24,7 +24,7 @@ The model's key differentiator from simpler five- or six-phase models is explici
 
 **What gets lost when consolidated**: When Initiation merges into Planning, the strategic rationale becomes subordinate to execution details. Alternatives explored during opportunity analysis disappear from the record—we document what we're building but not what we decided not to build and why. Political context and stakeholder dynamics reduce to simple stakeholder registers missing the nuanced understanding necessary for ongoing engagement. The business case becomes a checkbox rather than a living justification guiding decisions.
 
-**Empirical justification**: Research indicates 39-47% of project failures trace to requirements and scope issues. Many originate not in the requirements phase itself but earlier in inadequate problem framing during initiation. When teams don't truly understand why they're building something, they cannot elicit appropriate requirements. When stakeholders aren't genuinely aligned on purpose, requirements become political rather than technical. When the business case is weak, projects continue despite lack of value.
+**Empirical justification**: Multiple lines of evidence support early-phase importance for project outcomes. PMI's Pulse of the Profession found poor communication contributes to 56% of failed projects—and communication failures frequently originate in early phases where shared understanding must be established. Curtis et al.'s (1988) field study of 17 large projects identified "thin spread of application domain knowledge" as a critical problem. When teams don't truly understand why they're building something, they cannot elicit appropriate requirements. When stakeholders aren't genuinely aligned on purpose, requirements become political rather than technical. When the business case is weak, projects continue despite lack of value.
 
 **Information composition rationale**: Initiation exhibits the highest tacit and emergent knowledge content of any phase. This makes it both the most critical for human leadership and the phase where information loss is greatest. Separating it from Planning maintains visibility and enables specific mitigation strategies.
 
@@ -67,13 +67,23 @@ Regardless of pattern, all seven work types occur. The most rapid Agile team sti
 
 ## Evidence Base
 
-ISO/IEC/IEEE 12207:2017 provides internationally recognised foundation through decades of consensus-building across industry, academia, and government. The thirty processes map cleanly to seven phases without loss or contradiction. Research across lifecycle models (PMBOK, BABOK, ITIL, various Agile methodologies) shows convergence on 5-7 core phases regardless of terminology or execution pattern. Studies of project failures consistently identify inadequate early phases (initiation, planning, requirements) as primary predictors, with 39-47% of failures attributed to requirements issues often originating in weak problem framing. Research on information types validates the shift from tacit-heavy early phases to formal-heavy later phases. The methodology independence claim is validated through observation that all methodologies perform these work types, with systematic comparative research quantifying how execution patterns affect outcomes.
+ISO/IEC/IEEE 12207:2017 provides internationally recognised foundation through decades of consensus-building across industry, academia, and government. The thirty processes map cleanly to seven phases without loss or contradiction. Research across lifecycle models (PMBOK, BABOK, ITIL, various Agile methodologies) shows convergence on 5-7 core phases regardless of terminology or execution pattern.
+
+Multiple lines of evidence support early-phase importance for project outcomes:
+
+- **PMI Pulse of the Profession**: Poor communication contributes to 56% of failed projects; communication failures frequently originate in early phases where shared understanding must be established
+- **Curtis et al. (1988)**: Field study of 17 large projects identified "thin spread of application domain knowledge" as a critical problem, highlighting how knowledge deficits in early phases propagate forward
+- **Turnover studies**: Knowledge loss precedes productivity decline (Rigby et al., 2016); teams with high turnover accumulate 37% more technical debt (LinearB, 2024)
+- **Team Tacit Knowledge**: r=0.35 correlation with team effectiveness using validated instrument (Ryan & O'Connor, 2013)
+- **Logical dependency**: Later phases structurally depend on earlier phases; deficiencies in problem framing and requirements cascade into design and implementation
+
+Research on information types validates the shift from tacit-heavy early phases to formal-heavy later phases. The methodology independence claim is validated through observation that all methodologies perform these work types, with systematic comparative research quantifying how execution patterns affect outcomes.
 
 ## Validation Status
 
 - ✓ **Standards grounding**: Maps completely to ISO/IEC/IEEE 12207:2017 with full traceability
 - ✓ **Convergence across frameworks**: All examined frameworks recognise these work types even with different terminology
-- ✓ **Failure research correlation**: Early phase inadequacy predicts poor outcomes across multiple studies
+- ✓ **Failure research correlation**: Early phase inadequacy predicts poor outcomes across multiple independent studies (PMI, Curtis et al., turnover research)
 - ✓ **Methodology independence**: Validated through observation that all methodologies perform these work types
 - ⚠ **Benefits of Initiation separation**: Supported by failure research but lacks controlled comparison studies
 - ⚠ **Information composition shift**: Directionally validated but specific percentages (Concept 6) require measurement studies

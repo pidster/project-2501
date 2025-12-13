@@ -46,7 +46,7 @@ Software development measurement must adapt to phase-specific characteristics ra
 
 **For avoiding misapplication of frameworks**: DORA metrics are excellent for what they measure but should not be applied to Requirements or Planning phases where deployment doesn't occur. Similarly, qualitative stakeholder satisfaction assessments appropriate for early phases shouldn't be forced into late phases where formal metrics are available and more informative.
 
-**For resource allocation**: Measurement investment should align with failure prediction research showing 39-47% of failures originate in requirements (early phases). Organisations over-invest in late-phase measurement because it's easier, under-invest in early-phase measurement where most failures originate but measurement is harder. Phase-aware approach redistributes investment to match risk.
+**For resource allocation**: The measurement asymmetry problem: DORA metrics (N=39,000+) provide robust measurement for phases 5-7 but are explicitly not designed for early phases. Meanwhile, PMI's finding that communication failures contribute to 56% of project failures—with communication problems typically originating in early phases—highlights where failure *originates* versus where it's *measured*. Organisations over-invest in late-phase measurement because it's easier, under-invest in early-phase measurement where failure patterns originate but measurement is harder. Phase-aware approach redistributes investment to match actual risk distribution.
 
 **For understanding that some phases resist quantification**: Accepting that tacit-heavy phases require qualitative assessment enables appropriate measurement rather than forcing inappropriate quantification. Stakeholder alignment in Initiation cannot be quantified but can be assessed through structured interviews, review outcomes, and satisfaction surveys. These are valid measurements even without quantitative metrics.
 
@@ -65,11 +65,19 @@ Software development measurement must adapt to phase-specific characteristics ra
 
 ## Evidence Base
 
-Research showing that requirements issues cause 39-47% of project failures yet most measurement focuses on later phases where failures manifest but don't originate. Studies validating DORA metrics predict late-phase performance but not early-phase quality. Research on psychological safety showing qualitative factors (can engineers discuss problems?) predict success better than quantitative metrics in early phases. Developer Thriving research demonstrating that LABS model components are measurable and predictive even though qualitative. Practitioner surveys showing that teams find universal metrics less actionable than phase-specific metrics aligned with their work. Case studies of organisations improving outcomes through early-phase measurement investment after recognising that late-phase metrics were lagging indicators providing feedback too late for cost-effective intervention.
+The measurement asymmetry problem is well-documented: DORA metrics (N=39,000+) provide robust measurement for phases 5-7 (Implementation, Testing, Operations) but are explicitly not designed for early phases where deployment doesn't occur. Meanwhile, research consistently shows early-phase inadequacy predicts failure:
+
+- PMI Pulse of the Profession found communication failures contribute to 56% of failed projects—and communication failures typically originate in early phases where shared understanding must be established
+- Curtis et al. (1988) field study identified "thin spread of application domain knowledge" as a critical problem in early phases
+- Team Tacit Knowledge Measure shows r=0.35 correlation with team effectiveness (Ryan & O'Connor, 2013), providing validated measurement of tacit factors
+
+This creates systematic blind spots: organisations invest heavily in late-phase measurement (because it's easier) while under-investing in early-phase assessment (where failure patterns originate but measurement is harder).
+
+Studies validating DORA metrics predict late-phase performance but not early-phase quality. Research on psychological safety showing qualitative factors (can engineers discuss problems?) predict success better than quantitative metrics in early phases. Developer Thriving research demonstrating that LABS model components are measurable and predictive even though qualitative. Practitioner surveys showing that teams find universal metrics less actionable than phase-specific metrics aligned with their work. Case studies of organisations improving outcomes through early-phase measurement investment after recognising that late-phase metrics were lagging indicators providing feedback too late for cost-effective intervention.
 
 ## Validation Status
 
-- ✓ **Failure pattern research**: Well-validated that early phases cause most failures but receive less measurement attention
+- ✓ **Failure pattern research**: Well-validated that early phases are associated with failure patterns but receive less measurement attention (PMI 56% communication; turnover studies; Curtis et al.)
 - ✓ **Framework scope validation**: DORA, SPACE, DevEx are appropriately scoped for intended concerns and work well within scope
 - ⚠ **Phase-specific metric sets**: Proposed metrics are conceptually coherent but require validation through systematic deployment studies
 - ⚠ **Leading indicator relationships**: That early-phase metrics predict late-phase outcomes is theoretically grounded but needs longitudinal validation

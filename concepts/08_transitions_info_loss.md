@@ -18,7 +18,7 @@ Information loss at phase transitions is systematic and severe, with 35-55% of c
 
 ## The Cumulative Effect
 
-Information loss compounds across transitions. Starting from 100% information at Initiation:
+Information loss compounds across transitions. The following illustrative calculation demonstrates the compounding pattern using midpoint estimates from the transition ranges above. Starting from 100% information at Initiation:
 
 - After Planning: ~65% remains (35% lost)
 - After Requirements: ~42% remains (58% lost cumulative)
@@ -28,7 +28,9 @@ Information loss compounds across transitions. Starting from 100% information at
 - At Operations: ~6% remains (94% lost cumulative)
 - At Maintenance: ~4% remains (96% lost cumulative)
 
-This explains the "legacy system" phenomenon where code executes perfectly but nobody understands why it was built as it was, why certain decisions were made, or what constraints drove design choices. The theory died through cumulative knowledge loss even while the code survived.
+**Methodological note**: This calculation assumes independence between transitions and uses point estimates from ranges. Actual retention varies significantly based on mitigation practices, team continuity, and documentation quality. The calculation illustrates the *compounding pattern* rather than predicting specific outcomes—organisations with strong knowledge management practices may retain substantially more; those with poor practices may retain less.
+
+This compounding pattern explains the "legacy system" phenomenon where code executes perfectly but nobody understands why it was built as it was, why certain decisions were made, or what constraints drove design choices. The theory died through cumulative knowledge loss even while the code survived.
 
 ## Why Certain Knowledge Types Are Disproportionately Lost
 
@@ -40,15 +42,13 @@ This explains the "legacy system" phenomenon where code executes perfectly but n
 
 **"Why" information is systematically lost while "what" survives**: Formal artifacts capture "what" (what code does, what system provides, what requirements specify) but rarely capture "why" (why this approach was chosen, why these requirements matter, why this design serves the intent). Recipients can see what exists but not why it exists that way, hampering intelligent modification.
 
-**Document lifecycle class affects preservation opportunity**: Standing documents provide the best formal mechanism for preserving "why" knowledge, but formalisation alone typically captures only 30-40% of original tacit understanding—highlighting why documentation strategies must be supplemented with social learning mechanisms. Dynamic documents track evolving "what" with interpretive context degrading as project memory fades. Ephemeral documents have a single capture window at creation; any tacit understanding not recorded immediately is lost entirely. This explains why Architecture Decision Records (standing) preserve rationale better than commit messages (ephemeral), but also why ADRs alone are insufficient without the team continuity and mentoring that maintain living understanding.
-
 ## Key Implications
 
 **For documentation strategy**: Generic documentation improvements don't solve transition losses because the issue isn't documentation quantity but knowledge type. Effective mitigation requires targeted capture of specific knowledge types at specific transitions. Architecture Decision Records work at Design→Implementation because they capture rationale. Runbooks work at Testing→Operations because they capture operational procedures. Different transitions need different strategies.
 
 **For team organisation**: Transition losses decrease dramatically with team continuity and overlap. When the same people work across multiple phases, tacit knowledge transfers naturally. When different teams handle different phases, explicit knowledge transfer becomes critical. DevOps succeeds partly by reducing the Development→Operations transition through team integration.
 
-**For AI opportunities and limitations**: AI can help reduce formal knowledge loss through automated documentation generation, traceability maintenance, and consistency checking. AI cannot directly capture tacit understanding from people's minds, but can prompt for rationale capture when encountering uncertainty—escalation triggers can serve as cues to document tacit knowledge that would otherwise be lost. The highest-value AI applications at transitions involve formal knowledge preservation and prompted rationale capture, though tacit knowledge transfer ultimately requires human-to-human engagement.
+**For AI opportunities and limitations**: AI can help reduce formal knowledge loss through automated documentation generation, traceability maintenance, and consistency checking. However, AI cannot reduce tacit knowledge loss because AI cannot capture understanding from people's minds. The highest-value AI applications at transitions involve formal knowledge preservation, not tacit knowledge transfer.
 
 **For understanding technical debt**: Much technical debt originates not from poor initial decisions but from lost understanding of why decisions were made. Future modifiers see "what" without "why" and make changes that seem locally reasonable but violate the original design intent. Preserving rationale reduces this form of debt.
 
@@ -67,7 +67,11 @@ This explains the "legacy system" phenomenon where code executes perfectly but n
 
 ## Evidence Base
 
-Research showing 2-3x longer bug fix times when original developers unavailable despite comprehensive documentation, validating that tacit knowledge doesn't transfer through documents. Studies of requirements failures (39-47% of project failures) often originating not in requirements work itself but in lost strategic context from Initiation. Observations that maintenance teams struggle with "legacy" systems not because code is poor but because understanding was lost. DevOps research showing that reducing Development→Operations handoffs improves reliability, validating that transitions themselves cause problems. Knowledge management research showing tacit knowledge requires social learning and apprenticeship, not documentation, to transfer. Organisational memory research showing that turnover causes knowledge loss proportional to how much knowledge was tacit versus formal.
+Research showing 2-3x longer bug fix times when original developers unavailable despite comprehensive documentation, validating that tacit knowledge doesn't transfer through documents. Garousi et al.'s industrial case study found technical documentation was consulted least frequently for maintenance, with source code preferred—indicating documentation fails to capture the understanding needed for effective modification.
+
+Turnover studies demonstrate temporal precedence: knowledge loss precedes productivity decline (Rigby et al., 2016). Nassif and Robillard's replication across eight large open-source projects found "extreme knowledge loss more severe than originally discovered." Teams with high turnover accumulate 37% more technical debt (LinearB, 2024) and spend 22% more time debugging—evidence that lost context creates downstream problems.
+
+DevOps research shows that reducing Development→Operations handoffs improves reliability, validating that transitions themselves cause problems. Knowledge management research shows tacit knowledge requires social learning and apprenticeship, not documentation, to transfer. Organisational memory research shows that turnover causes knowledge loss proportional to how much knowledge was tacit versus formal.
 
 ## Validation Status
 

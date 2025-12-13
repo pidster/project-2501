@@ -22,21 +22,19 @@ The systematic shift from tacit-heavy to formal-heavy reflects the fundamental n
 
 **Why emergent stays consistently low (10%)**: Emergent knowledge arises from interactions and discoveries during work. It remains relatively constant across phases because every phase involves some discovery—unexpected stakeholder needs in Requirements, unanticipated design trade-offs in Architecture, surprising implementation challenges in Construction. However, emergent knowledge never dominates because most work involves applying existing knowledge rather than discovering fundamentally new understanding.
 
-**Why the transition point occurs around Design/Implementation**: Design is where theory transformation into formal representation reaches a tipping point. Requirements capture "what" in semi-formal specifications requiring human interpretation. Design defines "how" in structures increasingly amenable to formalisation. Implementation executes designs in entirely formal representations (code). This progression explains why AI participation increases with formal density—AI excels at formal manipulation and can participate in tacit-involving activities only through escalation to human actors for judgement requiring tacit understanding.
+**Why the transition point occurs around Design/Implementation**: Design is where theory transformation into formal representation reaches a tipping point. Requirements capture "what" in semi-formal specifications requiring human interpretation. Design defines "how" in structures increasingly amenable to formalisation. Implementation executes designs in entirely formal representations (code). This progression explains why AI capabilities correspond inversely with tacit density—AI excels at formal manipulation but cannot access tacit understanding.
 
 ## Key Implications
 
 **For documentation strategy**: Tacit-heavy phases (Initiation, Planning) require supplementary approaches beyond documents—mentoring, communities of practice, storytelling. Balanced phases (Requirements, Design) need dual strategies—formal specifications plus rationale capture. Formal-heavy phases (Implementation, Testing, Operations) benefit from comprehensive formal documentation with targeted tacit knowledge capture for critical decisions.
 
-**For automation boundaries**: Tacit-heavy phases benefit from human leadership because tacit knowledge cannot be directly accessed by AI; however, AI can support through Human-Led patterns with appropriate escalation. Balanced phases benefit from human-AI partnership where humans provide tacit understanding and AI handles formal transformations. Formal-heavy phases enable AI-Led execution with escalation for situations requiring tacit judgement.
+**For automation boundaries**: Tacit-heavy phases must remain human-led regardless of AI technical capabilities because tacit knowledge cannot be accessed by AI. Balanced phases benefit from human-AI partnership where humans provide tacit understanding and AI handles formal transformations. Formal-heavy phases enable AI-led execution with human oversight for exceptional situations requiring tacit judgement.
 
 **For team organisation and knowledge transfer**: Tacit-heavy phases benefit critically from team stability—Initiation and Planning knowledge resides in specific individuals and degrades with turnover. Formal-heavy phases support more flexible staffing because knowledge exists in formal artifacts. Knowledge transfer strategies must adapt—tacit phases need mentoring and pairing; formal phases can use documentation and training.
 
 **For measurement approaches**: Formal-heavy phases support quantitative metrics (defect density, test coverage, deployment frequency) because artifacts are measurable. Tacit-heavy phases require qualitative assessment (stakeholder alignment, shared understanding, problem framing adequacy) because critical knowledge resists quantification. Mixed approaches are needed for balanced phases.
 
-**For understanding failure patterns**: Phase composition predicts failure modes. Tacit-heavy Initiation failures stem from stakeholder misalignment and inadequate problem framing (39-47% of total failures). Balanced Requirements failures stem from incomplete tacit-to-formal translation. Formal-heavy Implementation failures stem from lost design understanding. Each requires composition-appropriate mitigation.
-
-**For document lifecycle management**: Phase composition correlates with document temporality. Tacit-heavy phases (Initiation, Planning) produce primarily standing documents that attempt to crystallise strategic understanding for long-term reference. Balanced phases (Requirements, Design) produce both standing documents (specifications, architecture) and dynamic documents (tracking evolution). Formal-heavy phases (Implementation, Testing, Operations) produce more dynamic and ephemeral documents (status, tickets, logs) alongside standing technical documentation.
+**For understanding failure patterns**: Phase composition predicts failure modes. Tacit-heavy Initiation failures stem from stakeholder misalignment and inadequate problem framing—PMI found communication failures (which originate in early phases) contribute to 56% of failed projects. Balanced Requirements failures stem from incomplete tacit-to-formal translation. Formal-heavy Implementation failures stem from lost design understanding. Each requires composition-appropriate mitigation.
 
 ## Integration with Other Concepts
 
@@ -45,7 +43,7 @@ The systematic shift from tacit-heavy to formal-heavy reflects the fundamental n
 - [**Eight-Capability Taxonomy**](./03_capability_model.md): Different phases emphasise different capabilities based on their composition. Tacit-heavy phases emphasise Elicit, Synthesise, Decide. Formal-heavy phases emphasise Transform, Generate, Preserve.
 - [**Seven-Phase SDLC Model**](./04_7phase_SDLC.md): Concept 6 characterises each phase from Concept 4 by its information composition, enabling all phase-specific reasoning in the framework.
 - [**Actor Model**](./05_actor_model.md): Phase composition determines appropriate actor participation. Human actors required for tacit-heavy phases; AI actors enable formal-heavy phases.
-- [**Five Collaboration Patterns**](./07_collaboration_patterns.md): Patterns shift systematically across phases—Human-Only/Human-Led for tacit-heavy early phases, Partnership for balanced middle phases, AI-Led with escalation for formal-heavy later phases. Escalation rates are expected to be higher in tacit-heavy phases even when AI participates.
+- [**Five Collaboration Patterns**](./07_collaboration_patterns.md): Patterns shift systematically across phases—Human-Only/Human-Led for tacit-heavy early phases, Partnership for balanced middle phases, AI-Led for formal-heavy later phases.
 - [**Information Loss at Transitions**](./08_transitions_info_loss.md): Loss patterns differ by phase composition. Tacit knowledge loss is severe at early transitions (Initiation→Planning: 35-45% loss); formal knowledge loss is lower at later transitions.
 - [**Phase-Aware Measurement**](./09_phase_aware_measurement.md): Phase composition determines appropriate measurement approaches—qualitative for tacit-heavy, quantitative for formal-heavy, hybrid for balanced.
 
@@ -55,14 +53,22 @@ The systematic shift from tacit-heavy to formal-heavy reflects the fundamental n
 
 **Robust finding vs estimates**: The directional pattern (tacit-heavy early, formal-heavy late) is the robust empirical finding validated across multiple studies and organisational contexts. The specific percentages should be treated as indicative rather than precise—the actual composition in specific organisations may vary by ±10% based on domain, methodology, and organisational practices.
 
-**Evidence supporting the pattern**: Studies showing 70-80% of critical software knowledge is tacit (not captured in documents). Research on requirements failures (39-47% of project failures) originating in inadequate early phases where tacit knowledge dominates. Observation that later phases produce measurable artifacts (code, tests) indicating higher formal content. Practitioner reports that different phases feel qualitatively different in terms of how much "gut feel" versus "mechanical execution" they involve.
+**Evidence supporting the pattern**:
+
+- Studies showing 70-80% of critical software knowledge is tacit (not captured in documents)
+- PMI Pulse of the Profession finding that communication failures contribute to 56% of failed projects—and communication failures disproportionately originate in early phases where shared understanding must be established
+- Curtis et al. (1988) field study identifying "thin spread of application domain knowledge" as a critical problem in early phases
+- Turnover studies showing knowledge loss precedes productivity decline (Rigby et al., 2016), with teams experiencing high turnover accumulating 37% more technical debt
+- Team Tacit Knowledge Measure showing r=0.35 correlation with team effectiveness (Ryan & O'Connor, 2013)
+- Observation that later phases produce measurable artifacts (code, tests) indicating higher formal content
+- Practitioner reports that different phases feel qualitatively different in terms of how much "gut feel" versus "mechanical execution" they involve
 
 **Validation needs**: Systematic measurement studies using consistent methodology across multiple organisations would enable more precise percentage estimates. Longitudinal studies tracking how composition shifts within organisations over time. Cross-cultural validation whether composition patterns hold across different national and organisational cultures.
 
 ## Validation Status
 
 - ✓ **Directional pattern**: Well-validated—early phases are tacit-heavier than later phases across multiple empirical studies
-- ✓ **Failure correlation**: Early phase failures (tacit-heavy) dominate project failure statistics (39-47% requirements-related)
+- ✓ **Failure correlation**: Multiple independent studies associate early-phase inadequacy with project failure (PMI 56% communication; Curtis et al. knowledge deficits; turnover studies). The specific contribution of requirements versus other early phases remains difficult to isolate empirically.
 - ⚠ **Specific percentages**: Reasoned estimates requiring systematic measurement studies with consistent methodology
 - ⚠ **Organisational variance**: How much composition varies across organisations with different domains and methodologies needs quantification
 - ⚠ **Emergent percentage consistency**: The claim that emergent stays consistently around 10% across all phases needs validation
