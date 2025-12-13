@@ -56,14 +56,14 @@ This compounding pattern explains the "legacy system" phenomenon where code exec
 
 ## Integration with Other Concepts
 
-- [**Information Composition Taxonomy**](./01_information_taxonomy.md): Tacit and emergent knowledge (Concept 1) are disproportionately lost at transitions; formal knowledge survives better. This explains why different transitions have different loss patterns.
-- [**Theory-Building Principle**](./02_theory_building.md): Theory loss at transitions is severe because theory is inherently tacit. When teams change, theory doesn't transfer through documentation—recipients must rebuild understanding through engagement.
-- [**Eight-Capability Taxonomy**](./03_capability_model.md): Elicit, Synthesise, and Decide capabilities generate tacit knowledge particularly vulnerable to loss. Transform and Preserve capabilities operating on formal knowledge better survive transitions.
-- [**Seven-Phase SDLC Model**](./04_7phase_SDLC.md): Each phase boundary from Concept 4 represents a potential information loss point. Understanding what work occurs in each phase enables predicting what knowledge might be lost at its boundaries.
-- [**Actor Model**](./05_actor_model.md): Human actors transfer some tacit knowledge through mentoring and collaboration; AI actors cannot. Collaboration patterns at transitions affect loss severity.
-- [**Phase-Specific Information Composition**](./06_phase_specific_composition.md): Transitions from tacit-heavy phases (Initiation, Planning) lose more than transitions from formal-heavy phases (Implementation, Testing), correlating with Concept 6's composition estimates.
-- [**Five Collaboration Patterns**](./07_collaboration_patterns.md): Human-Only and Human-Led patterns preserve tacit knowledge better through direct engagement. AI-Only patterns risk higher context loss. Pattern selection affects transition losses.
-- [**Phase-Aware Measurement**](./09_phase_aware_measurement.md): Measuring transition effectiveness requires different approaches than measuring within-phase effectiveness. Transition metrics focus on knowledge transfer quality, not activity completion.
+- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): Tacit and emergent knowledge (Concept 1) are disproportionately lost at transitions; formal knowledge survives better. This explains why different transitions have different loss patterns.
+- [**Theory-Building Principle**](./foundation_theory-building.md): Theory loss at transitions is severe because theory is inherently tacit. When teams change, theory doesn't transfer through documentation—recipients must rebuild understanding through engagement.
+- [**Eight-Capability Taxonomy**](./concept_capability-model.md): Elicit, Synthesise, and Decide capabilities generate tacit knowledge particularly vulnerable to loss. Transform and Preserve capabilities operating on formal knowledge better survive transitions.
+- [**Seven-Phase SDLC Model**](./concept_seven-phase-sdlc.md): Each phase boundary from Concept 4 represents a potential information loss point. Understanding what work occurs in each phase enables predicting what knowledge might be lost at its boundaries.
+- [**Actor Model**](./concept_actor-model.md): Human actors transfer some tacit knowledge through mentoring and collaboration; AI actors cannot. Collaboration patterns at transitions affect loss severity.
+- [**Phase-Specific Information Composition**](./integration_phase-specific-composition.md): Transitions from tacit-heavy phases (Initiation, Planning) lose more than transitions from formal-heavy phases (Implementation, Testing), correlating with Concept 6's composition estimates.
+- [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Human-Only and Human-Led patterns preserve tacit knowledge better through direct engagement. AI-Only patterns risk higher context loss. Pattern selection affects transition losses.
+- [**Phase-Aware Measurement**](./concept_phase-aware-measurement.md): Measuring transition effectiveness requires different approaches than measuring within-phase effectiveness. Transition metrics focus on knowledge transfer quality, not activity completion.
 
 ## Evidence Base
 

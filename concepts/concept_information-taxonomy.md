@@ -101,14 +101,14 @@ These levels are defaults; specific documents may require adjustment based on th
 
 ## Integration with Other Concepts
 
-- [**Theory-Building Principle**](./02_theory_building.md): Theory is tacit by nature—what makes certain knowledge tacit is that it represents theory in developers' minds
-- [**Eight-Capability Model**](./03_capability_model.md): Different capabilities require different knowledge types (Elicit/Synthesise require tacit; Transform/Preserve enable formal)
+- [**Theory-Building Principle**](./foundation_theory-building.md): Theory is tacit by nature—what makes certain knowledge tacit is that it represents theory in developers' minds
+- [**Eight-Capability Model**](./concept_capability-model.md): Different capabilities require different knowledge types (Elicit/Synthesise require tacit; Transform/Preserve enable formal)
 - [**Seven-Phase SDLC**](04_7phase_SDLC.md): Each phase has characteristic information composition that shifts from tacit-heavy early to formal-heavy late
-- [**Actor Model**](./05_actor_model.md): Human and AI actors differ in their knowledge access—humans can directly access all three types, AI only formal. Escalation mechanisms enable AI participation in activities involving tacit knowledge by ensuring human engagement at critical decision points.
+- [**Actor Model**](./concept_actor-model.md): Human and AI actors differ in their knowledge access—humans can directly access all three types, AI only formal. Escalation mechanisms enable AI participation in activities involving tacit knowledge by ensuring human engagement at critical decision points.
 - [**Five Collaboration Patterns**](07_collaboration_patterns.md): Pattern selection depends on activity information composition
 - [**Phase-Specific Composition**](06_phase_specific_composition.md): Provides specific percentage estimates for each phase
-- [**Information Loss at Transitions**](./08_transitions_info_loss.md): Tacit and emergent information are disproportionately lost at phase boundaries
-- [**Information Loss at Transitions**](./08_transitions_info_loss.md): Tacit and emergent information are disproportionately lost at phase boundaries. Document lifecycle class affects retention—standing documents preserve rationale but with 30-40% loss; ephemeral documents lose unrecorded tacit knowledge entirely.
+- [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Tacit and emergent information are disproportionately lost at phase boundaries
+- [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Tacit and emergent information are disproportionately lost at phase boundaries. Document lifecycle class affects retention—standing documents preserve rationale but with 30-40% loss; ephemeral documents lose unrecorded tacit knowledge entirely.
 - [**Phase-Aware Measurement**](09_phase_aware_measurement.md): Different phases need different measurement approaches based on their information composition
 
 ## Evidence Base

@@ -44,12 +44,12 @@ Naur identified three aspects that theory encompasses, all of which transcend wh
 
 ## Integration with Other Concepts
 
-- [**Information Composition Taxonomy**](./01_information_taxonomy.md): Theory is what makes tacit knowledge tacit—it's the understanding in developers' minds that resists complete articulation. Theory-building activities necessarily involve high tacit knowledge content.
-- [**Eight-Capability Taxonomy**](./03_capability_model.md): Some capabilities (Synthesise, Decide) contribute more to theory building than others (Transform, Preserve). Understanding which capabilities build theory helps identify where human engagement is essential.
-- [**Seven-Phase SDLC Model**](./04_7phase_SDLC.md): Theory building occurs throughout the lifecycle, not just during coding. Early phases build theory about the problem space; middle phases about solution structure; later phases about implementation and operation.
-- [**Actor Model**](./05_actor_model.md): Humans build theory through engagement with problems; current AI systems do not. This asymmetry shapes which activities benefit from human leadership, though well-designed escalation mechanisms enable AI participation while preserving human theory-building engagement.
-- [**Five Collaboration Patterns**](./07_collaboration_patterns.md): Activities that build theory benefit from Human-Only or Human-Led patterns to preserve developers' understanding. Partnership patterns with deliberate escalation at decision points can preserve theory building while leveraging AI capabilities for supporting work.
-- [**Information Loss at Transitions**](./08_transitions_info_loss.md): Theory loss at phase boundaries is severe because theory resists documentation. Explicit mitigation strategies are required to transfer theory across transitions.
+- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): Theory is what makes tacit knowledge tacit—it's the understanding in developers' minds that resists complete articulation. Theory-building activities necessarily involve high tacit knowledge content.
+- [**Eight-Capability Taxonomy**](./concept_capability-model.md): Some capabilities (Synthesise, Decide) contribute more to theory building than others (Transform, Preserve). Understanding which capabilities build theory helps identify where human engagement is essential.
+- [**Seven-Phase SDLC Model**](./concept_seven-phase-sdlc.md): Theory building occurs throughout the lifecycle, not just during coding. Early phases build theory about the problem space; middle phases about solution structure; later phases about implementation and operation.
+- [**Actor Model**](./concept_actor-model.md): Humans build theory through engagement with problems; current AI systems do not. This asymmetry shapes which activities benefit from human leadership, though well-designed escalation mechanisms enable AI participation while preserving human theory-building engagement.
+- [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Activities that build theory benefit from Human-Only or Human-Led patterns to preserve developers' understanding. Partnership patterns with deliberate escalation at decision points can preserve theory building while leveraging AI capabilities for supporting work.
+- [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Theory loss at phase boundaries is severe because theory resists documentation. Explicit mitigation strategies are required to transfer theory across transitions.
 
 ## Evidence Base
 
