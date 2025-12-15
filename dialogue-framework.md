@@ -69,7 +69,7 @@ The Dialogue Framework rests on thirteen academic sources spanning 1951–2025 (
 
 **Note**: These sources are preprints/corporate research, not yet peer-reviewed.
 
-**Key insight**: AI has specific, measurable limitations (e.g., reasoning collapse at high complexity). Whether AI "builds theory" or "participates in TMS" is contested; what matters practically is designing effective human-AI dialogue.
+**Key insight**: AI has specific, measurable limitations (e.g., reasoning collapse at high complexity). Whether AI "builds theory" or "participates in transactive memory systems" is contested; what matters practically is designing effective human-AI dialogue.
 
 ---
 
@@ -148,7 +148,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 
 | Actor Type | Characteristics |
 |------------|-----------------|
-| **Human** | Builds theory, participates in TMS, processes all knowledge types |
+| **Human** | Builds theory, participates in transactive memory, processes all knowledge types |
 | **AI** | Pattern matching, retrieval at scale, processes formal knowledge only |
 | **Human-AI** | Collaborative configurations with escalation mechanisms |
 

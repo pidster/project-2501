@@ -132,7 +132,7 @@ Teams develop shared knowledge systems where members know *who knows what* rathe
 
 Individual theory-building (Naur) and team transactive memory (Wegner) are complementary:
 - **Theory death**: Loss of individuals holding deep understanding
-- **TMS degradation**: Disruption of "who knows what" coordination
+- **Transactive memory degradation**: Disruption of "who knows what" coordination
 
 Teams can fail through either mechanism—requiring different remediation strategies.
 

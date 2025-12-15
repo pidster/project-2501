@@ -23,7 +23,7 @@
 
 1. **Preserve what works**: Existing practices embody accumulated learning
 2. **Augment, don't replace**: AI assists human capabilities
-3. **Maintain knowledge continuity**: Protect tacit knowledge and TMS
+3. **Maintain knowledge continuity**: Protect tacit knowledge and transactive memory systems
 4. **Incremental validation**: Each step validated before proceeding
 
 ---

@@ -104,7 +104,7 @@ These levels are defaults; specific documents may require adjustment based on th
 ## Integration with Other Concepts
 
 - [**Theory-Building Principle**](./foundation_theory-building.md): Theory is tacit by nature—what makes certain knowledge tacit is that it represents theory in developers' minds
-- [**Transactive Memory Systems**](./foundation_transactive-memory.md): TMS directory knowledge is meta-information (information about information location). Different information types may require different TMS structures.
+- [**Transactive Memory Systems**](./foundation_transactive-memory.md): Transactive memory directory knowledge is meta-information (information about information location). Different information types may require different transactive memory structures.
 - [**Eight-Capability Model**](./concept_capability-model.md): Different capabilities require different knowledge types (Elicit/Synthesise require tacit; Transform/Preserve enable formal)
 - [**Seven-Phase SDLC**](./concept_seven-phase-sdlc.md): Each phase has characteristic information composition that shifts from tacit-heavy early to formal-heavy late
 - [**Actor Model**](./concept_actor-model.md): Human and AI actors differ in their knowledge relationships—humans can directly access all three types; AI accesses formal knowledge directly and tacit/emergent knowledge through dialogue with humans. Escalation mechanisms and iterative conversation enable AI participation in activities involving tacit knowledge.
