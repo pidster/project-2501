@@ -130,15 +130,15 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 
 *When different work occurs*
 
-| Phase | Primary Focus |
-|-------|---------------|
-| **Concept** | Problem understanding, opportunity identification |
-| **Requirements** | Need articulation, constraint discovery |
-| **Design** | Solution architecture, component specification |
-| **Implementation** | Code creation, integration |
-| **Verification** | Correctness confirmation |
-| **Deployment** | Release, operational handover |
-| **Operations** | Monitoring, maintenance, evolution |
+| Phase | Focus | Primary Question |
+|-------|-------|------------------|
+| **1. Initiation/Conception** | Strategic rationale, opportunity framing | WHY |
+| **2. Planning** | Project organisation, resource allocation | HOW (to organise) |
+| **3. Analysis/Requirements** | Stakeholder needs, formal specifications | WHAT |
+| **4. Design/Architecture** | Solution structure, component design | HOW (to build) |
+| **5. Implementation/Construction** | Code creation, integration | BUILD |
+| **6. Testing/Validation** | Verification and validation | CONFIRM |
+| **7. Deployment/Operations** | Release, operate, maintain, evolve | DELIVER |
 
 [→ Full concept: `concept_seven-phase-sdlc.md`]
 
