@@ -85,7 +85,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 - **Tacit knowledge**: Understood but not fully articulable; transfers through dialogue
 - **Emergent knowledge**: Arises through interaction; exists only in dialogue
 
-[→ Full concept: `concept_information-taxonomy.md`]
+[→ Full concept: concept_information-taxonomy.md](./concepts/concept_information-taxonomy.md)
 
 ### Concept 2: Theory-Building Principle
 
@@ -96,7 +96,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 - Theory transfers through dialogue, not documentation alone
 - AI can assist but cannot build or hold theory
 
-[→ Full concept: `foundation_theory-building.md`]
+[→ Full concept: foundation_theory-building.md](./concepts/foundation_theory-building.md)
 
 ### Concept 3: Transactive Memory Systems
 
@@ -107,7 +107,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 - Degrades with turnover, reorganisation, communication breakdown
 - AI may support retrieval but cannot fully participate
 
-[→ Full concept: `foundation_transactive-memory.md`]
+[→ Full concept: foundation_transactive-memory.md](./concepts/foundation_transactive-memory.md)
 
 ### Concept 4: Eight-Capability Taxonomy
 
@@ -124,7 +124,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 | **Generate** | Produce new artifacts |
 | **Preserve** | Store for future retrieval |
 
-[→ Full concept: `concept_capability-model.md`]
+[→ Full concept: concept_capability-model.md](./concepts/concept_capability-model.md)
 
 ### Concept 5: Seven-Phase SDLC Model
 
@@ -140,7 +140,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 | **6. Testing/Validation** | Verification and validation | CONFIRM |
 | **7. Deployment/Operations** | Release, operate, maintain, evolve | DELIVER |
 
-[→ Full concept: `concept_seven-phase-sdlc.md`]
+[→ Full concept: concept_seven-phase-sdlc.md](./concepts/concept_seven-phase-sdlc.md)
 
 ### Concept 6: Actor Model
 
@@ -152,7 +152,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 | **AI** | Pattern matching, retrieval at scale, processes formal knowledge only |
 | **Human-AI** | Collaborative configurations with escalation mechanisms |
 
-[→ Full concept: `concept_actor-model.md`]
+[→ Full concept: concept_actor-model.md](./concepts/concept_actor-model.md)
 
 ### Concept 7: Five Collaboration Patterns
 
@@ -166,7 +166,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 | **AI-Led** | Review and override | Primary execution |
 | **AI-Only** | Oversight only | Full execution |
 
-[→ Full concept: `concept_collaboration-patterns.md`]
+[→ Full concept: concept_collaboration-patterns.md](./concepts/concept_collaboration-patterns.md)
 
 ### Concept 8: Information Loss at Transitions
 
@@ -177,7 +177,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 - Compounding effect across multiple transitions
 - Mitigation requires deliberate dialogue and capture mechanisms
 
-[→ Full concept: `concept_transitions-info-loss.md`]
+[→ Full concept: concept_transitions-info-loss.md](./concepts/concept_transitions-info-loss.md)
 
 ### Concept 9: Joint Optimisation Principle
 
@@ -188,7 +188,7 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 - Design for human cognitive strengths + AI capabilities
 - Apply Cherns' principles: minimal critical specification, variance control at source, boundary location
 
-[→ Full concept: `foundation_socio-technical-systems.md`]
+[→ Full concept: foundation_socio-technical-systems.md](./concepts/foundation_socio-technical-systems.md)
 
 ---
 
