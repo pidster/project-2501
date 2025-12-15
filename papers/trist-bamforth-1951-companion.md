@@ -514,7 +514,7 @@ The paper's relevance to AI-augmented software development:
 
 1. On the socio-technical system concept: "The technological demands place limits on the type of work organization possible, but a work organization has social and psychological properties of its own that are independent of technology."
 
-2. On joint optimisation: "So close is the relationship between the various aspects that the social and the psychological can be understood only in terms of the detailed engineering facts and of the్ way the technological system as a whole behaves in the environment."
+2. On joint optimisation: "So close is the relationship between the various aspects that the social and the psychological can be understood only in terms of the detailed engineering facts and of the way the technological system as a whole behaves in the environment."
 
 3. On responsible autonomy: "Responsible autonomy in work groups... is a condition for effective working."
 

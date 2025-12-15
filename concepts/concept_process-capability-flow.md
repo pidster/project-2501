@@ -421,12 +421,12 @@ Before finalising any capability flow specification, validate internal consisten
 
 ## Integration with Other Concepts
 
-- **Capability Model (Concept 3)**: Capability instances use exactly one capability from the eight-capability taxonomy
-- **Seven-Phase SDLC (Concept 4)**: Processes are organised by phase
-- **Actor Model (Concept 5)**: Human and AI roles derive from actor characteristics
-- **Collaboration Patterns (Concept 7)**: Actor patterns and escalation follow collaboration pattern guidance
-- **Information Loss at Transitions (Concept 8)**: Validation criteria address transition losses
-- **Document Type Framework (Concept 15)**: Document references use registered type IDs
+- [**Eight-Capability Taxonomy**](./concept_capability-model.md): Capability instances use exactly one capability from the eight-capability taxonomy
+- [**Seven-Phase SDLC Model**](./concept_seven-phase-sdlc.md): Processes are organised by phase
+- [**Actor Model**](./concept_actor-model.md): Human and AI roles derive from actor characteristics
+- [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Actor patterns and escalation follow collaboration pattern guidance
+- [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Validation criteria address transition losses
+- [**Document Type Classification Framework**](./concept_document-type-classification.md): Document references use registered type IDs
 
 ---
 

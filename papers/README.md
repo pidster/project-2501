@@ -50,7 +50,7 @@ Curated reference materials and integration analyses.
 |----------|-------------|
 | [reference-library-quality-annotated.md](./reference-library-quality-annotated.md) | Annotated bibliography with quality tier assessments for all reference sources |
 | [reference-library-standards-update.md](./reference-library-standards-update.md) | Analysis of standards evolution and current status (ISO/IEC/IEEE 12207, etc.) |
-| [naur-wegner-integration-research.md](./naur-wegner-integration-research.md) | Integration analysis connecting Naur's theory-building with Wegner's transactive memory |
+| [naur-wegner-integration-research.md](./naur-wegner-integration-research.md) | **(Superseded)** Original integration analysis — **migrated to** [`concepts/integration_naur-wegner.md`](../concepts/integration_naur-wegner.md) |
 | [tacit-knowledge-software-failure.md](./tacit-knowledge-software-failure.md) | Analysis of how tacit knowledge loss contributes to software project failures |
 
 ---

@@ -44,6 +44,8 @@ Naur identified three aspects that theory encompasses, all of which transcend wh
 
 ## Integration with Other Concepts
 
+- [**Transactive Memory Systems**](./foundation_transactive-memory.md): TMS coordinates access to theory at the team level but cannot substitute for it. Individual theory (Naur) provides content; TMS (Wegner) enables coordination. Both are necessary for effective teams.
+- [**Naur-Wegner Integration**](./integration_naur-wegner.md): Detailed analysis of how individual theory-building and team transactive memory interact, with integrated predictions and practical implications.
 - [**Information Composition Taxonomy**](./concept_information-taxonomy.md): Theory is what makes tacit knowledge tacit—it's the understanding in developers' minds that resists complete articulation. Theory-building activities necessarily involve high tacit knowledge content.
 - [**Eight-Capability Taxonomy**](./concept_capability-model.md): Some capabilities (Synthesise, Decide) contribute more to theory building than others (Transform, Preserve). Understanding which capabilities build theory helps identify where human engagement is essential.
 - [**Seven-Phase SDLC Model**](./concept_seven-phase-sdlc.md): Theory building occurs throughout the lifecycle, not just during coding. Early phases build theory about the problem space; middle phases about solution structure; later phases about implementation and operation.

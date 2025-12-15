@@ -12,8 +12,9 @@ These documents explain how the framework components connect and form a coherent
 
 | Document | Description |
 |----------|-------------|
-| [integration_framework-architecture.md](./integration_framework-architecture.md) | Master integration document explaining how ten academic sources form the knowledge base, selection rationale, and conceptual architecture |
+| [integration_framework-architecture.md](./integration_framework-architecture.md) | Master integration document explaining how thirteen academic sources form the knowledge base, selection rationale, and conceptual architecture |
 | [integration_phase-specific-composition.md](./integration_phase-specific-composition.md) | Detailed information composition analysis for each SDLC phase, specifying formal/tacit/emergent percentages |
+| [integration_naur-wegner.md](./integration_naur-wegner.md) | Integration analysis connecting Naur's theory-building with Wegner's transactive memory systems |
 
 ### Concept Documents
 
@@ -41,6 +42,7 @@ Foundational theory and research that grounds the framework in established knowl
 | [foundation_socio-technical-systems.md](./foundation_socio-technical-systems.md) | Socio-technical systems theory as applied to software development |
 | [foundation_sts-meta-analysis.md](./foundation_sts-meta-analysis.md) | Meta-analysis of socio-technical systems research and its implications |
 | [foundation_theory-building.md](./foundation_theory-building.md) | Naur's theory-building principle: programming as theory construction, not text production |
+| [foundation_transactive-memory.md](./foundation_transactive-memory.md) | Wegner's transactive memory systems: team-level knowledge coordination and "who knows what" |
 
 ### Example Documents
 

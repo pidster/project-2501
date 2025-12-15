@@ -117,17 +117,17 @@ This temporal honesty enables the framework to be useful now while remaining int
 
 ## Integration with Other Concepts
 
-- **Information Composition Taxonomy (Concept 1)**: The taxonomy operates at Layer 2, translating abstract recognition that "phases differ" into quantified guidance. Standards acknowledge phase differences; the framework characterises them.
+- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): The taxonomy operates at Layer 2, translating abstract recognition that "phases differ" into quantified guidance. Standards acknowledge phase differences; the framework characterises them.
 
-- **Theory-Building Principle (Concept 2)**: Naur's insight is Layer 1 stable—theory building as fundamental to programming is unlikely to change. The framework's application (which activities build theory, how AI affects theory building) is Layer 2, requiring updates as AI capabilities evolve.
+- [**Theory-Building Principle**](./foundation_theory-building.md): Naur's insight is Layer 1 stable—theory building as fundamental to programming is unlikely to change. The framework's application (which activities build theory, how AI affects theory building) is Layer 2, requiring updates as AI capabilities evolve.
 
-- **Eight-Capability Taxonomy (Concept 3)**: The capabilities themselves (Elicit, Analyse, Synthesise, etc.) are Layer 1 stable. The framework's mapping of capabilities to actors and phases is Layer 2.
+- [**Eight-Capability Taxonomy**](./concept_capability-model.md): The capabilities themselves (Elicit, Analyse, Synthesise, etc.) are Layer 1 stable. The framework's mapping of capabilities to actors and phases is Layer 2.
 
-- **Actor Model (Concept 5)**: Actor characterisations are explicitly Layer 2, temporally qualified. The *concept* of different actor types is Layer 1; *which* actors can do *what* is Layer 2 and will change.
+- [**Actor Model**](./concept_actor-model.md): Actor characterisations are explicitly Layer 2, temporally qualified. The *concept* of different actor types is Layer 1; *which* actors can do *what* is Layer 2 and will change.
 
-- **Collaboration Patterns (Concept 7)**: The patterns themselves (Human-Only, Human-Led, etc.) are Layer 1 stable. Assignment of activities to patterns is Layer 2 and will evolve.
+- [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): The patterns themselves (Human-Only, Human-Led, etc.) are Layer 1 stable. Assignment of activities to patterns is Layer 2 and will evolve.
 
-- **Phase-Aware Measurement (Concept 9)**: The insight that measurement must be phase-aware is Layer 1 stable. Specific measurement recommendations are Layer 2.
+- [**Phase-Aware Measurement**](./concept_phase-aware-measurement.md): The insight that measurement must be phase-aware is Layer 1 stable. Specific measurement recommendations are Layer 2.
 
 ## Evidence Base
 

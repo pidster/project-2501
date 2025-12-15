@@ -194,12 +194,12 @@ When determining what documents to include in working context:
 
 ## Integration with Other Concepts
 
-- **Information Taxonomy (Concept 1)**: Temporal class derives from information composition research; the 30-40% formalisation retention figure grounds Standing document limitations
-- **Theory Building (Concept 2)**: Standing documents are the primary (imperfect) mechanism for preserving theory in recoverable form
-- **Seven-Phase SDLC (Concept 4)**: Document types are created and consumed across phases; registries map this flow
-- **Collaboration Patterns (Concept 7)**: AI roles in creation/consumption align with collaboration pattern guidance
-- **Information Loss at Transitions (Concept 8)**: Validation criteria and capture window requirements address transition losses
-- **Process Definitions (Concept 16)**: Processes reference document types as inputs and outputs
+- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): Temporal class derives from information composition research; the 30-40% formalisation retention figure grounds Standing document limitations
+- [**Theory-Building Principle**](./foundation_theory-building.md): Standing documents are the primary (imperfect) mechanism for preserving theory in recoverable form
+- [**Seven-Phase SDLC Model**](./concept_seven-phase-sdlc.md): Document types are created and consumed across phases; registries map this flow
+- [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): AI roles in creation/consumption align with collaboration pattern guidance
+- [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Validation criteria and capture window requirements address transition losses
+- [**Process and Capability Flow Framework**](./concept_process-capability-flow.md): Processes reference document types as inputs and outputs
 
 ---
 
