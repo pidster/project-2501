@@ -110,7 +110,7 @@ These levels are defaults; specific documents may require adjustment based on th
 - [**Actor Model**](./concept_actor-model.md): Human and AI actors differ in their knowledge relationships—humans can directly access all three types; AI accesses formal knowledge directly and tacit/emergent knowledge through dialogue with humans. Escalation mechanisms and iterative conversation enable AI participation in activities involving tacit knowledge.
 - [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Pattern selection depends on activity information composition
 - [**Phase-Specific Composition**](./integration_phase-specific-composition.md): Provides specific percentage estimates for each phase
-- [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Tacit and emergent information are disproportionately lost at phase boundaries. Document lifecycle class affects retention—standing documents preserve rationale but with 30-40% loss; ephemeral documents lose unrecorded tacit knowledge entirely.
+- [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Tacit and emergent information are disproportionately lost at transition events (35-55% per transition). Document lifecycle class affects retention—standing documents preserve rationale but with significant loss; ephemeral documents lose unrecorded tacit knowledge entirely. Information type also influences event triggers: tacit and emergent discoveries often cause backward events (revisiting earlier phases).
 - [**Phase-Aware Measurement**](./concept_phase-aware-measurement.md): Different phases need different measurement approaches based on their information composition
 
 ## Evidence Base
