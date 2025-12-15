@@ -309,7 +309,285 @@ Sufficiency for `SCOPE_BOUNDED` is context-dependent. AI can help surface readin
 
 ### Phase 3: Analysis/Requirements
 
-*To be developed*
+**ISO 12207 Processes**: 6.4.2 Stakeholder Needs and Requirements Definition, 6.4.3 System/Software Requirements Definition
+
+**Information Composition**: 55% Formal / 30% Tacit / 15% Emergent
+
+**Primary Question**: WHAT—stakeholder needs, formal specifications
+
+**The Formalisation Challenge**: Requirements sits at the critical point where tacit understanding must become formal specification. This is where "what we all know" must become "what is explicitly documented"—and where the gap between these often causes project failure.
+
+#### Information Flow
+
+**Inputs from Phase 1 & 2:**
+
+| From Prior Phases | Type | How It Informs Requirements |
+|-------------------|------|----------------------------|
+| Vision/Mission | Formal (captured) | Alignment check—do requirements serve the vision? |
+| Objectives | Formal | Traceability anchor—requirements must connect to objectives |
+| Constraints | Formal + Tacit | Boundary conditions—what must be respected |
+| Success criteria | Formal | Acceptance thresholds—how requirements will be validated |
+| Stakeholder map | Formal | Who to elicit from; whose needs matter |
+| Risk assessment | Formal | What could invalidate requirements |
+| Project plan | Formal | Timeline and resource constraints on requirements scope |
+
+**New Data Sources for Phase 3:**
+
+| Category | Sources | Type |
+|----------|---------|------|
+| **Domain documentation** | Process documentation, business rules, policies, regulations | Formal |
+| **Existing systems** | Current system behaviour, data schemas, interfaces, APIs | Formal |
+| **User research** | Interviews, observations, journey maps, personas | Formal (captured) / Tacit (uncaptured) |
+| **Analytics** | Usage data, error logs, support tickets, performance metrics | Formal |
+| **Comparable systems** | Competitor analysis, industry standards, similar implementations | Formal |
+| **Stakeholder dialogue** | Requirements workshops, reviews, clarification conversations | Tacit / Emergent |
+
+#### Qualitative Information Types
+
+| Type | Definition | Why It Matters |
+|------|------------|----------------|
+| **User mental models** | How users think about the domain and their tasks | Requirements that violate mental models fail in practice |
+| **Business rules** | Policies, calculations, constraints governing behaviour | Often unstated until contradicted |
+| **Exception handling** | What happens when things go wrong | Often discovered late; causes rework |
+| **Priority framework** | Which requirements matter most and why | Enables trade-offs when constraints bite |
+| **Acceptance criteria** | How we'll know a requirement is satisfied | Prevents "I'll know it when I see it" |
+| **Rationale** | Why each requirement exists | Enables intelligent change decisions |
+
+#### AI Active Validation Process (Eight Capabilities)
+
+AI doesn't passively record—it actively validates, challenges, and escalates using all eight capabilities:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│           AI ACTIVE VALIDATION IN REQUIREMENTS                      │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  1. ELICIT ────────────────────────────────────────────────────     │
+│     Ask structured questions to surface tacit understanding         │
+│     "Walk me through what happens when..."                          │
+│     "What if [edge case] occurs?"                                   │
+│                                                                     │
+│  2. ANALYSE ───────────────────────────────────────────────────     │
+│     Examine captured information for:                               │
+│     • Internal consistency (contradicts earlier statement?)         │
+│     • External consistency (conflicts with other requirements?)     │
+│     • Completeness (missing edge cases? unstated assumptions?)      │
+│     • Ambiguity (terms with multiple interpretations?)              │
+│     • Traceability (connects to objectives? has rationale?)         │
+│                                                                     │
+│  3. SYNTHESISE ────────────────────────────────────────────────     │
+│     Combine inputs into coherent picture:                           │
+│     • Aggregate requirements from multiple stakeholders             │
+│     • Propose unified view for validation                           │
+│     • Identify patterns across requirements                         │
+│                                                                     │
+│  4. VALIDATE ──────────────────────────────────────────────────     │
+│     Present understanding back for checking:                        │
+│     "Here's what I understood—is this correct?"                     │
+│     "This seems to conflict with X—which is right?"                 │
+│     "I notice you didn't mention Y—is that intentional?"            │
+│                                                                     │
+│  5. TRANSFORM ─────────────────────────────────────────────────     │
+│     Convert validated requirements between formats:                 │
+│     • Narrative → User stories → Acceptance criteria                │
+│     • Human reviews for semantic preservation                       │
+│                                                                     │
+│  6. DECIDE (surface for human) ────────────────────────────────     │
+│     AI cannot decide, but surfaces decision points:                 │
+│     • Present options with trade-offs                               │
+│     • Highlight implications of each choice                         │
+│     • Flag where human judgement is required                        │
+│                                                                     │
+│  7. GENERATE ──────────────────────────────────────────────────     │
+│     Produce draft artifacts for validation:                         │
+│     • Requirements specifications                                   │
+│     • Acceptance criteria                                           │
+│     • Test scenarios                                                │
+│                                                                     │
+│  8. PRESERVE ──────────────────────────────────────────────────     │
+│     Store with full context:                                        │
+│     • Requirement + Rationale + Source + Decisions + Assumptions    │
+│     • Links to objectives, stakeholders, constraints                │
+│     • Record of what was escalated and how resolved                 │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+#### AI Challenge Questions (Active Validation)
+
+**For Consistency:**
+- "You mentioned [X] earlier, but now you're saying [Y]—which is correct?"
+- "This requirement conflicts with [other requirement]—how should we resolve this?"
+- "Stakeholder A wants [X], Stakeholder B wants [Y]—who has priority?"
+
+**For Completeness:**
+- "What happens if [input] is missing or invalid?"
+- "You've described the success path—what are the failure modes?"
+- "Who handles exceptions to this rule?"
+- "What's the maximum/minimum acceptable for this value?"
+
+**For Ambiguity:**
+- "When you say '[term]', do you mean [interpretation A] or [interpretation B]?"
+- "How would you define 'quickly' in measurable terms?"
+- "What exactly counts as a '[category]' for this rule?"
+
+**For Assumptions:**
+- "You seem to be assuming [X]—is that always true?"
+- "This depends on [external system]—what if it's unavailable?"
+- "Is [constraint] actually fixed, or could it change?"
+
+**For Rationale:**
+- "Why is this requirement important? What problem does it solve?"
+- "If we didn't include this, what would happen?"
+- "How does this connect to the business objectives we discussed?"
+
+**For Prioritisation:**
+- "If we can only deliver two of these three requirements, which two?"
+- "Is this a must-have or a nice-to-have? What's the impact if we defer it?"
+- "What's more important: [feature A] or [feature B]?"
+
+#### Escalation Framework
+
+| Escalation Type | Trigger | AI Action | Human Action Required |
+|-----------------|---------|-----------|----------------------|
+| **Conflict** | Stakeholders disagree | Present both positions; request resolution | Decide or facilitate negotiation |
+| **Constraint violation** | Requirement exceeds bounds | Flag specific violation; present options | Adjust scope or negotiate constraint |
+| **Ambiguity** | Multiple valid interpretations | List interpretations; request clarification | Specify intended meaning |
+| **Missing rationale** | No "why" captured | Ask directly; flag if still missing | Provide justification or remove requirement |
+| **Completeness gap** | Edge case unaddressed | Identify specific gap; propose scenarios | Specify handling or accept as out of scope |
+| **Assumption risk** | Unstated dependency | Surface assumption; request validation | Confirm, reject, or document as risk |
+| **Confidence low** | Stakeholder uncertain | Flag uncertainty; request validation source | Confirm, research, or document as risk |
+
+#### The Dialogue Loop in Requirements
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                PHASE 3: ANALYSIS/REQUIREMENTS                       │
+│                    The Active Validation Loop                       │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  INPUTS                          CAPTURE & ANALYSE                  │
+│  ──────                          ────────────────                   │
+│  Domain docs ────┐                                                  │
+│  Existing sys ───┤               ┌──────────────────┐               │
+│  User research ──┼──► AI ───────►│   AI ANALYSES    │               │
+│  Analytics ──────┤    CAPTURES   │   for issues:    │               │
+│  Stakeholder ────┘               │   • Consistency  │               │
+│  dialogue                        │   • Completeness │               │
+│                                  │   • Ambiguity    │               │
+│                                  │   • Assumptions  │               │
+│                                  └────────┬─────────┘               │
+│                                           │                         │
+│                    ┌──────────────────────┼──────────────────────┐  │
+│                    │                      ▼                      │  │
+│                    │             ┌──────────────────┐            │  │
+│                    │             │  AI CHALLENGES   │            │  │
+│                    │             │  "You said X,    │            │  │
+│                    │             │   but also Y—    │            │  │
+│                    │             │   which is it?"  │            │  │
+│                    │             └────────┬─────────┘            │  │
+│                    │                      │                      │  │
+│                    │                      ▼                      │  │
+│                    │             ┌──────────────────┐            │  │
+│                    │             │ HUMAN RESPONDS   │            │  │
+│                    │             │ clarifies,       │            │  │
+│          ITERATE   │             │ decides,         │            │  │
+│          UNTIL     │             │ resolves         │            │  │
+│          STABLE    │             └────────┬─────────┘            │  │
+│                    │                      │                      │  │
+│                    │                      ▼                      │  │
+│                    │             ┌──────────────────┐            │  │
+│                    │             │ AI VALIDATES     │            │  │
+│                    │             │ "So to confirm,  │            │  │
+│                    │             │  you mean..."    │◄──┐        │  │
+│                    │             └────────┬─────────┘   │        │  │
+│                    │                      │             │        │  │
+│                    │                      ▼             │        │  │
+│                    │             ┌──────────────────┐   │        │  │
+│                    │             │ HUMAN CONFIRMS   │   │        │  │
+│                    │             │ or corrects      ├───┘        │  │
+│                    │             └────────┬─────────┘            │  │
+│                    │                      │                      │  │
+│                    └──────────────────────┼──────────────────────┘  │
+│                                           │                         │
+│                         ┌─────────────────┴─────────────────┐       │
+│                         │                                   │       │
+│                         ▼                                   ▼       │
+│                ┌──────────────────┐              ┌──────────────┐   │
+│                │  AI ESCALATES    │              │ AI GENERATES │   │
+│                │  issues needing  │              │ requirements │   │
+│                │  human decision  │              │ spec draft   │   │
+│                └────────┬─────────┘              └──────┬───────┘   │
+│                         │                               │           │
+│                         ▼                               ▼           │
+│                ┌──────────────────┐              ┌──────────────┐   │
+│                │  HUMAN DECIDES   │              │ AI PRESERVES │   │
+│                │  conflicts,      │              │ with full    │   │
+│                │  trade-offs,     │              │ context and  │   │
+│                │  priorities      │              │ rationale    │   │
+│                └──────────────────┘              └──────────────┘   │
+│                                                                     │
+│  OUTPUTS: Validated requirements specification with rationale,      │
+│           traceability, and documented decisions                    │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+#### Evolution Interventions
+
+| Activity | AI Augmentation | Human Retains |
+|----------|-----------------|---------------|
+| **Elicitation** | Generate probing questions; identify gaps; surface edge cases | Judge what questions to ask; read between the lines; build rapport |
+| **Analysis** | Check consistency; identify conflicts; trace to objectives | Judge significance of conflicts; understand political context |
+| **Specification** | Draft requirements in standard formats; generate acceptance criteria | Validate semantic accuracy; ensure tacit knowledge captured |
+| **Validation** | Present synthesised understanding; challenge assumptions | Confirm accuracy; provide corrections; add tacit context |
+| **Prioritisation** | Present trade-offs; model impact of choices | Make priority decisions; judge business value |
+| **Change management** | Track requirement changes; assess impact | Approve changes; negotiate with stakeholders |
+
+#### Information Debt Risk
+
+Requirements is the phase where information debt is most dangerous because:
+- Errors here propagate forward into design and implementation
+- Tacit knowledge that isn't captured here is often lost forever
+- "Obvious" requirements that everyone "knows" are never documented
+
+**Common information debt patterns:**
+
+| Debt Pattern | What's Missing | How It Manifests Later |
+|--------------|----------------|------------------------|
+| Undocumented assumptions | Explicit statement of what must be true | Surprises when assumptions don't hold |
+| Missing edge cases | Exception handling specifications | Bug reports for "obvious" scenarios |
+| Ambiguous terms | Precise definitions | Different interpretations cause rework |
+| Implicit business rules | Documented decision logic | "That's not how it works" late in testing |
+| Missing rationale | Why requirements exist | Inability to make intelligent trade-offs |
+| Stakeholder conflicts unresolved | Decision on conflicting needs | Rework when conflict surfaces later |
+
+#### What Must Be Preserved
+
+- Human understanding of stakeholder needs (beyond stated requirements)
+- Domain expertise and business context
+- Judgement on what's truly important vs. nice-to-have
+- Stakeholder relationships and trust
+- Ability to read between the lines, detect unstated concerns
+
+#### Transition Readiness: Requirements → Design
+
+Sufficiency for `REQUIREMENTS_BASELINED` is context-dependent. AI can help surface readiness through:
+
+- "Are there unresolved stakeholder conflicts that should be decided before design begins?"
+- "What requirements have low confidence? What would increase confidence?"
+- "Which requirements have missing rationale? Is that acceptable?"
+- "What assumptions are we carrying forward? Are stakeholders aware of them?"
+- "If design reveals these requirements are infeasible, what's the rework cost?"
+- "What's the risk of starting design now vs. waiting for more clarity on [uncertain area]?"
+
+#### Evolution Risk
+
+- AI surfaces conflicts → team avoids resolution → conflict re-emerges in testing
+- Requirements look complete and precise but miss the tacit "obvious" knowledge
+- Stakeholders defer to AI-generated requirements without genuine engagement
+- Over-specified requirements constrain design unnecessarily
+- Under-specified requirements seem "good enough" because the document looks polished
 
 ---
 
@@ -378,6 +656,7 @@ Evolution and Revolution are not mutually exclusive. Organisations may:
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 0.4 | December 2025 | Added detailed Phase 3 (Analysis/Requirements) with AI Active Validation Process |
 | 0.3 | December 2025 | Added detailed Phase 2 (Planning); added transition readiness questions |
 | 0.2 | December 2025 | Added detailed Phase 1 (Initiation/Conception); corrected phase names |
 | 0.1 | December 2025 | Initial placeholder |
