@@ -44,7 +44,30 @@ Regardless of pattern, all seven work types occur. The most rapid Agile team sti
 
 ## Phase Dynamics: States, Events, and Information Flow
 
-The seven phases are best understood not as discrete time periods but as **states** in an information flow system. **Events**—triggered by information discoveries, decisions, or validations—cause transitions between states. These transitions can move forward (progress) or backward (revisit).
+The seven phases are best understood not as discrete time periods but as **states** in an information processing system. Each phase (or capability instance within a phase) acts as a **processor** that receives information, transforms it using capabilities, and produces outputs that become inputs to subsequent processing.
+
+**Phase transitions occur when:**
+1. **Sufficient information is received** by the processing actor—the normal case where downstream phases have what they need, OR
+2. **An actor decides to proceed at risk** despite insufficient information—creating **information debt**
+
+### Information Debt
+
+When actors proceed with transitions before information is sufficient, they create information debt analogous to technical debt:
+
+| Aspect | Technical Debt | Information Debt |
+|--------|----------------|------------------|
+| **Creation** | Shortcuts in implementation | Proceeding without sufficient understanding |
+| **Accumulation** | Interest compounds over time | Missing understanding causes downstream problems |
+| **Manifestation** | Harder to modify, more defects | Backward events, rework, quality issues |
+| **Payment** | Refactoring, rewriting | Discovery, rework, sometimes project failure |
+
+Information debt manifests as:
+- **Backward events**: Gaps discovered later trigger revisiting earlier phases
+- **Quality issues**: Defects from building on incomplete understanding
+- **Technical debt**: Implementations that fight unstated constraints (information debt *creates* technical debt)
+- **Transition loss amplification**: Already-severe transition losses worsen when proceeding at risk
+
+Proceeding at risk is sometimes necessary (time pressure, learning through doing, acceptable uncertainty), but should be a conscious decision with understood consequences, not an accidental default.
 
 ### Complementary Views of Phase Execution
 
@@ -84,6 +107,8 @@ This overlap explains why information composition within a phase may shift as th
 
 **Forward Events (Progress Triggers):**
 
+These occur when sufficient information has been received (normal transition) or when an actor decides to proceed at risk:
+
 | Event | From Phase | To Phase | Information Trigger |
 |-------|------------|----------|---------------------|
 | `OPPORTUNITY_VALIDATED` | Initiation | Planning | Stakeholders aligned, business case accepted |
@@ -95,6 +120,8 @@ This overlap explains why information composition within a phase may shift as th
 | `DEPLOYED` | Deployment | Operations | System live, handover complete |
 
 **Backward Events (Revisit Triggers):**
+
+These often indicate information debt being "called in"—gaps discovered that should have been addressed earlier:
 
 | Event | From Phase | To Phase | Information Trigger |
 |-------|------------|----------|---------------------|

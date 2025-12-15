@@ -8,6 +8,14 @@ The losses are not random but systematic: tacit and emergent knowledge are dispr
 
 **Backward events also cause information loss**: When events like `REQUIREMENT_MISSED` or `DESIGN_FLAW` trigger revisiting earlier phases, information loss can occur in both directions—the discovery that triggered the backward event may not fully propagate to earlier phases, and rework may not fully account for downstream dependencies.
 
+**Proceeding at risk amplifies transition loss**: When actors proceed with transitions before information is sufficient, they create **information debt** (see Phase Dynamics in concept_seven-phase-sdlc.md). This amplifies transition losses because:
+- Less information is available to transfer in the first place
+- Recipients receive incomplete inputs and must fill gaps with assumptions
+- Assumptions diverge from reality, causing later backward events
+- Rework creates additional transitions with additional losses
+
+The 35-55% loss estimates assume normal transitions where actors proceed with sufficient information. Proceeding at risk can push losses significantly higher.
+
 ## Transition-Specific Loss Patterns
 
 These patterns describe losses at **forward transition events**—when work progresses from one phase to another. Since phases overlap and iterate, these events may occur multiple times (e.g., Planning→Requirements may occur initially and again after Design reveals new constraints).
@@ -56,7 +64,13 @@ This compounding pattern explains the "legacy system" phenomenon where code exec
 
 **For AI opportunities and limitations**: AI can help reduce formal knowledge loss through automated documentation generation, traceability maintenance, and consistency checking. However, AI cannot reduce tacit knowledge loss because AI cannot capture understanding from people's minds. The highest-value AI applications at transitions involve formal knowledge preservation, not tacit knowledge transfer.
 
-**For understanding technical debt**: Much technical debt originates not from poor initial decisions but from lost understanding of why decisions were made. Future modifiers see "what" without "why" and make changes that seem locally reasonable but violate the original design intent. Preserving rationale reduces this form of debt.
+**For understanding technical debt**: Much technical debt originates not from poor initial decisions but from lost understanding of why decisions were made. Future modifiers see "what" without "why" and make changes that seem locally reasonable but violate the original design intent. Preserving rationale reduces this form of debt. Additionally, **information debt creates technical debt**—when teams proceed at risk without sufficient understanding, they make implementation decisions that fight unstated constraints, creating technical debt that compounds with subsequent changes.
+
+**For managing information debt**: Like technical debt, information debt is sometimes necessary and acceptable. Time pressure, learning-by-doing, and acceptable uncertainty can justify proceeding at risk. However, information debt should be:
+- **Conscious**: Teams should know when they're taking on debt
+- **Tracked**: Record what information is missing and the assumptions made
+- **Bounded**: Set triggers for when debt must be paid (e.g., before a critical milestone)
+- **Visible**: Surface debt in planning and risk discussions
 
 **For recognising that some loss is inevitable**: Even with perfect practices, some information loss is inevitable because tacit and emergent knowledge cannot be fully externalised. Effective strategies reduce loss rather than eliminate it. Acknowledging inevitable loss enables realistic expectations and appropriate contingency planning.
 
@@ -88,6 +102,8 @@ DevOps research shows that reducing Development→Operations handoffs improves r
 - ⚠ **Mitigation effectiveness**: Common strategies (ADRs, pair programming, team continuity) show benefits but quantification of loss reduction needs systematic study
 - ⚠ **AI impact on transitions**: Whether AI tools reduce or increase transition losses requires empirical validation—automation might reduce formal loss but risk tacit loss
 - ⚠ **Optimal mitigation mix**: Which combinations of strategies work best for which transitions needs comparative validation
+- ⚠ **Information debt concept**: Analogous to technical debt; conceptually coherent but requires empirical validation of how "proceeding at risk" affects loss rates
+- ⚠ **Backward event loss patterns**: Hypothesis that backward events cause bidirectional loss needs systematic study
 
 ---
 
