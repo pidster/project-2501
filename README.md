@@ -1,14 +1,43 @@
-# Project 2501
+# Project 2501
 
-## Concepts
+An AI-Augmented Software Development Lifecycle (SDLC) Framework grounded in empirical research and theoretical foundations.
 
- - [Information Taxonomy](./concepts/01_information_taxonomy.md)
- - [Theory Building](./concepts/02_theory_building.md)
- - [Capability Modeling](../concepts/03_capability_modeling.md)
- - [Collaboration Patterns](./concepts/07_collaboration_patterns.md)
- - [Actor Model](./concepts/05_actor_model.md)
- - [7 phase SDLC](./concepts/04_7phase_SDLC.md)
- - [SDLC Phase Specific Composition](./concepts/06_phase_specific_composition.md)
- - [SDLC Phase Transitions and Information Loss](./concepts/08_transitions_info_loss.md)
- - [SDLC Phase Aware Measurement](./concepts/09_phase_aware_measurement.md)
+## Overview
 
+This project develops a comprehensive framework for integrating AI capabilities into software development while preserving the tacit knowledge and theory-building that determine project success. The framework synthesises 70+ years of research spanning socio-technical systems theory (1951), cognitive theory (1985), and contemporary developer experience research (2024-2025).
+
+## Directory Structure
+
+- **[concepts/](./concepts/README.md)** — Core framework documents (concepts, foundations, integrations, guidance, examples)
+- **[papers/](./papers/README.md)** — Academic source PDFs and companion analyses
+- **[research/](./research/README.md)** — Integration analyses and exploratory research
+
+## Key Framework Components
+
+### Theoretical Foundations
+- [Theory-Building Principle](./concepts/foundation_theory-building.md) — Naur (1985)
+- [Transactive Memory Systems](./concepts/foundation_transactive-memory.md) — Wegner (1986)
+- [Socio-Technical Systems](./concepts/foundation_socio-technical-systems.md) — Trist & Bamforth (1951), Cherns (1976)
+
+### Core Concepts
+- [Information Taxonomy](./concepts/concept_information-taxonomy.md) — Formal/Tacit/Emergent knowledge
+- [Eight-Capability Model](./concepts/concept_capability-model.md) — Fundamental operations in software work
+- [Seven-Phase SDLC](./concepts/concept_seven-phase-sdlc.md) — ISO 12207-aligned lifecycle phases
+- [Actor Model](./concepts/concept_actor-model.md) — Human and AI actor characterisation
+- [Five Collaboration Patterns](./concepts/concept_collaboration-patterns.md) — Human-AI interaction patterns
+
+### Integration
+- [Framework Architecture](./concepts/integration_framework-architecture.md) — How thirteen academic sources form a coherent whole
+- [Naur-Wegner Integration](./concepts/integration_naur-wegner.md) — Individual theory-building meets team coordination
+
+## Core Thesis
+
+Software development is fundamentally about building shared mental models ("theories") in developers' minds, with 70-80% of software knowledge being tacit rather than documented. This has profound implications for AI integration:
+
+1. **Different phases require different approaches** — Early phases are tacit-heavy and require human leadership; later phases are formal-heavy and enable greater AI autonomy
+2. **Joint optimisation is essential** — Human-AI work systems require socio-technical design, not just AI tool adoption
+3. **Theory-building remains human** — Current AI systems generate artefacts without developing the explanatory understanding that enables intelligent system evolution
+
+## Documentation
+
+See [.claude/CLAUDE.md](./.claude/CLAUDE.md) for detailed project guidelines, writing standards, and evidential requirements.

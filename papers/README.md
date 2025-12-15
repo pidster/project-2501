@@ -32,26 +32,20 @@ Detailed analytical documents that extract key insights from primary sources and
 |----------|-------------|
 | [naur-1985-programming-companion.md](./naur-1985-programming-companion.md) | Comprehensive analysis of Naur's theory-building paper including bibliographic data, methodology assessment, and framework integration |
 | [wegner-1986-transactive-memory-companion.md](./wegner-1986-transactive-memory-companion.md) | Analysis of Wegner's transactive memory theory and its application to software teams |
+| [dynamic-theory-organizational-knowledge-creation-companion.md](./dynamic-theory-organizational-knowledge-creation-companion.md) | Analysis of Nonaka's SECI model for knowledge conversion (influential but contested framework) |
 | [team-tacit-knowledge-measure-companion.md](./team-tacit-knowledge-measure-companion.md) | Analysis of the team tacit knowledge measurement instrument and validation approach |
-| [meyer-good-day-companion.md](./meyer-good-day-companion.md) | Analysis of Meyer et al.'s research on developer good days and productivity factors |
+| [acquiring-sharing-tacit-knowledge-software-companion.md](./acquiring-sharing-tacit-knowledge-software-companion.md) | Analysis of tacit knowledge acquisition and sharing mechanisms (placeholder—requires completion) |
+| [devtime-preprint-tse19-companion.md](./devtime-preprint-tse19-companion.md) | Analysis of Meyer et al.'s research on developer good days and productivity factors |
 | [developer-thriving-companion.md](./developer-thriving-companion.md) | Analysis of the Developer Thriving framework and its four sociocognitive factors |
+| [hicks-hevesi-cumulative-culture-theory-companion.md](./hicks-hevesi-cumulative-culture-theory-companion.md) | Analysis of cumulative culture theory applied to software development (working paper) |
 | [context-engineering-v2-companion.md](./context-engineering-v2-companion.md) | Analysis of Context Engineering 2.0 survey, tracing evolution from early NLP to LLM agents |
 | [illusion-of-thinking-companion.md](./illusion-of-thinking-companion.md) | Analysis of AI reasoning limitations and implications for human-AI collaboration |
 | [productivity-quality-companion.md](./productivity-quality-companion.md) | Analysis of productivity and quality research with measurement framework implications |
-| [trist-bamforth-1951-companion.md](./trist-bamforth-1951-companion.md) | Analysis of the founding STS paper, joint optimisation principle, and framework integration |
+| [trist-bamforth-1951-longwall-coal-companion.md](./trist-bamforth-1951-longwall-coal-companion.md) | Analysis of the founding STS paper, joint optimisation principle, and framework integration |
 | [cherns-1976-companion.md](./cherns-1976-companion.md) | Analysis of nine STS design principles and their application to AI-augmented development (based on secondary sources; PDF pending) |
-| [baxter-sommerville-2011-companion.md](./baxter-sommerville-2011-companion.md) | Analysis of STS bridge to software engineering and STSE framework |
+| [baxter-sommerville-2011-sts-systems-engineering-companion.md](./baxter-sommerville-2011-sts-systems-engineering-companion.md) | Analysis of STS bridge to software engineering and STSE framework |
 
-### Reference Documents
-
-Curated reference materials and integration analyses.
-
-| Document | Description |
-|----------|-------------|
-| [reference-library-quality-annotated.md](./reference-library-quality-annotated.md) | Annotated bibliography with quality tier assessments for all reference sources |
-| [reference-library-standards-update.md](./reference-library-standards-update.md) | Analysis of standards evolution and current status (ISO/IEC/IEEE 12207, etc.) |
-| [naur-wegner-integration-research.md](./naur-wegner-integration-research.md) | **(Superseded)** Original integration analysis — **migrated to** [`concepts/integration_naur-wegner.md`](../concepts/integration_naur-wegner.md) |
-| [tacit-knowledge-software-failure.md](./tacit-knowledge-software-failure.md) | Analysis of how tacit knowledge loss contributes to software project failures |
+**See also:** [`research/`](../research/) directory for reference materials, integration analyses, and exploratory research documents.
 
 ---
 

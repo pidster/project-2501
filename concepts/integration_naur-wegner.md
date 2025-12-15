@@ -210,7 +210,7 @@ The integration of Naur's "Programming as Theory Building" and Wegner's "Transac
 ## Document History
 
 **Version 2.0** (December 2025)
-- Migrated from `papers/naur-wegner-integration-research.md` to `concepts/integration_naur-wegner.md`
+- Migrated from `papers/naur-wegner-integration-research.md` (now archived in `research/`) to `concepts/integration_naur-wegner.md`
 - Reformatted to match concepts/ document structure
 - Added Integration with Other Concepts section
 - Added Validation Status section
