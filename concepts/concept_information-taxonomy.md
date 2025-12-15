@@ -6,11 +6,13 @@ Software development involves three fundamentally different types of information
 
 ## The Three Information Types
 
-| Type | Definition | Examples | AI Accessibility |
+| Type | Definition | Examples | AI Relationship* |
 |------|------------|----------|------------------|
-| **Formal** | Explicitly representable, machine-processable, verifiable | Source code, specifications, schemas, test cases, API contracts | **High** - AI can process, generate, and validate |
-| **Tacit** | Experientially embedded, resists articulation, "we know more than we can tell" | Architectural intuition, coding judgement, stakeholder context, design rationale | **Low** - AI cannot access or replicate human experiential knowledge |
-| **Emergent** | Arises from interactions, discoverable unknown, doesn't exist until exploration | Creative insights, unexpected requirements, system behaviors, team dynamics | **Very Low** - AI cannot observe emergence in real-time contexts |
+| **Formal** | Explicitly representable, machine-processable, verifiable | Source code, specifications, schemas, test cases, API contracts | **Direct** — AI can process, generate, and validate |
+| **Tacit** | Experientially embedded, resists articulation, "we know more than we can tell" | Architectural intuition, coding judgement, stakeholder context, design rationale | **Mediated** — AI processes what humans articulate; dialogue can surface tacit understanding |
+| **Emergent** | Arises from interactions, discoverable unknown, doesn't exist until exploration | Creative insights, unexpected requirements, system behaviors, team dynamics | **Participatory** — AI participates in interactions that may generate emergent understanding; whether AI-human dialogue produces genuine emergence is contested |
+
+*\*Note on AI Relationship: The formal/tacit distinction originates with Polanyi (1966); the emergent category extends this taxonomy. These concepts predate modern AI. The "AI Relationship" column represents this framework's interpretation as of 2024-2025, not claims from the original literature. AI's relationship to tacit and emergent knowledge is mediated through dialogue—humans articulate, AI processes, humans refine—rather than direct access or categorical exclusion.*
 
 ## Measuring Information Composition
 
@@ -43,7 +45,7 @@ Activities and artifacts can be characterised by their approximate information c
 
 **For documentation strategy:** Formal information can and should be comprehensively documented. Tacit information requires supplementary approaches (mentoring, pair programming, communities of practice). Emergent information cannot be documented in advance but can be captured retrospectively.
 
-**For human-AI collaboration:** AI operates effectively on formal information but cannot directly access tacit or emergent knowledge. The information composition of an activity influences appropriate automation levels—formal-heavy activities enable AI-Led patterns, while tacit-heavy activities typically require Human-Only or Human-Led patterns. However, well-designed escalation mechanisms (see Concept 7) enable AI participation in mixed-composition activities by ensuring human engagement when tacit judgement is required.
+**For human-AI collaboration:** AI operates directly on formal information. Its relationship to tacit and emergent knowledge is mediated through dialogue: AI can elicit articulation from humans, process those articulations, and present understanding back for validation and refinement. This iterative process surfaces tacit knowledge progressively. The information composition of an activity influences collaboration design—formal-heavy activities suit AI-Led patterns, while tacit-heavy activities benefit from Human-Led or Partnership patterns where dialogue enables knowledge transfer. Well-designed escalation mechanisms (see Concept 7) enable AI participation in mixed-composition activities by ensuring human engagement at critical decision points.
 
 **For measurement:** Formal-heavy activities support quantitative metrics. Tacit-heavy activities require qualitative assessment. Mixed-composition activities need hybrid measurement approaches.
 
@@ -105,7 +107,7 @@ These levels are defaults; specific documents may require adjustment based on th
 - [**Transactive Memory Systems**](./foundation_transactive-memory.md): TMS directory knowledge is meta-information (information about information location). Different information types may require different TMS structures.
 - [**Eight-Capability Model**](./concept_capability-model.md): Different capabilities require different knowledge types (Elicit/Synthesise require tacit; Transform/Preserve enable formal)
 - [**Seven-Phase SDLC**](./concept_seven-phase-sdlc.md): Each phase has characteristic information composition that shifts from tacit-heavy early to formal-heavy late
-- [**Actor Model**](./concept_actor-model.md): Human and AI actors differ in their knowledge access—humans can directly access all three types, AI only formal. Escalation mechanisms enable AI participation in activities involving tacit knowledge by ensuring human engagement at critical decision points.
+- [**Actor Model**](./concept_actor-model.md): Human and AI actors differ in their knowledge relationships—humans can directly access all three types; AI accesses formal knowledge directly and tacit/emergent knowledge through dialogue with humans. Escalation mechanisms and iterative conversation enable AI participation in activities involving tacit knowledge.
 - [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Pattern selection depends on activity information composition
 - [**Phase-Specific Composition**](./integration_phase-specific-composition.md): Provides specific percentage estimates for each phase
 - [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Tacit and emergent information are disproportionately lost at phase boundaries. Document lifecycle class affects retention—standing documents preserve rationale but with 30-40% loss; ephemeral documents lose unrecorded tacit knowledge entirely.

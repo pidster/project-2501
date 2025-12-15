@@ -71,12 +71,34 @@ For AI-Led and Partnership patterns, escalation design is integral to the capabi
 
 **For recognising capability contributions to theory building**: Some capabilities contribute more to theory building than others. Synthesise builds understanding by combining information into coherent wholes. Decide builds understanding by forcing explicit trade-off evaluation. Elicit builds understanding through deep engagement with problem domain. Transform and Preserve, while essential, contribute less to theory building because they operate on existing understanding rather than creating it.
 
+## Capabilities as Dialogue Mechanisms
+
+The eight capabilities are not merely operations actors perform *on* information—they are the mechanisms through which actors acquire information *from* each other. This bidirectional nature is central to human-AI collaboration.
+
+**AI acquiring information from humans through capabilities:**
+
+| Capability | How AI Uses It to Acquire Human Knowledge |
+|------------|------------------------------------------|
+| **Elicit** | AI asks questions that prompt humans to articulate tacit understanding |
+| **Analyse** | AI presents analysis for human confirmation/correction, surfacing gaps and assumptions |
+| **Synthesise** | AI proposes syntheses that humans refine, adding context and nuance |
+| **Validate** | AI presents its understanding back to humans for validation against tacit criteria |
+| **Decide** | AI presents options with trade-offs for human decision, eliciting judgement rationale |
+
+**The dialogue loop**: Through iterative capability exchanges, tacit knowledge is progressively surfaced:
+1. AI elicits → Human articulates (partial, imperfect)
+2. AI synthesises/analyses → Human sees gaps, corrects
+3. AI validates understanding → Human refines
+4. Iterate until sufficient understanding emerges
+
+This reframes the question from "what can AI access?" to "what emerges through dialogue?" The quality of human-AI collaboration depends not on AI's intrinsic access to knowledge types, but on the quality of the conversation—how well capabilities are deployed to surface, process, and refine understanding iteratively.
+
 ## Integration with Other Concepts
 
 - [**Information Composition Taxonomy**](./concept_information-taxonomy.md): Each capability can operate on different knowledge types, and the knowledge type—not the capability itself—determines actor suitability. Eliciting tacit knowledge requires human actors; eliciting formal knowledge from systems suits AI. Synthesising novel understanding from ambiguous inputs requires human theory-building; synthesising structured summaries from formal inputs suits AI. The capability is the operation; the knowledge type determines who should perform it.
 - [**Theory-Building Principle**](./foundation_theory-building.md): Capabilities differ in theory-building contribution. Synthesise, Decide, and Elicit actively build theory. Transform, Generate, and Preserve support theory but don't build it directly.
 - [**Seven-Phase SDLC Model**](./concept_seven-phase-sdlc.md): Different phases emphasise different capabilities. Early phases (Initiation, Planning) emphasise Elicit, Synthesise, and Decide. Middle phases (Requirements, Design) add Transform and Validate. Later phases (Implementation, Testing) emphasise Generate, Transform, and Validate.
-- [**Actor Model**](./concept_actor-model.md): Human and AI actors differ not in which capabilities they can provide, but in which knowledge types they can operate upon. Humans can perform all eight capabilities across formal, tacit, and emergent knowledge. AI can perform all eight capabilities effectively only when operating on formal knowledge. The mapping is knowledge-type-to-actor, not capability-to-actor. This means AI can elicit (from systems), analyse (formal patterns), synthesise (structured summaries), and even decide (rule-based selection)-but struggles when any capability requires accessing or generating tacit knowledge.
+- [**Actor Model**](./concept_actor-model.md): Human and AI actors differ in their relationship to knowledge types. Humans can perform all eight capabilities across formal, tacit, and emergent knowledge. AI performs capabilities directly on formal knowledge and accesses tacit/emergent knowledge through dialogue—using capabilities bidirectionally to elicit, process, and validate human articulations. The practical question is not "which capabilities can AI perform?" but "how should capabilities be orchestrated in dialogue to surface the knowledge needed?"
 - [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Capabilities map to patterns based on knowledge requirements. This mapping (Concept 7) enables systematic pattern selection rather than intuition-based allocation.
 - [**Phase-Specific Information Composition**](./integration_phase-specific-composition.md): Different phases not only have different information compositions but also require different capability mixes, explaining why automation levels shift across the lifecycle.
 

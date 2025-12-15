@@ -54,7 +54,7 @@ Wegner's framework identifies three essential components of transactive memory:
 
 **For onboarding**: New members must both build individual understanding AND integrate into team TMS. They need to learn who knows what AND become known for what they're learning. This dual target explains extended onboarding timelines (6-9 months for autonomy) and the superiority of mentorship-based approaches over documentation-only onboarding.
 
-**For AI-augmented development**: AI tools might serve as knowledge retrieval systems—a sophisticated form of "who knows what" for codebases. However, AI cannot participate in TMS the way humans do: it cannot build credibility through track record, cannot negotiate encoding responsibilities, and cannot make judgement calls about reliability. AI may improve retrieval efficiency whilst leaving human TMS essential for coordination judgement.
+**For AI-augmented development**: Wegner developed TMS theory in 1986, before modern AI existed. His framework describes human group cognition. AI tools might serve as knowledge retrieval systems—a sophisticated form of "who knows what" for codebases—but whether this constitutes TMS participation or something functionally different is an open question. AI participates asymmetrically: it can be queried as a knowledge source, but it doesn't build credibility through track record, negotiate encoding responsibilities, or make social judgement calls the way humans do. The practical implication: AI may enhance team knowledge retrieval whilst human TMS remains essential for coordination involving trust and judgement.
 
 ## Two Distinct Failure Modes
 
@@ -72,7 +72,7 @@ A project might suffer either failure independently or both simultaneously. Unde
 - [**Naur-Wegner Integration**](./integration_naur-wegner.md): Detailed analysis of how individual theory-building and team transactive memory interact, with integrated predictions and practical implications.
 - [**Socio-Technical Systems**](./foundation_socio-technical-systems.md): TMS is inherently socio-technical—it exists in the coupling between social structures (who communicates with whom) and technical structures (what code/knowledge exists where).
 - [**Information Composition Taxonomy**](./concept_information-taxonomy.md): TMS directory knowledge is meta-information (information about information location). Different information types may require different TMS structures.
-- [**Actor Model**](./concept_actor-model.md): Humans build and participate in TMS through social interaction; AI systems cannot fully participate in human TMS but may provide retrieval support.
+- [**Actor Model**](./concept_actor-model.md): Humans build and participate in TMS through social interaction. AI systems participate asymmetrically—as queryable knowledge sources rather than full social participants. How AI integrates with human TMS is an emerging area without settled understanding.
 - [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Practices like pair programming with rotation simultaneously build individual theory and team TMS—explaining their effectiveness for both knowledge depth and resilience.
 - [**Phase-Aware Measurement**](./concept_phase-aware-measurement.md): TMS effectiveness varies by phase—early phases may require integrated structures (shared vision), implementation may require differentiated structures (clear ownership).
 
