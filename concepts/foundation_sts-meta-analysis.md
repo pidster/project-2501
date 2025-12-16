@@ -382,4 +382,3 @@ Trist, E. L., & Bamforth, K. W. (1951). Some social and psychological consequenc
 
 *Document prepared: December 2024*
 *Classification: Systematic Meta-Analysis*
-*Target venue: IEEE Transactions on Software Engineering or equivalent*
