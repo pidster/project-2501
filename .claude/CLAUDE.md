@@ -217,6 +217,7 @@ Primary sources (PDFs) with companion analyses following the naming convention `
 
 **Additional Sources (in papers/ but not core thirteen):**
 - Nonaka (1994) — SECI model (influential but contested; companion notes limitations)
+- Bainbridge (1983) — Ironies of Automation (cognitive grounding for skill preservation and monitoring constraints)
 
 ### Research Directory (`research/`)
 

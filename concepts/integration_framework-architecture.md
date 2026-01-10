@@ -1038,6 +1038,11 @@ This addresses a previously identified gap: the organisation-system connection.
 
 **Medium Priority Additions:**
 
+4. **Cognitive Engineering / Human Factors Literature**
+   - Bainbridge (1983) "Ironies of Automation" now available as supplementary source with companion analysis
+   - Provides cognitive grounding for skill degradation and monitoring constraint concerns
+   - Bridges STS system design with individual cognitive constraints on human-AI collaboration
+
 5. **Expertise Development (Dreyfus Model, Ericsson's work)**
    - Individual skill acquisition
    - Would complement Naur, Hicks & Hevesi

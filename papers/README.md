@@ -27,6 +27,7 @@ Academic papers providing foundational research and evidence.
 | [trist-bamforth-1951-longwall-coal.pdf](./trist-bamforth-1951-longwall-coal.pdf) | Trist, E.L. & Bamforth, K.W. (1951). "Some Social and Psychological Consequences of the Longwall Method of Coal-Getting" — Seminal paper founding socio-technical systems theory |
 | [baxter-sommerville-2011-sts-systems-engineering.pdf](./baxter-sommerville-2011-sts-systems-engineering.pdf) | Baxter, G. & Sommerville, I. (2011). "Socio-technical systems: From design methods to systems engineering" — Primary bridge paper for STS in software engineering |
 | [principles-of-socio-technical-design.pdf](./principles-of-socio-technical-design.pdf) | Cherns, A.B. (1976). "The Principles of Sociotechnical Design" — Nine foundational design principles |
+| [ironies_of_automation-bainbridge_1983.pdf](./ironies_of_automation-bainbridge_1983.pdf) | Bainbridge, L. (1983). "Ironies of Automation" — Foundational human factors analysis of automation paradoxes (supplementary, cognitive grounding for skill preservation) |
 
 ### Companion Analyses
 
@@ -49,6 +50,7 @@ Detailed analytical documents that extract key insights from primary sources and
 | [trist-bamforth-1951-longwall-coal-companion.md](./trist-bamforth-1951-longwall-coal-companion.md) | Analysis of the founding STS paper, joint optimisation principle, and framework integration |
 | [principles-of-socio-technical-design-companion.md](./principles-of-socio-technical-design-companion.md) | Analysis of Cherns' nine STS design principles and their application to AI-augmented development |
 | [baxter-sommerville-2011-sts-systems-engineering-companion.md](./baxter-sommerville-2011-sts-systems-engineering-companion.md) | Analysis of STS bridge to software engineering and STSE framework |
+| [ironies_of_automation-bainbridge_1983-companion.md](./ironies_of_automation-bainbridge_1983-companion.md) | Analysis of automation paradoxes and cognitive grounding for skill preservation in human-AI collaboration |
 
 **See also:** [`research/`](../research/) directory for reference materials, integration analyses, and exploratory research documents.
 
@@ -90,6 +92,8 @@ The collection deliberately spans seven decades (thirteen core sources per `inte
 | **2025** | Context Engineering 2.0, Illusion of Thinking | AI era considerations and limitations |
 
 **Note:** Nonaka (1994) is included as supplementary reference but is not one of the thirteen core sources—the companion notes it as "influential but contested."
+
+**Note:** Bainbridge (1983) is included as supplementary reference providing cognitive engineering grounding for skill degradation and monitoring challenges discussed in collaboration patterns. It is not one of the thirteen core sources but directly supports claims about human-AI collaboration design.
 
 ### Companion Document Structure
 
