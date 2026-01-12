@@ -56,6 +56,153 @@ Wegner's framework identifies three essential components of transactive memory:
 
 **For AI-augmented development**: Wegner developed TMS theory in 1986, before modern AI existed. His framework describes human group cognition. AI tools might serve as knowledge retrieval systems—a sophisticated form of "who knows what" for codebases—but whether this constitutes TMS participation or something functionally different is an open question. AI participates asymmetrically: it can be queried as a knowledge source, but it doesn't build credibility through track record, negotiate encoding responsibilities, or make social judgement calls the way humans do. The practical implication: AI may enhance team knowledge retrieval whilst human TMS remains essential for coordination involving trust and judgement.
 
+## Extended Transactive Memory: Multi-Actor Systems
+
+The emergence of multi-agent AI architectures extends the transactive memory problem beyond human teams. When multiple AI actors with differentiated competencies participate in development, routing queries to the appropriate AI becomes itself a TMS problem.
+
+### The Multi-Actor TMS Challenge
+
+AI actors are not monolithic. They exhibit differentiated competencies based on:
+- **Training specialisation**: Different fine-tuning, domain corpora, or training objectives
+- **Context exposure**: What information is currently in the AI's context window
+- **Reasoning profiles**: Speed/depth tradeoffs, different approaches to problem-solving
+- **Tool access**: Different capabilities for interacting with systems
+
+In multi-AI environments, three TMS relationships emerge:
+
+| Relationship | Directory knowledge | Credibility mechanism | Coordination method |
+|--------------|--------------------|-----------------------|---------------------|
+| **Human ↔ Human** | Social learning ("Alice knows auth") | Track record, reputation, social trust | Conversation, negotiation |
+| **Human ↔ AI** | Explicit capability declarations, experience with AI tools | Observed accuracy, known limitations | Prompting, invocation |
+| **AI ↔ AI** | Orchestration layer, capability registries | Performance metrics, validation rates | Routing logic, delegation |
+
+### Key Differences from Human TMS
+
+**No social credibility**: Human TMS relies on relationship and reputation for credibility assessment. AI-AI TMS cannot rely on these mechanisms. Instead, credibility must be established through:
+- Explicit capability specifications
+- Performance metrics on prior tasks
+- Validation/verification of outputs
+- Defined scope boundaries
+
+**Explicit orchestration required**: Human TMS emerges implicitly through shared experience and interaction. AI-AI coordination requires explicit design of the "who knows what" directory. Someone—human designer or meta-agent—must specify routing logic.
+
+**Context as ephemeral expertise**: Human expertise persists across interactions. AI "expertise" partly depends on current context window state. AI-AI TMS must track not just capability but current context—what this agent currently "knows" may differ from what it could know given different context.
+
+**Provenance tracking**: In human TMS, credibility builds through relationship over time. In AI-AI systems, provenance tracking ("which AI contributed what") enables:
+- Reliability assessment: Tracking which agents produce reliable outputs
+- Debugging: Understanding where problems originated
+- Accountability: Attributing outputs to sources for human review
+- Learning: Improving routing based on outcome history
+
+### Provenance Tracking Granularity
+
+A key design decision for multi-actor systems is the granularity at which provenance is tracked. Three levels are feasible:
+
+| Level | Tracks | Overhead | Diagnostic Value | Use Cases |
+|-------|--------|----------|-----------------|-----------|
+| **Actor** | Which actor contributed to each artifact | Low | Limited | Simple attribution, basic accountability |
+| **Capability Invocation** | Each capability execution (who did what operation on what inputs) | Medium | Good | Debugging, reliability assessment, routing improvement |
+| **Output Token** | Fine-grained attribution of specific outputs to specific actors | High | Maximum | Detailed forensics, granular reliability metrics |
+
+**Recommended approach: Capability Invocation Level**
+
+The capability invocation level provides the best balance of information value and overhead for most contexts:
+
+**Why not Actor Level (too coarse)**:
+- Knowing "AI contributed" doesn't identify which operation or which AI actor
+- Cannot distinguish between AI actors in multi-agent systems
+- Insufficient for debugging when problems arise
+- Doesn't enable learning about which capabilities specific actors perform well
+
+**Why not Output Token Level (too fine)**:
+- Storage and processing overhead often exceeds value
+- Individual tokens rarely meaningful in isolation
+- Most debugging needs don't require token-level attribution
+- Boundary between tokens can be artificial (models don't generate meaningful boundaries)
+
+**Why Capability Invocation Level (appropriate for most uses)**:
+- Aligns with framework's capability-based reasoning
+- Provides actionable attribution (specific operation, specific actor, specific inputs/outputs)
+- Enables meaningful reliability assessment per actor per capability
+- Supports debugging at the level where interventions can be made
+- Overhead is manageable for typical workflows
+
+**Provenance Record Structure at Capability Invocation Level**:
+```
+Provenance Record:
+  Invocation ID: [unique identifier]
+  Timestamp: [when the capability was invoked]
+  Actor: [actor identifier - human or AI capability profile reference]
+  Capability: [which of the eight capabilities]
+  Inputs: [references to input artifacts/information]
+  Outputs: [references to output artifacts/information]
+  Context State: [3S2P context at time of invocation]
+  Collaboration Pattern: [Human-Only through AI-Only]
+  Confidence: [actor's confidence in output, if available]
+  Escalation: [whether escalation occurred, to whom]
+```
+
+**When finer granularity is warranted**:
+- High-stakes decisions requiring detailed audit trails
+- Debugging complex multi-step failures
+- Research contexts studying actor performance
+- Regulatory requirements mandating detailed attribution
+
+**When coarser granularity is acceptable**:
+- Low-risk, routine operations
+- Well-established reliable workflows
+- Resource-constrained environments
+- Privacy concerns about detailed tracking
+
+### Asymmetric Participation
+
+AI participation in TMS remains fundamentally asymmetric compared to human participation:
+
+| TMS Component | Human participation | AI participation |
+|---------------|---------------------|------------------|
+| **Directory maintenance** | Learn and update through social interaction | Require explicit directory updates |
+| **Credibility assessment** | Social judgement based on track record | Metrics-based or human-assigned |
+| **Encoding negotiation** | "You take this, I'll handle that" | Not applicable—routing assigned |
+| **Retrieval initiation** | Recognise when to consult others | Require triggers or self-assessment |
+| **Integration** | Collaborative synthesis with judgement | Combine outputs; integration quality varies |
+
+This asymmetry has practical implications:
+- AI actors cannot spontaneously update team TMS when they learn new things
+- AI credibility must be established through mechanisms other than social interaction
+- Routing decisions require explicit logic rather than emergent coordination
+
+### Relationship to Tacit Knowledge Subtypes
+
+Transactive memory requirements vary by tacit knowledge subtype (see [Information Composition Taxonomy](./concept_information-taxonomy.md#tacit-knowledge-subtypes)):
+
+| Tacit subtype | TMS requirement | AI TMS role |
+|---------------|-----------------|-------------|
+| **Documentable** | Low once captured; direct lookup | AI can capture and serve as retrieval system |
+| **Elicitable** | Medium; TMS locates elicitation source | AI can help locate human experts; may facilitate elicitation |
+| **Embedded** | High; must route to expert directly | AI cannot access; TMS essential for routing to human expert |
+
+This analysis suggests that AI-AI TMS is most valuable for Documentable and Elicitable knowledge. For Embedded knowledge, TMS must ultimately route to human actors.
+
+### Context-Awareness Requirement
+
+For AI actors to participate effectively in extended TMS, they require contextual awareness—specifically the **System** dimension of the 3S2P model (see [Agent Context Model](./concept_agent-context-model.md)):
+
+- Awareness of other actors (human and AI) in the system
+- Knowledge of actor competencies and limitations
+- Understanding of when to defer or delegate
+- Recognition of escalation pathways
+
+Without System awareness, an AI actor cannot participate in TMS—it doesn't know other actors exist, let alone their competencies.
+
+### Future Work
+
+Several aspects of extended TMS require further development:
+
+- ~~**AI actor differentiation model**~~: Addressed—see [Actor Model](./concept_actor-model.md#ai-actor-differentiation-model) for the four-dimension model (Training Profile, Tool Access, Context State, Reasoning Profile)
+- ~~**Provenance tracking granularity**~~: Addressed—see Provenance Tracking Granularity section above; capability invocation level recommended as default
+- **Orchestration design**: What patterns emerge for effective AI-AI coordination?
+- **Human TMS integration**: How do AI-AI TMS and human-human TMS interact in hybrid systems?
+
 ## Two Distinct Failure Modes
 
 Integrating Naur and Wegner reveals that software teams can fail through either mechanism:
@@ -71,9 +218,11 @@ A project might suffer either failure independently or both simultaneously. Unde
 - [**Theory-Building Principle**](./foundation_theory-building.md): TMS coordinates access to theory but cannot substitute for it. Individual theory (Naur) provides content; TMS (Wegner) enables coordination. Both are necessary for effective teams.
 - [**Naur-Wegner Integration**](./integration_naur-wegner.md): Detailed analysis of how individual theory-building and team transactive memory interact, with integrated predictions and practical implications.
 - [**Socio-Technical Systems**](./foundation_socio-technical-systems.md): TMS is inherently socio-technical—it exists in the coupling between social structures (who communicates with whom) and technical structures (what code/knowledge exists where).
-- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): TMS directory knowledge is meta-information (information about information location). Different information types may require different TMS structures.
-- [**Actor Model**](./concept_actor-model.md): Humans build and participate in TMS through social interaction. AI systems participate asymmetrically—as queryable knowledge sources rather than full social participants. How AI integrates with human TMS is an emerging area without settled understanding.
+- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): TMS directory knowledge is meta-information (information about information location). Different tacit subtypes (Documentable, Elicitable, Embedded) have different TMS requirements—from minimal (Documentable once captured) to essential (Embedded, where expert routing is the only option).
+- [**Actor Model**](./concept_actor-model.md): Humans build and participate in TMS through social interaction. AI systems participate asymmetrically—as queryable knowledge sources rather than full social participants. Multi-agent architectures extend this to AI-AI transactive memory (see Extended Transactive Memory section above).
+- [**Agent Context Model (3S2P)**](./concept_agent-context-model.md): The System dimension of 3S2P provides the contextual awareness that enables AI actors to participate in TMS—awareness of other actors, their competencies, and appropriate routing.
 - [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Practices like pair programming with rotation simultaneously build individual theory and team TMS—explaining their effectiveness for both knowledge depth and resilience.
+- [**Phase-Specific Information Composition**](./integration_phase-specific-composition.md): TMS requirements vary by phase based on information composition—tacit-heavy early phases require robust actor routing; formal-heavy later phases can rely more on direct lookup.
 - [**Phase-Aware Measurement**](./concept_phase-aware-measurement.md): TMS effectiveness varies by phase—early phases may require integrated structures (shared vision), implementation may require differentiated structures (clear ownership).
 
 ## Evidence Base
@@ -97,6 +246,8 @@ Meta-analyses confirm the general framework with contextual boundary conditions.
 - ⚠ **Tacit knowledge coordination**: Uncertain—framework developed for declarative knowledge; applicability to procedural/tacit knowledge less established
 - ⚠ **Scale boundaries**: Author-acknowledged—TMS efficiency degrades in large organisations; appropriate team size boundaries unclear
 - ⚠ **AI participation**: Open question—whether AI can meaningfully participate in TMS remains empirically untested
+- ⚠ **Extended TMS (AI-AI)**: Conceptual extension based on analogy to human TMS; the applicability of TMS constructs to multi-agent AI coordination is speculative and requires empirical validation
+- ⚠ **Asymmetric participation model**: The characterisation of AI as asymmetric TMS participant is conceptually derived; specific limitations and participation mechanisms need empirical study
 
 ---
 

@@ -14,6 +14,78 @@ Software development involves three fundamentally different types of information
 
 *\*Note on AI Relationship: The formal/tacit distinction originates with Polanyi (1966); the emergent category extends this taxonomy. These concepts predate modern AI. The "AI Relationship" column represents this framework's interpretation as of 2024-2025, not claims from the original literature. AI's relationship to tacit and emergent knowledge is mediated through dialogue—humans articulate, AI processes, humans refine—rather than direct access or categorical exclusion.*
 
+## Tacit Knowledge Subtypes
+
+The category "tacit knowledge" encompasses knowledge with varying degrees of resistance to externalisation. Not all tacit knowledge is equally difficult to capture—some is merely undocumented, while some is fundamentally inarticulable. This differentiation has significant implications for capture strategies, transactive memory requirements, and AI assistance potential.
+
+### The Three Subtypes
+
+| Subtype | Definition | Capture method | Capture fidelity | TMS requirement |
+|---------|------------|----------------|------------------|-----------------|
+| **Documentable** | Known but not yet externalised; holder could document if prioritised | Standard documentation effort | High (~90%) | Low—direct lookup once captured |
+| **Elicitable** | Can be surfaced through structured dialogue but wouldn't emerge spontaneously | Interviews, retrospectives, design reviews, pair sessions | Medium (~50-70%) | Medium—TMS helps locate who to elicit from |
+| **Embedded** | Fused with practice; cannot be fully separated from the activity itself | Apprenticeship, extended pairing, learning by doing | Low (~10-20%) | High—must route to expert; no capture substitute |
+
+**Documentable** knowledge is effectively formal knowledge in latent state. The holder possesses articulable facts, decisions, or rationale that simply haven't been written down. Once documented, this knowledge becomes formal and directly accessible. Example: A developer knows which configuration flags are needed for a specific deployment scenario but hasn't added them to the runbook.
+
+**Elicitable** knowledge requires active effort to surface. The holder may not spontaneously articulate it, but structured questioning, design reviews, or collaborative sessions can draw it out. Capture is possible but lossy—some nuance or context is typically lost in translation. Example: An architect can explain their reasoning for choosing a particular pattern when asked, but wouldn't naturally document all the trade-offs they considered.
+
+**Embedded** knowledge corresponds to Naur's "theory"—understanding so integrated with practice that it cannot be fully externalised. The holder can demonstrate but not fully explain. Transfer requires extended collaboration where the learner develops their own embodied understanding through practice. Example: A senior developer's intuition about when code "smells wrong" or when a design will cause maintenance problems—they can point to examples but cannot provide complete rules.
+
+### Prospective Identification
+
+A key practical question: can we identify which subtype we're dealing with *before* attempting capture? The following heuristic provides actionable guidance:
+
+```
+1. Can the knowledge holder state it clearly on request?
+   YES → Documentable (capture via documentation)
+   NO  → Proceed to step 2
+
+2. Can the knowledge holder demonstrate it or recognise correct instances?
+   NO  → Knowledge may not exist (or wrong person identified)
+   YES → Proceed to step 3
+
+3. Has structured elicitation been attempted?
+   NO  → Assume Elicitable (attempt structured elicitation)
+   YES → Proceed to step 4
+
+4. Did elicitation yield satisfactory capture?
+   YES → Was Elicitable (capture complete)
+   PARTIAL → Mixed; captured portion was Elicitable, remainder is Embedded
+   NO  → Embedded (transfer via apprenticeship only)
+```
+
+**Default assumption**: When encountering unexternalised expert knowledge, assume it is **Elicitable** and attempt structured elicitation first. Only reclassify as Embedded after elicitation attempts yield incomplete results.
+
+**Early indicators suggesting Embedded knowledge** (heuristics, not guarantees):
+- Knowledge manifests only in real-time judgement, not recollection
+- Holder uses phrases like "you just know" or "it feels wrong"
+- Expertise is highly contextual—changes based on subtle situational factors
+- Capability took years of deliberate practice to develop
+- Domain involves pattern recognition across many variables (debugging intuition, architectural taste)
+
+### Implications for Knowledge Management
+
+**For capture investment**: Efforts to document Documentable knowledge have high ROI—straightforward capture of accessible information. Efforts to elicit Elicitable knowledge have moderate ROI but require appropriate methods (structured interviews, design reviews, pair sessions). Attempts to document Embedded knowledge waste effort—investment is better directed toward apprenticeship, team stability, and mentoring relationships.
+
+**For transactive memory**: The subtype determines TMS requirements:
+- Documentable → No TMS needed once captured; direct lookup suffices
+- Elicitable → TMS helps identify who holds the knowledge for elicitation
+- Embedded → TMS essential; must route to the expert since knowledge cannot be captured
+
+**For AI assistance**: AI can directly assist with capturing Documentable knowledge (transcription, structuring, formatting). AI can facilitate elicitation of Elicitable knowledge (structured questioning, dialogue scaffolding). AI cannot capture Embedded knowledge but may support access by helping route to appropriate human experts.
+
+**For the "70-80% tacit" finding**: This aggregate figure likely comprises a mix of all three subtypes. Decomposition matters: if 25% is Documentable, 35% is Elicitable, and 20% is Embedded, the capture and automation strategies differ dramatically from treating all 80% uniformly as "tacit."
+
+### Phase Variation
+
+The composition of tacit subtypes likely varies across SDLC phases:
+- **Early phases** (Initiation, Planning): Higher proportion of Embedded knowledge—strategic intuition, stakeholder dynamics, market understanding
+- **Middle phases** (Requirements, Design): Mixed—Elicitable design rationale alongside Embedded architectural judgement
+- **Later phases** (Implementation, Testing, Operations): Higher proportion of Documentable knowledge—decisions and patterns that simply haven't been written down yet
+
+This variation has implications for phase-appropriate knowledge management strategies. See [Phase-Specific Information Composition](./integration_phase-specific-composition.md) for detailed phase analysis.
+
 ## Measuring Information Composition
 
 Activities and artifacts can be characterised by their approximate information composition. These are estimates, not precise measurements:
@@ -103,8 +175,8 @@ These levels are defaults; specific documents may require adjustment based on th
 
 ## Integration with Other Concepts
 
-- [**Theory-Building Principle**](./foundation_theory-building.md): Theory is tacit by nature—what makes certain knowledge tacit is that it represents theory in developers' minds
-- [**Transactive Memory Systems**](./foundation_transactive-memory.md): Transactive memory directory knowledge is meta-information (information about information location). Different information types may require different transactive memory structures.
+- [**Theory-Building Principle**](./foundation_theory-building.md): Theory is tacit by nature—what makes certain knowledge tacit is that it represents theory in developers' minds. Specifically, Naur's "theory" corresponds to the Embedded subtype of tacit knowledge—understanding so integrated with practice that it cannot be fully externalised.
+- [**Transactive Memory Systems**](./foundation_transactive-memory.md): Transactive memory directory knowledge is meta-information (information about information location). Different tacit subtypes have different TMS requirements: Documentable knowledge needs minimal TMS once captured; Elicitable knowledge benefits from TMS to locate elicitation sources; Embedded knowledge requires robust TMS since the expert must be consulted directly.
 - [**Eight-Capability Model**](./concept_capability-model.md): Different capabilities require different knowledge types (Elicit/Synthesise require tacit; Transform/Preserve enable formal)
 - [**Seven-Phase SDLC**](./concept_seven-phase-sdlc.md): Each phase has characteristic information composition that shifts from tacit-heavy early to formal-heavy late
 - [**Actor Model**](./concept_actor-model.md): Human and AI actors differ in their knowledge relationships—humans can directly access all three types; AI accesses formal knowledge directly and tacit/emergent knowledge through dialogue with humans. Escalation mechanisms and iterative conversation enable AI participation in activities involving tacit knowledge.
@@ -124,6 +196,8 @@ These levels are defaults; specific documents may require adjustment based on th
 - ⚠ **Emergent as distinct category**: Requires validation that it's not simply tacit knowledge
 - ⚠ **Specific percentages**: Estimates requiring empirical studies with systematic measurement
 - ⚠ **Phase progression pattern**: Directionally supported but needs quantitative validation
+- ⚠ **Tacit subtypes (Documentable/Elicitable/Embedded)**: Conceptually derived from practitioner experience and theoretical analysis; requires empirical validation of boundaries, capture fidelity estimates, and phase variation patterns
+- ⚠ **Subtype identification heuristic**: Practitioner-facing guidance derived from the subtype definitions; effectiveness in real knowledge management contexts untested
 
 ---
 

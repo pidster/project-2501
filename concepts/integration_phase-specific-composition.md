@@ -43,9 +43,105 @@ The estimates represent the phase's overall character rather than a fixed state 
 
 **For understanding failure patterns**: Phase composition predicts failure modes. Tacit-heavy Initiation failures stem from stakeholder misalignment and inadequate problem framing—PMI found communication failures (which originate in early phases) contribute to 56% of failed projects. Balanced Requirements failures stem from incomplete tacit-to-formal translation. Formal-heavy Implementation failures stem from lost design understanding. Each requires composition-appropriate mitigation.
 
+## Phase-Dependent Transactive Memory Requirements
+
+Phase composition predicts transactive memory infrastructure requirements. The fundamental insight: **effective knowledge capture reduces transactive memory burden by enabling direct lookup**. However, tacit knowledge resists complete capture by definition. Therefore, phases with higher tacit composition require more robust actor-routing mechanisms ("who knows what"), while phases with higher formal composition can rely more on direct information retrieval.
+
+### The Phase-TMS Relationship
+
+| Phase | Tacit % | Primary knowledge retrieval strategy | TMS investment required |
+|-------|---------|--------------------------------------|------------------------|
+| **1. Initiation** | 75% | Actor routing ("who knows what") | Very high |
+| **2. Planning** | 55% | Actor routing with some direct lookup | High |
+| **3. Requirements** | 50% | Balanced—both strategies essential | Medium-high |
+| **4. Design** | 40% | Direct lookup with actor routing support | Medium |
+| **5. Implementation** | 35% | Direct lookup primarily | Medium-low |
+| **6. Testing** | 30% | Direct lookup primarily | Low |
+| **7. Operations** | 30% | Direct lookup primarily | Low |
+
+### Reasoning
+
+The relationship between phase composition and TMS requirements follows from the nature of knowledge types:
+
+1. **Formal knowledge supports direct lookup**: Once captured, formal knowledge can be retrieved through search, documentation, and AI-assisted querying. No "who knows what" awareness is required—the knowledge is accessible directly.
+
+2. **Tacit knowledge requires actor routing**: Tacit knowledge, by definition, resists complete capture. To access it, one must locate and consult the person who holds it. This is precisely what transactive memory provides—the directory of "who knows what."
+
+3. **Therefore**: Phases with high tacit percentage require robust TMS infrastructure; phases with high formal percentage can function with lighter TMS if documentation is adequate.
+
+### Tacit Subtype Variation by Phase
+
+The relationship is further refined by considering tacit knowledge subtypes (see [Information Composition Taxonomy](./concept_information-taxonomy.md#tacit-knowledge-subtypes)). The composition of tacit subtypes likely varies across phases:
+
+| Phase | Dominant tacit subtype | TMS implication |
+|-------|------------------------|-----------------|
+| **Early (1-2)** | **Embedded** (strategic intuition, stakeholder dynamics) | TMS essential—no capture substitute; must route to expert |
+| **Middle (3-4)** | **Elicitable** (design rationale, requirement interpretation) | TMS valuable—helps locate elicitation sources |
+| **Later (5-7)** | **Documentable** (decisions not yet written down) | TMS less critical—capture effort has high ROI |
+
+This subtype pattern amplifies the phase-TMS relationship:
+- Early phases have tacit knowledge that *cannot* be captured (Embedded), making TMS irreplaceable
+- Later phases have tacit knowledge that *hasn't been* captured (Documentable), where investment in documentation may reduce TMS dependency
+
+### TMS Failure Mode Predictions
+
+If this analysis is correct, TMS failures should manifest differently across phases:
+
+| Phase type | Expected TMS failure symptom |
+|------------|------------------------------|
+| **Tacit-heavy (early)** | "We don't know who understands the client's real needs" |
+| **Balanced (middle)** | "We can't find who made this design decision or why" |
+| **Formal-heavy (later)** | "The documentation is outdated but no one owns it" |
+
+Early-phase TMS failures are about *locating expertise*. Later-phase failures are about *maintaining documentation*—a different problem requiring different interventions.
+
+### Complementary vs. Substitution Relationship
+
+An important nuance: even formal knowledge benefits from TMS. Knowing "who wrote the authentication module" helps even when the code is readable—the author can provide context, explain non-obvious decisions, and guide modification. TMS and formal knowledge retrieval are **complementary rather than substitutes**.
+
+However, the *relative importance* shifts:
+- In tacit-heavy phases, TMS is *essential*—without it, knowledge is inaccessible
+- In formal-heavy phases, TMS is *valuable but not essential*—it enhances efficiency but alternatives exist
+
+This means TMS investment should be *weighted* toward early phases without being *absent* from later phases.
+
+### Implications for AI Integration
+
+AI can participate differently in knowledge retrieval depending on phase:
+
+| Phase type | AI role in knowledge access |
+|------------|----------------------------|
+| **Tacit-heavy** | Cannot access tacit knowledge directly; may help *locate* human experts through metadata analysis |
+| **Balanced** | Can facilitate elicitation dialogue; can retrieve formal specifications |
+| **Formal-heavy** | Can directly retrieve and process formal artifacts; serves as knowledge retrieval system |
+
+This reinforces the framework's guidance on collaboration patterns: AI-Led patterns are appropriate for formal-heavy phases partly because AI can serve as an effective knowledge retrieval mechanism for formal knowledge.
+
+### Infrastructure Implications
+
+Phase-dependent TMS requirements suggest differentiated infrastructure investment:
+
+**For tacit-heavy phases (1-2)**:
+- Expertise directories: Who knows what about stakeholders, strategy, market
+- Mentorship networks: Deliberate pairing of experts with those who need knowledge
+- Stable teams: Minimise turnover that disrupts TMS
+- Face-to-face interaction: Lewis (2003) found TMS emerges through face-to-face communication
+
+**For balanced phases (3-4)**:
+- Rationale capture: ADRs, design documents that preserve "why"
+- Elicitation support: Structured methods to surface tacit knowledge
+- Mixed TMS: Both formal retrieval and actor routing
+
+**For formal-heavy phases (5-7)**:
+- Documentation systems: Searchable, maintained knowledge bases
+- AI-assisted retrieval: AI can navigate formal artifacts effectively
+- Lighter TMS: Focus on maintaining accuracy of "who owns what"
+
 ## Integration with Other Concepts
 
-- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): Concept 6 applies Concept 1's three knowledge types to the seven phases, providing specific percentage estimates rather than general definitions.
+- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): Concept 6 applies Concept 1's three knowledge types to the seven phases, providing specific percentage estimates rather than general definitions. Tacit knowledge subtypes (Documentable, Elicitable, Embedded) vary by phase, affecting TMS requirements.
+- [**Transactive Memory Systems**](./foundation_transactive-memory.md): Phase composition predicts TMS requirements—tacit-heavy phases require robust actor routing; formal-heavy phases can rely more on direct lookup. See Phase-Dependent Transactive Memory Requirements section above.
+- [**Agent Context Model (3S2P)**](./concept_agent-context-model.md): The Phase dimension of 3S2P enables agents to calibrate their behaviour based on expected information composition and appropriate TMS strategies for the current phase.
 - [**Theory-Building Principle**](./foundation_theory-building.md): Phase composition reflects theory-building progression—early phases build problem theory (tacit-heavy), middle phases transform theory to specifications (balanced), later phases instantiate specifications (formal-heavy).
 - [**Eight-Capability Taxonomy**](./concept_capability-model.md): Different phases emphasise different capabilities based on their composition. Tacit-heavy phases emphasise Elicit, Synthesise, Decide. Formal-heavy phases emphasise Transform, Generate, Preserve.
 - [**Seven-Phase SDLC Model**](./concept_seven-phase-sdlc.md): Concept 6 characterises each phase by its information composition. Note that phases overlap and iterate (see Phase Dynamics in Concept 4); composition estimates represent characteristic values, not fixed states.
@@ -80,6 +176,8 @@ The estimates represent the phase's overall character rather than a fixed state 
 - ⚠ **Organisational variance**: How much composition varies across organisations with different domains and methodologies needs quantification
 - ⚠ **Emergent percentage consistency**: The claim that emergent stays consistently around 10% across all phases needs validation
 - ⚠ **Optimal granularity**: Whether finer-grained composition estimates (e.g., sub-phase level) would provide additional value
+- ⚠ **Phase-TMS relationship**: The prediction that TMS requirements scale with tacit percentage is logically derived but empirically untested; would benefit from comparative studies of TMS effectiveness across phases
+- ⚠ **Tacit subtype phase variation**: The claim that Embedded knowledge dominates early phases while Documentable dominates later phases is a reasoned hypothesis requiring validation
 
 ---
 

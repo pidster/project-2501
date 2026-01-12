@@ -171,12 +171,15 @@ Wegner developed TMS primarily studying **intimate couples** and small groups ha
 ## Integration with Other Concepts
 
 - [**Theory-Building Principle**](./foundation_theory-building.md): Naur's individual-level framework—what constitutes genuine understanding of a program. This integration analysis shows how individual theory relates to team coordination.
-- [**Transactive Memory Systems**](./foundation_transactive-memory.md): Wegner's team-level framework—how groups coordinate distributed expertise. This integration analysis shows how TMS operates on pre-existing individual expertise.
+- [**Transactive Memory Systems**](./foundation_transactive-memory.md): Wegner's team-level framework—how groups coordinate distributed expertise. This integration analysis shows how TMS operates on pre-existing individual expertise. Extended TMS concepts address AI actor participation and multi-agent coordination.
+- [**Information Composition Taxonomy**](./concept_information-taxonomy.md): Tacit knowledge subtypes (Documentable, Elicitable, Embedded) have different implications for theory transfer and TMS requirements. Embedded tacit knowledge corresponds to Naur's "theory"—understanding so integrated with practice that it cannot be fully externalised.
 - [**Socio-Technical Systems**](./foundation_socio-technical-systems.md): STS theory provides the system-level context. The integration of Naur and Wegner operates within the social subsystem; joint optimisation requires attending to both individual understanding and team coordination.
 - [**Framework Integration Architecture**](./integration_framework-architecture.md): This Naur-Wegner integration contributes to Pattern 3 (Joint Optimisation of Human-AI Work Systems) and Pattern 4 (Measurement Enables Progress) in the overall framework.
+- [**Phase-Specific Information Composition**](./integration_phase-specific-composition.md): Phase composition predicts both theory-building requirements (tacit-heavy phases require deep engagement) and TMS investment (tacit-heavy phases need robust actor routing).
 - [**Five Collaboration Patterns**](./concept_collaboration-patterns.md): Understanding that pair programming operates on both theory-building and TMS dimensions explains its effectiveness across multiple measures.
 - [**Information Loss at Transitions**](./concept_transitions-info-loss.md): Theory loss and TMS degradation are distinct mechanisms of information loss at transitions—requiring different mitigation strategies.
 - [**Actor Model**](./concept_actor-model.md): Humans build theory and participate in TMS; AI systems may support retrieval but cannot fully substitute for either capability.
+- [**Agent Context Model (3S2P)**](./concept_agent-context-model.md): The System dimension enables AI agents to participate in TMS through awareness of other actors and their competencies. The distinction between "meta-theory of participation" (which agents may develop) and "theory of the software" (which remains human) refines the Naur-Wegner integration for AI-augmented contexts.
 
 ---
 
