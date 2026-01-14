@@ -83,8 +83,17 @@ id: "THY-999"
 type: DOCUMENT
 error: "No document matching pattern THY-999 found"
 searched:
-  - "implementation/theory_thy-999*.md"
-  - "concepts/theory_thy-999*.md"
+  - "implementation/theory_*.md"
+```
+
+### Not Supported Result (Framework Source)
+
+```yaml
+status: NOT_SUPPORTED
+id: "C-1"
+type: CONCEPT
+error: "Framework source reference - not available in deployed framework"
+note: "F-N, C-N, I-N, G-N, E-N reference framework source documentation. See FW-005 for deployment model."
 ```
 
 ### Invalid ID Result
@@ -124,7 +133,26 @@ note: "Actor references resolve to metadata only, not content"
 
 ## Reference Type Resolution
 
-### Document References
+### Deployment Model
+
+The resolver distinguishes between:
+
+1. **Runtime artifacts** — Available in deployed projects using the framework
+   - Project documents (THY, REF, STR, ADR)
+   - Log entries (DEC, OBS)
+   - Work items (SH, CD, FW)
+   - Actors
+
+2. **Framework source artifacts** — Only in framework source, NOT deployed
+   - Foundation documents (F-N)
+   - Concept documents (C-N)
+   - Integration documents (I-N)
+   - Guidance documents (G-N)
+   - Example documents (E-N)
+
+Framework source references return `NOT_SUPPORTED` status. See FW-005 for deployment artifact definition.
+
+### Project Document References (Resolvable)
 
 | Pattern | Type | Search Strategy |
 |---------|------|-----------------|
@@ -132,12 +160,17 @@ note: "Actor references resolve to metadata only, not content"
 | `REF-NNN` | Reference | `implementation/ref_*.md`, match NNN |
 | `STR-NNN` | Strategy | `implementation/str_*.md`, match NNN |
 | `ADR-NNN` | ADR | `decisions/ADR-NNN-*.md` |
-| `F-N` | Foundation | `concepts/foundation_*.md`, by index |
-| `C-N` | Concept | `concepts/concept_*.md`, by index |
-| `O-N` | Operational | `concepts/operational_*.md`, by index |
-| `I-N` | Integration | `concepts/integration_*.md`, by index |
-| `G-N` | Guidance | `concepts/guidance_*.md`, by index |
-| `E-N` | Example | `concepts/example_*.md`, by index |
+
+### Framework Source References (NOT Resolvable in Deployment)
+
+| Pattern | Type | Status |
+|---------|------|--------|
+| `F-N` | Foundation | `NOT_SUPPORTED` |
+| `C-N` | Concept | `NOT_SUPPORTED` |
+| `O-N` | Operational | `NOT_SUPPORTED` |
+| `I-N` | Integration | `NOT_SUPPORTED` |
+| `G-N` | Guidance | `NOT_SUPPORTED` |
+| `E-N` | Example | `NOT_SUPPORTED` |
 
 ### Log Entry References
 
@@ -215,6 +248,7 @@ content: |
 |----------|---------|----------|
 | `INVALID_ID` | ID doesn't match any pattern | Show known patterns |
 | `NOT_FOUND` | Pattern matched but content not found | Show searched locations |
+| `NOT_SUPPORTED` | Framework source reference | Direct to framework docs |
 | `AMBIGUOUS` | Multiple matches for ID | List all matches |
 | `ACCESS_ERROR` | Permission or I/O error | Include system error |
 | `EXTERNAL` | URL reference (not resolved) | Note to use WebFetch |
@@ -225,12 +259,12 @@ When multiple files match:
 
 ```yaml
 status: AMBIGUOUS
-id: "C-1"
+id: "THY-1"
 type: DOCUMENT
 error: "Multiple documents match pattern"
 matches:
-  - "concepts/concept_information-taxonomy.md"
-  - "concepts/concept_capability-model.md"
+  - "implementation/theory_framework.md"
+  - "implementation/theory_framework-resilience.md"
 resolution_hint: "Use full filename or more specific reference"
 ```
 

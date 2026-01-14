@@ -77,12 +77,19 @@ items:
       - implementation/schema_resolver-interface.md — Abstract interface contract
       - .claude/skills/dialogue-resolve-reference/SKILL.md — Skill definition
       - .claude/skills/dialogue-resolve-reference/scripts/resolve-reference.sh — Filesystem implementation
-      Supports resolution of:
-      - Documents: THY-NNN, REF-NNN, STR-NNN, ADR-NNN, F-N, C-N, I-N, G-N, E-N
+
+      Runtime artifact resolution (what deployments have access to):
+      - Project docs: THY-NNN, REF-NNN, STR-NNN, ADR-NNN (in implementation/, decisions/)
       - Log entries: DEC-YYYYMMDD-HHMMSS, OBS-YYYYMMDD-HHMMSS
       - Work items: SH-NNN, CD-NNN, FW-NNN
       - Actors: human:<id>, ai:<id>
       - External URLs: Returns EXTERNAL status (use WebFetch)
+
+      Framework source references (F-N, C-N, I-N, G-N, E-N):
+      - NOT resolvable by deployed framework — these are framework source docs
+      - Returns NOT_SUPPORTED status directing to framework documentation
+      - See FW-005 for deployment artifact definition
+
       Output formats: full (content), metadata (location only), path (just file path)
       TMS alignment: Implements retrieval operation for Context Graph
 
@@ -264,6 +271,49 @@ items:
       - Tested: ADR-001 created for decision type hierarchy (DEC-20260114-102443)
       Key design decision (DEC-20260114-101710): ADR creation must also create
       decision log entry to maintain decision log as source of truth.
+
+  - id: "FW-005"
+    title: "Deployment Artifact Definition"
+    status: BACKLOG
+    created: "2026-01-14T11:30:00Z"
+    updated: "2026-01-14T11:30:00Z"
+    type: DESIGN
+    priority: HIGH
+    description: |
+      Define what constitutes a framework deployment vs framework source:
+
+      Problem identified: The resolver script hardcodes 'concepts/' paths, but a
+      framework deployment won't include the concepts/ directory—that's framework
+      source documentation, not runtime artifacts.
+
+      Need to distinguish:
+      1. Framework source artifacts (concepts/, papers/, research/)
+         - Framework reference documentation
+         - Academic foundations
+         - Not deployed with projects using the framework
+
+      2. Framework deployment artifacts (.claude/, .dialogue/)
+         - Skills, agents, commands
+         - Log schemas and scripts
+         - Deployed/copied to projects using the framework
+
+      3. Project runtime artifacts (decisions/, .dialogue/logs/)
+         - Project-specific decisions, observations
+         - Work items
+         - Created by projects using the framework
+
+      Questions to resolve:
+      - How do deployed projects access framework documentation?
+      - What's the package/distribution model?
+      - Should framework docs be web-accessible? Bundled? Linked?
+      - How does the resolver know which mode it's operating in?
+    objective: "Clear deployment model separating framework source from runtime"
+    rationale: "Resolver currently conflates framework docs with project data"
+    blocked_by: []
+    blocks: []
+    notes: |
+      Added 14 January 2026.
+      Identified during SH-002 implementation when resolver hardcoded concepts/ paths.
 
   - id: "FW-002"
     title: "Revisit Work Item Schema and Persistence"

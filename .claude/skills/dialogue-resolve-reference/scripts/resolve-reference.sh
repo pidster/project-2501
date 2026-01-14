@@ -94,6 +94,22 @@ output_not_found() {
 EOF
 }
 
+# Helper: Output not supported result (framework source references)
+output_not_supported() {
+    local id="$1"
+    local type="$2"
+
+    cat <<EOF
+{
+  "status": "NOT_SUPPORTED",
+  "id": "$id",
+  "type": "$type",
+  "error": "Framework source reference - not available in deployed framework",
+  "note": "F-N, C-N, I-N, G-N, E-N reference framework source documentation. See FW-005 for deployment model."
+}
+EOF
+}
+
 # Helper: Output invalid ID result
 output_invalid_id() {
     local id="$1"
@@ -324,99 +340,31 @@ EOF
         return
     fi
 
-    # Foundation documents: F-N
+    # Framework source references: F-N, C-N, I-N, G-N, E-N
+    # These are framework source documentation, not available in deployed framework
+    # See FW-005 for deployment artifact definition
     if [[ "$id" =~ ^F-([0-9]+)$ ]]; then
-        local num="${BASH_REMATCH[1]}"
-        local pattern="concepts/foundation_*.md"
-
-        # Get Nth foundation file (1-indexed) - portable approach
-        local found_file=""
-        found_file=$(find "$PROJECT_ROOT/concepts" -name "foundation_*.md" -print 2>/dev/null | sort | sed -n "${num}p")
-
-        if [[ -n "$found_file" && -f "$found_file" ]]; then
-            local rel_path="${found_file#$PROJECT_ROOT/}"
-            local content
-            content=$(cat "$found_file")
-            output_success "$id" "DOCUMENT" "$rel_path" "$content"
-        else
-            output_not_found "$id" "DOCUMENT" "[\"$pattern (index $num)\"]"
-        fi
+        output_not_supported "$id" "FOUNDATION"
         return
     fi
 
-    # Concept documents: C-N
     if [[ "$id" =~ ^C-([0-9]+)$ ]]; then
-        local num="${BASH_REMATCH[1]}"
-        local pattern="concepts/concept_*.md"
-
-        local found_file=""
-        found_file=$(find "$PROJECT_ROOT/concepts" -name "concept_*.md" -print 2>/dev/null | sort | sed -n "${num}p")
-
-        if [[ -n "$found_file" && -f "$found_file" ]]; then
-            local rel_path="${found_file#$PROJECT_ROOT/}"
-            local content
-            content=$(cat "$found_file")
-            output_success "$id" "DOCUMENT" "$rel_path" "$content"
-        else
-            output_not_found "$id" "DOCUMENT" "[\"$pattern (index $num)\"]"
-        fi
+        output_not_supported "$id" "CONCEPT"
         return
     fi
 
-    # Integration documents: I-N
     if [[ "$id" =~ ^I-([0-9]+)$ ]]; then
-        local num="${BASH_REMATCH[1]}"
-        local pattern="concepts/integration_*.md"
-
-        local found_file=""
-        found_file=$(find "$PROJECT_ROOT/concepts" -name "integration_*.md" -print 2>/dev/null | sort | sed -n "${num}p")
-
-        if [[ -n "$found_file" && -f "$found_file" ]]; then
-            local rel_path="${found_file#$PROJECT_ROOT/}"
-            local content
-            content=$(cat "$found_file")
-            output_success "$id" "DOCUMENT" "$rel_path" "$content"
-        else
-            output_not_found "$id" "DOCUMENT" "[\"$pattern (index $num)\"]"
-        fi
+        output_not_supported "$id" "INTEGRATION"
         return
     fi
 
-    # Guidance documents: G-N
     if [[ "$id" =~ ^G-([0-9]+)$ ]]; then
-        local num="${BASH_REMATCH[1]}"
-        local pattern="concepts/guidance_*.md"
-
-        local found_file=""
-        found_file=$(find "$PROJECT_ROOT/concepts" -name "guidance_*.md" -print 2>/dev/null | sort | sed -n "${num}p")
-
-        if [[ -n "$found_file" && -f "$found_file" ]]; then
-            local rel_path="${found_file#$PROJECT_ROOT/}"
-            local content
-            content=$(cat "$found_file")
-            output_success "$id" "DOCUMENT" "$rel_path" "$content"
-        else
-            output_not_found "$id" "DOCUMENT" "[\"$pattern (index $num)\"]"
-        fi
+        output_not_supported "$id" "GUIDANCE"
         return
     fi
 
-    # Example documents: E-N
     if [[ "$id" =~ ^E-([0-9]+)$ ]]; then
-        local num="${BASH_REMATCH[1]}"
-        local pattern="concepts/example_*.md"
-
-        local found_file=""
-        found_file=$(find "$PROJECT_ROOT/concepts" -name "example_*.md" -print 2>/dev/null | sort | sed -n "${num}p")
-
-        if [[ -n "$found_file" && -f "$found_file" ]]; then
-            local rel_path="${found_file#$PROJECT_ROOT/}"
-            local content
-            content=$(cat "$found_file")
-            output_success "$id" "DOCUMENT" "$rel_path" "$content"
-        else
-            output_not_found "$id" "DOCUMENT" "[\"$pattern (index $num)\"]"
-        fi
+        output_not_supported "$id" "EXAMPLE"
         return
     fi
 
