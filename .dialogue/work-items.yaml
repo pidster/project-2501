@@ -1,5 +1,5 @@
 # Work Item Tracking
-# Schema: .claude/skills/dialogue-manage-work-items/SKILL.md
+# Schema: .claude/skills/dialogue-manage-work-items/schema.md
 # Purpose: Persistent cross-session work item tracking
 
 version: "1.0"
