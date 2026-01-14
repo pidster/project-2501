@@ -171,6 +171,27 @@ This asymmetry has practical implications:
 - AI credibility must be established through mechanisms other than social interaction
 - Routing decisions require explicit logic rather than emergent coordination
 
+### The Ephemeral Context Problem
+
+The most significant human-AI TMS asymmetry concerns **context persistence**:
+
+| TMS Aspect | Human-Human | Human-AI |
+|------------|-------------|----------|
+| Directory updates | Both partners persist knowledge | Human persists; AI forgets at session end |
+| Encoding agreements | Both remember allocation | Human remembers; AI must be re-informed |
+| Retrieved knowledge | Both can recall | Human partial recall; AI none |
+| Learned expertise | Both retain and build on | Human builds over time; AI starts fresh |
+
+**Critical implication**: Human-AI conversation performs TMS operations in real-time, but AI's TMS contributions are ephemeral. Session end equals TMS degradation from the AI's perspective—it cannot "remember" directory knowledge, encoding agreements, or retrieval history from prior sessions.
+
+This creates a **structural asymmetry**: the human partner must either:
+1. Re-establish TMS context at each session (costly, error-prone)
+2. Externalise TMS state so AI can "rejoin" the team's transactive memory
+
+The second approach—deliberate TMS externalisation—is why decision and observation logging matters. Logs are not merely documentation; they are **externalised TMS transactions** that enable AI to rejoin the team's "who knows what" system.
+
+See [THY-003: Conversation as Transactive Memory](../implementation/theory_conversation-as-tms.md) for extended analysis of this asymmetry and its implications for framework design.
+
 ### Relationship to Tacit Knowledge Subtypes
 
 Transactive memory requirements vary by tacit knowledge subtype (see [Information Composition Taxonomy](./concept_information-taxonomy.md#tacit-knowledge-subtypes)):
@@ -202,6 +223,40 @@ Several aspects of extended TMS require further development:
 - ~~**Provenance tracking granularity**~~: Addressed—see Provenance Tracking Granularity section above; capability invocation level recommended as default
 - **Orchestration design**: What patterns emerge for effective AI-AI coordination?
 - **Human TMS integration**: How do AI-AI TMS and human-human TMS interact in hybrid systems?
+
+## Conversation as the TMS Mechanism
+
+A critical insight often implicit in TMS literature: **conversation is not merely a byproduct of TMS—it is the primary mechanism through which TMS operates**. Directory knowledge, encoding negotiations, retrieval transactions, and credibility updates all occur through dialogue.
+
+### TMS Operations Manifest in Conversation
+
+| TMS Operation | Conversation Manifestation | Example Dialogue |
+|---------------|---------------------------|------------------|
+| **Directory update** | "I know about X" / "You should ask Y" | "I've been working on the auth module" |
+| **Encoding negotiation** | "I'll handle this" / "You take that" | "Let me investigate—this is my area" |
+| **Retrieval request** | Questions seeking expertise | "What pattern should we use here?" |
+| **Credibility assessment** | Evaluating responses, noting track record | "That worked last time" / "Remember when..." |
+| **Maintenance** | Confirming or correcting prior knowledge | "Actually, that approach was deprecated" |
+
+### Why This Matters
+
+In human teams, conversation builds TMS *and* TMS state persists beyond conversations. Team members remember:
+- What was discussed
+- What was decided
+- Who knows what
+- What each person's expertise is
+
+This persistence creates a continuously updated "who knows what" directory that enables efficient coordination without repeated re-establishment.
+
+### Implications for TMS Design
+
+Recognising conversation as TMS mechanism has design implications:
+
+1. **Dialogue capture is TMS externalisation**: Recording decisions and observations externalises TMS transactions for later retrieval
+2. **TMS-aware dialogue design**: Conversations can be structured to perform TMS operations explicitly ("Let me note that..." = directory update)
+3. **Session continuity**: When conversation partners change (new team members, session boundaries), TMS context must be re-established or retrieved
+
+This insight connects to the [Naur-Wegner Integration](./integration_naur-wegner.md) which addresses how conversation simultaneously builds individual theory (Naur) and team TMS (Wegner).
 
 ## Two Distinct Failure Modes
 

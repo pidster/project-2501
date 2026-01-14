@@ -103,6 +103,20 @@ Documentation captures labels—what things are called, what they purport to do�
 
 **Integration predicts**: Documentation helps most when it scaffolds theory-building (providing starting points for mental model construction) or enables TMS activation (helping identify who to consult).
 
+### Conversation Builds Both Theory and TMS
+
+A unified insight emerges: **conversation is the mechanism through which both Naur's theory-building and Wegner's TMS operate**. This is not coincidental—dialogue is how humans share understanding and coordinate knowledge.
+
+| Conversation Function | Theory-Building (Naur) | TMS (Wegner) |
+|----------------------|------------------------|--------------|
+| Explaining code | Articulating theory, making tacit explicit | Directory update ("I know this") |
+| Asking questions | Seeking understanding, building theory | Retrieval operation |
+| Deciding approach | Developing rationale, deepening theory | Encoding negotiation |
+| Reviewing work | Validating understanding, refining theory | Credibility assessment |
+| Discussing errors | Learning, correcting mental models | Maintenance operation |
+
+**Implication**: Practices that encourage rich conversation (pair programming, code review, design discussions) simultaneously build individual theory *and* team TMS. This dual effect explains why such practices show benefits across multiple dimensions.
+
 ### Pair Programming Effectiveness
 
 **Integration suggests pair programming operates on both dimensions**:
@@ -165,6 +179,40 @@ Wegner developed TMS primarily studying **intimate couples** and small groups ha
 - **Can AI hold theory?** Naur's framework suggests no—theory is embodied practical knowledge built through activity
 - **Can AI participate in TMS?** Potentially yes, with limitations—AI could serve as a knowledge retrieval system without providing theory
 - **Implications**: AI might shift the theory/TMS balance, improving retrieval whilst concentrating theory-building importance amongst fewer developers
+
+### Human-AI TMS Asymmetry
+
+Human-AI collaboration introduces a structural asymmetry not present in human-human TMS: **AI context is ephemeral**.
+
+In human teams:
+- Conversation builds TMS (directory, encoding, retrieval)
+- TMS state persists beyond any single conversation
+- Team members remember what was discussed, decided, and learned
+
+In human-AI collaboration:
+- Conversation still performs TMS operations
+- But AI's TMS context is bounded by session/context window
+- Session end = AI "forgets" = TMS degradation from AI's perspective
+
+| TMS Dimension | Human-Human | Human-AI |
+|---------------|-------------|----------|
+| **Theory-building (Naur)** | Both partners build theory over time | Human builds; AI generates without theory |
+| **Directory knowledge (Wegner)** | Both persist "who knows what" | Human persists; AI forgets |
+| **Encoding agreements** | Both remember allocation | Human remembers; AI must be re-informed |
+| **Retrieved knowledge** | Both can recall for future use | Human partial; AI none |
+
+**Critical insight**: The PRESERVE capability (decision logging, observation logging, session summaries) addresses this asymmetry. Logs are not merely documentation—they are **externalised TMS transactions** that enable AI to rejoin the team's transactive memory system.
+
+| PRESERVE Operation | TMS Function |
+|-------------------|--------------|
+| Decision logging | Externalise encoding/allocation and rationale |
+| Observation logging | Externalise directory updates |
+| Session summaries | Compress TMS state for retrieval |
+| Context documents | Encode standing TMS knowledge |
+
+This framing explains *why* logging matters: without externalisation, each AI session starts with zero TMS context—the AI cannot know "who knows what", what was decided, or what was observed. Externalisation enables TMS continuity despite AI's ephemeral context.
+
+See [THY-003: Conversation as Transactive Memory](../implementation/theory_conversation-as-tms.md) for extended analysis of conversation as TMS mechanism and the human-AI asymmetry.
 
 ---
 

@@ -4,9 +4,10 @@ type: THY
 title: Conversation as Transactive Memory
 scope: Project
 temporal_class: Standing
-status: PROVISIONAL
-version: 1
+status: ACCEPTED
+version: 2
 created: 2026-01-14
+updated: 2026-01-14
 author: human:pidster
 
 references:
@@ -25,11 +26,13 @@ thy:
     design_rationale: true
     modification_patterns: true
     invalidation_conditions: true
-  provisional:
-    reason: "Synthesises insight not yet fully grounded in conceptual foundation"
-    requires_retrofit:
-      - "F-2: Add conversation as TMS mechanism"
-      - "I-3: Extend Naur-Wegner integration to cover human-AI dialogue"
+  grounded:
+    f2_extensions:
+      - "Conversation as the TMS Mechanism section added"
+      - "The Ephemeral Context Problem section added"
+    i3_extensions:
+      - "Conversation Builds Both Theory and TMS section added"
+      - "Human-AI TMS Asymmetry section added"
 
 tags:
   - theory
@@ -41,15 +44,15 @@ tags:
 
 # THY-003: Conversation as Transactive Memory
 
-## Status: PROVISIONAL
+## Status: ACCEPTED
 
-This THY document captures an insight that emerged during framework development but is not yet fully grounded in the conceptual foundation. It is marked PROVISIONAL to indicate:
+This THY document captures an insight that emerged during framework development and is now grounded in the conceptual foundation.
 
-1. The insight is believed valid and worth preserving
-2. The conceptual foundation (F-2, I-3) needs extension to fully support it
-3. This document may evolve as concepts are retrofitted
+**Conceptual grounding** (14 January 2026):
+- **F-2 extended**: Added "Conversation as the TMS Mechanism" and "The Ephemeral Context Problem" sections to foundation_transactive-memory.md
+- **I-3 extended**: Added "Conversation Builds Both Theory and TMS" and "Human-AI TMS Asymmetry" sections to integration_naur-wegner.md
 
-**Conceptual debt**: F-2 (Transactive Memory) and I-3 (Naur-Wegner Integration) should be extended to explicitly address conversation as a TMS mechanism. Until then, this THY synthesises an insight that extends beyond documented concepts.
+The conceptual foundation now explicitly addresses conversation as a TMS mechanism and the human-AI asymmetry in TMS persistence.
 
 ---
 
@@ -225,29 +228,27 @@ Future developments (persistent AI memory, cross-session retrieval) would shift 
 
 ---
 
-## 5. Conceptual Debt
+## 5. Conceptual Grounding (Completed)
 
-This THY extends beyond currently documented concepts. To fully ground it:
+This THY is now grounded in the conceptual foundation.
 
-### F-2 Extension Required
+### F-2 Extensions (Completed)
 
-F-2 (Transactive Memory) should add:
-- Conversation as the mechanism through which TMS operates
-- How TMS functions manifest in dialogue
-- The role of externalisation in TMS maintenance
+F-2 (Transactive Memory) now includes:
+- ✓ "Conversation as the TMS Mechanism" section — how TMS operations manifest in dialogue
+- ✓ "The Ephemeral Context Problem" section — human-AI asymmetry in context persistence
+- ✓ Cross-reference to this THY document
 
-### I-3 Extension Required
+### I-3 Extensions (Completed)
 
-I-3 (Naur-Wegner Integration) should add:
-- How conversation builds both individual theory (Naur) and team TMS (Wegner)
-- The human-AI asymmetry in TMS persistence
-- Why PRESERVE capability matters for human-AI TMS
+I-3 (Naur-Wegner Integration) now includes:
+- ✓ "Conversation Builds Both Theory and TMS" section — unified insight about dialogue
+- ✓ "Human-AI TMS Asymmetry" section — PRESERVE as TMS externalisation
+- ✓ Cross-reference to this THY document
 
-### New Integration Possible
+### Future Consideration
 
-Consider I-4: Dialogue as TMS Mechanism
-- Focused integration of conversation, TMS, and human-AI collaboration
-- Would provide conceptual grounding for this THY
+A dedicated I-4: Dialogue as TMS Mechanism integration document could provide deeper treatment, but the current F-2/I-3 extensions adequately ground this THY's insights.
 
 ---
 
@@ -267,14 +268,15 @@ Consider I-4: Dialogue as TMS Mechanism
 - ✓ **Problem mapping**: Asymmetry clearly identified
 - ✓ **Design rationale**: TMS framing provides explanatory power
 - ✓ **Modification patterns**: Actionable guidance provided
-- ⚠ **Conceptual grounding**: PROVISIONAL—requires concept retrofit
+- ✓ **Conceptual grounding**: ACCEPTED—F-2 and I-3 extended
 - ⚠ **Empirical validation**: Theoretical; effectiveness not yet tested
 
 ---
 
-*This document captures the insight that conversation is the medium through which transactive memory operates, and that human-AI collaboration requires deliberate externalisation to address the asymmetry in TMS persistence. It is marked PROVISIONAL pending extension of the conceptual foundation.*
+*This document captures the insight that conversation is the medium through which transactive memory operates, and that human-AI collaboration requires deliberate externalisation to address the asymmetry in TMS persistence.*
 
 ---
 
 **Document History**:
+- v2 (14 January 2026): ACCEPTED—conceptual foundation extended (F-2, I-3)
 - v1 (14 January 2026): Initial provisional draft capturing conversation-as-TMS insight
