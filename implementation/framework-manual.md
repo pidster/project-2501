@@ -506,6 +506,42 @@ Before finalising any capability flow specification:
 
 ---
 
+## Information Architecture
+
+The framework's information architecture consists of three interconnected schemas:
+
+### Schemas
+
+| Schema | Purpose | Location |
+|--------|---------|----------|
+| [Information Reference](./schema_information-reference.md) | ID formats for all referenceable content | SH-001 |
+| [Resolver Interface](./schema_resolver-interface.md) | Abstract retrieval contract | SH-002 |
+| [Context Graph](./schema_context-graph.md) | TMS-aligned knowledge graph | SH-003 |
+
+### Context Graph Overview
+
+The Context Graph externalises Transactive Memory—making "who knows what" queryable.
+
+**Node Types**:
+| Type | Description |
+|------|-------------|
+| `ARTIFACT` | Documents, decisions, observations, work items |
+| `ACTOR_HUMAN` | Human participants with expertise |
+| `ACTOR_AI` | AI actors with capability profiles |
+| `SYSTEM` | External systems and services |
+
+**TMS Operations**:
+| Operation | TMS Function | Description |
+|-----------|--------------|-------------|
+| `locate(query)` | Directory | Find who/what knows about a topic |
+| `route(new_info)` | Allocation | Where should new information go? |
+| `retrieve(node_id)` | Retrieval | Fetch content (delegates to resolver) |
+| `refresh(node_id)` | Maintenance | Update stale information |
+| `discover(actor, domain)` | Learning | What does actor know about domain? |
+| `invalidate(node_id)` | Staleness | Mark as potentially outdated |
+
+---
+
 ## Log Locations
 
 ```
