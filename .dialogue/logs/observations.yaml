@@ -340,3 +340,21 @@ subject: "Phase 1 completion"
 value: "STR-001 Phase 1 Initiation document completed with all four outputs: business case, feasibility assessment, stakeholder identification, project charter"
 context: "Self-hosting validation of framework Phase 1 process"
 tags: ["phase-1", "str", "milestone"]
+---
+id: OBS-20260114-091459
+timestamp: "2026-01-14T09:14:59Z"
+type: EVENT
+observer: "ai:claude"
+subject: "STR-002 created"
+value: "Phase 2 Planning document created with project plan, resource allocations, risk register, governance structure"
+context: "Self-hosting Phase 2"
+tags: ["phase-2", "planning", "str"]
+---
+id: OBS-20260114-094825
+timestamp: "2026-01-14T09:48:25Z"
+type: STATE
+observer: "ai:claude"
+subject: "Work item tracking system"
+value: "Implemented two-tier work tracking: TodoWrite for session-level ephemeral tracking, .dialogue/work-items.yaml for cross-session persistence"
+context: "FW-001 implementation complete; schema-work-items.md created"
+tags: ["framework", "infrastructure", "tracking"]

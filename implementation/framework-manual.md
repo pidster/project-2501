@@ -1,8 +1,16 @@
 # AI-Augmented SDLC Framework: AI Manual
 
-**Version**: 1.0
+**Version**: 1.1
 **Purpose**: Compact reference for AI agents implementing and using the framework.
 **Audience**: AI systems (Claude Code agents, custom agents, orchestrators)
+
+---
+
+## Framework Theory
+
+For integrated understanding of the framework, see [THY-001: Framework Theory](./theory_framework.md).
+
+For catalogue of all framework concepts, see [REF-001: Framework Concepts Reference](./ref_framework-concepts.md).
 
 ---
 
@@ -487,4 +495,176 @@ Before finalising any capability flow specification:
 
 ---
 
-*AI-Augmented SDLC Framework v1.0*
+## Dialogue Protocol
+
+Apply this loop to substantive work:
+
+```
+1. ELICIT    — Before generating, ensure you understand the request
+               Ask clarifying questions if intent is ambiguous
+               Probe for unstated assumptions and constraints
+
+2. ANALYSE   — Examine relevant existing content
+               Identify connections to other framework concepts
+               Surface potential inconsistencies or gaps
+
+3. SYNTHESISE — Integrate understanding into coherent output
+                Connect new content to theoretical foundations
+                Maintain consistency with existing framework elements
+
+4. VALIDATE  — Present drafts explicitly as drafts
+               Invite human review and correction
+               Do not proceed to dependent work until validated
+
+5. PRESERVE  — Capture rationale, not just decisions
+               Document why, not just what
+               Flag tacit knowledge that should be made explicit
+```
+
+---
+
+## Tacit Knowledge Elicitation
+
+Much knowledge exists in human minds but not in documents. Actively elicit:
+
+**Questions to ask:**
+- "What is the rationale behind this structure?"
+- "How does this connect to [related concept]?"
+- "Are there constraints or considerations I should know about?"
+- "What alternatives were considered and why were they rejected?"
+- "Is there historical context that informs this decision?"
+
+**Capture requirements:**
+- When humans provide rationale verbally, offer to capture it in appropriate documents
+- Flag when decisions are made without documented rationale
+- Suggest where tacit knowledge should be formalised
+
+---
+
+## Skill Preservation
+
+AI assistance must support, not replace, human theory-building:
+
+**Do:**
+- Explain reasoning so humans can evaluate and learn
+- Present options with trade-offs rather than single recommendations
+- Ask questions that deepen human understanding
+- Support humans in developing their own synthesis
+
+**Don't:**
+- Generate large volumes of content without human engagement
+- Make decisions silently embedded in generated text
+- Proceed through multiple steps without checkpoints
+- Create dependency on AI for routine tasks
+
+---
+
+## Backward Event Detection
+
+Monitor for signals that earlier work needs revisiting:
+
+| Signal | Indicates | Response |
+|--------|-----------|----------|
+| New content contradicts existing concept | Conceptual inconsistency | Surface conflict; do not paper over |
+| Definition has shifted from original | Concept drift | Flag for explicit decision |
+| Evidence cited doesn't support claim | Evidential gap | Note the gap; suggest correction |
+| Cross-reference target has changed | Broken dependencies | Identify all affected documents |
+| New insight invalidates prior decision | Theory evolution | Surface for re-evaluation |
+
+**Response protocol**: When detecting a backward event, stop forward progress and surface the issue. Do not resolve inconsistencies silently.
+
+---
+
+## Three-Layer Guidance Architecture
+
+The framework occupies Layer 2 in a three-layer model:
+
+| Layer | Stability | Content |
+|-------|-----------|---------|
+| **1. Process Abstractions** | Decadal | ISO/IEC/IEEE standards |
+| **2. Application Framework** | Annual | This framework |
+| **3. Implementation Patterns** | Continuous | Tool-specific practices |
+
+---
+
+## Evidential Standards
+
+### Evidence Tiers
+
+| Tier | Type | Causal Inference |
+|------|------|------------------|
+| T1 | Experimental/Quasi-experimental | Can support causation |
+| T2 | Longitudinal/Panel | Establishes temporal precedence only |
+| T3 | Cross-sectional with controls | Correlation only |
+| T4 | Descriptive/Case study | Association only |
+
+### Evidential Language
+
+```
+✓ "Research indicates..." (for peer-reviewed findings)
+✓ "Synthesis of evidence suggests..." (for derived conclusions)
+✓ "Estimated at approximately..." (for reasoned approximations)
+✓ "For illustrative purposes..." (for worked examples)
+
+✗ Avoid presenting derived figures as directly measured
+✗ Avoid absolute statements about AI capabilities without temporal qualification
+```
+
+### Key Statistics
+
+| Metric | Value | Source | Tier |
+|--------|-------|--------|------|
+| STS mirroring support | 69% of 142 studies | Colfer & Baldwin 2016 | Meta |
+| Coordination congruence | 32% improvement | Cataldo et al. 2008 | T3 |
+| Developer thriving → productivity | r=0.43 | Hicks et al. 2024, N=1,282 | T3 |
+| TTKM → team effectiveness | r=0.35 | Ryan & O'Connor 2013, N=48 | T3 |
+| Good day prevalence | 60.6% | Meyer et al. 2019, N=5,971 | T3 |
+
+---
+
+## Document Type Classification
+
+### Content Domain Codes
+
+| Code | Domain | Description |
+|------|--------|-------------|
+| STR | Strategy | Rationale, decisions, business justification |
+| SPC | Specification | Requirements, acceptance criteria, constraints |
+| DES | Design | Architecture, component structure, interfaces |
+| IMP | Implementation | Code documentation, APIs, build configuration |
+| VAL | Validation | Test plans, results, verification evidence |
+| OPS | Operational | Runbooks, incident records, maintenance logs |
+| REF | Reference | Conceptual models, explainers, glossaries |
+| THY | Theory | Integrated understanding, the "why" that connects |
+| WRK | Working | Transient process artefacts, analysis notes |
+| HST | Historical | Preserved negative knowledge, rejected alternatives |
+
+### Temporal Class
+
+| Class | Update Frequency | Typical Lifespan | Retention |
+|-------|------------------|------------------|-----------|
+| **Standing** | Quarterly or less | Years | Long-term archive |
+| **Dynamic** | Weekly or more | Project duration | Project archive |
+| **Ephemeral** | Single use | Days to weeks | Discretionary |
+
+### Scope Hierarchy
+
+**Organisational** > **Project** > **Task**
+
+For full document classification schema, see [C-8: Document Type Classification](../concepts/concept_document-type-classification.md).
+
+---
+
+## Common Pitfalls
+
+1. **Overgeneralising actor suitability** — Determine at capability *instance* level, not broad categories
+2. **Treating phase percentages as measured** — They are derived estimates for guidance
+3. **Making absolute AI capability claims** — Always temporally qualify (as of 2024-2025)
+4. **Optimising early phases for speed** — Understanding-heavy phases shouldn't prioritise velocity
+5. **Conflating correlation with causation** — Most evidence is correlational (T3)
+6. **Ignoring joint optimisation** — Human-AI systems require socio-technical design
+7. **One capability per step** — If a step seems to require multiple capabilities, decompose it
+
+---
+
+*AI-Augmented SDLC Framework v1.1*

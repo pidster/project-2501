@@ -76,6 +76,26 @@ tool_access:
         - "Session output"
       notes: "Hook-based notification system"
 
+  task_tracking:
+    todo_list:
+      supported: true
+      tool_name: "TodoWrite"
+      persistence: session
+      capabilities:
+        - "Create task items with status"
+        - "Track in_progress/pending/completed states"
+        - "Visible to user in session"
+      limitations:
+        - "Session-scoped only; not persisted across sessions"
+        - "No structured export mechanism"
+        - "No cross-session continuity"
+      notes: |
+        TodoWrite provides session-level ephemeral task tracking.
+        Useful for tracking work within a session but requires
+        complementary persistent storage for cross-session tracking.
+        Framework extends this via .dialogue/work-items.yaml for
+        persistent work item tracking.
+
 context_provision:
   standing_context:
     project_instructions:
@@ -202,8 +222,21 @@ extensions:
       - "Custom agents"
       - "Custom skills"
       - "Hooks"
+      - "Rules"
       - "MCP servers"
     notes: "Full plugin system with auto-discovery"
+
+  rules:
+    supported: true
+    format: "Markdown files"
+    location: ".claude/rules/"
+    scope: "Project-level persistent guidance"
+    auto_apply: true
+    notes: |
+      Rules provide standing instructions that apply across all sessions.
+      Simpler than skills - no invocation needed, just persistent guidance.
+      Use for: coding standards, terminology, behavioural constraints, domain conventions.
+      Rules apply automatically; skills require explicit or matched invocation.
 
   custom_commands:
     supported: true
@@ -221,7 +254,7 @@ extensions:
     supported: true
     format: "Markdown"
     trigger_mechanism: "Skill tool invocation or description matching"
-    notes: "Skills provide contextual guidance"
+    notes: "Skills provide contextual guidance; require invocation or match"
 
   hooks:
     supported: true

@@ -1,0 +1,208 @@
+# Work Item Tracking
+# Schema: implementation/schema-work-items.md
+# Purpose: Persistent cross-session work item tracking
+
+version: "1.0"
+last_updated: "2026-01-14T12:00:00Z"
+
+# Work item ID prefix definitions
+prefixes:
+  - prefix: "SH"
+    name: "Self-Hosting"
+    description: "Framework self-application work items (applying framework to its own development)"
+
+  - prefix: "CD"
+    name: "Conceptual Debt"
+    description: "Framework concept gaps and improvements to address"
+
+  - prefix: "FW"
+    name: "Framework"
+    description: "Core framework development work"
+
+  - prefix: "DOC"
+    name: "Documentation"
+    description: "Documentation tasks"
+
+# Active work items
+items:
+  # Self-Hosting Items (Phase 3)
+  - id: "SH-001"
+    title: "Information Reference Schema"
+    status: READY
+    created: "2026-01-13T10:00:00Z"
+    updated: "2026-01-14T12:00:00Z"
+    type: SCHEMA
+    phase: 3
+    priority: HIGH
+    description: |
+      Create schema for information references used in capability flow specifications.
+      Should define how to reference documents, decisions, observations, and external sources.
+      Must be location-agnostic (per SH-4 decision).
+    objective: "REF-002 published with complete reference schema"
+    rationale: "Required for capability flow specifications to reference inputs/outputs"
+    blocked_by: []
+    blocks: ["SH-002"]
+    notes: |
+      Part of Phase 3 (Requirements Definition Phase) self-hosting work.
+      Per SH-4 decision: design abstractions that don't assume filesystem storage.
+
+  - id: "SH-002"
+    title: "Resolution Interface"
+    status: BACKLOG
+    created: "2026-01-13T10:00:00Z"
+    updated: "2026-01-14T12:00:00Z"
+    type: SCHEMA
+    phase: 3
+    priority: MEDIUM
+    description: |
+      Define abstract resolver interface for information retrieval.
+      Create filesystem implementation as first concrete implementation.
+    objective: "Resolver interface defined; filesystem implementation working"
+    rationale: "Enables location-agnostic information access"
+    blocked_by: ["SH-001"]
+    blocks: ["SH-003"]
+    notes: "Blocked by SH-001 (Information Reference Schema)"
+
+  - id: "SH-003"
+    title: "Context Graph Schema"
+    status: BACKLOG
+    created: "2026-01-13T10:00:00Z"
+    updated: "2026-01-14T12:00:00Z"
+    type: SCHEMA
+    phase: 3
+    priority: MEDIUM
+    description: |
+      Define Context Graph schema for TMS-aligned operations:
+      - Node types (ARTIFACT, ACTOR_HUMAN, ACTOR_AI, SYSTEM)
+      - Edge types (relationships between nodes)
+      - TMS operations (locate, route, retrieve, refresh, discover, invalidate)
+    objective: "Context Graph schema defined with TMS operation mappings"
+    rationale: "Externalises transactive memory for human-AI coordination"
+    blocked_by: ["SH-002"]
+    blocks: []
+    notes: |
+      Per planning-future-work.md: Context Graph is operational TMS.
+      SH-4 decision: Start with filesystem + YAML; design for future graph DB evolution.
+
+  - id: "SH-004"
+    title: "Graph Storage Investigation"
+    status: COMPLETED
+    created: "2026-01-13T10:00:00Z"
+    updated: "2026-01-13T15:00:00Z"
+    completed: "2026-01-13T15:00:00Z"
+    type: RESEARCH
+    priority: HIGH
+    description: "Investigate graph storage options for Context Graph"
+    objective: "Storage approach decided"
+    rationale: "Needed to inform SH-001, SH-002, SH-003 design"
+    blocked_by: []
+    blocks: []
+    notes: |
+      Decision (13 January 2026): Start with filesystem + YAML; Kuzu identified for future evolution.
+      See planning-future-work.md for full decision rationale.
+
+  - id: "SH-005"
+    title: "Phase 1 Initiation Artifacts"
+    status: COMPLETED
+    created: "2026-01-13T10:00:00Z"
+    updated: "2026-01-13T18:00:00Z"
+    completed: "2026-01-13T18:00:00Z"
+    type: DOCUMENT
+    phase: 1
+    priority: HIGH
+    description: "Create Phase 1 artifacts: strategic context, stakeholders, rationale"
+    objective: "THY-001, STR-001, STR-002 published"
+    rationale: "Framework self-hosting requires working through all phases"
+    blocked_by: []
+    blocks: ["SH-006"]
+    notes: |
+      Completed 13 January 2026.
+      Created: THY-001 (Framework Theory), STR-001 (Project Charter), STR-002 (Business Case)
+
+  - id: "SH-006"
+    title: "Phase 2 Planning Artifacts"
+    status: COMPLETED
+    created: "2026-01-13T10:00:00Z"
+    updated: "2026-01-13T20:00:00Z"
+    completed: "2026-01-13T20:00:00Z"
+    type: DOCUMENT
+    phase: 2
+    priority: HIGH
+    description: "Create Phase 2 artifacts: resource, risk, governance planning"
+    objective: "THY-002, THY-003, REF-001 published"
+    rationale: "Framework self-hosting requires working through all phases"
+    blocked_by: ["SH-005"]
+    blocks: ["SH-001"]
+    notes: |
+      Completed 13 January 2026.
+      Created: THY-002 (Framework Resilience), THY-003 (Conceptual Debt), REF-001 (Framework Concepts Reference)
+
+  - id: "SH-007"
+    title: "Retrofit vs Forward Decision"
+    status: BACKLOG
+    created: "2026-01-13T10:00:00Z"
+    updated: "2026-01-14T12:00:00Z"
+    type: DECISION
+    priority: LOW
+    description: |
+      Decide approach for existing artifacts:
+      - Option A: Retrofit existing documents with frontmatter
+      - Option B: Create forward-only with new artifacts
+      - Option C: Hybrid (retrofit key documents, forward for new)
+    objective: "Clear decision on existing artifact treatment"
+    rationale: "Existing concepts/ documents lack THY/REF/STR prefixes and frontmatter"
+    blocked_by: []
+    blocks: []
+    notes: |
+      Current direction: Hybrid approach selected.
+      THY-001, REF-001 reference existing documents without requiring immediate retrofit.
+
+  # Conceptual Debt Items
+  - id: "CD-001"
+    title: "THY-003 Conceptual Debt Items"
+    status: IN_PROGRESS
+    created: "2026-01-13T18:00:00Z"
+    updated: "2026-01-14T12:00:00Z"
+    type: DEBT
+    priority: MEDIUM
+    description: |
+      Address conceptual debt identified in THY-003:
+      - AI capability temporal qualification
+      - Context Engineering provenance
+      - Boundary sharpening (TMS/theory, validation/verification)
+      - Evidence tier gaps
+      - Observability vs measurement distinction
+    objective: "THY-003 debt items addressed or explicitly deferred"
+    rationale: "Accumulated conceptual debt risks framework coherence"
+    blocked_by: []
+    blocks: []
+    assigned_to: "ai:claude"
+    notes: "See implementation/theory_thy-003-conceptual-debt.md for full inventory"
+
+  # Framework Work Items
+  - id: "FW-001"
+    title: "Persistent Work Item Tracking"
+    status: COMPLETED
+    created: "2026-01-14T12:00:00Z"
+    updated: "2026-01-14T12:30:00Z"
+    completed: "2026-01-14T12:30:00Z"
+    type: SCHEMA
+    priority: HIGH
+    description: |
+      Design and implement persistent work item tracking:
+      - Schema definition (implementation/schema-work-items.md)
+      - Work items file (.dialogue/work-items.yaml)
+      - TodoWrite integration guidance
+      - Registry update for TodoWrite tool
+    objective: "Persistent work item tracking operational"
+    rationale: "Work items were session-only; cross-session continuity needed"
+    blocked_by: []
+    blocks: []
+    assigned_to: "ai:claude"
+    notes: |
+      Completed 14 January 2026.
+      - Added task_tracking section to registry_claude-code.yaml
+      - Created schema-work-items.md with simplified O-3-aligned schema
+      - Created .dialogue/work-items.yaml with current work items
+      - Updated framework-generation.md with Dialogue Infrastructure section
+      - Logged observation OBS-20260114-094825

@@ -6,6 +6,13 @@ This project develops a comprehensive AI-Augmented Software Development Lifecycl
 
 **Core thesis**: Software development is fundamentally about building shared mental models ("theories") in developers' minds, with 70-80% of software knowledge being tacit rather than documented. This has profound implications for AI integration, as different SDLC phases have vastly different information compositions requiring different human-AI collaboration patterns.
 
+## Framework Reference
+
+For framework mechanics, schemas, and operational guidance, see:
+- **[Framework Manual](../implementation/framework-manual.md)**: Compact operational reference (phases, capabilities, patterns, constraints, schemas)
+- **[THY-001: Framework Theory](../implementation/theory_framework.md)**: Integrated understanding of why concepts connect
+- **[REF-001: Framework Concepts](../implementation/ref_framework-concepts.md)**: Catalogue of all framework concepts
+
 ## AI Collaboration Guidelines for Framework Development
 
 This section applies the framework's own concepts to the work of developing the framework. AI assistants working on this project must embody the principles they are helping to document.
@@ -19,30 +26,9 @@ Framework development operates as **Human-Led** collaboration:
 
 ### Dialogue Protocol
 
-Apply the framework's dialogue loop to all substantive work:
+Apply the framework's dialogue loop (ELICIT → ANALYSE → SYNTHESISE → VALIDATE → PRESERVE) to all substantive work. See [Framework Manual: Dialogue Protocol](../implementation/framework-manual.md#dialogue-protocol) for details.
 
-```
-1. ELICIT    — Before generating, ensure you understand the request
-               Ask clarifying questions if intent is ambiguous
-               Probe for unstated assumptions and constraints
-
-2. ANALYSE   — Examine relevant existing content
-               Identify connections to other framework concepts
-               Surface potential inconsistencies or gaps
-
-3. SYNTHESISE — Integrate understanding into coherent output
-                Connect new content to theoretical foundations
-                Maintain consistency with existing framework elements
-
-4. VALIDATE  — Present drafts explicitly as drafts
-               Invite human review and correction
-               Do not proceed to dependent work until validated
-
-5. PRESERVE  — Capture rationale, not just decisions
-               Document why, not just what
-               Flag tacit knowledge that should be made explicit
-               **Log observations and decisions using the skills in .claude/skills/**
-```
+**Key for this project**: In the PRESERVE step, log observations and decisions using the skills in `.claude/skills/`.
 
 ### Decision and Observation Logging
 
@@ -81,47 +67,19 @@ Surface decisions to the human rather than proceeding autonomously when:
 
 ### Tacit Knowledge Elicitation
 
-Much framework knowledge exists in the human's mind but not yet in documents. Actively elicit this knowledge:
+See [Framework Manual: Tacit Knowledge Elicitation](../implementation/framework-manual.md#tacit-knowledge-elicitation) for general approach.
 
-**Questions to ask:**
-- "What is the rationale behind this structure?"
-- "How does this connect to [related concept]?"
-- "Are there constraints or considerations I should know about?"
-- "What alternatives were considered and why were they rejected?"
-- "Is there historical context that informs this decision?"
-
-**Capture requirements:**
-- When the human provides rationale verbally, offer to capture it in the appropriate document
-- Flag when decisions are made without documented rationale
-- Suggest where tacit knowledge should be formalised
+**For this project**: The human holds theory about the framework that cannot be fully documented. Actively elicit rationale, constraints, alternatives considered, and historical context.
 
 ### Skill Preservation
 
-AI assistance must support, not replace, human theory-building:
+See [Framework Manual: Skill Preservation](../implementation/framework-manual.md#skill-preservation) for principles.
 
-**Do:**
-- Explain reasoning so the human can evaluate and learn
-- Present options with trade-offs rather than single recommendations
-- Ask questions that deepen human understanding
-- Support the human in developing their own synthesis
-
-**Don't:**
-- Generate large volumes of content without human engagement
-- Make decisions silently embedded in generated text
-- Proceed through multiple steps without checkpoints
-- Create dependency on AI for routine framework tasks
+**For this project**: Support the human in developing their own synthesis of framework concepts. Do not create dependency on AI for routine framework tasks.
 
 ### Backward Event Detection
 
-Monitor for signals that earlier work needs revisiting:
-
-| Signal | Indicates | Response |
-|--------|-----------|----------|
-| New content contradicts existing concept | Conceptual inconsistency | Surface conflict; do not paper over |
-| Definition has shifted from original | Concept drift | Flag for explicit decision: update definition or correct usage |
-| Evidence cited doesn't support claim | Evidential gap | Note the gap; suggest correction |
-| Cross-reference target has changed | Broken dependencies | Identify all affected documents |
-| New insight invalidates prior decision | Theory evolution | Surface for re-evaluation |
+See [Framework Manual: Backward Event Detection](../implementation/framework-manual.md#backward-event-detection) for signals and responses.
 
 **Response protocol**: When detecting a backward event, stop forward progress and surface the issue. Do not attempt to resolve inconsistencies silently.
 
@@ -157,8 +115,6 @@ project-2501/
 │   └── commands/          # Slash commands
 ├── .dialogue/             # Runtime artifacts
 │   ├── logs/              # Decision and observation logs
-│   ├── log-decision.sh    # Decision logging script
-│   └── log-observation.sh # Observation logging script
 ├── concepts/              # Core framework documents
 │   ├── concept_*.md       # Core concept definitions
 │   ├── foundation_*.md    # Theoretical foundations
@@ -181,29 +137,13 @@ project-2501/
 
 ## Framework Generation Model
 
-The framework is *generated* for each tool environment from generation artifacts:
+See [Framework Generation](../implementation/framework-generation.md) for the full generation model.
 
-```
-implementation/                    Tool-specific directories
-┌────────────────────┐            ┌────────────────────┐
-│ Schemas            │            │ .claude/           │
-│ (how to document)  │            │   skills/          │
-│                    │            │   agents/          │
-│ Registries         │──Generate──│   commands/        │
-│ (tool capabilities)│            │                    │
-└────────────────────┘            │ .cursor/ (future)  │
-                                  │ .copilot/ (future) │
-                                  └────────────────────┘
-```
-
-**Key distinction**:
-- `implementation/` contains *inputs* to generation (schemas, registries)
+**Key distinction for this project**:
+- `implementation/` contains *inputs* to generation (schemas, registries, manual)
 - Tool directories (`.claude/`, etc.) contain *outputs* — the generated framework
 
-When creating new framework artifacts:
-1. Consult `implementation/registries/registry-<tool>.yaml` for tool capabilities
-2. Generate artifacts appropriate to the tool
-3. Place generated artifacts in the tool's directory
+When creating new framework artifacts, consult `implementation/registries/registry_claude-code.yaml` for Claude Code capabilities.
 
 ## Document Architecture
 
@@ -282,100 +222,23 @@ Reference materials, integration analyses, and exploratory documents that inform
 
 ## Key Theoretical Foundations
 
-### Socio-Technical Systems Theory (1951-2011)
+See [Framework Manual: Quick Reference](../implementation/framework-manual.md#quick-reference) for tables of phases, capabilities, and patterns.
 
-STS theory provides the system-level design lens. Core principle: **joint optimisation**—social and technical subsystems must be co-designed, not optimised independently.
+**Core theoretical sources** (see [REF-001](../implementation/ref_framework-concepts.md) for full catalogue):
+- **Naur (1985)**: Theory-building—software development builds understanding in minds, not just artifacts
+- **Wegner (1986)**: Transactive memory—teams know "who knows what"
+- **STS Theory (1951-2011)**: Joint optimisation of human and technical systems
 
-**Key sources:**
-- Trist & Bamforth (1951): Founded STS through coal mining research
-- Cherns (1976): Nine actionable design principles
-- Baxter & Sommerville (2011): Bridge to software engineering
-
-**Implication**: Human-AI work systems require deliberate socio-technical design, not just AI tool adoption.
-
-### Naur's Theory-Building (1985)
-
-Software development involves building a "theory" in developers' minds—understanding of problem space, solution rationale, and modification implications. This theory cannot be fully documented; losing theory-holding developers causes "program death."
-
-**Implication**: AI cannot replace human theory-building but can support it.
-
-### Wegner's Transactive Memory (1986)
-
-Teams develop shared knowledge systems where members know *who knows what* rather than everyone knowing everything. This distributed cognition enables collective capability exceeding individual capacity.
-
-**Implication**: AI tools must integrate with team knowledge structures, not replace them.
-
-### Naur-Wegner Integration
-
-Individual theory-building (Naur) and team transactive memory (Wegner) are complementary:
-- **Theory death**: Loss of individuals holding deep understanding
-- **Transactive memory degradation**: Disruption of "who knows what" coordination
-
-Teams can fail through either mechanism—requiring different remediation strategies.
-
-### Phase Information Composition
-
-Different phases have different formal/tacit/emergent ratios:
-
-| Phase | Formal | Tacit | Emergent |
-|-------|--------|-------|----------|
-| 1. Initiation | 5% | 75% | 20% |
-| 2. Planning | 35% | 55% | 10% |
-| 3. Requirements | 40% | 50% | 10% |
-| 4. Design | 50% | 40% | 10% |
-| 5. Implementation | 55% | 35% | 10% |
-| 6. Testing | 60% | 30% | 10% |
-| 7. Operations | 60% | 30% | 10% |
-
-**These are derived estimates**, not empirically measured values. Present as "approximate compositions" for guidance, not precise measurements.
-
-### Three-Layer Guidance Architecture
-
-The framework occupies Layer 2 in a three-layer model:
-
-1. **Layer 1: Process Abstractions** (decadal stability) — ISO/IEC/IEEE standards
-2. **Layer 2: Application Framework** (annual updates) — This framework
-3. **Layer 3: Implementation Patterns** (continuous change) — Tool-specific practices
+**Key implication for this project**: Framework development is tacit-heavy work (similar to early SDLC phases). The human holds theory; AI supports but cannot replace theory-building.
 
 ## Evidential Standards
 
-### Evidence Tiers
+See [Framework Manual: Evidential Standards](../implementation/framework-manual.md#evidential-standards) for evidence tiers, key statistics, and language guidance.
 
-| Tier | Type | Causal Inference |
-|------|------|------------------|
-| T1 | Experimental/Quasi-experimental | Can support causation |
-| T2 | Longitudinal/Panel | Establishes temporal precedence only |
-| T3 | Cross-sectional with controls | Correlation only |
-| T4 | Descriptive/Case study | Association only |
-
-### Strong Evidence (cite confidently)
-
-- **STS Mirroring Hypothesis**: 69% support across 142 studies (Colfer & Baldwin 2016)
-- **Socio-Technical Congruence**: 32% reduction in resolution time (Cataldo et al. 2008)
-- **DORA metrics**: N=39,000+ professionals, validated for Phases 5-7
-- **Developer Thriving**: r=0.43 with productivity (Hicks et al., N=1,282)
-- **Good Day factors**: 60.6% good days validated (Meyer et al., N=5,971)
-- **TTKM**: r=0.35 with team effectiveness (Ryan & O'Connor, N=48 teams)
-
-### Weak Evidence (do not cite as primary)
-
-- **CHAOS/Standish statistics**: Methodologically contested; "Standish opinion"
-- **39-47% requirements failure**: No systematic review, wildly varying figures
-- **Boehm's 50-200x cost curve**: 1970s waterfall data, not validated in modern contexts
-
-### Evidential Language
-
-Use language that signals evidential weight:
-
-```markdown
-✓ "Research indicates..." (for peer-reviewed findings)
-✓ "Synthesis of evidence suggests..." (for derived conclusions)
-✓ "Estimated at approximately..." (for reasoned approximations)
-✓ "For illustrative purposes..." (for worked examples)
-
-✗ Avoid presenting derived figures as directly measured
-✗ Avoid absolute statements about AI capabilities without temporal qualification
-```
+**For this project:**
+- **Cite confidently**: STS mirroring (69%), coordination congruence (32%), developer thriving (r=0.43)
+- **Do not cite as primary**: CHAOS/Standish, Boehm's cost curve
+- **Always temporally qualify AI capability claims** (as of 2024-2025)
 
 ## Writing Standards
 
@@ -454,26 +317,11 @@ Concepts are interconnected. Authoritative sources for key constructs:
 
 ## Common Pitfalls to Avoid
 
-1. **Overgeneralising actor suitability** — Determine at capability *instance* level, not broad capability categories
-2. **Treating phase percentages as measured** — They are derived estimates for guidance
-3. **Citing CHAOS/Standish as evidence** — Methodologically problematic
-4. **Making absolute AI capability claims** — Always temporally qualify
-5. **Optimising early phases for speed** — Understanding-heavy phases shouldn't prioritise velocity
-6. **Conflating correlation with causation** — Most evidence is correlational (Tier 3)
-7. **Using American spellings** — British English throughout
-8. **Ignoring joint optimisation** — Human-AI systems require socio-technical design, not just AI adoption
-9. **Companion naming mismatch** — Companion files must match PDF names exactly
+See [Framework Manual: Common Pitfalls](../implementation/framework-manual.md#common-pitfalls) for general framework pitfalls.
 
-## Key Statistics to Know
-
-| Metric | Value | Source | Evidence Tier |
-|--------|-------|--------|---------------|
-| STS mirroring support | 69% of 142 studies | Colfer & Baldwin 2016 | Meta-analysis |
-| Coordination congruence effect | 32% improvement | Cataldo et al. 2008 | T3 |
-| Developer thriving → productivity | r=0.43 | Hicks et al. 2024, N=1,282 | T3 |
-| TTKM → team effectiveness | r=0.35 | Ryan & O'Connor 2013, N=48 | T3 |
-| Good day prevalence | 60.6% | Meyer et al. 2019, N=5,971 | T3 |
-| PR dwell time (bad days) | +48.84% | Obi et al. 2024 | T3 |
+**Additional project-specific pitfalls:**
+- **Using American spellings** — British English throughout (organise, colour, behaviour)
+- **Companion naming mismatch** — Companion files must match PDF names exactly (`$<pdf-name>-companion.md`)
 
 ## Editing Workflow
 

@@ -38,9 +38,9 @@ This directory contains **generation artifacts** — schemas, registries, templa
 
 ```
 implementation/
-├── schema-environment-capability-registry.md   # Schema: how to document tool capabilities
+├── schema_environment-capability-registry.md   # Schema: how to document tool capabilities
 ├── registries/                                  # Registry instances (one per tool)
-│   └── registry-claude-code.yaml               # What Claude Code can do
+│   └── registry_claude-code.yaml               # What Claude Code can do
 └── README.md
 ```
 
@@ -52,7 +52,7 @@ Schemas define *how* to document tool environments.
 
 | Document | Description |
 |----------|-------------|
-| [schema-environment-capability-registry.md](./schema-environment-capability-registry.md) | Schema for documenting AI tool capabilities against framework concepts |
+| [schema_environment-capability-registry.md](./schema_environment-capability-registry.md) | Schema for documenting AI tool capabilities against framework concepts |
 
 ### Registries
 
@@ -60,7 +60,7 @@ Registries document *what* each tool environment can do. Each registry is an ins
 
 | Registry | Tool | Last Updated |
 |----------|------|--------------|
-| [registry-claude-code.yaml](./registries/registry-claude-code.yaml) | Claude Code | 2026-01-13 |
+| [registry_claude-code.yaml](./registries/registry_claude-code.yaml) | Claude Code | 2026-01-13 |
 
 ---
 
@@ -77,8 +77,8 @@ Implementation artifacts serve to:
 
 | Artifact Type | Location | Example |
 |---------------|----------|---------|
-| Schemas (how to document) | `implementation/` | `schema-environment-capability-registry.md` |
-| Registries (tool capabilities) | `implementation/registries/` | `registry-claude-code.yaml` |
+| Schemas (how to document) | `implementation/` | `schema_environment-capability-registry.md` |
+| Registries (tool capabilities) | `implementation/registries/` | `registry_claude-code.yaml` |
 | Generated skills | Tool directory | `.claude/skills/log-decision.md` |
 | Generated agents | Tool directory | `.claude/agents/process-architect.md` |
 | Generated commands | Tool directory | `.claude/commands/*.md` |

@@ -178,7 +178,7 @@ ContextNode:
 | **Infrastructure** | `.dialogue/log-decision.sh`, `.dialogue/log-observation.sh` | Logging scripts for decisions and observations |
 | **Skills** | `.claude/skills/log-decision/`, `.claude/skills/log-observation/` | AI-accessible wrappers for logging |
 | **Agents** | `.claude/agents/process-architect.md` | Process design following capability flow schema |
-| **Generation** | `implementation/schema-environment-capability-registry.md`, `implementation/registries/registry-claude-code.yaml` | Registry schema and Claude Code instance |
+| **Generation** | `implementation/schema-environment-capability-registry.md`, `implementation/registries/registry_claude-code.yaml` | Registry schema and Claude Code instance |
 | **Context** | `.claude/CLAUDE.md` | Project instructions applying framework to its own development |
 
 **Answers to original questions**:
@@ -231,7 +231,7 @@ ContextNode:
 **Progress** (13 January 2026):
 - Created Environment Capability Registry schema (`research/schema-environment-capability-registry.md`)
 - Schema enables systematic documentation of AI tool environments against framework concepts
-- Created Claude Code registry as worked example (`research/registry-claude-code.yaml`)
+- Created Claude Code registry as worked example (`research/registry_claude-code.yaml`)
 - Registry demonstrates framework mapping for capability coverage, collaboration patterns, and 3S2P
 
 **Open questions** (refined):
@@ -251,7 +251,7 @@ ContextNode:
 
 **Files created**:
 - `implementation/schema-environment-capability-registry.md` — Schema definition
-- `implementation/registries/registry-claude-code.yaml` — Claude Code capability registry (worked example)
+- `implementation/registries/registry_claude-code.yaml` — Claude Code capability registry (worked example)
 
 **Status**: Complete — schema with generation_support section and Claude Code registry created
 
@@ -744,7 +744,7 @@ ContextNode:
 
 **Artifacts created**:
 - `implementation/schema-environment-capability-registry.md` — Schema definition
-- `implementation/registries/registry-claude-code.yaml` — Claude Code capability registry
+- `implementation/registries/registry_claude-code.yaml` — Claude Code capability registry
 
 **Schema sections**:
 - Tool identity and versioning
