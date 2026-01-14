@@ -358,8 +358,7 @@ EOF
     fi
 
     # Framework source references: F-N, C-N, I-N, G-N, E-N
-    # These are framework source documentation, not available in deployed framework
-    # See FW-005 for deployment artifact definition
+    # These reference framework documentation, not project artifacts
     if [[ "$id" =~ ^F-([0-9]+)$ ]]; then
         output_not_supported "$id" "FOUNDATION"
         return

@@ -269,6 +269,8 @@ Observation:
 |-------|---------|----------|
 | `dialogue-log-decision` | Record decisions with rationale | "log decision", "record decision" |
 | `dialogue-log-observation` | Record observations | "log observation", "note finding" |
+| `dialogue-create-adr` | Create Architecture Decision Records | "create ADR", "record architecture decision" |
+| `dialogue-resolve-reference` | Resolve reference IDs to content | "resolve reference", "look up THY-001" |
 | `dialogue-structured-elicit` | Gather context through questions | "gather requirements", "elicit context" |
 | `dialogue-verify-logging-compliance` | Validate logging occurred | "verify logging", "check compliance" |
 | `build-only-validate-capability-flow` | Validate spec against constraints | "validate capability flow" |
@@ -305,6 +307,27 @@ Observation:
   <min-decisions> \
   <min-observations>
 ```
+
+**Create an ADR**:
+```bash
+.claude/skills/dialogue-create-adr/scripts/create-adr.sh \
+  "<human:id|ai:id>" \
+  "<title>" \
+  "<context>" \
+  "<decision>" \
+  "<alternatives>" \
+  "<consequences>" \
+  "<rationale>"
+```
+
+**Resolve a reference**:
+```bash
+.claude/skills/dialogue-resolve-reference/scripts/resolve-reference.sh \
+  <id> \
+  [full|metadata|path]
+```
+
+Supported reference types: `THY-NNN`, `REF-NNN`, `STR-NNN`, `ADR-NNN`, `DEC-*`, `OBS-*`, `SH-NNN`, `FW-NNN`, `human:<id>`, `ai:<id>`
 
 ### Decision Granularity Rule
 

@@ -93,7 +93,7 @@ status: NOT_SUPPORTED
 id: "C-1"
 type: CONCEPT
 error: "Framework source reference - not available in deployed framework"
-note: "F-N, C-N, I-N, G-N, E-N reference framework source documentation. See FW-005 for deployment model."
+note: "F-N, C-N, I-N, G-N, E-N reference framework documentation, not project artifacts."
 ```
 
 ### Invalid ID Result
@@ -150,7 +150,7 @@ The resolver distinguishes between:
    - Guidance documents (G-N)
    - Example documents (E-N)
 
-Framework source references return `NOT_SUPPORTED` status. See FW-005 for deployment artifact definition.
+Framework source references return `NOT_SUPPORTED` status.
 
 ### Project Document References (Resolvable)
 
