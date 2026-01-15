@@ -1,6 +1,7 @@
 ---
 name: create-strategy
 description: Create a new Strategy (STR) document. Strategy documents capture rationale, decisions, and business justification.
+argument-hint: [subject]
 ---
 
 # Create Strategy Document

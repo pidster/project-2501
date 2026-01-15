@@ -1,6 +1,7 @@
 ---
 name: create-theory
 description: Create a new Theory (THY) document. Theory documents capture integrated understanding—the "why" that enables coherent system modification.
+argument-hint: [theory]
 ---
 
 # Create Theory Document

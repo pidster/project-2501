@@ -1,6 +1,6 @@
 ---
 name: dialogue-log-decision
-description: Log a decision to the decision log. Supports OPERATIONAL, TACTICAL, DESIGN, and ADR types. Use when recording decisions made by human or AI. Triggers on "log decision", "record decision", "document choice".
+description: Log a decision to the decision log. Supports OPERATIONAL, TACTICAL, DESIGN, and ADR types. Use when recording decisions made by human or AI. Triggers on "decision", "decided", "log decision", "record decision", "document choice".
 allowed-tools: Bash
 ---
 

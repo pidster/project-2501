@@ -1,6 +1,7 @@
 ---
 name: create-reference
 description: Create a new Reference (REF) document. Reference documents provide conceptual models, glossaries, and structured explanations.
+argument-hint: [subject]
 ---
 
 # Create Reference Document

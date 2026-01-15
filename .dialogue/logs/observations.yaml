@@ -403,3 +403,54 @@ subject: "Bidirectional phase movement"
 value: "Framework should support moving through phases bidirectionally as new information emerges; linear feature vectors cause change-handling debates that we want to avoid; SessionStart must be phase-independent"
 context: "FW-008 thought experiment on plugin delivery model"
 tags: ["architecture", "phases", "orchestration"]
+---
+id: OBS-20260115-154205
+timestamp: "2026-01-15T15:42:05Z"
+type: MEASUREMENT
+observer: "human:pidster"
+subject: "Mermaid for process flow in prompts"
+value: "Mermaid diagrams could describe non-linear process flows inline in agent/subagent prompts; text-based format is both human-readable and machine-parseable"
+context: "subagents,process-flow,mermaid"
+---
+id: OBS-20260115-154312
+timestamp: "2026-01-15T15:43:12Z"
+type: STATE
+observer: "ai:claude"
+subject: "Process-capability-flow schema gap analysis"
+value: "Existing schema is design-time documentation; gaps for executable use: machine-readable format, instance vs definition separation, execution semantics, state model, dynamic composition, audit linkage, handoff mechanism"
+context: "subagents,schema,FW-012"
+---
+id: OBS-20260115-160802
+timestamp: "2026-01-15T16:08:02Z"
+type: EVENT
+observer: "human:pidster"
+subject: "SessionStart hook"
+value: "Functioning correctly - displays success message as expected"
+context: "Session initialization verification"
+tags: ["hooks", "session", "framework"]
+---
+id: OBS-20260115-171540
+timestamp: "2026-01-15T17:15:40Z"
+type: STATE
+observer: "ai:claude"
+subject: "Skill environment variables"
+value: "CLAUDE_PROJECT_DIR not available in Bash tool execution when invoked from skill instructions; CLAUDE_PLUGIN_ROOT was substituted in skill markdown content but CLAUDE_PROJECT_DIR was not passed to runtime environment"
+context: "Skill: dialogue-log-observation; Script failed with 'CLAUDE_PROJECT_DIR must be set' until manually provided; Docs indicate both should be available at bash execution time"
+tags: ["bug", "environment", "skills", "claude-code"]
+---
+id: OBS-20260115-172239
+timestamp: "2026-01-15T17:22:39Z"
+type: STATE
+observer: "ai:claude"
+subject: "Process landscape analysis"
+value: "Analysing notional processes across seven phases to ground subagent schema design in concrete process examples"
+context: "subagents,FW-013,processes"
+---
+id: OBS-20260115-194516
+timestamp: "2026-01-15T19:45:16Z"
+type: STATE
+observer: "human:pidster"
+subject: "Framework meta-application"
+value: "This work (producing the plugin as self-contained artifact) is an example of using the framework to produce the framework's executable form - meta-application in action"
+context: "Plugin self-containment work"
+tags: ["meta", "framework-development"]

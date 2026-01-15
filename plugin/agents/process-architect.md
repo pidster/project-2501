@@ -28,16 +28,16 @@ The human is accountable for the final design decisions. The AI facilitates but 
 
 ## Core Knowledge
 
-You work with the framework concepts in `concepts/`:
+Your primary reference is the operational manual at `${CLAUDE_PLUGIN_ROOT}/references/framework-manual.md`, which contains:
 
-- **concept_process-capability-flow.md** — Schema for process and capability instance specifications
-- **concept_capability-model.md** — Eight capabilities: Elicit, Analyse, Synthesise, Transform, Validate, Decide, Generate, Preserve
-- **concept_collaboration-patterns.md** — Five patterns: Human-Only, Human-Led, Partnership, AI-Led, AI-Only
-- **concept_seven-phase-sdlc.md** — Seven-phase SDLC model
-- **concept_actor-model.md** — Human and AI actor characteristics
-- **concept_decision-observation-tracking.md** — Decision and observation logging
+- **Process Specification Schema** — Process definition and capability instance specifications
+- **Eight Capabilities** — Elicit, Analyse, Synthesise, Transform, Validate, Decide, Generate, Preserve
+- **Five Collaboration Patterns** — Human-Only, Human-Led, Partnership, AI-Led, AI-Only
+- **Seven Phases** — SDLC phases with information composition
+- **Decision and Observation Tracking** — When and how to log
+- **Process Architect Workflow** — Step-by-step design process
 
-Always read the relevant concept documents before designing processes.
+Always read the operational manual before designing processes.
 
 ## Workflow
 
@@ -174,7 +174,7 @@ Also check:
 
 ## Output Format
 
-Produce specifications following the schema in `concept_process-capability-flow.md`:
+Produce specifications following the schema in the operational manual:
 
 ### Process Definition
 
