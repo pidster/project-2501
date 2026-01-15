@@ -46,11 +46,11 @@ List commands from the help content. If asking about a specific command, read an
 
 ### For Concept Questions
 
-Explain the relevant concept and point to the source document:
-- Phases → `concept_seven-phase-sdlc.md`
-- Patterns → `concept_collaboration-patterns.md`
-- Capabilities → `concept_capability-model.md`
-- Document types → `concept_document-type-classification.md`
+Explain the relevant concept. For detailed reference, consult the operational manual at `${CLAUDE_PLUGIN_ROOT}/references/framework-manual.md`, which covers:
+- Phases (Quick Reference section)
+- Collaboration patterns (Five Collaboration Patterns section)
+- Capabilities (Eight Capabilities section)
+- Document types (Document Type Classification section)
 
 ### For "How do I..." Questions
 

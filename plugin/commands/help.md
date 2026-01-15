@@ -1,38 +1,32 @@
 ---
 name: help
 description: Get help with the Dialogue Framework. Lists commands, explains concepts, and guides usage.
+argument-hint: [topic]
 ---
 
-# Dialogue Framework Help
+# /help Command
 
-Provide help and orientation for the Dialogue Framework plugin.
+You are providing help for the Dialogue Framework. Be helpful and concise.
 
-**Complementary skill:** `dialogue-help` — activates autonomously on triggers like "how does dialogue work", "what commands are available". See `${CLAUDE_PLUGIN_ROOT}/skills/dialogue-help/SKILL.md` for contextual help guidance.
+## Step 1: Determine the Topic
 
-## Responding to Help Requests
+Check for a help topic in this order:
 
-When the user asks for help, determine what kind of help they need:
+1. **Explicit argument**: If `$ARGUMENTS` is provided, that's the topic
+2. **Recent context**: If the conversation makes the topic obvious, use that
+3. **Ask the user**: If neither, ask: "What would you like help with? I can explain commands, document types, phases, collaboration patterns, or help you get started."
 
-1. **General overview** — "help", "what is this framework"
-2. **Command listing** — "what commands", "list commands"
-3. **Specific command** — "help with /create-theory"
-4. **Concept explanation** — "what are document types", "explain phases"
-5. **Getting started** — "how do I start", "first steps"
+## Step 2: Provide Help
 
-## Framework Overview
+Based on the topic, provide the relevant information below. Keep responses focused—don't dump everything at once.
 
-The Dialogue Framework is an AI-augmented SDLC (Software Development Lifecycle) framework that uses structured dialogue, decisions, and observations to enhance project outcomes.
+---
 
-**Core principle:** Software development builds understanding ("theory") in developers' minds. 70-80% of this knowledge is tacit—not captured in documents. The framework helps preserve what can be preserved through:
+## Topics
 
-- **Decision logging** — Recording choices and rationale
-- **Observation logging** — Capturing states, events, measurements
-- **Document creation** — Structured artefacts for different purposes
-- **Process guidance** — Phase-aware collaboration patterns
+### "commands" / "what commands"
 
-## Available Commands
-
-Present this table when users ask about commands:
+Present the available commands:
 
 | Command | Purpose |
 |---------|---------|
@@ -41,94 +35,106 @@ Present this table when users ask about commands:
 | `/create-reference` | Create REF document (catalogues, glossaries, explainers) |
 | `/create-strategy` | Create STR document (decisions, rationale, business cases) |
 | `/create-working` | Create WRK document (ephemeral notes, workshop outputs) |
-| `/help` | This help command |
+| `/help [topic]` | This help command |
 
-**Note:** The plugin also provides skills that activate autonomously based on context (e.g., "log this decision", "capture these notes").
+Mention: "The plugin also has skills that activate automatically—like logging decisions when you say 'I decided to...'"
 
-## Document Types
+### "overview" / "what is this" / general
 
-When users ask about document types, explain:
+The Dialogue Framework is an AI-augmented SDLC framework that uses structured dialogue, decisions, and observations to enhance project outcomes.
 
-| Type | Code | Purpose | Temporal Class |
-|------|------|---------|----------------|
+**Core insight:** 70-80% of software knowledge is tacit—in developers' minds, not documents. The framework helps preserve what can be preserved:
+
+- **Decision logging** — Recording choices and rationale
+- **Observation logging** — Capturing states, events, measurements
+- **Document creation** — Structured artefacts (Theory, Reference, Strategy, Working)
+- **Process guidance** — Phase-aware collaboration patterns
+
+Ask: "Would you like to know more about any of these areas?"
+
+### "documents" / "document types"
+
+| Type | Code | Purpose | Persistence |
+|------|------|---------|-------------|
 | Theory | THY | Integrated understanding, mental models | Standing |
-| Reference | REF | Catalogues, glossaries, structured explanations | Standing |
-| Strategy | STR | Decisions, rationale, business justification | Standing |
-| Working | WRK | Ephemeral notes, analysis, workshop outputs | Ephemeral |
-| ADR | — | Architecture Decision Records (formal alternatives analysis) | Standing |
+| Reference | REF | Catalogues, glossaries, explainers | Standing |
+| Strategy | STR | Decisions, rationale, business cases | Standing |
+| Working | WRK | Notes, analysis, workshop outputs | Ephemeral |
+| ADR | — | Architecture Decision Records | Standing |
 
-**Standing** documents persist and evolve. **Ephemeral** documents capture moments and may be archived.
+**Standing** = persists and evolves. **Ephemeral** = captures a moment, may be archived.
 
-## SDLC Phases
+### "phases" / "sdlc"
 
-When users ask about phases, explain the seven-phase model:
+The framework uses a seven-phase SDLC model:
 
-| Phase | Name | Information Composition |
-|-------|------|------------------------|
-| 1 | Stakeholder Requirements | High tacit (70%), low formal |
-| 2 | System Requirements | Mixed |
-| 3 | Architecture | Balanced tacit/formal |
-| 4 | Design | Increasing formal |
-| 5 | Implementation | High formal, some tacit |
-| 6 | Integration | Mixed |
-| 7 | Transition | High tacit again |
+| Phase | Name | Tacit Knowledge |
+|-------|------|-----------------|
+| 1 | Initiation | High (75%) |
+| 2 | Planning | High (55%) |
+| 3 | Requirements | Medium (40%) |
+| 4 | Design | Medium (35%) |
+| 5 | Implementation | Lower (25%) |
+| 6 | Testing | Lower (20%) |
+| 7 | Operations | Medium (30%) |
 
-**Key insight:** Early and late phases have high tacit knowledge, requiring more human involvement. Middle phases have more formal knowledge, enabling more AI assistance.
+**Key insight:** Early phases are tacit-heavy → require more human involvement. Middle phases are more formal → AI can assist more.
 
-## Collaboration Patterns
+### "patterns" / "collaboration"
 
-When users ask about collaboration, explain the five patterns:
+Five collaboration patterns based on information composition:
 
-| Pattern | Human Role | AI Role |
-|---------|------------|---------|
-| Human-Only | Does everything | None |
-| Human-Led | Drives, decides | Supports, assists |
-| Partnership | Both essential | Both essential |
-| AI-Led | Reviews, approves | Drives, proposes |
-| AI-Only | None | Does everything |
+| Pattern | When to Use |
+|---------|-------------|
+| **Human-Only** | Sensitive stakeholder work, politics |
+| **Human-Led** | Tacit-heavy phases (1, 2), strategic decisions |
+| **Partnership** | Balanced work, design and architecture |
+| **AI-Led** | Formal-heavy work, implementation, testing |
+| **AI-Only** | Routine generation within constraints |
 
-**Framework guidance:** Pattern selection depends on information composition. Tacit-heavy work → Human-Led. Formal-heavy work → AI-Led possible.
+### "capabilities"
 
-## Capabilities
-
-When users ask about capabilities, explain the eight framework capabilities:
+Eight framework capabilities:
 
 | Capability | Description |
 |------------|-------------|
-| **Elicit** | Gathering information from sources |
-| **Analyse** | Examining to understand patterns or significance |
-| **Synthesise** | Combining information into integrated understanding |
-| **Transform** | Converting between representations |
-| **Validate** | Checking against criteria |
-| **Decide** | Choosing among alternatives |
-| **Generate** | Producing artefacts |
-| **Preserve** | Capturing for future use |
+| **Elicit** | Gather information from sources |
+| **Analyse** | Examine for patterns or significance |
+| **Synthesise** | Combine into integrated understanding |
+| **Transform** | Convert between representations |
+| **Validate** | Check against criteria |
+| **Decide** | Choose among alternatives |
+| **Generate** | Produce artefacts |
+| **Preserve** | Capture for future use |
 
-## Getting Started
+### "getting started" / "start" / "how do I"
 
-When users ask how to start:
+1. **Initialise**: Run `/init-dialogue` to create the `.dialogue/` directory
+2. **Know your phase**: Consider which SDLC phase your work is in
+3. **Create documents**: Use `/create-*` commands as needed
+4. **Log as you go**: Say "I decided..." or "I noticed..." and the framework will capture it
+5. **Track work**: Check `.dialogue/work-items.yaml` for project items
 
-1. **Initialise the project** — Run `/init-dialogue` to create the `.dialogue/` directory and config
-2. **Understand your phase** — Consider which SDLC phase your current work is in
-3. **Create documents as needed** — Use `/create-*` commands for structured artefacts
-4. **Log decisions and observations** — The framework will prompt you or you can say "log this decision"
-5. **Review work items** — Check `.dialogue/work-items.yaml` for tracked work
+Ask: "What are you working on? I can suggest how the framework might help."
 
-## Finding More Information
+### Specific command help
 
-Point users to these locations:
-
-| Topic | Location |
-|-------|----------|
-| Framework manual | `implementation/framework-manual.md` |
-| Document types | `concepts/concept_document-type-classification.md` |
-| Phases | `concepts/concept_seven-phase-sdlc.md` |
-| Collaboration patterns | `concepts/concept_collaboration-patterns.md` |
-| Capabilities | `concepts/concept_capability-model.md` |
-
-## Contextual Help
-
-If the user asks about something specific (e.g., "help with theory documents"), read the relevant command or skill file and explain based on its content:
-
+If the user asks about a specific command (e.g., "/create-theory"), read that command file and summarise:
 - Commands: `${CLAUDE_PLUGIN_ROOT}/commands/[name].md`
+
+### Something else
+
+If the topic isn't covered above, check:
 - Skills: `${CLAUDE_PLUGIN_ROOT}/skills/[name]/SKILL.md`
+- Manual: `${CLAUDE_PLUGIN_ROOT}/references/framework-manual.md`
+
+If you can't find relevant information, say so and ask if they'd like help with something else.
+
+---
+
+## Step 3: Offer Next Steps
+
+After providing help, offer a relevant follow-up:
+- "Would you like me to explain any of these in more detail?"
+- "Want me to help you get started with [relevant action]?"
+- "Any other questions about the framework?"
