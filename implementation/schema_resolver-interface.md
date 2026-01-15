@@ -179,13 +179,13 @@ Framework source references return `NOT_SUPPORTED` status.
 | `DEC-YYYYMMDD-HHMMSS` | Decision | `.dialogue/logs/decisions.yaml`, match ID |
 | `OBS-YYYYMMDD-HHMMSS` | Observation | `.dialogue/logs/observations.yaml`, match ID |
 
-### Work Item References
+### Task References
 
 | Pattern | Type | Search Strategy |
 |---------|------|-----------------|
-| `SH-NNN` | Self-Hosting | `.dialogue/work-items.yaml`, match ID |
-| `CD-NNN` | Conceptual Debt | `.dialogue/work-items.yaml`, match ID |
-| `FW-NNN` | Framework | `.dialogue/work-items.yaml`, match ID |
+| `SH-NNN` | Self-Hosting | `.dialogue/tasks.yaml`, match ID |
+| `CD-NNN` | Conceptual Debt | `.dialogue/tasks.yaml`, match ID |
+| `FW-NNN` | Framework | `.dialogue/tasks.yaml`, match ID |
 
 ### Actor References
 

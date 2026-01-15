@@ -46,5 +46,5 @@ logs:
   decisions: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/decisions.yaml"
   observations: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/observations.yaml"
 
-# Work items
-work_items: "file://${CLAUDE_PROJECT_DIR}/.dialogue/work-items.yaml"
+# Tasks
+tasks: "file://${CLAUDE_PROJECT_DIR}/.dialogue/tasks.yaml"

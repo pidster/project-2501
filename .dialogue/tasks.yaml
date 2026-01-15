@@ -1,9 +1,9 @@
-# Work Item Tracking
-# Schema: .claude/skills/dialogue-manage-work-items/schema.md
-# Purpose: Persistent cross-session work item tracking
+# Task Tracking
+# Schema: plugin/skills/dialogue-manage-tasks/schema.md
+# Purpose: Persistent cross-session task tracking
 
 version: "1.0"
-last_updated: "2026-01-15T08:40:00Z"
+last_updated: "2026-01-15T15:05:00Z"
 
 # Work item ID prefix definitions
 prefixes:
@@ -1099,3 +1099,237 @@ items:
     notes: |
       Created 15 January 2026 from user observation during FW-009 review.
       See OBS-20260115-085039.
+
+  # === Subagent Architecture Work Items ===
+
+  - id: "FW-011"
+    title: "Add Subagents to Claude Framework"
+    status: IN_PROGRESS
+    created: "2026-01-15T14:48:00Z"
+    updated: "2026-01-15T17:35:00Z"
+    type: CAPABILITY
+    priority: HIGH
+    description: |
+      Add subagents to the Claude version of the framework. Subagents are actors
+      that execute one or more processes composed from discrete steps, each step
+      aligned 1-1 with a capability.
+
+      Architecture:
+      - Actor (subagent) → executes → Process(es)
+      - Process → composed of → Steps
+      - Step → aligned with → Capability (1-1)
+
+      Development sequence (per tactical decisions):
+      1. Dynamic process creation first; well-known processes emerge later
+      2. Orchestrator-composed first; self-planning subagents later
+
+      Components to build:
+      1. Process definition schema (machine-interpretable, capability-aligned)
+      2. Handoff mechanism (orchestrator → subagent)
+      3. Execution contract (what subagent does, how it logs)
+      4. Audit linkage (execution logs → process definition)
+
+      UX GUIDANCE (MANDATORY):
+      - Claude must NEVER expose process IDs to users (e.g., "Run PROC-5.1?")
+      - Claude must explain intent in plain English (e.g., "I'll implement this
+        feature by analysing the design, writing the code, and running tests")
+      - Process IDs are internal implementation details
+      - User should understand WHAT will happen, not WHICH process definition
+
+    objective: "Subagents can execute dynamically-composed, capability-aligned processes with full audit trail"
+    rationale: |
+      Complexity management: decompose complex tasks into specialised subtasks.
+      Framework alignment: subagents better reflect the framework's conceptual model
+      of capabilities, collaboration patterns, and AI-led/AI-only activities.
+    blocked_by: []
+    blocks: []
+    notes: |
+      Created 15 January 2026.
+      Design decisions logged:
+      - DEC-20260115-144840: Add subagents to Claude framework (DESIGN)
+      - DEC-20260115-145853: Focus on dynamic first, well-known later (TACTICAL)
+      - DEC-20260115-150108: Orchestrator-composed first, self-planning later (TACTICAL)
+      - DEC-20260115-173132: Hybrid architecture (standalone defs + executor agent + Task tool)
+      - DEC-20260115-173448: Plain English user interaction (no process IDs exposed)
+
+      Existing foundation: concept_process-capability-flow.md has capability flow schema.
+      Need to review and identify gaps for executable subagent use.
+
+  - id: "FW-012"
+    title: "Review Process-Capability-Flow Schema"
+    status: COMPLETED
+    created: "2026-01-15T15:05:00Z"
+    updated: "2026-01-15T15:45:00Z"
+    completed: "2026-01-15T15:45:00Z"
+    type: RESEARCH
+    priority: HIGH
+    parent: "FW-011"
+    description: |
+      Review existing concept_process-capability-flow.md and identify gaps
+      for subagent execution use case.
+
+      Questions to answer:
+      1. What exists in the current schema?
+      2. What's needed for machine-interpretability?
+      3. How should process instances vs definitions be distinguished?
+      4. Where does the ProcessManifest fit?
+
+    objective: "Gap analysis complete; requirements for executable schema identified"
+    rationale: "Foundation work before designing new schema extensions"
+    blocked_by: []
+    blocks: ["FW-013"]
+    notes: |
+      Created 15 January 2026 as first task for FW-011.
+
+      === Completed 15 January 2026 ===
+
+      Existing schema covers (design-time documentation):
+      - Process Definition: Identity, Context, Interfaces, Capability flow, Quality gates, Control flow
+      - Capability Instance: Step ID, Capability (1-1), Actor pattern, Escalation triggers, Validation
+      - Actor patterns with constraints C1-C4
+      - Escalation actions: ESCALATE, RETURN, BLOCK, DEFER
+      - Flow patterns: Linear, Iterative, Conditional, Parallel, Escalation branch
+
+      Gaps identified for executable subagent use:
+      1. Format: Prose/pseudo-code → needs machine-readable (YAML/JSON)
+      2. Instance vs Definition: Only definitions exist; need instance creation/tracking
+      3. Execution semantics: What to capture defined; how subagent executes not defined
+      4. State model: Implicit → needs explicit (current step, iteration, suspended state)
+      5. Dynamic composition: Pre-defined processes assumed; ad-hoc composition not addressed
+      6. Audit linkage: Capture mentioned; explicit log→instance→definition links needed
+      7. Handoff mechanism: Not addressed; how definition travels to subagent
+
+      User observation (OBS-20260115-154205): Mermaid diagrams for non-linear process flows
+      - Text-based: machine-parseable
+      - Visual: human-comprehensible when rendered
+      - Inline: can travel with process definition in prompts
+
+      Proposed schema structure:
+      - Steps: YAML/JSON for capability instance details
+      - Flow: Mermaid for control structure (branches, returns, escalations)
+
+      Gap analysis logged as OBS-20260115-154312.
+
+  - id: "FW-013"
+    title: "Executable Process Definition Schema"
+    status: READY
+    created: "2026-01-15T15:05:00Z"
+    updated: "2026-01-15T17:35:00Z"
+    type: SCHEMA
+    priority: HIGH
+    parent: "FW-011"
+    description: |
+      Design machine-interpretable process definition schema for subagent execution.
+
+      Architecture (per DEC-20260115-173132):
+      - Standalone YAML process definition files in plugin/processes/
+      - Generic process-executor agent loads and executes
+      - Task tool invocation for subagent execution
+      - User doesn't need to know framework internals
+
+      Schema components:
+      1. ProcessDefinition: Reusable template (well-known processes)
+         - Steps (YAML): Capability instance details, actor patterns, escalation triggers
+         - Flow (Mermaid): Control structure for non-linear processes
+      2. ProcessInstance: Execution plan (intent)
+         - References definition (or inline for dynamic)
+         - Bound inputs, expected steps, success criteria
+      3. ExecutionLog: Links to DEC-*/OBS-* entries (actuality)
+
+      Key separation: Intent (ProcessInstance) vs Actuality (ExecutionLog)
+      Enables: Plan review before execution, comparison after
+
+    objective: "Schema enables orchestrator to compose processes that subagents can execute"
+    rationale: "Core schema for dynamic process creation capability"
+    blocked_by: []
+    blocks: ["FW-014", "FW-015"]
+    notes: |
+      Created 15 January 2026.
+      Builds on FW-012 gap analysis.
+
+      15 January 2026: Unblocked by FW-012 completion.
+      Key inputs: OBS-20260115-154205 (Mermaid), OBS-20260115-154312 (gap analysis).
+
+      15 January 2026: Architecture decided (DEC-20260115-173132):
+      - Hybrid model: standalone definitions + generic executor agent + Task tool
+      - Intent/Actuality separation: ProcessInstance (plan) vs ExecutionLog (audit)
+      - User experience priority: Claude handles process selection
+
+  - id: "FW-014"
+    title: "Orchestrator-Subagent Handoff Mechanism"
+    status: BACKLOG
+    created: "2026-01-15T15:05:00Z"
+    updated: "2026-01-15T15:05:00Z"
+    type: CAPABILITY
+    priority: HIGH
+    parent: "FW-011"
+    description: |
+      Design and implement mechanism for orchestrator to hand off process
+      definitions to subagents for execution.
+
+      Considerations:
+      - How process definition travels (inline vs file reference)
+      - Context passing (what else subagent needs)
+      - Task tool integration
+      - Subagent type selection
+
+    objective: "Orchestrator can spawn subagent with process definition"
+    rationale: "Enables orchestrator-composed, subagent-executed pattern"
+    blocked_by: ["FW-013"]
+    blocks: ["FW-016"]
+    notes: |
+      Created 15 January 2026.
+
+  - id: "FW-015"
+    title: "Subagent Execution Contract"
+    status: BACKLOG
+    created: "2026-01-15T15:05:00Z"
+    updated: "2026-01-15T15:05:00Z"
+    type: SCHEMA
+    priority: HIGH
+    parent: "FW-011"
+    description: |
+      Define contract for how subagents execute process definitions.
+
+      Must specify:
+      - How subagent interprets process definition
+      - Step execution sequence
+      - Progress logging requirements
+      - Completion/failure signalling
+      - What gets returned to orchestrator
+
+    objective: "Clear contract for subagent execution behaviour"
+    rationale: "Enables consistent, auditable subagent execution"
+    blocked_by: ["FW-013"]
+    blocks: ["FW-016"]
+    notes: |
+      Created 15 January 2026.
+
+  - id: "FW-016"
+    title: "Process Execution Audit Linkage"
+    status: BACKLOG
+    created: "2026-01-15T15:05:00Z"
+    updated: "2026-01-15T15:05:00Z"
+    type: CAPABILITY
+    priority: HIGH
+    parent: "FW-011"
+    description: |
+      Implement audit trail linking execution logs to process definitions.
+
+      Requirements:
+      - Process instance ID generation
+      - Link from execution log entries to process instance
+      - Link from process instance to process definition
+      - Support "what happened and why" queries
+
+      May involve ProcessManifest artefact that captures:
+      - Process definition (inline or reference)
+      - Instance parameters
+      - Execution log entry references
+
+    objective: "Full audit trail from execution back to process definition"
+    rationale: "Auditability requirement identified in design discussion"
+    blocked_by: ["FW-014", "FW-015"]
+    blocks: []
+    notes: |
+      Created 15 January 2026.

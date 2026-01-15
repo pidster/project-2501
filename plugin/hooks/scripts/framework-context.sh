@@ -29,9 +29,9 @@ if echo "$PROMPT_LOWER" | grep -qE "(i noticed|i observed|here'?s an observation
     SIGNALS="$SIGNALS observation-capture"
 fi
 
-# Work item references (SH-NNN, FW-NNN, CD-NNN)
+# Task references (SH-NNN, FW-NNN, CD-NNN)
 if echo "$PROMPT" | grep -qiE "\b(SH|FW|CD)-[0-9]{3}\b"; then
-    SIGNALS="$SIGNALS work-item-context"
+    SIGNALS="$SIGNALS task-context"
 fi
 
 # Reference resolution requests (THY, REF, ADR, DEC, OBS patterns)
@@ -65,25 +65,25 @@ if echo "$PROMPT_LOWER" | grep -qE "(create|write|draft).*(adr|architecture deci
     SIGNALS="$SIGNALS create-adr"
 fi
 
-# Work item candidate detection
-# Only if no existing work item ID referenced (avoid double-signaling)
+# Task candidate detection
+# Only if no existing task ID referenced (avoid double-signaling)
 if ! echo "$PROMPT" | grep -qiE "\b(SH|FW|CD)-[0-9]{3}\b"; then
     # Substantive project-level work patterns
     # Creation: implement, build, create, develop (+ noun suggesting scope)
     # Research: investigate, research, explore, analyse, understand
     # Design: design, architect, plan, prototype
     if echo "$PROMPT_LOWER" | grep -qE "(implement|build|develop|create).*(feature|capability|system|component|integration|module|service|api|framework|plugin)"; then
-        SIGNALS="$SIGNALS work-item-candidate"
+        SIGNALS="$SIGNALS task-candidate"
     elif echo "$PROMPT_LOWER" | grep -qE "(investigate|research|explore|analy[sz]e|understand).*(how|why|what|whether|if|issue|problem|approach|option)"; then
-        SIGNALS="$SIGNALS work-item-candidate"
+        SIGNALS="$SIGNALS task-candidate"
     elif echo "$PROMPT_LOWER" | grep -qE "(design|architect|plan|prototype).*(system|component|approach|solution|integration|interface)"; then
-        SIGNALS="$SIGNALS work-item-candidate"
+        SIGNALS="$SIGNALS task-candidate"
     # Explicit work tracking language
-    elif echo "$PROMPT_LOWER" | grep -qE "(add to|track|capture|record).*(backlog|work item|task list|roadmap)"; then
-        SIGNALS="$SIGNALS work-item-candidate"
+    elif echo "$PROMPT_LOWER" | grep -qE "(add to|track|capture|record).*(backlog|task|task list|roadmap)"; then
+        SIGNALS="$SIGNALS task-candidate"
     # "I need to" / "we need to" + substantive verb
     elif echo "$PROMPT_LOWER" | grep -qE "(i|we) need to.*(implement|build|create|design|investigate|research|develop|integrate)"; then
-        SIGNALS="$SIGNALS work-item-candidate"
+        SIGNALS="$SIGNALS task-candidate"
     fi
 fi
 

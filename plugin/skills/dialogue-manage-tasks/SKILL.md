@@ -1,21 +1,21 @@
 ---
-name: dialogue-manage-work-items
-description: Manage persistent work items in .dialogue/work-items.yaml. Provides guidance for direct YAML editing—no scripts required. Triggers on "create work item", "update work item", "manage work items", "track work".
+name: dialogue-manage-tasks
+description: Manage persistent tasks in .dialogue/tasks.yaml. Provides guidance for direct YAML editing—no scripts required. Triggers on "create task", "new task", "update task", "manage tasks", "track tasks".
 ---
 
-# Skill: Manage Work Items
+# Skill: Manage Tasks
 
-Manage persistent work items in `.dialogue/work-items.yaml`. This skill provides guidance for direct YAML editing—no scripts required.
+Manage persistent tasks in `.dialogue/tasks.yaml`. This skill provides guidance for direct YAML editing—no scripts required.
 
 ## Schema
 
-See [schema.md](./schema.md) for the complete work item schema definition.
+See [schema.md](./schema.md) for the complete task schema definition.
 
 ## When to Use
 
-- Creating new work items
-- Updating work item status
-- Listing or filtering work items
+- Creating new tasks
+- Updating task status
+- Listing or filtering tasks
 - Archiving completed items
 - Adding notes to existing items
 
@@ -26,9 +26,9 @@ See [schema.md](./schema.md) for the complete work item schema definition.
 
 ## Approach
 
-Work item management is an **editing problem**, not a scripting problem:
+Task management is an **editing problem**, not a scripting problem:
 
-1. Read `${CLAUDE_PROJECT_DIR}/.dialogue/work-items.yaml`
+1. Read `${CLAUDE_PROJECT_DIR}/.dialogue/tasks.yaml`
 2. Consult [schema.md](./schema.md) for field definitions
 3. Edit using the Edit tool
 4. Validate changes match schema
@@ -93,9 +93,9 @@ notes: |
 | Aspect | TodoWrite | Work Items File |
 |--------|-----------|-----------------|
 | Scope | Session | Cross-session |
-| Granularity | Tasks | Work items |
+| Granularity | Tasks | Tasks |
 | Use case | "Do X, Y, Z" | "FW-006 tracks this feature" |
 
 ## TMS Alignment
 
-Work items externalise directory knowledge, allocation, and history—enabling AI to "rejoin" ongoing work across sessions.
+Tasks externalise directory knowledge, allocation, and history—enabling AI to "rejoin" ongoing work across sessions.

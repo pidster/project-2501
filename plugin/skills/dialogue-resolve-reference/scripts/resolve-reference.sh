@@ -25,7 +25,7 @@ ADR_DIR="decisions"
 ADR_PATTERN="ADR-*.md"
 DECISIONS_FILE=".dialogue/logs/decisions.yaml"
 OBSERVATIONS_FILE=".dialogue/logs/observations.yaml"
-WORK_ITEMS_FILE=".dialogue/work-items.yaml"
+TASKS_FILE=".dialogue/tasks.yaml"
 
 # Validate required arguments
 if [[ $# -lt 1 ]]; then
@@ -142,7 +142,7 @@ output_invalid_id() {
     "F-N, C-N, I-N, G-N, E-N: Concept documents",
     "DEC-YYYYMMDD-HHMMSS: Decision log entries",
     "OBS-YYYYMMDD-HHMMSS: Observation log entries",
-    "SH-NNN, CD-NNN, FW-NNN: Work items",
+    "SH-NNN, CD-NNN, FW-NNN: Tasks",
     "human:<id>, ai:<id>: Actors"
   ]
 }
@@ -177,8 +177,8 @@ extract_yaml_entry() {
     ' "$file"
 }
 
-# Helper: Extract YAML entry from work items
-extract_work_item() {
+# Helper: Extract YAML entry from tasks
+extract_task() {
     local file="$1"
     local id="$2"
 
@@ -477,32 +477,32 @@ EOF
         return
     fi
 
-    # Work items: SH-NNN, CD-NNN, FW-NNN
+    # Tasks: SH-NNN, CD-NNN, FW-NNN
     if [[ "$id" =~ ^(SH|CD|FW)-([0-9]+)$ ]]; then
         local prefix="${BASH_REMATCH[1]}"
         local num="${BASH_REMATCH[2]}"
-        local work_file="$PROJECT_ROOT/$WORK_ITEMS_FILE"
+        local tasks_file="$PROJECT_ROOT/$TASKS_FILE"
 
-        if [[ ! -f "$work_file" ]]; then
-            output_not_found "$id" "WORK_ITEM" "[\"$WORK_ITEMS_FILE\"]"
+        if [[ ! -f "$tasks_file" ]]; then
+            output_not_found "$id" "TASK" "[\"$TASKS_FILE\"]"
             return
         fi
 
         local entry
-        entry=$(extract_work_item "$work_file" "$id")
+        entry=$(extract_task "$tasks_file" "$id")
 
         if [[ -n "$entry" ]]; then
             local escaped_entry
             escaped_entry=$(json_escape "$entry")
             if [[ "$OUTPUT_FORMAT" == "path" ]]; then
-                echo "$WORK_ITEMS_FILE#$id"
+                echo "$TASKS_FILE#$id"
             elif [[ "$OUTPUT_FORMAT" == "metadata" ]]; then
                 cat <<EOF
 {
   "status": "RESOLVED",
   "id": "$id",
-  "type": "WORK_ITEM",
-  "location": "$WORK_ITEMS_FILE#$id"
+  "type": "TASK",
+  "location": "$TASKS_FILE#$id"
 }
 EOF
             else
@@ -510,14 +510,14 @@ EOF
 {
   "status": "RESOLVED",
   "id": "$id",
-  "type": "WORK_ITEM",
-  "location": "$WORK_ITEMS_FILE#$id",
+  "type": "TASK",
+  "location": "$TASKS_FILE#$id",
   "content": "$escaped_entry"
 }
 EOF
             fi
         else
-            output_not_found "$id" "WORK_ITEM" "[\"$WORK_ITEMS_FILE\"]"
+            output_not_found "$id" "TASK" "[\"$TASKS_FILE\"]"
         fi
         return
     fi

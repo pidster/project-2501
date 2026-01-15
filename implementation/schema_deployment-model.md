@@ -85,7 +85,7 @@ Tooling and infrastructure that projects copy/install to use the framework.
 │   ├── log-decision.sh
 │   └── log-observation.sh
 ├── config.yaml (template)
-├── work-items.yaml (empty template)
+├── tasks.yaml (empty template)
 └── README.md
 
 decisions/
@@ -105,7 +105,7 @@ Content created by projects using the framework.
 |----------|---------|------------|
 | `.dialogue/logs/decisions.yaml` | Decision records | `log-decision.sh` |
 | `.dialogue/logs/observations.yaml` | Observation records | `log-observation.sh` |
-| `.dialogue/work-items.yaml` | Project work items | Manual or AI |
+| `.dialogue/tasks.yaml` | Project tasks | Manual or AI |
 | `decisions/ADR-*.md` | Architecture Decision Records | `create-adr.sh` |
 | `docs/` or custom | THY, REF, STR documents | Project team |
 
@@ -150,8 +150,8 @@ logs:
   decisions: ".dialogue/logs/decisions.yaml"
   observations: ".dialogue/logs/observations.yaml"
 
-# Work items
-work_items: ".dialogue/work-items.yaml"
+# Tasks
+tasks: ".dialogue/tasks.yaml"
 ```
 
 ### Default Locations
@@ -166,7 +166,7 @@ When no configuration exists, the resolver uses sensible defaults:
 | ADR documents | `decisions/ADR-*.md` |
 | Decision log | `.dialogue/logs/decisions.yaml` |
 | Observation log | `.dialogue/logs/observations.yaml` |
-| Work items | `.dialogue/work-items.yaml` |
+| Tasks | `.dialogue/tasks.yaml` |
 
 ### Framework Development Override
 
@@ -226,7 +226,7 @@ artifacts:
 | `THY-NNN`, `REF-NNN`, `STR-NNN` | 3 (Project) | Configured location |
 | `ADR-NNN` | 3 (Project) | Configured location |
 | `DEC-*`, `OBS-*` | 3 (Project) | Log files |
-| `SH-NNN`, `CD-NNN`, `FW-NNN` | 3 (Project) | Work items file |
+| `SH-NNN`, `CD-NNN`, `FW-NNN` | 3 (Project) | Tasks file |
 | `human:<id>`, `ai:<id>` | N/A | Metadata only |
 | `https://...` | N/A | External (WebFetch) |
 

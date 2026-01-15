@@ -93,8 +93,8 @@ tool_access:
         TodoWrite provides session-level ephemeral task tracking.
         Useful for tracking work within a session but requires
         complementary persistent storage for cross-session tracking.
-        Framework extends this via .dialogue/work-items.yaml for
-        persistent work item tracking.
+        Framework extends this via .dialogue/tasks.yaml for
+        persistent task tracking.
 
 context_provision:
   standing_context:

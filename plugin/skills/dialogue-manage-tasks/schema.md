@@ -1,4 +1,4 @@
-# Schema: Work Item Tracking
+# Schema: Task Tracking
 
 **Version**: 1
 **Status**: ACTIVE
@@ -7,7 +7,7 @@
 
 ## Purpose
 
-This schema defines the YAML structure for persistent work item tracking. Work items tracked in `.dialogue/work-items.yaml` conform to this schema.
+This schema defines the YAML structure for persistent task tracking. Work items tracked in `.dialogue/tasks.yaml` conform to this schema.
 
 This is the **authoritative schema** for deployed frameworks. See [SKILL.md](./SKILL.md) for operational guidance on using this schema.
 
@@ -38,7 +38,7 @@ prefixes:                        # Work item ID prefix definitions
     name: string                 # Human-readable name
     description: string          # Purpose of this prefix
 
-items:                           # Array of work items
+items:                           # Array of tasks
   - <WorkItem>
 ---
 ```
@@ -47,7 +47,7 @@ items:                           # Array of work items
 
 #### Required Fields
 
-All work items MUST include these fields:
+All tasks MUST include these fields:
 
 ```yaml
 id: string          # Unique identifier: [PREFIX]-[NNN]
@@ -92,7 +92,7 @@ rationale: string        # Why this work is needed
 Work items MAY include these fields:
 
 ```yaml
-blocked_by: string[]     # IDs of blocking work items
+blocked_by: string[]     # IDs of blocking tasks
 blocks: string[]         # IDs of items this blocks
 assigned_to: string      # Actor identifier
 completed: ISO8601       # Completion timestamp (if status = COMPLETED)
@@ -101,8 +101,8 @@ notes: string            # Free-form notes, history, context
 
 | Field | Type | Constraints | Example |
 |-------|------|-------------|---------|
-| `blocked_by` | array | Array of work item IDs | `["SH-001", "SH-002"]` |
-| `blocks` | array | Array of work item IDs | `["SH-003"]` |
+| `blocked_by` | array | Array of task IDs | `["SH-001", "SH-002"]` |
+| `blocks` | array | Array of task IDs | `["SH-003"]` |
 | `assigned_to` | string | Actor reference | `human:pid`, `ai:claude` |
 | `completed` | string | ISO 8601 datetime | `2026-01-14T15:00:00Z` |
 | `notes` | string | Multiline allowed | See examples |
@@ -169,14 +169,14 @@ Work item IDs follow pattern `PREFIX-NNN` where:
 ## Complete Example
 
 ```yaml
-# .dialogue/work-items.yaml
+# .dialogue/tasks.yaml
 version: "1.0"
 last_updated: "2026-01-14T14:00:00Z"
 
 prefixes:
   - prefix: "SH"
     name: "Self-Hosting"
-    description: "Framework self-application work items"
+    description: "Framework self-application tasks"
   - prefix: "CD"
     name: "Conceptual Debt"
     description: "Framework concept gaps and improvements"
@@ -248,14 +248,14 @@ items:
 ### Loading at Session Start
 
 AI agents SHOULD:
-1. Read `.dialogue/work-items.yaml`
+1. Read `.dialogue/tasks.yaml`
 2. Identify items with status `IN_PROGRESS` or `READY` with high priority
 3. Load relevant items into TodoWrite for session visibility
 4. Note any items in BLOCKED status for context
 
 ### Updating During Session
 
-When work item status changes:
+When task status changes:
 1. Update `status` field
 2. Update `updated` timestamp
 3. If completing: set `completed` timestamp
@@ -263,7 +263,7 @@ When work item status changes:
 
 ### Creating New Items
 
-When creating a new work item:
+When creating a new task:
 1. Check `prefixes` for appropriate prefix (add if needed)
 2. Determine next sequence number for that prefix
 3. Set `status` to BACKLOG or READY as appropriate
@@ -299,4 +299,4 @@ This schema implements a subset of the Work Coordination concept (O-3):
 
 ---
 
-*This schema enables persistent work item tracking while remaining human-readable and editable. It complements the session-level TodoWrite tool for cross-session continuity.*
+*This schema enables persistent task tracking while remaining human-readable and editable. It complements the session-level TodoWrite tool for cross-session continuity.*

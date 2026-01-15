@@ -1,6 +1,6 @@
 ---
 name: dialogue-resolve-reference
-description: Resolves framework reference IDs to their content. Use when you need to look up a document, decision, observation, work item, or ADR by its ID. Triggers on "resolve reference", "look up THY-001", "find DEC-...", "get content of", "what is ADR-001".
+description: Resolves framework reference IDs to their content. Use when you need to look up a document, decision, observation, task, or ADR by its ID. Triggers on "resolve reference", "look up THY-001", "find DEC-...", "get content of", "what is ADR-001".
 allowed-tools: Bash
 ---
 
@@ -13,7 +13,7 @@ Resolves framework reference IDs to their content. This skill implements the ret
 Use this skill when you need to:
 - Look up a project document by its ID (THY-001, REF-001, STR-001, ADR-001)
 - Find a decision or observation log entry
-- Retrieve a work item's details
+- Retrieve a task's details
 
 **Do NOT use for:**
 - External URLs → use WebFetch
@@ -29,7 +29,7 @@ Default locations:
 - THY/REF/STR documents: `implementation/` (framework dev) or `docs/` (typical deployments)
 - ADR documents: `decisions/`
 - Logs: `.dialogue/logs/`
-- Work items: `.dialogue/work-items.yaml`
+- Work items: `.dialogue/tasks.yaml`
 
 ## How to Resolve a Reference
 
@@ -77,13 +77,13 @@ ${CLAUDE_PLUGIN_ROOT}/skills/dialogue-resolve-reference/scripts/resolve-referenc
 | `DEC-YYYYMMDD-HHMMSS` | Decision | `.dialogue/logs/decisions.yaml` | `DEC-20260114-091633` |
 | `OBS-YYYYMMDD-HHMMSS` | Observation | `.dialogue/logs/observations.yaml` | `OBS-20260114-094825` |
 
-### Work Items (Resolvable)
+### Tasks (Resolvable)
 
 | Pattern | Type | Location | Example |
 |---------|------|----------|---------|
-| `SH-NNN` | Self-Hosting | `.dialogue/work-items.yaml` | `SH-002` |
-| `CD-NNN` | Conceptual Debt | `.dialogue/work-items.yaml` | `CD-001` |
-| `FW-NNN` | Framework | `.dialogue/work-items.yaml` | `FW-003` |
+| `SH-NNN` | Self-Hosting | `.dialogue/tasks.yaml` | `SH-002` |
+| `CD-NNN` | Conceptual Debt | `.dialogue/tasks.yaml` | `CD-001` |
+| `FW-NNN` | Framework | `.dialogue/tasks.yaml` | `FW-003` |
 
 ### Actors (Metadata Only)
 
@@ -123,7 +123,7 @@ ${CLAUDE_PLUGIN_ROOT}/skills/dialogue-resolve-reference/scripts/resolve-referenc
 ${CLAUDE_PLUGIN_ROOT}/skills/dialogue-resolve-reference/scripts/resolve-reference.sh DEC-20260114-091633
 ```
 
-### Get Work Item Metadata
+### Get Task Metadata
 ```bash
 ${CLAUDE_PLUGIN_ROOT}/skills/dialogue-resolve-reference/scripts/resolve-reference.sh SH-002 metadata
 ```

@@ -113,7 +113,7 @@ Eight framework capabilities:
 2. **Know your phase**: Consider which SDLC phase your work is in
 3. **Create documents**: Use `/create-*` commands as needed
 4. **Log as you go**: Say "I decided..." or "I noticed..." and the framework will capture it
-5. **Track work**: Check `.dialogue/work-items.yaml` for project items
+5. **Track work**: Check `.dialogue/tasks.yaml` for project tasks
 
 Ask: "What are you working on? I can suggest how the framework might help."
 

@@ -118,7 +118,7 @@ For each framework component, design tool-specific implementation:
 - Dialogue skills → Claude Code skills in `.claude/skills/`
 - Process flows → Agent definitions in `.claude/agents/`
 - Logging → Scripts in `.dialogue/` with skills as wrappers
-- Work tracking → `.dialogue/work-items.yaml` (cross-session), TodoWrite (session-level)
+- Work tracking → `.dialogue/tasks.yaml` (cross-session), TodoWrite (session-level)
 - Standing guidance → Rules in `.claude/rules/`
 
 ### Step 3: Generate
@@ -145,7 +145,7 @@ Files in `implementation/` follow these naming patterns:
 
 | Type | Pattern | Example |
 |------|---------|---------|
-| **Schemas** | `schema_<name>.md` | `schema_work-items.md`, `schema_document-frontmatter.md` |
+| **Schemas** | `schema_<name>.md` | `schema_tasks.md`, `schema_document-frontmatter.md` |
 | **Registries** | `registry_<tool>.yaml` | `registry_claude-code.yaml` |
 | **Theory documents** | `theory_<name>.md` | `theory_framework.md` |
 | **Reference documents** | `ref_<name>.md` | `ref_framework-concepts.md` |
@@ -189,22 +189,22 @@ The `.dialogue/` directory contains runtime artifacts for framework operation:
 ├── logs/
 │   ├── decisions.yaml     # Decision log (YAML stream)
 │   └── observations.yaml  # Observation log (YAML stream)
-├── work-items.yaml        # Persistent work item tracking
+├── tasks.yaml        # Persistent task tracking
 └── README.md              # Format specification
 ```
 
 ### Work Item Tracking
 
-Work items are tracked at two levels:
+Tasks are tracked at two levels:
 
 | Level | Mechanism | Persistence | Use Case |
 |-------|-----------|-------------|----------|
 | **Session** | TodoWrite tool | Ephemeral | Active work during session |
-| **Cross-session** | `.dialogue/work-items.yaml` | Persistent | Backlog and continuity |
+| **Cross-session** | `.dialogue/tasks.yaml` | Persistent | Backlog and continuity |
 
-**Pattern**: Load relevant items from `work-items.yaml` into TodoWrite at session start. Update `work-items.yaml` as work completes.
+**Pattern**: Load relevant items from `tasks.yaml` into TodoWrite at session start. Update `tasks.yaml` as work completes.
 
-Schema: [schema_work-items.md](./schema_work-items.md)
+Schema: [schema_tasks.md](./schema_tasks.md)
 
 ---
 
@@ -215,7 +215,7 @@ Schema: [schema_work-items.md](./schema_work-items.md)
 | [Framework Manual](./framework-manual.md) | Operational reference (tool-agnostic) |
 | [Claude Code Registry](./registries/registry_claude-code.yaml) | Tool capability documentation |
 | [THY-001](./theory_framework.md) | Framework theory |
-| [Work Items Schema](./schema_work-items.md) | Work item format specification |
+| [Work Items Schema](./schema_tasks.md) | Task format specification |
 
 ---
 
