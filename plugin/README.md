@@ -24,6 +24,19 @@ claude --plugin-dir ./plugin
 
 Copy the `plugin/` directory to your Claude Code plugins location or install from marketplace (when published).
 
+## Commands
+
+User-invoked commands for explicit actions.
+
+| Command | Purpose |
+|---------|---------|
+| `/init-dialogue` | Initialise framework for a project (creates `.dialogue/` directory) |
+| `/create-theory` | Create THY document (integrated understanding, the "why") |
+| `/create-reference` | Create REF document (catalogues, glossaries, explainers) |
+| `/create-strategy` | Create STR document (decisions, rationale, business cases) |
+| `/create-working` | Create WRK document (ephemeral notes, workshop outputs) |
+| `/help` | Get help with the framework, list commands, explain concepts |
+
 ## Skills
 
 ### Core Logging Skills
@@ -84,6 +97,42 @@ Verify that required logging occurred during process execution.
 Manage persistent work items in `.dialogue/work-items.yaml`. Guidance-only skill for direct YAML editing.
 
 **Triggers**: "create work item", "update work item", "manage work items", "track work"
+
+### Document Creation Skills
+
+These skills activate autonomously and reference their corresponding commands for implementation.
+
+#### dialogue-create-theory
+
+Create Theory (THY) documents capturing integrated understanding.
+
+**Triggers**: "capture theory", "document understanding", "write theory", "explain why this works"
+
+#### dialogue-create-reference
+
+Create Reference (REF) documents for catalogues, glossaries, and explainers.
+
+**Triggers**: "create reference", "document concepts", "make glossary", "catalogue these"
+
+#### dialogue-create-strategy
+
+Create Strategy (STR) documents for decisions and rationale.
+
+**Triggers**: "document strategy", "record strategic decision", "capture rationale"
+
+#### dialogue-create-working
+
+Create Working (WRK) documents for ephemeral process artefacts.
+
+**Triggers**: "capture notes", "document meeting", "record workshop", "save analysis"
+
+### Help Skill
+
+#### dialogue-help
+
+Provide contextual help and orientation for the Dialogue Framework.
+
+**Triggers**: "how does dialogue work", "what commands", "explain phases", "framework help"
 
 ## Agents
 
