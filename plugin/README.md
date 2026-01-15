@@ -34,7 +34,7 @@ User-invoked commands for explicit actions.
 | `/create-theory` | Create THY document (integrated understanding, the "why") |
 | `/create-reference` | Create REF document (catalogues, glossaries, explainers) |
 | `/create-strategy` | Create STR document (decisions, rationale, business cases) |
-| `/create-working` | Create WRK document (ephemeral notes, workshop outputs) |
+| `/create-note` | Create NOT document (ephemeral notes, workshop outputs) |
 | `/help` | Get help with the framework, list commands, explain concepts |
 
 ## Skills
@@ -120,9 +120,9 @@ Create Strategy (STR) documents for decisions and rationale.
 
 **Triggers**: "document strategy", "record strategic decision", "capture rationale"
 
-#### dialogue-create-working
+#### dialogue-create-note
 
-Create Working (WRK) documents for ephemeral process artefacts.
+Create Note (NOT) documents for ephemeral process artefacts.
 
 **Triggers**: "capture notes", "document meeting", "record workshop", "save analysis"
 

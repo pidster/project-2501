@@ -34,7 +34,7 @@ Present the available commands:
 | `/create-theory` | Create THY document (integrated understanding, the "why") |
 | `/create-reference` | Create REF document (catalogues, glossaries, explainers) |
 | `/create-strategy` | Create STR document (decisions, rationale, business cases) |
-| `/create-working` | Create WRK document (ephemeral notes, workshop outputs) |
+| `/create-note` | Create NOT document (ephemeral notes, workshop outputs) |
 | `/help [topic]` | This help command |
 
 Mention: "The plugin also has skills that activate automatically—like logging decisions when you say 'I decided to...'"
@@ -59,7 +59,7 @@ Ask: "Would you like to know more about any of these areas?"
 | Theory | THY | Integrated understanding, mental models | Standing |
 | Reference | REF | Catalogues, glossaries, explainers | Standing |
 | Strategy | STR | Decisions, rationale, business cases | Standing |
-| Working | WRK | Notes, analysis, workshop outputs | Ephemeral |
+| Note | NOT | Notes, analysis, workshop outputs | Ephemeral |
 | ADR | — | Architecture Decision Records | Standing |
 
 **Standing** = persists and evolves. **Ephemeral** = captures a moment, may be archived.

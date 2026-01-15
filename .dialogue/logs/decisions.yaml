@@ -660,3 +660,73 @@ outcome: "Extended C-3 with retrograde navigation section: phases as character n
 rationale: "Backward events are valid process outcomes that framework should help navigate, not just trace; addresses gap where current framing treats retrograde steps negatively"
 context: "User insight OBS-20260115-091213: emergent information triggers retrograde steps as process outcome; linear feature vectors cause change-handling debates"
 tags: ["architecture", "phases", "process"]
+---
+id: DEC-20260115-144840
+timestamp: "2026-01-15T14:48:40Z"
+type: DESIGN
+actor: "human:pidster"
+subject: "Claude framework subagents"
+outcome: "Add subagents to the Claude version of the framework"
+rationale: "Decompose complex tasks into specialised subtasks; better aligns with framework conceptual model"
+context: "Current Claude framework lacks subagent capability"
+tags: ["framework", "claude", "subagents"]
+---
+id: DEC-20260115-145853
+timestamp: "2026-01-15T14:58:53Z"
+type: TACTICAL
+actor: "human:pidster"
+subject: "Subagent development approach"
+outcome: "Focus on dynamic process creation first; promote good processes to well-known later"
+rationale: "Avoids premature standardisation; lets patterns emerge from practice"
+context: "Discussed predefined vs dynamic trade-offs"
+tags: ["framework", "subagents", "development"]
+---
+id: DEC-20260115-150108
+timestamp: "2026-01-15T15:01:08Z"
+type: TACTICAL
+actor: "human:pidster"
+subject: "Subagent autonomy sequence"
+outcome: "Build orchestrator-composed processes first; extend to self-planning subagents later"
+rationale: "Former is prerequisite for latter; incremental capability building"
+context: "Discussed orchestrator vs autonomous subagent planning"
+tags: ["framework", "subagents", "development"]
+---
+id: DEC-20260115-173132
+timestamp: "2026-01-15T17:31:32Z"
+type: DESIGN
+actor: "human:pidster"
+subject: "Subagent process architecture"
+outcome: "Hybrid model: standalone process definitions + generic process-executor agent + Task tool invocation"
+rationale: "Best user experience - user doesn't need to know framework internals; Claude handles process selection and can check with user if uncertain"
+context: "Evaluated four storage options and three execution mechanisms"
+tags: ["subagents", "architecture", "FW-013"]
+---
+id: DEC-20260115-173448
+timestamp: "2026-01-15T17:34:48Z"
+type: DESIGN
+actor: "human:pidster"
+subject: "User-facing process language"
+outcome: "Claude must never expose process IDs to users; must explain intent in plain English"
+rationale: "Framework internals are implementation details; users should understand what will happen, not which process definition is being invoked"
+context: "Follows from user experience priority in DEC-20260115-173132"
+tags: ["subagents", "UX", "FW-013"]
+---
+id: DEC-20260115-194510
+timestamp: "2026-01-15T19:45:10Z"
+type: DESIGN
+actor: "human:pidster"
+subject: "Plugin self-containment architecture"
+outcome: "Plugin must be independently deployable with all operational content embedded; host project produces the plugin as a build artifact"
+rationale: "Plugin portability requires no external dependencies on host project files. The framework manual and operational content are distilled/copied from source (implementation/, concepts/) into plugin/references/. External links to build artefacts are elided. This enables the plugin to be deployed to other projects without requiring the full framework development repository."
+context: "Triggered by need for plugin to operate correctly without external links"
+tags: ["architecture", "plugin", "self-containment"]
+---
+id: DEC-20260115-200149
+timestamp: "2026-01-15T20:01:49Z"
+type: DESIGN
+actor: "human:pidster"
+subject: "Rename Working documents to Note documents"
+outcome: "Changed document type from WRK (Working) to NOT (Note); renamed /create-working to /create-note"
+rationale: "Note better describes the ephemeral capture purpose; NOT is a clearer mnemonic than WRK"
+context: "During plugin development session, reviewing document type naming"
+tags: ["plugin", "naming", "documents"]
