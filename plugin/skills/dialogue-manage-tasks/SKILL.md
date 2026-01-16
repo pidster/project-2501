@@ -1,11 +1,11 @@
 ---
 name: dialogue-manage-tasks
-description: Manage persistent tasks in .dialogue/tasks.yaml. Provides guidance for direct YAML editing—no scripts required. Triggers on "create task", "new task", "update task", "manage tasks", "track tasks".
+description: Manage persistent tasks in .dialogue/tasks/. Each task is a separate YAML file for merge-friendly multi-user workflows. Triggers on "create task", "new task", "update task", "manage tasks", "active tasks", "task status".
 ---
 
 # Skill: Manage Tasks
 
-Manage persistent tasks in `.dialogue/tasks.yaml`. This skill provides guidance for direct YAML editing—no scripts required.
+Manage persistent tasks in `.dialogue/tasks/`. Each task is stored as a separate YAML file (e.g., `FW-008.yaml`) for merge-friendly multi-user workflows.
 
 ## Schema
 
@@ -28,10 +28,11 @@ See [schema.md](./schema.md) for the complete task schema definition.
 
 Task management is an **editing problem**, not a scripting problem:
 
-1. Read `${CLAUDE_PROJECT_DIR}/.dialogue/tasks.yaml`
-2. Consult [schema.md](./schema.md) for field definitions
-3. Edit using the Edit tool
-4. Validate changes match schema
+1. List tasks: `ls ${CLAUDE_PROJECT_DIR}/.dialogue/tasks/`
+2. Read specific task: `${CLAUDE_PROJECT_DIR}/.dialogue/tasks/{ID}.yaml`
+3. Consult [schema.md](./schema.md) for field definitions
+4. Edit using the Edit tool (or Write for new tasks)
+5. Validate changes match schema
 
 ## Quick Reference
 
@@ -40,7 +41,7 @@ Task management is an **editing problem**, not a scripting problem:
 | Field | Pattern | Example |
 |-------|---------|---------|
 | `id` | `[A-Z]{2,4}-[0-9]{3}` | `FW-006` |
-| `title` | Non-empty string | `Work Item Management` |
+| `title` | Non-empty string | `task Management` |
 | `status` | Enum | `READY` |
 | `created` | ISO 8601 | `2026-01-14T17:30:00Z` |
 
@@ -60,22 +61,124 @@ Also: `BLOCKED`, `CANCELLED`
 | `DOC` | Documentation |
 | `VAL` | Validation |
 
-## Operations
+## Utility Scripts
 
-### Create New Work Item
+The `scripts/` directory contains utility scripts for common operations:
 
-1. Find highest existing ID for prefix (e.g., FW-006)
-2. Use next number (FW-007)
-3. Set `status: BACKLOG` or `READY`
-4. Set `created` to current timestamp
-5. Update `last_updated` at file top
+### list-tasks.sh
+
+List tasks with filtering and sorting options.
+
+```bash
+# List all active tasks (excludes COMPLETED/CANCELLED by default)
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh
+
+# List in-progress tasks only
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh --active
+
+# List ready tasks only
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh --ready
+
+# Filter by type
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh --type CAPABILITY
+
+# Filter by priority
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh --priority HIGH
+
+# Filter by prefix
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh --prefix FW
+
+# Sort by priority
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh --sort priority
+
+# Include completed/cancelled tasks
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh --all
+
+# Output formats: table (default), brief, json
+${CLAUDE_PLUGIN_ROOT}/scripts/list-tasks.sh --format json
+```
+
+### count-tasks.sh
+
+Count tasks with optional grouping.
+
+```bash
+# Total count (active tasks)
+${CLAUDE_PLUGIN_ROOT}/scripts/count-tasks.sh
+
+# Count by status
+${CLAUDE_PLUGIN_ROOT}/scripts/count-tasks.sh --by status
+
+# Count by type
+${CLAUDE_PLUGIN_ROOT}/scripts/count-tasks.sh --by type
+
+# Count by priority
+${CLAUDE_PLUGIN_ROOT}/scripts/count-tasks.sh --by priority
+
+# Count by prefix
+${CLAUDE_PLUGIN_ROOT}/scripts/count-tasks.sh --by prefix
+
+# Count only READY tasks by type
+${CLAUDE_PLUGIN_ROOT}/scripts/count-tasks.sh --status READY --by type
+
+# JSON output
+${CLAUDE_PLUGIN_ROOT}/scripts/count-tasks.sh --by status --format json
+```
+
+### create-task.sh
+
+Create a new task with auto-generated ID.
+
+```bash
+# Minimal: creates BACKLOG task with MEDIUM priority
+${CLAUDE_PLUGIN_ROOT}/scripts/create-task.sh FW "New feature implementation"
+
+# With options
+${CLAUDE_PLUGIN_ROOT}/scripts/create-task.sh FW "Implement caching" \
+  --status READY \
+  --type CAPABILITY \
+  --priority HIGH \
+  --description "Add caching layer to improve performance" \
+  --objective "Response times under 100ms" \
+  --rationale "Current response times are 500ms+"
+
+# With dependencies
+${CLAUDE_PLUGIN_ROOT}/scripts/create-task.sh FW "Deploy to production" \
+  --blocked-by "FW-015,FW-016" \
+  --status BLOCKED
+
+# Use specific ID
+${CLAUDE_PLUGIN_ROOT}/scripts/create-task.sh FW "Specific task" --id FW-099
+```
+
+**Output**: Prints the created task ID (e.g., `FW-018`)
+
+### next-id.sh
+
+Get the next available ID for a prefix.
+
+```bash
+# Returns next available ID (e.g., FW-018)
+${CLAUDE_PLUGIN_ROOT}/scripts/next-id.sh FW
+
+# Works with any valid prefix
+${CLAUDE_PLUGIN_ROOT}/scripts/next-id.sh SH
+${CLAUDE_PLUGIN_ROOT}/scripts/next-id.sh DOC
+```
+
+---
+
+## Manual Operations
+
+For operations not covered by scripts, edit task files directly:
 
 ### Update Status
 
-1. Change `status` field
-2. Update `updated` timestamp
-3. If completing: add `completed` timestamp
-4. Append to `notes` with context
+1. Edit the task file: `.dialogue/tasks/{ID}.yaml`
+2. Change `status` field
+3. Update `updated` timestamp
+4. If completing: add `completed` timestamp
+5. Append to `notes` with context
 
 ### Add Notes
 
@@ -90,12 +193,19 @@ notes: |
 
 ## Relationship to TodoWrite
 
-| Aspect | TodoWrite | Work Items File |
-|--------|-----------|-----------------|
+| Aspect | TodoWrite | Task Files |
+|--------|-----------|------------|
 | Scope | Session | Cross-session |
-| Granularity | Tasks | Tasks |
-| Use case | "Do X, Y, Z" | "FW-006 tracks this feature" |
+| Storage | In-memory | `.dialogue/tasks/*.yaml` |
+| Use case | "Do X, Y, Z now" | "FW-006 tracks this feature" |
 
 ## TMS Alignment
 
 Tasks externalise directory knowledge, allocation, and history—enabling AI to "rejoin" ongoing work across sessions.
+
+## Multi-User Workflow
+
+Each task is a separate file, enabling:
+- Independent changes to different tasks
+- Clean git merges when users work on different tasks
+- Conflict isolation to single-task scope
