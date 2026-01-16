@@ -1,0 +1,12 @@
+username: "pidster"
+last_session: "2026-01-16T18:45:00Z"
+active_focus: "FW-017 completed; FW-008 research ongoing"
+recent_tasks:
+  - "FW-017"  # Completed
+recent_decisions:
+  - "DEC-20260116-180240"
+open_questions: []
+notes: |
+  FW-017 (Merge-Friendly Artifact Structure) completed.
+  All artifacts now use per-file structure for merge-friendly multi-user workflows.
+  Session memos are per-user files read at SessionStart.
