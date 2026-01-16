@@ -1,6 +1,6 @@
 #!/bin/bash
 # log-decision.sh — Append a decision entry to the decision log
-# Part of the AI-Augmented SDLC Framework
+# Part of the Dialogue Framework
 # Usage: log-decision.sh <type> <actor> <subject> <outcome> <rationale> [context] [tags] [ref]
 
 set -euo pipefail

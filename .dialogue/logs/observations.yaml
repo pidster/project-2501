@@ -454,3 +454,84 @@ subject: "Framework meta-application"
 value: "This work (producing the plugin as self-contained artifact) is an example of using the framework to produce the framework's executable form - meta-application in action"
 context: "Plugin self-containment work"
 tags: ["meta", "framework-development"]
+---
+id: OBS-20260116-085625
+timestamp: "2026-01-16T08:56:25Z"
+type: STATE
+observer: "human:pidster"
+subject: "CLAUDE_PROJECT_DIR env var"
+value: "Not set at session start, causing log-decision script failure"
+context: "Script requires env var but Claude session did not have it configured"
+tags: ["environment", "configuration", "hook"]
+---
+id: OBS-20260116-085924
+timestamp: "2026-01-16T08:59:24Z"
+type: STATE
+observer: "ai:claude"
+subject: "CLAUDE_PROJECT_DIR availability"
+value: "Variable available to hooks but not Bash tool; requires SessionStart hook to persist via CLAUDE_ENV_FILE"
+context: "Investigation triggered by script failures when logging decisions"
+tags: ["environment", "hooks", "configuration"]
+---
+id: OBS-20260116-090729
+timestamp: "2026-01-16T09:07:29Z"
+type: STATE
+observer: "human:pidster"
+subject: "Day of week"
+value: "It is Friday"
+context: "Session start observation"
+tags: ["temporal"]
+---
+id: OBS-20260116-090837
+timestamp: "2026-01-16T09:08:37Z"
+type: STATE
+observer: "human:pidster"
+subject: "Environment configuration"
+value: "Test passed, env var now set"
+context: "Dialogue framework logging validation"
+tags: ["testing", "configuration"]
+---
+id: OBS-20260116-115950
+timestamp: "2026-01-16T11:59:50Z"
+type: STATE
+observer: "ai:claude"
+subject: "Decision type distinction"
+value: "Distinction between operational choices (routine, convention-following) and deliberate decisions (conscious selection with rationale). Most simple task choices are operational, not decisional."
+context: "Emerged during arithmetic task meta-discussion"
+tags: ["framework", "decisions", "logging"]
+---
+id: OBS-20260116-115950
+timestamp: "2026-01-16T11:59:50Z"
+type: STATE
+observer: "ai:claude"
+subject: "Logging recursion"
+value: "Decisions about when to log are themselves decisions that may warrant logging - creates potential infinite regress without clear boundary."
+context: "Meta-discussion about logging scope"
+tags: ["framework", "decisions", "logging", "meta"]
+---
+id: OBS-20260116-120035
+timestamp: "2026-01-16T12:00:35Z"
+type: STATE
+observer: "ai:claude"
+subject: "Observation ID collision"
+value: "Two observations logged in same second received identical IDs (OBS-20260116-115950). Timestamp-based ID generation lacks sub-second granularity."
+context: "Discovered during parallel observation logging"
+tags: ["framework", "logging", "bug"]
+---
+id: OBS-20260116-125632
+timestamp: "2026-01-16T12:56:32Z"
+type: STATE
+observer: "human:pidster"
+subject: "Session start hook"
+value: "Modified to be more minimal; returning correct status as intended"
+context: "check-dialogue-init.sh was intentionally simplified"
+tags: ["hooks", "configuration"]
+---
+id: OBS-20260116-130100
+timestamp: "2026-01-16T13:01:00Z"
+type: STATE
+observer: "ai:claude"
+subject: "Stop hook systemMessage field visibility"
+value: "systemMessage on approve shown to user as 'Stop says: ...' but not injected into Claude context; reason on block shown to both; stop_hook_active scoped per-response cycle"
+context: "Testing stop-loop-guard.sh hook behaviour"
+tags: ["hooks", "claude-code"]

@@ -1,4 +1,4 @@
-# AI-Augmented SDLC Framework
+# Dialogue Framework
 
 ## Project Overview
 

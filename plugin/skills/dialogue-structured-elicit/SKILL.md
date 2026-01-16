@@ -225,4 +225,4 @@ If "Still being defined" or "Multiple competing framings", switch to Facilitator
 
 ---
 
-*Part of the AI-Augmented SDLC Framework dialogue system*
+*Part of the Dialogue Framework*

@@ -730,3 +730,90 @@ outcome: "Changed document type from WRK (Working) to NOT (Note); renamed /creat
 rationale: "Note better describes the ephemeral capture purpose; NOT is a clearer mnemonic than WRK"
 context: "During plugin development session, reviewing document type naming"
 tags: ["plugin", "naming", "documents"]
+---
+id: DEC-20260116-085538
+timestamp: "2026-01-16T08:55:38Z"
+type: OPERATIONAL
+actor: "ai:claude"
+subject: "Range interpretation"
+outcome: "Interpreted 0-9 as inclusive (0 through 9)"
+rationale: "Assumed everyday speech convention; Python range() would exclude 9"
+context: "User asked to add odd numbers from 0-9; ambiguity not surfaced"
+tags: ["interpretation", "assumption"]
+---
+id: DEC-20260116-085538
+timestamp: "2026-01-16T08:55:38Z"
+type: OPERATIONAL
+actor: "ai:claude"
+subject: "Definition of odd"
+outcome: "Used standard mathematical definition (not divisible by 2)"
+rationale: "Most likely intended meaning; no domain-specific alternative apparent"
+context: "User did not define odd; assumed shared understanding"
+tags: ["interpretation", "assumption"]
+---
+id: DEC-20260116-085538
+timestamp: "2026-01-16T08:55:38Z"
+type: OPERATIONAL
+actor: "ai:claude"
+subject: "Verification method"
+outcome: "Used n-squared property as cross-check"
+rationale: "Mathematical proof stronger than re-adding; demonstrates understanding"
+context: "User asked to check work but did not specify method"
+tags: ["verification", "approach"]
+---
+id: DEC-20260116-090007
+timestamp: "2026-01-16T09:00:07Z"
+type: DESIGN
+actor: "ai:claude"
+subject: "CLAUDE_PROJECT_DIR persistence"
+outcome: "Added SessionStart hook to persist CLAUDE_PROJECT_DIR to CLAUDE_ENV_FILE"
+rationale: "Ensures variable available in all Bash tool invocations, not just hook contexts"
+context: "Investigation found variable only injected into hooks; scripts invoked via Bash tool failed"
+tags: ["hooks", "environment", "fix"]
+---
+id: DEC-20260116-090808
+timestamp: "2026-01-16T09:08:08Z"
+type: OPERATIONAL
+actor: "human:pidster"
+subject: "Caffeine intake"
+outcome: "Make another coffee"
+rationale: "Friday energy requirements"
+tags: ["personal", "friday"]
+---
+id: DEC-20260116-114935
+timestamp: "2026-01-16T11:49:35Z"
+type: DESIGN
+actor: "human:pidster"
+subject: "Stop hook compliance checking approach"
+outcome: "Always use prompt evaluation with loop guard; defer fast-path optimisation"
+rationale: "Avoid premature optimisation; prompt evaluation provides intelligent context-aware checking that simple markers cannot replicate"
+context: "Explored hybrid approach with env var markers but deferred due to complexity around multiple decisions/observations per turn"
+tags: ["hooks", "stop", "compliance"]
+---
+id: DEC-20260116-115950
+timestamp: "2026-01-16T11:59:50Z"
+type: OPERATIONAL
+actor: "ai:claude"
+subject: "Logging boundary for simple tasks"
+outcome: "Did not log decisions for simple arithmetic task"
+rationale: "Task outside framework development scope; logging overhead disproportionate to task complexity"
+tags: ["framework", "logging", "scope"]
+---
+id: DEC-20260116-121106
+timestamp: "2026-01-16T12:11:06Z"
+type: DESIGN
+actor: "ai:claude"
+subject: "Pencil problem solution approach"
+outcome: "Selected division method over alternatives"
+rationale: "Most direct single operation; scales to any values; more efficient than iteration or guessing"
+context: "Pedagogical problem-solving exploration comparing four approaches"
+tags: ["methodology", "problem-solving"]
+---
+id: DEC-20260116-121813
+timestamp: "2026-01-16T12:18:13Z"
+type: OPERATIONAL
+actor: "ai:claude"
+subject: "Add debug logging to stop hook"
+outcome: "Modified stop-loop-guard.sh to write hook input to /tmp/stop-hook-input.json"
+rationale: "Debugging transcript path access issue in prompt hook"
+tags: ["debugging", "hooks"]

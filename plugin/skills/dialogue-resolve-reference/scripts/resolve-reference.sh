@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck shell=bash
 # resolve-reference.sh — Resolve framework reference IDs to content
-# Part of the AI-Augmented SDLC Framework
+# Part of the Dialogue Framework
 # Usage: resolve-reference.sh <id> [output_format]
 
 set -euo pipefail

@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck shell=bash
 # create-adr.sh — Create an Architecture Decision Record with decision log cross-reference
-# Part of the AI-Augmented SDLC Framework
+# Part of the Dialogue Framework
 # Usage: create-adr.sh <title> <actor> <context> <decision> <alternatives> <consequences> <rationale> [tags]
 
 set -euo pipefail

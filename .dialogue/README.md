@@ -83,4 +83,4 @@ These scripts are wrapped by Agent Skills for use within Claude Code sessions.
 
 ---
 
-*Part of the AI-Augmented SDLC Framework — see concepts/concept_decision-observation-tracking.md*
+*Part of the Dialogue Framework*

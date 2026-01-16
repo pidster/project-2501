@@ -99,4 +99,4 @@ Step X: Verify Logging Compliance
 
 ---
 
-*Part of the AI-Augmented SDLC Framework dialogue system*
+*Part of the Dialogue Framework*

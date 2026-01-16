@@ -240,6 +240,6 @@ Logs are written to the project directory:
 - Tasks: `${CLAUDE_PROJECT_DIR}/.dialogue/tasks.yaml`
 - ADRs: `${CLAUDE_PROJECT_DIR}/decisions/ADR-NNN-*.md`
 
-## Part of the AI-Augmented SDLC Framework
+## Part of the Dialogue Framework
 
 This plugin is the delivery mechanism for the framework's dialogue and process design capabilities. For full framework documentation, see the [project repository](https://github.com/pidster/project-2501).

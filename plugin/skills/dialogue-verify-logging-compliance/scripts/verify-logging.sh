@@ -1,6 +1,6 @@
 #!/bin/bash
 # verify-logging.sh — Verify logging compliance for a process execution
-# Part of the AI-Augmented SDLC Framework dialogue system
+# Part of the Dialogue Framework
 # Usage: verify-logging.sh <process-identifier> <min-decisions> <min-observations>
 
 set -euo pipefail

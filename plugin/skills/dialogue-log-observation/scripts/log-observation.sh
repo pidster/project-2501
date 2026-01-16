@@ -1,6 +1,6 @@
 #!/bin/bash
 # log-observation.sh — Append an observation entry to the observation log
-# Part of the AI-Augmented SDLC Framework
+# Part of the Dialogue Framework
 # Usage: log-observation.sh <type> <observer> <subject> <value> [context] [tags]
 
 set -euo pipefail

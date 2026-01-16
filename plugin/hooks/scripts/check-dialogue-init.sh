@@ -15,13 +15,13 @@ TASKS_FILE="${DIALOGUE_DIR}/tasks.yaml"
 # Check status and output simple systemMessage (CLAUDE.md handles instructions)
 if [[ ! -d "$DIALOGUE_DIR" ]]; then
     echo "[dialogue-hook] NOT INITIALISED" >&2
-    echo '{"continue": true, "systemMessage": "Dialogue Framework: NOT INITIALISED"}'
+    echo '{"continue": true, "systemMessage": "Dialogue Framework: NOT INITIALISED. Run `dialogue init` to set up."}'
     exit 0
 fi
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
     echo "[dialogue-hook] PARTIAL" >&2
-    echo '{"continue": true, "systemMessage": "Dialogue Framework: PARTIAL"}'
+    echo '{"continue": true, "systemMessage": "Dialogue Framework: Missing config.yaml file. Run `dialogue init` to re-initialize."}'
     exit 0
 fi
 
@@ -29,10 +29,10 @@ if [[ -f "$TASKS_FILE" ]]; then
     in_progress=$(grep -c "status: IN_PROGRESS" "$TASKS_FILE" 2>/dev/null || echo "0")
     ready=$(grep -c "status: READY" "$TASKS_FILE" 2>/dev/null || echo "0")
     echo "[dialogue-hook] INITIALISED: ${in_progress} in-progress, ${ready} ready" >&2
-    echo "{\"continue\": true, \"systemMessage\": \"Dialogue Framework: INITIALISED (${in_progress} in-progress, ${ready} ready tasks)\"}"
+    echo "{\"continue\": true, \"systemMessage\": \"Dialogue Framework: (${in_progress} in-progress, ${ready} ready tasks)\"}"
     exit 0
 fi
 
 echo "[dialogue-hook] INITIALISED: no tasks" >&2
-echo '{"continue": true, "systemMessage": "Dialogue Framework: INITIALISED (no tasks)"}'
+echo '{"continue": true, "systemMessage": "Dialogue Framework: (no tasks)"}'
 exit 0
