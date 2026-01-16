@@ -166,6 +166,25 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/next-id.sh SH
 ${CLAUDE_PLUGIN_ROOT}/scripts/next-id.sh DOC
 ```
 
+### task-summary.sh
+
+Present a task status summary with counts and highlights.
+
+```bash
+# Show summary (table format)
+${CLAUDE_PLUGIN_ROOT}/scripts/task-summary.sh
+
+# JSON output
+${CLAUDE_PLUGIN_ROOT}/scripts/task-summary.sh --format json
+```
+
+**Output includes:**
+- Counts by status (in-progress, ready, blocked, backlog, completed, cancelled)
+- Active and total counts
+- List of in-progress tasks with titles
+- High-priority ready tasks (HIGH/CRITICAL)
+- Blocked tasks
+
 ---
 
 ## Manual Operations
