@@ -100,7 +100,7 @@ Concepts that enable framework execution.
 |----|----------|-------------|
 | O-1 | [Process & Capability Flow](../concepts/concept_process-capability-flow.md) | Schema for capability instance specifications |
 | O-2 | [Decision & Observation Tracking](../concepts/concept_decision-observation-tracking.md) | Recording decisions and observations throughout work |
-| O-3 | [Work Coordination](../concepts/concept_work-coordination.md) | Work items, assignment, state machine, coordination patterns |
+| O-3 | [Work Coordination](../concepts/concept_work-coordination.md) | tasks, assignment, state machine, coordination patterns |
 | O-4 | [Agent Context Model (3S2P)](../concepts/concept_agent-context-model.md) | Standing, Situational, Stylistic, Procedural, Project context |
 
 ---

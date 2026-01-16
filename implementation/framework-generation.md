@@ -193,7 +193,7 @@ The `.dialogue/` directory contains runtime artifacts for framework operation:
 └── README.md              # Format specification
 ```
 
-### Work Item Tracking
+### task Tracking
 
 Tasks are tracked at two levels:
 
@@ -215,7 +215,7 @@ Schema: [schema_tasks.md](./schema_tasks.md)
 | [Framework Manual](./framework-manual.md) | Operational reference (tool-agnostic) |
 | [Claude Code Registry](./registries/registry_claude-code.yaml) | Tool capability documentation |
 | [THY-001](./theory_framework.md) | Framework theory |
-| [Work Items Schema](./schema_tasks.md) | Task format specification |
+| [tasks Schema](./schema_tasks.md) | Task format specification |
 
 ---
 

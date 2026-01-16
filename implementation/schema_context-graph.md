@@ -68,7 +68,7 @@ ContextNode:
 
 #### ARTIFACT
 
-Information artifacts—documents, decisions, observations, work items.
+Information artifacts—documents, decisions, observations, tasks.
 
 ```yaml
 ArtifactNode:

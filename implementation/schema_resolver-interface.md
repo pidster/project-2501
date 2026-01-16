@@ -140,7 +140,7 @@ The resolver distinguishes between:
 1. **Runtime artifacts** — Available in deployed projects using the framework
    - Project documents (THY, REF, STR, ADR)
    - Log entries (DEC, OBS)
-   - Work items (SH, CD, FW)
+   - tasks (SH, CD, FW)
    - Actors
 
 2. **Framework source artifacts** — Only in framework source, NOT deployed
@@ -278,7 +278,7 @@ The filesystem resolver MUST:
 
 1. **Pattern Recognition**: Match ID against known patterns using regex
 2. **Convention-Based Lookup**: Use directory conventions to locate files
-3. **YAML Parsing**: Extract entries from log files and work items
+3. **YAML Parsing**: Extract entries from log files and tasks
 4. **Markdown Extraction**: Read and optionally parse markdown documents
 5. **Structured Output**: Return JSON/YAML result conforming to schema
 

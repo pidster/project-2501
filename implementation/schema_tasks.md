@@ -48,12 +48,12 @@ The Work Coordination concept (O-3) provides a comprehensive schema for queue-ba
 version: string                  # Schema version (e.g., "1.0")
 last_updated: ISO8601            # File last modification timestamp
 
-prefixes:                        # Work item ID prefix definitions
+prefixes:                        # task ID prefix definitions
   - prefix: string               # 2-4 uppercase letters
     name: string                 # Human-readable name
     description: string          # Purpose of this prefix
 
-items:                           # Array of work items
+items:                           # Array of tasks
   - <WorkItem>
 ---
 ```
@@ -62,7 +62,7 @@ items:                           # Array of work items
 
 #### Required Fields
 
-All work items MUST include these fields:
+All tasks MUST include these fields:
 
 ```yaml
 id: string          # Unique identifier: [PREFIX]-[NNN]
@@ -80,11 +80,11 @@ created: ISO8601    # Creation timestamp
 
 #### Recommended Fields
 
-Work items SHOULD include these fields where applicable:
+tasks SHOULD include these fields where applicable:
 
 ```yaml
 updated: ISO8601         # Last update timestamp
-type: enum               # Work item classification
+type: enum               # task classification
 phase: integer           # SDLC phase (1-7) if applicable
 priority: enum           # Urgency level
 description: string      # Full description (multiline)
@@ -104,10 +104,10 @@ rationale: string        # Why this work is needed
 
 #### Optional Fields
 
-Work items MAY include these fields:
+tasks MAY include these fields:
 
 ```yaml
-blocked_by: string[]     # IDs of blocking work items
+blocked_by: string[]     # IDs of blocking tasks
 blocks: string[]         # IDs of items this blocks
 assigned_to: string      # Actor identifier
 completed: ISO8601       # Completion timestamp (if status = COMPLETED)
@@ -116,8 +116,8 @@ notes: string            # Free-form notes, history, context
 
 | Field | Type | Constraints | Example |
 |-------|------|-------------|---------|
-| `blocked_by` | array | Array of work item IDs | `["SH-001", "SH-002"]` |
-| `blocks` | array | Array of work item IDs | `["SH-003"]` |
+| `blocked_by` | array | Array of task IDs | `["SH-001", "SH-002"]` |
+| `blocks` | array | Array of task IDs | `["SH-003"]` |
 | `assigned_to` | string | Actor reference | `human:pid`, `ai:claude` |
 | `completed` | string | ISO 8601 datetime | `2026-01-14T15:00:00Z` |
 | `notes` | string | Multiline allowed | See examples |
@@ -163,7 +163,7 @@ notes: string            # Free-form notes, history, context
 
 ### Format
 
-Work item IDs follow pattern `PREFIX-NNN` where:
+task IDs follow pattern `PREFIX-NNN` where:
 - `PREFIX`: 2-4 uppercase letters identifying work stream
 - `NNN`: Zero-padded sequence number (001, 002, etc.)
 
@@ -191,7 +191,7 @@ last_updated: "2026-01-14T14:00:00Z"
 prefixes:
   - prefix: "SH"
     name: "Self-Hosting"
-    description: "Framework self-application work items"
+    description: "Framework self-application tasks"
   - prefix: "CD"
     name: "Conceptual Debt"
     description: "Framework concept gaps and improvements"
@@ -270,7 +270,7 @@ AI agents SHOULD:
 
 ### Updating During Session
 
-When work item status changes:
+When task status changes:
 1. Update `status` field
 2. Update `updated` timestamp
 3. If completing: set `completed` timestamp
@@ -278,7 +278,7 @@ When work item status changes:
 
 ### Creating New Items
 
-When creating a new work item:
+When creating a new task:
 1. Check `prefixes` for appropriate prefix (add if needed)
 2. Determine next sequence number for that prefix
 3. Set `status` to BACKLOG or READY as appropriate
@@ -314,4 +314,4 @@ This schema implements a subset of the Work Coordination concept (O-3):
 
 ---
 
-*This schema enables persistent work item tracking while remaining human-readable and editable. It complements the session-level TodoWrite tool for cross-session continuity.*
+*This schema enables persistent task tracking while remaining human-readable and editable. It complements the session-level TodoWrite tool for cross-session continuity.*

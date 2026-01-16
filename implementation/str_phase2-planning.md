@@ -46,9 +46,9 @@ This document captures the Phase 2 (Planning) outputs for the AI-Augmented SDLC 
 
 ### 1.1 Work Breakdown
 
-Work items consolidated from existing planning and identified gaps:
+tasks consolidated from existing planning and identified gaps:
 
-| ID | Work Item | Phase | Dependencies | Status |
+| ID | task | Phase | Dependencies | Status |
 |----|-----------|-------|--------------|--------|
 | **SH-1** | Information Reference Schema | 3 | None | Pending |
 | **SH-2** | Resolution Interface | 5 | SH-1 | Pending |
@@ -96,9 +96,9 @@ Phase 5 (Implementation)
 | **human:pidster** | Theory-holder, decision-maker | Part-time research |
 | **ai:claude** | Assistant—analysis, synthesis, generation, validation | On-demand |
 
-### 2.2 Collaboration Patterns by Work Item
+### 2.2 Collaboration Patterns by task
 
-| Work Item | Pattern | Rationale |
+| task | Pattern | Rationale |
 |-----------|---------|-----------|
 | SH-1, SH-3 | Partnership | Schema design requires both human insight and AI synthesis |
 | SH-2 | AI-Led | Implementation work; human review |
@@ -144,13 +144,13 @@ Governance from STR-001 §4.4 applies. Additional planning-phase specifics:
 | Checkpoint | Trigger | Action |
 |------------|---------|--------|
 | Phase transition | SCOPE_BOUNDED, etc. | Explicit sufficiency assessment |
-| Work item completion | Item done | Update status; log observation |
+| task completion | Item done | Update status; log observation |
 | Significant decision | Strategic/tactical choice | Log decision with rationale |
 
 ### 4.3 Change Management
 
 - Changes to scope require explicit decision logging
-- Work items can be added/removed with rationale
+- tasks can be added/removed with rationale
 - Phase outputs are living documents (versioned)
 
 ---
@@ -161,7 +161,7 @@ Governance from STR-001 §4.4 applies. Additional planning-phase specifics:
 
 | Output | Status | Sufficient for Phase 3? |
 |--------|--------|------------------------|
-| Project Plan | DRAFT | ✓ Work items identified and sequenced |
+| Project Plan | DRAFT | ✓ tasks identified and sequenced |
 | Resource Allocations | DRAFT | ✓ Actors and patterns assigned |
 | Risk Register | DRAFT | ✓ Planning risks identified |
 | Governance Structure | DRAFT | ✓ Authority and review points defined |
@@ -170,7 +170,7 @@ Governance from STR-001 §4.4 applies. Additional planning-phase specifics:
 
 **SCOPE_BOUNDED**: [✓] Resources allocated, timeline agreed, risks identified
 
-**Rationale**: Work items defined; collaboration patterns assigned; SH-7 decision made (Hybrid retrofit). Sufficient clarity to proceed to Phase 3.
+**Rationale**: tasks defined; collaboration patterns assigned; SH-7 decision made (Hybrid retrofit). Sufficient clarity to proceed to Phase 3.
 
 ---
 

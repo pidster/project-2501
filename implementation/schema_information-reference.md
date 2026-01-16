@@ -60,7 +60,7 @@ Timestamp-based IDs:
 | `DEC-YYYYMMDD-HHMMSS` | Decision | `DEC-20260114-091633` |
 | `OBS-YYYYMMDD-HHMMSS` | Observation | `OBS-20260114-094825` |
 
-### Work Items
+### tasks
 
 Prefix-based IDs:
 
