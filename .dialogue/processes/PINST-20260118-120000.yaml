@@ -1,0 +1,30 @@
+---
+instance:
+  id: "PINST-20260118-120000"
+  created: "2026-01-18T12:00:00Z"
+  created_by: "ai:claude"
+
+  plain_english_description: >
+    Test validation of the process schemas to verify they conform to
+    the expected structure and constraints.
+
+  definition_source:
+    type: WELL_KNOWN
+    definition_id: "PROC-6.1"
+    definition_path: "plugin/processes/process-simple-validation.yaml"
+
+  context:
+    trigger: "Manual test invocation"
+    inputs:
+      artifact: "implementation/schema_process-definition.md"
+      validation_criteria: "YAML schema compliance"
+    parameters: {}
+
+  status: PLANNED
+  execution_log_id: null
+
+  started: null
+  completed: null
+
+  outcome: null
+---

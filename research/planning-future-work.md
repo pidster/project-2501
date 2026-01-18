@@ -156,7 +156,7 @@ ContextNode:
 
 ### Related Documents
 
-- `implementation/framework-manual.md` — Compact AI reference (created 13 January 2026)
+- `implementation/framework-manual-source.md` — Compact AI reference (created 13 January 2026)
 - `concepts/concept_work-coordination.md` — task and coordination schemas
 - `concepts/concept_decision-observation-tracking.md` — Decision/observation schemas
 - `foundation_transactive-memory.md` — TMS theoretical foundation

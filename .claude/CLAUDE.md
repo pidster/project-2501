@@ -8,8 +8,18 @@ This project develops a comprehensive AI-Augmented Software Development Lifecycl
 
 ## Framework Reference
 
+Two versions of the Framework Manual exist for different contexts:
+
+| Context | File | When to Use |
+|---------|------|-------------|
+| **Executing** the framework | `plugin/references/framework-manual.md` | Canonical reference when using the framework (portable paths, self-contained) |
+| **Building** the framework | `implementation/framework-manual-source.md` | Source reference when developing the framework (cross-references to concepts) |
+
+Unless explicitly noted otherwise, use the **plugin version** as canonical for framework execution.
+
 For framework mechanics, schemas, and operational guidance, see:
-- **[Framework Manual](../implementation/framework-manual.md)**: Compact operational reference (phases, capabilities, patterns, constraints, schemas)
+- **[Framework Manual (Execution)](../plugin/references/framework-manual.md)**: Canonical operational reference for using the framework
+- **[Framework Manual (Source)](../implementation/framework-manual-source.md)**: Source reference with cross-links for framework development
 - **[THY-001: Framework Theory](../implementation/theory_framework.md)**: Integrated understanding of why concepts connect
 - **[REF-001: Framework Concepts](../implementation/ref_framework-concepts.md)**: Catalogue of all framework concepts
 
@@ -41,7 +51,7 @@ Framework development operates as **Human-Led** collaboration:
 
 ### Dialogue Protocol
 
-Apply the framework's dialogue loop (ELICIT → ANALYSE → SYNTHESISE → VALIDATE → PRESERVE) to all substantive work. See [Framework Manual: Dialogue Protocol](../implementation/framework-manual.md#dialogue-protocol) for details.
+Apply the framework's dialogue loop (ELICIT → ANALYSE → SYNTHESISE → VALIDATE → PRESERVE) to all substantive work. See [Framework Manual: Dialogue Protocol](../implementation/framework-manual-source.md#dialogue-protocol) for details.
 
 **Key for this project**: In the PRESERVE step, log observations and decisions using the skills in `.claude/skills/`.
 
@@ -82,19 +92,19 @@ Surface decisions to the human rather than proceeding autonomously when:
 
 ### Tacit Knowledge Elicitation
 
-See [Framework Manual: Tacit Knowledge Elicitation](../implementation/framework-manual.md#tacit-knowledge-elicitation) for general approach.
+See [Framework Manual: Tacit Knowledge Elicitation](../implementation/framework-manual-source.md#tacit-knowledge-elicitation) for general approach.
 
 **For this project**: The human holds theory about the framework that cannot be fully documented. Actively elicit rationale, constraints, alternatives considered, and historical context.
 
 ### Skill Preservation
 
-See [Framework Manual: Skill Preservation](../implementation/framework-manual.md#skill-preservation) for principles.
+See [Framework Manual: Skill Preservation](../implementation/framework-manual-source.md#skill-preservation) for principles.
 
 **For this project**: Support the human in developing their own synthesis of framework concepts. Do not create dependency on AI for routine framework tasks.
 
 ### Backward Event Detection
 
-See [Framework Manual: Backward Event Detection](../implementation/framework-manual.md#backward-event-detection) for signals and responses.
+See [Framework Manual: Backward Event Detection](../implementation/framework-manual-source.md#backward-event-detection) for signals and responses.
 
 **Response protocol**: When detecting a backward event, stop forward progress and surface the issue. Do not attempt to resolve inconsistencies silently.
 
@@ -237,7 +247,7 @@ Reference materials, integration analyses, and exploratory documents that inform
 
 ## Key Theoretical Foundations
 
-See [Framework Manual: Quick Reference](../implementation/framework-manual.md#quick-reference) for tables of phases, capabilities, and patterns.
+See [Framework Manual: Quick Reference](../implementation/framework-manual-source.md#quick-reference) for tables of phases, capabilities, and patterns.
 
 **Core theoretical sources** (see [REF-001](../implementation/ref_framework-concepts.md) for full catalogue):
 - **Naur (1985)**: Theory-building—software development builds understanding in minds, not just artifacts
@@ -248,7 +258,7 @@ See [Framework Manual: Quick Reference](../implementation/framework-manual.md#qu
 
 ## Evidential Standards
 
-See [Framework Manual: Evidential Standards](../implementation/framework-manual.md#evidential-standards) for evidence tiers, key statistics, and language guidance.
+See [Framework Manual: Evidential Standards](../implementation/framework-manual-source.md#evidential-standards) for evidence tiers, key statistics, and language guidance.
 
 **For this project:**
 - **Cite confidently**: STS mirroring (69%), coordination congruence (32%), developer thriving (r=0.43)
@@ -332,7 +342,7 @@ Concepts are interconnected. Authoritative sources for key constructs:
 
 ## Common Pitfalls to Avoid
 
-See [Framework Manual: Common Pitfalls](../implementation/framework-manual.md#common-pitfalls) for general framework pitfalls.
+See [Framework Manual: Common Pitfalls](../implementation/framework-manual-source.md#common-pitfalls) for general framework pitfalls.
 
 **Additional project-specific pitfalls:**
 - **Using American spellings** — British English throughout (organise, colour, behaviour)

@@ -1,0 +1,79 @@
+# Simple validation process for testing
+# This is a minimal AI-Only process for verification
+---
+definition:
+  id: "PROC-6.1"
+  name: "Simple Validation"
+  description: "A simple validation process that checks a single artifact for correctness"
+  version: "1.0.0"
+  phase: 6
+  information_composition:
+    formal: 60
+    tacit: 30
+    emergent: 10
+
+interfaces:
+  inputs:
+    - type: "artifact"
+      required: true
+      description: "The artifact to validate"
+    - type: "validation_criteria"
+      required: true
+      description: "Criteria to validate against"
+  outputs:
+    - type: "validation_result"
+      description: "Result of validation (pass/fail with details)"
+
+steps:
+  - id: "6.1.1"
+    name: "Load Artifact"
+    capability: Elicit
+    pattern: AI-Only
+    human_role: "None"
+    ai_role: "Load the artifact to be validated"
+    escalation_triggers:
+      - condition: "Artifact not found or unreadable"
+        action: BLOCK
+        target: null
+        context: "Cannot proceed without valid artifact"
+    completion_criteria: "Artifact loaded into memory"
+    validation: "Artifact content is accessible"
+
+  - id: "6.1.2"
+    name: "Apply Validation Rules"
+    capability: Validate
+    pattern: AI-Only
+    human_role: "None"
+    ai_role: "Check artifact against validation criteria"
+    escalation_triggers:
+      - condition: "Validation criteria unclear"
+        action: ESCALATE
+        target: human
+        context: "Need clarification on validation rules"
+    completion_criteria: "All validation rules applied"
+    validation: "Each criterion has a pass/fail result"
+
+  - id: "6.1.3"
+    name: "Record Result"
+    capability: Preserve
+    pattern: AI-Only
+    human_role: "None"
+    ai_role: "Log validation outcome as observation"
+    escalation_triggers: []
+    completion_criteria: "Result recorded"
+    validation: "OBS-* entry created"
+
+control_flow:
+  retry_policy:
+    on_validation_failure:
+      return_to: "6.1.1"
+      max_iterations: 1
+
+quality:
+  entry_criteria:
+    - "Artifact path provided"
+    - "Validation criteria specified"
+  exit_criteria:
+    - "Validation result recorded"
+    - "Pass/fail status determined"
+---

@@ -27,6 +27,10 @@ ADR_PATTERN="ADR-*.md"
 DECISIONS_DIR=".dialogue/logs/decisions"
 OBSERVATIONS_DIR=".dialogue/logs/observations"
 TASKS_DIR=".dialogue/tasks"
+# Process execution structure (FW-011)
+PROCESSES_DEF_DIR="plugin/processes"
+PROCESSES_INST_DIR=".dialogue/processes"
+EXECUTIONS_DIR=".dialogue/logs/executions"
 # Legacy single-file locations (for backward compatibility)
 DECISIONS_FILE_LEGACY=".dialogue/logs/decisions.yaml"
 OBSERVATIONS_FILE_LEGACY=".dialogue/logs/observations.yaml"
@@ -148,6 +152,9 @@ output_invalid_id() {
     "DEC-YYYYMMDD-HHMMSS: Decision log entries",
     "OBS-YYYYMMDD-HHMMSS: Observation log entries",
     "SH-NNN, CD-NNN, FW-NNN: Tasks",
+    "PROC-P.S: Process definitions",
+    "PINST-YYYYMMDD-HHMMSS: Process instances",
+    "EXEC-YYYYMMDD-HHMMSS: Execution logs",
     "human:<id>, ai:<id>: Actors"
   ]
 }
@@ -622,6 +629,116 @@ EOF
         fi
 
         output_not_found "$id" "TASK" "[\"$TASKS_DIR/$id.yaml\", \"$TASKS_FILE_LEGACY\"]"
+        return
+    fi
+
+    # Process definitions: PROC-P.S (e.g., PROC-3.1)
+    if [[ "$id" =~ ^PROC-([1-7])\.([0-9]+)$ ]]; then
+        local phase="${BASH_REMATCH[1]}"
+        local seq="${BASH_REMATCH[2]}"
+
+        # Search for definition file containing this PROC ID
+        local found_file=""
+        local search_dir="$PROJECT_ROOT/$PROCESSES_DEF_DIR"
+
+        if [[ -d "$search_dir" ]]; then
+            while IFS= read -r -d '' file; do
+                if grep -q "id:.*$id" "$file" 2>/dev/null || \
+                   grep -q "id: \"$id\"" "$file" 2>/dev/null; then
+                    found_file="$file"
+                    break
+                fi
+            done < <(find "$search_dir" -name "process-*.yaml" -print0 2>/dev/null)
+        fi
+
+        if [[ -n "$found_file" ]]; then
+            local rel_path="${found_file#$PROJECT_ROOT/}"
+            local content
+            content=$(cat "$found_file")
+            output_success "$id" "PROCESS_DEFINITION" "$rel_path" "$content"
+        else
+            output_not_found "$id" "PROCESS_DEFINITION" "[\"$PROCESSES_DEF_DIR/process-*.yaml\"]"
+        fi
+        return
+    fi
+
+    # Process instances: PINST-YYYYMMDD-HHMMSS
+    if [[ "$id" =~ ^PINST-[0-9]{8}-[0-9]{6}$ ]]; then
+        local per_file="$PROJECT_ROOT/$PROCESSES_INST_DIR/$id.yaml"
+        local location="$PROCESSES_INST_DIR/$id.yaml"
+
+        if [[ -f "$per_file" ]]; then
+            local entry
+            entry=$(cat "$per_file")
+
+            local escaped_entry
+            escaped_entry=$(json_escape "$entry")
+            if [[ "$OUTPUT_FORMAT" == "path" ]]; then
+                echo "$location"
+            elif [[ "$OUTPUT_FORMAT" == "metadata" ]]; then
+                cat <<EOF
+{
+  "status": "RESOLVED",
+  "id": "$id",
+  "type": "PROCESS_INSTANCE",
+  "location": "$location"
+}
+EOF
+            else
+                cat <<EOF
+{
+  "status": "RESOLVED",
+  "id": "$id",
+  "type": "PROCESS_INSTANCE",
+  "location": "$location",
+  "content": "$escaped_entry"
+}
+EOF
+            fi
+            return
+        fi
+
+        output_not_found "$id" "PROCESS_INSTANCE" "[\"$PROCESSES_INST_DIR/$id.yaml\"]"
+        return
+    fi
+
+    # Execution logs: EXEC-YYYYMMDD-HHMMSS
+    if [[ "$id" =~ ^EXEC-[0-9]{8}-[0-9]{6}$ ]]; then
+        local per_file="$PROJECT_ROOT/$EXECUTIONS_DIR/$id.yaml"
+        local location="$EXECUTIONS_DIR/$id.yaml"
+
+        if [[ -f "$per_file" ]]; then
+            local entry
+            entry=$(cat "$per_file")
+
+            local escaped_entry
+            escaped_entry=$(json_escape "$entry")
+            if [[ "$OUTPUT_FORMAT" == "path" ]]; then
+                echo "$location"
+            elif [[ "$OUTPUT_FORMAT" == "metadata" ]]; then
+                cat <<EOF
+{
+  "status": "RESOLVED",
+  "id": "$id",
+  "type": "EXECUTION_LOG",
+  "location": "$location"
+}
+EOF
+            else
+                cat <<EOF
+{
+  "status": "RESOLVED",
+  "id": "$id",
+  "type": "EXECUTION_LOG",
+  "location": "$location",
+  "content": "$escaped_entry"
+}
+EOF
+            fi
+            return
+        fi
+
+        output_not_found "$id" "EXECUTION_LOG" "[\"$EXECUTIONS_DIR/$id.yaml\"]"
         return
     fi
 
