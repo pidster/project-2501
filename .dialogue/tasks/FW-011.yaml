@@ -1,6 +1,7 @@
 id: "FW-011"
 title: "Add Subagents to Claude Framework"
-status: IN_PROGRESS
+status: COMPLETED
+completed: "2026-01-19T15:55:00Z"
 created: "2026-01-15T14:48:00Z"
 updated: "2026-01-15T17:35:00Z"
 type: CAPABILITY
@@ -50,4 +51,19 @@ notes: |
 
   Existing foundation: concept_process-capability-flow.md has capability flow schema.
   Need to review and identify gaps for executable subagent use.
+
+  19 January 2026: COMPLETED - All children completed:
+  - FW-013: Process definition schema (COMPLETED)
+  - FW-014: Handoff mechanism (COMPLETED)
+  - FW-015: Execution contract (COMPLETED)
+  - FW-016: Audit linkage (COMPLETED)
+
+  Deliverables:
+  - plugin/references/schema_process-definition.md
+  - plugin/references/schema_process-instance.md
+  - plugin/references/schema_execution-log.md
+  - plugin/agents/process-executor.md
+  - plugin/processes/process-simple-validation.yaml (sample)
+
+  Successfully tested: PINST-20260119-155304 executed in test mode.
 

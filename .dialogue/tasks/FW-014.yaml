@@ -1,6 +1,7 @@
 id: "FW-014"
 title: "Orchestrator-Subagent Handoff Mechanism"
-status: BACKLOG
+status: COMPLETED
+completed: "2026-01-19T15:55:00Z"
 created: "2026-01-15T15:05:00Z"
 updated: "2026-01-15T15:05:00Z"
 type: CAPABILITY
@@ -22,4 +23,10 @@ blocked_by: ["FW-013"]
 blocks: ["FW-016"]
 notes: |
   Created 15 January 2026.
+
+  19 January 2026: COMPLETED
+  - Task tool invocation pattern documented in process-executor.md
+  - ProcessInstance passes definition via WELL_KNOWN (path) or DYNAMIC (inline)
+  - Context passing via instance.context (inputs, parameters, test_mode)
+  - Successfully tested: orchestrator invoked executor via Task tool
 

@@ -1,0 +1,14 @@
+id: "CD-012"
+title: "Add pattern diversity to sample process"
+status: COMPLETED
+completed: "2026-01-19T15:55:00Z"
+created: "2026-01-19T14:52:47Z"
+updated: "2026-01-19T14:52:47Z"
+type: DEBT
+priority: LOW
+description: |
+  Dry run findings #5,#9: All steps in sample process are AI-Only. Cannot verify pattern elevation logic works. Consider making step 6.1.2 AI-Led.
+blocked_by: []
+blocks: []
+notes: |
+  Created 19 January 2026.

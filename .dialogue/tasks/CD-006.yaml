@@ -1,0 +1,14 @@
+id: "CD-006"
+title: "Add input schema validation (V8)"
+status: COMPLETED
+completed: "2026-01-19T15:55:00Z"
+created: "2026-01-19T14:52:19Z"
+updated: "2026-01-19T14:52:19Z"
+type: DEBT
+priority: MEDIUM
+description: |
+  Dry run finding #2: No pre-execution validation that required inputs are present and valid. Runtime errors occur instead of pre-execution checks. Add V8 validation rule.
+blocked_by: []
+blocks: []
+notes: |
+  Created 19 January 2026.

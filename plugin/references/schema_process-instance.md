@@ -67,10 +67,22 @@ instance:
     trigger: string             # What initiated this instance
     inputs: object              # Key-value pairs for input data
     parameters: object          # Runtime parameters
+    test_mode: boolean          # Optional: dry-run without side effects (default: false)
 
   # Execution state
   status: enum                  # PLANNED | IN_PROGRESS | SUSPENDED | COMPLETED | FAILED
   execution_log_id: string      # EXEC-* reference (set when execution starts)
+
+  # Definition approval (for criteria evaluation)
+  approval:
+    definition_approved: boolean  # Has human approved this definition?
+    approved_by: string           # Actor who approved (human:pid)
+    approved_at: string           # ISO 8601 timestamp
+    trust_level: enum             # REVIEW_EACH | TRUST_APPROVED
+    approval_decision_id: string  # DEC-* reference for approval decision
+
+  # Execution history
+  run_count: integer              # Number of times this definition has been executed
 
   # Timestamps
   started: string               # ISO 8601 (set when status → IN_PROGRESS)
@@ -78,7 +90,8 @@ instance:
 
   # Outcome
   outcome:
-    success: boolean
+    execution_success: boolean  # Did process run without errors?
+    process_result: string      # Process-specific result (e.g., "PASS", "FAIL", "APPROVED")
     summary: string             # Plain English outcome summary
     outputs: object             # Key-value pairs for output data
 ---
@@ -105,6 +118,32 @@ instance:
 | `COMPLETED` | Successfully finished | (terminal) |
 | `FAILED` | Execution failed | (terminal) |
 | `CANCELLED` | Aborted before completion | (terminal) |
+
+### Trust Level
+
+| Value | Description | Behaviour |
+|-------|-------------|-----------|
+| `REVIEW_EACH` | Review criteria on every run | Human approves entry/exit criteria each execution |
+| `TRUST_APPROVED` | Trust previous approval | Skip criteria review; AI evaluates with escalation on uncertainty |
+
+### Test Mode
+
+When `context.test_mode: true`:
+
+| Aspect | Behaviour |
+|--------|-----------|
+| **Validation** | Full validation runs (V1-V8) |
+| **Entry Criteria** | Evaluated but not enforced |
+| **Step Execution** | Steps run but side effects skipped |
+| **Logging** | DEC-*/OBS-* entries marked as test |
+| **External Actions** | No external API calls, file writes, etc. |
+| **Outcome** | `execution_success: true` if flow completes, `process_result: "TEST"` |
+
+Use test mode to:
+- Validate process definitions before deployment
+- Verify input/output mappings
+- Check escalation trigger conditions
+- Dry-run without affecting production state
 
 ---
 
@@ -159,6 +198,15 @@ instance:
   status: PLANNED
   execution_log_id: null
 
+  approval:
+    definition_approved: false
+    approved_by: null
+    approved_at: null
+    trust_level: null
+    approval_decision_id: null
+
+  run_count: 0
+
   started: null
   completed: null
 
@@ -204,6 +252,7 @@ instance:
           escalation_triggers:
             - condition: "Log retrieval fails"
               action: BLOCK
+              severity: HIGH
               target: null
               context: "Manual log access required"
           completion_criteria: "Logs retrieved"
@@ -218,6 +267,7 @@ instance:
           escalation_triggers:
             - condition: "Critical security pattern detected"
               action: ESCALATE
+              severity: HIGH
               target: human
               context: "Security patterns require human review"
           completion_criteria: "Patterns identified"
@@ -242,6 +292,15 @@ instance:
 
   status: PLANNED
   execution_log_id: null
+
+  approval:
+    definition_approved: false
+    approved_by: null
+    approved_at: null
+    trust_level: null
+    approval_decision_id: null
+
+  run_count: 0
 
   started: null
   completed: null
@@ -282,11 +341,21 @@ instance:
   status: COMPLETED
   execution_log_id: "EXEC-20260118-143055"
 
+  approval:
+    definition_approved: true
+    approved_by: "human:pid"
+    approved_at: "2026-01-18T14:31:00Z"
+    trust_level: TRUST_APPROVED
+    approval_decision_id: "DEC-20260118-143100"
+
+  run_count: 1
+
   started: "2026-01-18T14:30:55Z"
   completed: "2026-01-18T14:45:12Z"
 
   outcome:
-    success: true
+    execution_success: true
+    process_result: "APPROVED"
     summary: >
       Code review completed. Found 2 minor issues (addressed in comments)
       and no security concerns. Approved with suggestions.
@@ -316,6 +385,26 @@ instance:
 2. `started` should be set when status transitions to IN_PROGRESS
 3. `completed` should be set when status transitions to COMPLETED or FAILED
 4. `outcome` should be set when status is COMPLETED or FAILED
+
+### Outcome Field Semantics
+
+The outcome object distinguishes between **process execution** and **process result**:
+
+| Field | Meaning | Example |
+|-------|---------|---------|
+| `execution_success` | Did the process run without errors? | `true` (all steps completed) |
+| `process_result` | What was the outcome of the work? | `"FAIL"` (validation found issues) |
+
+**Key distinction**: A validation process can execute successfully (`execution_success: true`) while reporting that the artifact failed validation (`process_result: "FAIL"`).
+
+**Common process_result values by process type:**
+
+| Process Type | Possible Results |
+|--------------|-----------------|
+| Validation | `PASS`, `FAIL`, `PARTIAL` |
+| Review | `APPROVED`, `REJECTED`, `CHANGES_REQUESTED` |
+| Analysis | `COMPLETE`, `INCOMPLETE`, `BLOCKED` |
+| Generation | `GENERATED`, `FAILED` |
 
 ---
 

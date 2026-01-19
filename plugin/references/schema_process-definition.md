@@ -78,8 +78,32 @@ quality:
     - string
   exit_criteria:                # Conditions to complete process
     - string
+  sla:                          # Optional: Service level expectations
+    expected_duration_minutes: integer   # Typical completion time
+    timeout_minutes: integer             # Maximum allowed duration
+    warning_threshold_percent: integer   # Warn when % of timeout reached (default: 80)
+
+flow: |                           # Required: Mermaid diagram of process flow
+  ```mermaid
+  flowchart TD
+    ...
+  ```
 ---
 ```
+
+### Flow Diagram
+
+Every ProcessDefinition **must** include a `flow` field containing a Mermaid flowchart diagram. This diagram:
+- Provides visual comprehension of the process structure
+- Shows step sequence, decision points, and control flow
+- Enables comparison between intended and actual execution
+- Helps AI agents understand the process at a glance
+
+**Requirements**:
+- Must be valid Mermaid flowchart syntax
+- Must include all step IDs as nodes
+- Must show RETURN loops and fix steps if present
+- Should indicate escalation decision points
 
 ### CapabilityInstance Schema
 
@@ -96,6 +120,7 @@ step:
   escalation_triggers:          # Conditions for escalation
     - condition: string         # What triggers escalation
       action: enum              # ESCALATE | RETURN | BLOCK | DEFER
+      severity: enum            # LOW | MEDIUM | HIGH (required)
       target: string            # Role, step ID, or queue
       context: string           # Information to pass
   completion_criteria: string   # How to know step is complete
@@ -111,6 +136,7 @@ fix_step:
   id: string                    # Parent step ID + "a" suffix (e.g., 3.1.8a)
   name: string                  # "Fix <Issue>"
   trigger_from: string          # Step ID that triggers this fix
+  invocation: enum              # ALWAYS | ON_RETRY | ASK (default: ON_RETRY)
   capability: enum              # Typically Transform
   pattern: enum                 # Typically AI-Led or Partnership
   human_role: string            # Review proposed corrections
@@ -152,6 +178,29 @@ fix_step:
 | `RETURN` | Step ID | Validation failed; correction needed |
 | `BLOCK` | None | Critical failure; halt process |
 | `DEFER` | Work queue | Requires extended offline review |
+
+### Severity
+
+| Value | 1st Occurrence | 2nd+ Occurrence | Use When |
+|-------|----------------|-----------------|----------|
+| `LOW` | Direct action | Fix step (if exists) | Minor issues; retry likely to succeed |
+| `MEDIUM` | Direct action | Fix step + human confirmation | Moderate issues; may need intervention |
+| `HIGH` | **Escalate first**, then action | BLOCK if still failing | Serious issues; human must review |
+
+**Note**: Severity is **required** on all escalation triggers. Assignment must be logged as a DEC-* entry with rationale.
+
+### Fix Step Invocation
+
+| Value | Behaviour | Use When |
+|-------|-----------|----------|
+| `ON_RETRY` | Fix step runs on 2nd+ iteration only | Default; retry first, fix if retry fails |
+| `ALWAYS` | Fix step intercepts every RETURN | Structured correction always needed |
+| `ASK` | Escalate to human to choose path | Uncertain whether fix is needed |
+
+**Note**: When combined with severity:
+- HIGH severity + any invocation = Escalate first, then apply invocation logic
+- MEDIUM severity + ON_RETRY = Fix step gets human confirmation on 2nd+ iteration
+- LOW severity + ON_RETRY = Fix step runs automatically on 2nd+ iteration
 
 ---
 
@@ -225,6 +274,7 @@ steps:
     escalation_triggers:
       - condition: "PR too large (>500 lines)"
         action: ESCALATE
+        severity: MEDIUM
         target: human
         context: "Large PR may need manual chunking"
     completion_criteria: "All PR context retrieved"
@@ -239,10 +289,12 @@ steps:
     escalation_triggers:
       - condition: "Security-sensitive changes detected"
         action: ESCALATE
+        severity: HIGH
         target: human
         context: "Security changes require human review"
       - condition: "Architectural changes detected"
         action: ESCALATE
+        severity: HIGH
         target: human
         context: "Architecture decisions require human judgement"
     completion_criteria: "Analysis complete with categorised findings"
@@ -257,6 +309,7 @@ steps:
     escalation_triggers:
       - condition: "Blocking issue requires human judgement"
         action: ESCALATE
+        severity: MEDIUM
         target: human
         context: "Human must decide on blocking issues"
     completion_criteria: "Review comments drafted"
@@ -271,6 +324,7 @@ steps:
     escalation_triggers:
       - condition: "Submission fails"
         action: BLOCK
+        severity: HIGH
         target: null
         context: "Manual submission required"
     completion_criteria: "Review submitted to system"
@@ -289,6 +343,30 @@ quality:
   exit_criteria:
     - "Review submitted"
     - "All findings addressed in comments"
+
+flow: |
+  ```mermaid
+  flowchart TD
+    subgraph Steps
+      S1["5.1.1 Gather Context<br/>(Elicit, AI-Only)"]
+      S2["5.1.2 Analyse Changes<br/>(Analyse, AI-Led)"]
+      S3["5.1.3 Generate Review<br/>(Generate, AI-Led)"]
+      S4["5.1.4 Record Review<br/>(Preserve, AI-Only)"]
+    end
+
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+
+    S1 -->|"PR too large"| ESC1[Escalate to human]
+    S2 -->|"Security/Architecture"| ESC2[Escalate to human]
+    S3 -->|"Blocking issue"| ESC3[Escalate to human]
+    S4 -->|"Submission fails"| BLOCK[BLOCK]
+
+    S2 -->|"Validation fails"| S2
+
+    note1["Retry: return to 5.1.2<br/>max 2 iterations"]
+  ```
 ---
 ```
 
@@ -303,6 +381,8 @@ quality:
 3. `definition.name` and `definition.description` must be non-empty
 4. `information_composition` values must sum to 100
 5. Each step must have all required fields
+6. Each escalation trigger must have `severity` specified (no default)
+7. `flow` field must contain a valid Mermaid flowchart diagram
 
 ### Consistency Validation
 

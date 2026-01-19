@@ -1,0 +1,14 @@
+id: "CD-014"
+title: "Clarify validation_criteria semantics"
+status: COMPLETED
+completed: "2026-01-19T15:55:00Z"
+created: "2026-01-19T14:52:47Z"
+updated: "2026-01-19T14:52:47Z"
+type: DEBT
+priority: LOW
+description: |
+  Dry run finding #10: 'validation_criteria' is ambiguous. Rename to 'artifact_validation_criteria' and document clearly.
+blocked_by: []
+blocks: []
+notes: |
+  Created 19 January 2026.

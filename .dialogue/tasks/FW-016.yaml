@@ -1,6 +1,7 @@
 id: "FW-016"
 title: "Process Execution Audit Linkage"
-status: BACKLOG
+status: COMPLETED
+completed: "2026-01-19T15:55:00Z"
 created: "2026-01-15T15:05:00Z"
 updated: "2026-01-15T15:05:00Z"
 type: CAPABILITY
@@ -26,4 +27,11 @@ blocked_by: ["FW-014", "FW-015"]
 blocks: []
 notes: |
   Created 15 January 2026.
+
+  19 January 2026: COMPLETED
+  - ExecutionLog schema (EXEC-*) links to ProcessInstance (PINST-*)
+  - ProcessInstance references ProcessDefinition (PROC-*)
+  - Full audit trail: step_executions, decision_ids, observation_ids
+  - control_flow_events capture RETURN/BLOCK/DEFER/RESUME
+  - audit_summary aggregates all entries for "what happened and why"
 

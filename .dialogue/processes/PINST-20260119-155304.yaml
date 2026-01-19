@@ -1,0 +1,69 @@
+# ProcessInstance for testing the process-executor
+---
+instance:
+  id: "PINST-20260119-155304"
+  created: "2026-01-19T15:53:04Z"
+  created_by: "ai:claude"
+
+  plain_english_description: >
+    Validate the process-executor agent implementation by running
+    a simple validation process in test mode.
+
+  definition_source:
+    type: WELL_KNOWN
+    definition_id: "PROC-6.1"
+    definition_path: "plugin/processes/process-simple-validation.yaml"
+
+  context:
+    trigger: "Testing process executor implementation"
+    inputs:
+      artifact_path: "plugin/agents/process-executor.md"
+      validation_rules:
+        - "File exists and is readable"
+        - "Contains execution workflow section"
+        - "Includes error handling guidance"
+    parameters:
+      focus_areas:
+        - schema_compliance
+        - completeness
+    test_mode: true
+
+  status: COMPLETED
+  execution_log_id: "EXEC-20260119-155350"
+
+  approval:
+    definition_approved: false
+    approved_by: null
+    approved_at: null
+    trust_level: null
+    approval_decision_id: null
+
+  run_count: 1
+
+  started: "2026-01-19T15:53:50Z"
+  completed: "2026-01-19T15:54:37Z"
+
+  outcome:
+    execution_success: true
+    process_result: "TEST"
+    summary: >
+      Test run completed successfully. All 3 validation rules passed:
+      (1) File exists and is readable - PASS,
+      (2) Contains execution workflow section - PASS (found at line 41),
+      (3) Includes error handling guidance - PASS (found at line 958).
+      3 steps validated, 0 escalations would trigger.
+    outputs:
+      validation_result:
+        pass: true
+        findings:
+          - rule: "File exists and is readable"
+            status: "PASS"
+            details: "Artifact loaded successfully (1221 lines)"
+          - rule: "Contains execution workflow section"
+            status: "PASS"
+            details: "Found '## Execution Workflow' at line 41"
+          - rule: "Includes error handling guidance"
+            status: "PASS"
+            details: "Found '## Error Handling' at line 958"
+        summary: "All 3 validation rules passed"
+---

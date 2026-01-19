@@ -1,0 +1,14 @@
+id: "CD-007"
+title: "Improve escalation messaging for humans"
+status: COMPLETED
+completed: "2026-01-19T15:55:00Z"
+created: "2026-01-19T14:52:29Z"
+updated: "2026-01-19T14:52:29Z"
+type: DEBT
+priority: MEDIUM
+description: |
+  Dry run finding #3: Escalation messages use technical language. Humans don't think in terms of 'validation criteria clarity'. Provide sample messages in plain English matching user mental models.
+blocked_by: []
+blocks: []
+notes: |
+  Created 19 January 2026.
