@@ -35,7 +35,7 @@ Process definitions are referenced by **ProcessInstances** which capture executi
 definition_source:
   type: WELL_KNOWN
   definition_id: "PROC-5.1"
-  definition_path: "plugin/processes/process-code-review.yaml"
+  definition_path: "claude-plugin-evo/processes/process-code-review.yaml"
 ```
 
 The **process-executor** agent loads and executes these definitions.

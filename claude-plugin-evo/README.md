@@ -17,12 +17,12 @@ This Claude Code plugin provides skills and agents for maintaining structured lo
 Run Claude Code with the plugin directory:
 
 ```bash
-claude --plugin-dir ./plugin
+claude --plugin-dir ./claude-plugin-evo
 ```
 
 ### Production
 
-Copy the `plugin/` directory to your Claude Code plugins location or install from marketplace (when published).
+Copy the `claude-plugin-evo/` directory to your Claude Code plugins location or install from marketplace (when published).
 
 ## Commands
 

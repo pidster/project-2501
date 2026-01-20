@@ -1143,13 +1143,13 @@ instance:
   plain_english_description: "Review the authentication PR for security issues"
   definition_source:
     type: WELL_KNOWN
-    definition_path: "plugin/processes/process-code-review.yaml"
+    definition_path: "claude-plugin-evo/processes/process-code-review.yaml"
 ```
 
 Execution flow:
 ```
 1. Load PINST-20260118-143052.yaml
-2. Load plugin/processes/process-code-review.yaml
+2. Load claude-plugin-evo/processes/process-code-review.yaml
 3. Validate schemas and constraints
 4. Create EXEC-20260118-143055.yaml
 5. Update PINST with execution_log_id

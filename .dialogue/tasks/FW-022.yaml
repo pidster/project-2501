@@ -1,0 +1,21 @@
+id: "FW-022"
+title: "Complete dialogue-framework-revolution.md"
+status: BACKLOG
+created: "2026-01-20T21:00:00Z"
+updated: "2026-01-20T21:00:00Z"
+type: DOCUMENTATION
+priority: MEDIUM
+description: |
+  Complete the dialogue-framework-revolution.md document.
+
+  Location to be determined - check for existing file.
+
+objective: "Document completed"
+rationale: |
+  User-requested documentation task.
+
+blocked_by: []
+blocks: []
+
+tags:
+  - documentation

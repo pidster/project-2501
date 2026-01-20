@@ -10,7 +10,7 @@
 
 ## Purpose
 
-This schema defines the YAML structure for **ProcessDefinitions** — reusable templates that describe capability flows. ProcessDefinitions are well-known process specifications stored in `plugin/processes/` and referenced by ProcessInstances during execution.
+This schema defines the YAML structure for **ProcessDefinitions** — reusable templates that describe capability flows. ProcessDefinitions are well-known process specifications stored in `claude-plugin-evo/processes/` and referenced by ProcessInstances during execution.
 
 **Related documents**:
 - [Process Instance Schema](./schema_process-instance.md) — Runtime execution intent
@@ -36,7 +36,7 @@ ProcessDefinitions capture reusable process templates at capability-instance gra
 
 ### File Structure
 
-ProcessDefinition files use the naming convention `process-<name>.yaml` and are stored in `plugin/processes/`.
+ProcessDefinition files use the naming convention `process-<name>.yaml` and are stored in `claude-plugin-evo/processes/`.
 
 ```yaml
 ---
@@ -239,7 +239,7 @@ These constraints are **mandatory**. Definitions violating them are invalid.
 ## Complete Example
 
 ```yaml
-# plugin/processes/process-code-review.yaml
+# claude-plugin-evo/processes/process-code-review.yaml
 ---
 definition:
   id: PROC-5.1
@@ -398,7 +398,7 @@ flow: |
 ### Loading a Definition
 
 The process-executor agent loads definitions by:
-1. Reading the YAML file from `plugin/processes/`
+1. Reading the YAML file from `claude-plugin-evo/processes/`
 2. Validating against this schema
 3. Returning error if validation fails
 
@@ -409,7 +409,7 @@ ProcessInstances reference definitions via:
 definition_source:
   type: WELL_KNOWN
   definition_id: "PROC-3.1"
-  definition_path: "plugin/processes/process-requirements-elicitation.yaml"
+  definition_path: "claude-plugin-evo/processes/process-requirements-elicitation.yaml"
 ```
 
 ---

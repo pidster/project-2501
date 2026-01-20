@@ -12,13 +12,13 @@ Two versions of the Framework Manual exist for different contexts:
 
 | Context | File | When to Use |
 |---------|------|-------------|
-| **Executing** the framework | `plugin/references/framework-manual.md` | Canonical reference when using the framework (portable paths, self-contained) |
+| **Executing** the framework | `claude-plugin-evo/references/framework-manual.md` | Canonical reference when using the framework (portable paths, self-contained) |
 | **Building** the framework | `implementation/framework-manual-source.md` | Source reference when developing the framework (cross-references to concepts) |
 
 Unless explicitly noted otherwise, use the **plugin version** as canonical for framework execution.
 
 For framework mechanics, schemas, and operational guidance, see:
-- **[Framework Manual (Execution)](../plugin/references/framework-manual.md)**: Canonical operational reference for using the framework
+- **[Framework Manual (Execution)](../claude-plugin-evo/references/framework-manual.md)**: Canonical operational reference for using the framework
 - **[Framework Manual (Source)](../implementation/framework-manual-source.md)**: Source reference with cross-links for framework development
 - **[THY-001: Framework Theory](../implementation/theory_framework.md)**: Integrated understanding of why concepts connect
 - **[REF-001: Framework Concepts](../implementation/ref_framework-concepts.md)**: Catalogue of all framework concepts

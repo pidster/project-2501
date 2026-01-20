@@ -117,7 +117,7 @@ This mechanism ensures that "Human-Only" truly means no AI involvement, rather t
 - Sensitive conversations where AI presence would inhibit candour
 - Activities requiring physical presence or social interaction
 
-See [Human-Only Handoff Mechanism](../plugin/references/human-only-handoff.md) for operational details and examples.
+See [Human-Only Handoff Mechanism](../claude-plugin-evo/references/human-only-handoff.md) for operational details and examples.
 
 ## Key Patterns in the Mapping
 

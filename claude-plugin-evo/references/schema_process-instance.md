@@ -183,7 +183,7 @@ instance:
   definition_source:
     type: WELL_KNOWN
     definition_id: "PROC-5.1"
-    definition_path: "plugin/processes/process-code-review.yaml"
+    definition_path: "claude-plugin-evo/processes/process-code-review.yaml"
 
   context:
     trigger: "User requested PR review"
@@ -326,7 +326,7 @@ instance:
   definition_source:
     type: WELL_KNOWN
     definition_id: "PROC-5.1"
-    definition_path: "plugin/processes/process-code-review.yaml"
+    definition_path: "claude-plugin-evo/processes/process-code-review.yaml"
 
   context:
     trigger: "User requested PR review"

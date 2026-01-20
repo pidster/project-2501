@@ -28,7 +28,7 @@ DECISIONS_DIR=".dialogue/logs/decisions"
 OBSERVATIONS_DIR=".dialogue/logs/observations"
 TASKS_DIR=".dialogue/tasks"
 # Process execution structure (FW-011)
-PROCESSES_DEF_DIR="plugin/processes"
+PROCESSES_DEF_DIR="claude-plugin-evo/processes"
 PROCESSES_INST_DIR=".dialogue/processes"
 EXECUTIONS_DIR=".dialogue/logs/executions"
 # Legacy single-file locations (for backward compatibility)

@@ -18,13 +18,13 @@
 
 This schema defines the YAML structure for persistent task tracking. Tasks tracked in `.dialogue/tasks.yaml` conform to this schema.
 
-**Deployment note**: This file is framework source (Tier 1). The deployed schema is `plugin/skills/dialogue-manage-tasks/schema.md`, which is copied from this file during framework generation. Edits should be made here and propagated to the skill.
+**Deployment note**: This file is framework source (Tier 1). The deployed schema is `claude-plugin-evo/skills/dialogue-manage-tasks/schema.md`, which is copied from this file during framework generation. Edits should be made here and propagated to the skill.
 
 **Related documents**:
 - [Work Coordination](../concepts/concept_work-coordination.md) — Full conceptual schema (O-3)
 - [Framework Generation](./framework-generation.md) — Dialogue infrastructure context
 - [Claude Code Registry](./registries/registry_claude-code.yaml) — TodoWrite tool documentation
-- [Deployed Schema](../plugin/skills/dialogue-manage-tasks/schema.md) — Copy for deployments
+- [Deployed Schema](../claude-plugin-evo/skills/dialogue-manage-tasks/schema.md) — Copy for deployments
 
 ---
 

@@ -1,8 +1,8 @@
 id: "FW-019"
 title: "Rename plugin directory to claude-plugin-evo"
-status: BACKLOG
+status: COMPLETED
 created: "2026-01-20T20:15:00Z"
-updated: "2026-01-20T20:15:00Z"
+updated: "2026-01-20T21:15:00Z"
 type: REFACTOR
 priority: MEDIUM
 description: |
@@ -40,3 +40,30 @@ tags:
   - refactor
   - directory-structure
   - plugin
+
+notes: |
+  COMPLETED 20 January 2026:
+
+  1. Verified plugin directory standalone (FW-021 incorporated):
+     - Only documentation links to external directories (permitted)
+     - No runtime dependencies on concepts/, implementation/, etc.
+
+  2. Renamed plugin/ to claude-plugin-evo/ using git mv
+
+  3. Updated all active file references:
+     - .claude/CLAUDE.md (2 references)
+     - concepts/concept_collaboration-patterns.md (1 reference)
+     - implementation/schema_process-definition.md (6 references)
+     - implementation/schema_process-instance.md (2 references)
+     - implementation/schema_tasks.md (2 references)
+     - claude-plugin-evo/README.md (2 references)
+     - claude-plugin-evo/skills/dialogue-resolve-reference/SKILL.md (2 references)
+     - claude-plugin-evo/skills/dialogue-resolve-reference/scripts/resolve-reference.sh (1 reference)
+     - claude-plugin-evo/references/schema_process-definition.md (6 references)
+     - claude-plugin-evo/references/schema_process-instance.md (2 references)
+     - claude-plugin-evo/agents/process-executor.md (2 references)
+     - claude-plugin-evo/processes/README.md (1 reference)
+
+  4. Historical references in .dialogue/ logs and tasks left unchanged:
+     - These document what existed at the time of execution
+     - Changing them would be rewriting history
