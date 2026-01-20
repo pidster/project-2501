@@ -1,6 +1,9 @@
 # Phase 2 Process: Scope Definition
 # Hybrid process - AI assists, humans decide boundaries
 ---
+references:
+  rules: ../rules/phase2-planning.md
+
 definition:
   id: "PROC-2.1"
   name: "Scope Definition"

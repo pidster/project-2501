@@ -1,6 +1,9 @@
 # Phase 1 Process: Opportunity Identification
 # Hybrid process - AI facilitates, humans decide
 ---
+references:
+  rules: ../rules/phase1-initiation.md
+
 definition:
   id: "PROC-1.1"
   name: "Opportunity Identification"

@@ -1,6 +1,9 @@
 # Phase 3 Process: Requirements Analysis
 # Partnership process - AI assists in structuring and analysing requirements
 ---
+references:
+  rules: ../rules/phase3-analysis.md
+
 definition:
   id: "PROC-3.2"
   name: "Requirements Analysis"

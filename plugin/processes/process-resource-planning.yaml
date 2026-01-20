@@ -1,6 +1,9 @@
 # Phase 2 Process: Resource Planning
 # Hybrid process - AI structures, humans commit resources
 ---
+references:
+  rules: ../rules/phase2-planning.md
+
 definition:
   id: "PROC-2.3"
   name: "Resource Planning"

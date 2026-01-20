@@ -1,6 +1,9 @@
 # Phase 3 Process: Requirements Documentation
 # Partnership process - AI assists in creating formal documentation
 ---
+references:
+  rules: ../rules/phase3-analysis.md
+
 definition:
   id: "PROC-3.4"
   name: "Requirements Documentation"

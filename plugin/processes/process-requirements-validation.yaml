@@ -1,6 +1,9 @@
 # Phase 3 Process: Requirements Validation
 # Human-Led process with AI support - stakeholders confirm requirements
 ---
+references:
+  rules: ../rules/phase3-analysis.md
+
 definition:
   id: "PROC-3.3"
   name: "Requirements Validation"

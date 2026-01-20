@@ -1,6 +1,9 @@
 # Phase 2 Process: Schedule Development
 # Hybrid process - AI structures, humans commit timelines
 ---
+references:
+  rules: ../rules/phase2-planning.md
+
 definition:
   id: "PROC-2.4"
   name: "Schedule Development"
