@@ -8,12 +8,13 @@ set -euo pipefail
 # Use Claude's project directory environment variable
 PROJECT_ROOT="${CLAUDE_PROJECT_DIR:?CLAUDE_PROJECT_DIR must be set}"
 
-DECISIONS_LOG="${PROJECT_ROOT}/.dialogue/logs/decisions.yaml"
-OBSERVATIONS_LOG="${PROJECT_ROOT}/.dialogue/logs/observations.yaml"
+# Per-file log directories (current structure)
+DECISIONS_DIR="${PROJECT_ROOT}/.dialogue/logs/decisions"
+OBSERVATIONS_DIR="${PROJECT_ROOT}/.dialogue/logs/observations"
 
 if [[ $# -lt 3 ]]; then
     echo "Usage: verify-logging.sh <process-identifier> <min-decisions> <min-observations>" >&2
-    echo "  process-identifier: String to search for in context field" >&2
+    echo "  process-identifier: String to search for in log files" >&2
     echo "  min-decisions: Minimum number of decision entries expected" >&2
     echo "  min-observations: Minimum number of observation entries expected" >&2
     exit 1
@@ -26,16 +27,16 @@ MIN_OBSERVATIONS="$3"
 echo "Verifying logging compliance for: $PROCESS_ID"
 echo "---"
 
-# Count decisions matching the process identifier
+# Count decisions matching the process identifier (per-file structure)
 DECISION_COUNT=0
-if [[ -f "$DECISIONS_LOG" ]]; then
-    DECISION_COUNT=$(grep -c "$PROCESS_ID" "$DECISIONS_LOG" 2>/dev/null || echo "0")
+if [[ -d "$DECISIONS_DIR" ]]; then
+    DECISION_COUNT=$(grep -l "$PROCESS_ID" "$DECISIONS_DIR"/*.yaml 2>/dev/null | wc -l | tr -d ' ')
 fi
 
-# Count observations matching the process identifier
+# Count observations matching the process identifier (per-file structure)
 OBSERVATION_COUNT=0
-if [[ -f "$OBSERVATIONS_LOG" ]]; then
-    OBSERVATION_COUNT=$(grep -c "$PROCESS_ID" "$OBSERVATIONS_LOG" 2>/dev/null || echo "0")
+if [[ -d "$OBSERVATIONS_DIR" ]]; then
+    OBSERVATION_COUNT=$(grep -l "$PROCESS_ID" "$OBSERVATIONS_DIR"/*.yaml 2>/dev/null | wc -l | tr -d ' ')
 fi
 
 # Check decisions

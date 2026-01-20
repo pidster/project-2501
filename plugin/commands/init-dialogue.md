@@ -22,7 +22,10 @@ Set up the Dialogue Framework for first use in this project.
    Create the following directories:
    ```
    .dialogue/
-   └── logs/
+   ├── logs/
+   │   ├── decisions/
+   │   └── observations/
+   └── tasks/
    ```
 
 3. **Create config.yaml**
@@ -38,33 +41,28 @@ Set up the Dialogue Framework for first use in this project.
        directory: "docs/decisions"
        pattern: "ADR-*.md"
 
-   # Log locations
+   # Log locations (per-file directories)
    logs:
-     decisions: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/decisions.yaml"
-     observations: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/observations.yaml"
+     decisions: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/decisions/"
+     observations: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/observations/"
+
+   # Tasks (per-file directory)
+   tasks: "file://${CLAUDE_PROJECT_DIR}/.dialogue/tasks/"
    ```
 
-4. **Create empty log files**
+4. **Create .gitkeep files**
 
-   Create empty log files with headers:
+   Create `.gitkeep` files in the empty directories to ensure they're tracked:
 
-   `.dialogue/logs/decisions.yaml`:
-   ```yaml
-   # Decision log - managed by Dialogue Framework
-   # Do not edit manually
-   decisions: []
-   ```
-
-   `.dialogue/logs/observations.yaml`:
-   ```yaml
-   # Observation log - managed by Dialogue Framework
-   # Do not edit manually
-   observations: []
-   ```
+   - `.dialogue/logs/decisions/.gitkeep`
+   - `.dialogue/logs/observations/.gitkeep`
+   - `.dialogue/tasks/.gitkeep`
 
 5. **Confirm completion**
 
    Tell the user:
    - Dialogue Framework has been initialised
    - They can customise `.dialogue/config.yaml` to match their project structure
-   - The framework will now track decisions and observations in `.dialogue/logs/`
+   - The framework will track decisions in `.dialogue/logs/decisions/`
+   - The framework will track observations in `.dialogue/logs/observations/`
+   - Tasks will be stored in `.dialogue/tasks/`

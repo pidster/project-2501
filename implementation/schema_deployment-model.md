@@ -103,9 +103,9 @@ Content created by projects using the framework.
 
 | Location | Content | Created By |
 |----------|---------|------------|
-| `.dialogue/logs/decisions.yaml` | Decision records | `log-decision.sh` |
-| `.dialogue/logs/observations.yaml` | Observation records | `log-observation.sh` |
-| `.dialogue/tasks.yaml` | Project tasks | Manual or AI |
+| `.dialogue/logs/decisions/*.yaml` | Decision records (per-file) | `log-decision.sh` |
+| `.dialogue/logs/observations/*.yaml` | Observation records (per-file) | `log-observation.sh` |
+| `.dialogue/tasks/*.yaml` | Project tasks (per-file) | Manual or AI |
 | `decisions/ADR-*.md` | Architecture Decision Records | `create-adr.sh` |
 | `docs/` or custom | THY, REF, STR documents | Project team |
 
@@ -145,13 +145,13 @@ artifacts:
     directory: "decisions"
     pattern: "ADR-*.md"
 
-# Log locations (rarely changed)
+# Log locations (per-file directories)
 logs:
-  decisions: ".dialogue/logs/decisions.yaml"
-  observations: ".dialogue/logs/observations.yaml"
+  decisions: ".dialogue/logs/decisions/"
+  observations: ".dialogue/logs/observations/"
 
-# Tasks
-tasks: ".dialogue/tasks.yaml"
+# Tasks (per-file directory)
+tasks: ".dialogue/tasks/"
 ```
 
 ### Default Locations
@@ -164,9 +164,9 @@ When no configuration exists, the resolver uses sensible defaults:
 | REF documents | `docs/ref_*.md` |
 | STR documents | `docs/str_*.md` |
 | ADR documents | `decisions/ADR-*.md` |
-| Decision log | `.dialogue/logs/decisions.yaml` |
-| Observation log | `.dialogue/logs/observations.yaml` |
-| Tasks | `.dialogue/tasks.yaml` |
+| Decision log | `.dialogue/logs/decisions/*.yaml` |
+| Observation log | `.dialogue/logs/observations/*.yaml` |
+| Tasks | `.dialogue/tasks/*.yaml` |
 
 ### Framework Development Override
 

@@ -1,8 +1,8 @@
 id: "FW-020"
 title: "Remove references to old log file locations"
-status: BACKLOG
+status: COMPLETED
 created: "2026-01-20T20:20:00Z"
-updated: "2026-01-20T20:20:00Z"
+updated: "2026-01-20T20:30:00Z"
 type: CLEANUP
 priority: LOW
 description: |
@@ -39,3 +39,20 @@ tags:
   - cleanup
   - logging
   - deprecated
+
+notes: |
+  COMPLETED 20 January 2026:
+
+  Updated files to use per-file log structure:
+  - .dialogue/config.yaml: Updated log paths to directories
+  - plugin/skills/dialogue-verify-logging-compliance/SKILL.md: Updated examples
+  - plugin/skills/dialogue-verify-logging-compliance/scripts/verify-logging.sh: Updated to search directories
+  - implementation/schema_resolver-interface.md: Updated search strategy table
+  - implementation/schema_deployment-model.md: Updated all path references
+  - plugin/README.md: Updated log file locations
+  - plugin/commands/init-dialogue.md: Updated to create directories not files
+  - research/planning-future-work.md: Added note about structure evolution
+
+  Intentionally retained references (backward compatibility):
+  - plugin/skills/dialogue-resolve-reference/scripts/resolve-reference.sh: LEGACY fallback variables
+  - plugin/scripts/migrate-to-per-file.sh: Migration script from old format

@@ -376,11 +376,14 @@ ContextNode:
 - `.dialogue/README.md` — Format specification and documentation
 - `.dialogue/log-decision.sh` — Decision logging bash script
 - `.dialogue/log-observation.sh` — Observation logging bash script
-- `.dialogue/logs/decisions.yaml` — Decision log (YAML stream)
-- `.dialogue/logs/observations.yaml` — Observation log (YAML stream)
 - `.claude/skills/log-decision.md` — Decision Logger skill
 - `.claude/skills/log-observation.md` — Observation Logger skill
 - `.claude/agents/process-architect.md` — Process Architect custom agent
+
+**Note**: Log structure evolved from single YAML files to per-entry files:
+- `.dialogue/logs/decisions/*.yaml` — Per-decision files (DEC-*.yaml)
+- `.dialogue/logs/observations/*.yaml` — Per-observation files (OBS-*.yaml)
+- `.dialogue/tasks/*.yaml` — Per-task files
 
 **Moved to**: Completed Items
 

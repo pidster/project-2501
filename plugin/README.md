@@ -233,11 +233,11 @@ The plugin uses Claude Code's built-in environment variables:
 
 ## Log File Locations
 
-Logs are written to the project directory:
+Logs are written to the project directory (per-file structure):
 
-- Decisions: `${CLAUDE_PROJECT_DIR}/.dialogue/logs/decisions.yaml`
-- Observations: `${CLAUDE_PROJECT_DIR}/.dialogue/logs/observations.yaml`
-- Tasks: `${CLAUDE_PROJECT_DIR}/.dialogue/tasks.yaml`
+- Decisions: `${CLAUDE_PROJECT_DIR}/.dialogue/logs/decisions/*.yaml`
+- Observations: `${CLAUDE_PROJECT_DIR}/.dialogue/logs/observations/*.yaml`
+- Tasks: `${CLAUDE_PROJECT_DIR}/.dialogue/tasks/*.yaml`
 - ADRs: `${CLAUDE_PROJECT_DIR}/decisions/ADR-NNN-*.md`
 
 ## Part of the Dialogue Framework

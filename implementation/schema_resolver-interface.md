@@ -176,16 +176,16 @@ Framework source references return `NOT_SUPPORTED` status.
 
 | Pattern | Type | Search Strategy |
 |---------|------|-----------------|
-| `DEC-YYYYMMDD-HHMMSS` | Decision | `.dialogue/logs/decisions.yaml`, match ID |
-| `OBS-YYYYMMDD-HHMMSS` | Observation | `.dialogue/logs/observations.yaml`, match ID |
+| `DEC-YYYYMMDD-HHMMSS` | Decision | `.dialogue/logs/decisions/<id>.yaml` |
+| `OBS-YYYYMMDD-HHMMSS` | Observation | `.dialogue/logs/observations/<id>.yaml` |
 
 ### Task References
 
 | Pattern | Type | Search Strategy |
 |---------|------|-----------------|
-| `SH-NNN` | Self-Hosting | `.dialogue/tasks.yaml`, match ID |
-| `CD-NNN` | Conceptual Debt | `.dialogue/tasks.yaml`, match ID |
-| `FW-NNN` | Framework | `.dialogue/tasks.yaml`, match ID |
+| `SH-NNN` | Self-Hosting | `.dialogue/tasks/<id>.yaml` |
+| `CD-NNN` | Conceptual Debt | `.dialogue/tasks/<id>.yaml` |
+| `FW-NNN` | Framework | `.dialogue/tasks/<id>.yaml` |
 
 ### Actor References
 

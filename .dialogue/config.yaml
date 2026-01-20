@@ -41,10 +41,10 @@ artifacts:
     pattern: "ADR-*.md"
 
 
-# Log locations
+# Log locations (per-entry files in directories)
 logs:
-  decisions: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/decisions.yaml"
-  observations: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/observations.yaml"
+  decisions: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/decisions/"
+  observations: "file://${CLAUDE_PROJECT_DIR}/.dialogue/logs/observations/"
 
-# Tasks
-tasks: "file://${CLAUDE_PROJECT_DIR}/.dialogue/tasks.yaml"
+# Tasks (per-task files in directory)
+tasks: "file://${CLAUDE_PROJECT_DIR}/.dialogue/tasks/"
