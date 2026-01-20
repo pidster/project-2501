@@ -1,0 +1,41 @@
+id: "FW-020"
+title: "Remove references to old log file locations"
+status: BACKLOG
+created: "2026-01-20T20:20:00Z"
+updated: "2026-01-20T20:20:00Z"
+type: CLEANUP
+priority: LOW
+description: |
+  Check for and remove any references to the old consolidated log files:
+  - .dialogue/logs/decisions.yaml
+  - .dialogue/logs/observations.yaml
+
+  These have been replaced by per-entry files in:
+  - .dialogue/logs/decisions/DEC-*.yaml
+  - .dialogue/logs/observations/OBS-*.yaml
+
+  Tasks:
+  1. Search codebase for references to old paths
+  2. Update any documentation referencing old structure
+  3. Update any skills or commands that reference old paths
+  4. Verify schema documentation reflects current structure
+
+  Search locations:
+  - .claude/ (skills, commands, agents)
+  - plugin/ (processes, rules, references)
+  - implementation/ (schemas, manual)
+  - concepts/ (if any operational references)
+
+objective: "No references to deprecated log file locations remain"
+rationale: |
+  Log structure changed from single consolidated files to per-entry files
+  for better merge handling and granularity. Old references could cause
+  confusion or errors.
+
+blocked_by: []
+blocks: []
+
+tags:
+  - cleanup
+  - logging
+  - deprecated
