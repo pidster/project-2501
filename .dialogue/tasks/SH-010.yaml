@@ -1,8 +1,8 @@
 id: "SH-010"
 title: "Phase 2 Operational Guidance"
-status: BACKLOG
+status: COMPLETED
 created: "2026-01-14T19:00:00Z"
-updated: "2026-01-14T18:00:00Z"
+updated: "2026-01-20T17:30:00Z"
 type: CAPABILITY
 phase: 2
 priority: HIGH
@@ -31,4 +31,9 @@ parent: "SH-018"
 notes: |
   Created 14 January 2026 from Phase 1-2 analysis.
   REVISED 14 January 2026: Changed from "create exemplar" to "operationalise guidance".
+
+  COMPLETED 20 January 2026 as part of SH-018:
+  - Created plugin/rules/phase2-planning.md
+  - Documented pattern evolution within phase
+  - AI behaviour rules for Planning contexts
 

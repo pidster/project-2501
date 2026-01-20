@@ -1,8 +1,8 @@
 id: "SH-011"
 title: "Phase 2 Capability Flow Operationalisation"
-status: BACKLOG
+status: COMPLETED
 created: "2026-01-14T19:00:00Z"
-updated: "2026-01-14T18:00:00Z"
+updated: "2026-01-20T17:30:00Z"
 type: CAPABILITY
 phase: 2
 priority: HIGH
@@ -38,4 +38,11 @@ notes: |
   REVISED 14 January 2026: Changed from "create exemplar" to "operationalise flows".
   Most complex due to Planning's temporal span.
 
-  # HIGH PRIORITY: Measurement Gap
+  COMPLETED 20 January 2026 as part of SH-018:
+  - Created PROC-2.1 (Scope Definition) - plugin/processes/process-scope-definition.yaml
+  - Created PROC-2.2 (Risk Assessment) - plugin/processes/process-risk-assessment.yaml
+  - Created PROC-2.3 (Resource Planning) - plugin/processes/process-resource-planning.yaml
+  - Created PROC-2.4 (Schedule Development) - plugin/processes/process-schedule-development.yaml
+  - All with QUICK/FULL modes, Human-Only steps, escalation triggers
+  - Pattern evolution documented in phase2-planning.md rules
+

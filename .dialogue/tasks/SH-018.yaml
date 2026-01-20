@@ -1,8 +1,8 @@
 id: "SH-018"
 title: "Phase 2 (Planning) Operationalisation"
-status: BACKLOG
+status: COMPLETED
 created: "2026-01-19T16:10:00Z"
-updated: "2026-01-19T16:10:00Z"
+updated: "2026-01-20T17:30:00Z"
 type: CAPABILITY
 phase: 2
 priority: HIGH
@@ -37,12 +37,13 @@ children: ["SH-010", "SH-011"]
 notes: |
   Created 19 January 2026 - consolidated from SH-010 and SH-011.
 
-  PARTIAL COMPLETION (~0%):
-  - SH-010 (Operational Guidance): BACKLOG
-  - SH-011 (Capability Flow): BACKLOG
-
-  Remaining work:
-  - Define PROC-2.x processes with capability instances
-  - Document pattern evolution within phase
-  - Create AI configuration (skills, hooks, agent behaviour)
+  COMPLETED 20 January 2026:
+  - Created PROC-2.1 (Scope Definition)
+  - Created PROC-2.2 (Risk Assessment)
+  - Created PROC-2.3 (Resource Planning)
+  - Created PROC-2.4 (Schedule Development)
+  - Created plugin/rules/phase2-planning.md for AI behaviour
+  - All processes follow QUICK/FULL modes per PRI-001
+  - Human-Only steps clearly demarcated for organisational decisions
+  - Pattern evolution within phase documented in rules
 
