@@ -1,8 +1,9 @@
 id: "FW-029"
 title: "Design log synchronisation mechanism"
-status: BLOCKED
+status: COMPLETED
+completed: "2026-01-21T14:00:00Z"
 created: "2026-01-21T13:45:52Z"
-updated: "2026-01-21T13:49:30Z"
+updated: "2026-01-21T14:00:00Z"
 type: CAPABILITY
 priority: MEDIUM
 description: |
@@ -23,3 +24,9 @@ notes: |
   - Merge conflict mitigation: YAML files with unique timestamps
   - Consider SessionStart hook for pull reminder
   - Consider Stop hook for commit reminder
+
+  Resolution 21 January 2026:
+  - Implemented via skill guidance (FW-030 Option 5)
+  - Added "Sharing" section to log-observation, log-decision, manage-tasks skills
+  - Instructs immediate commit/push after logging
+  - No hooks required; guidance-based approach sufficient

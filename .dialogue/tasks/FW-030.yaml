@@ -1,8 +1,9 @@
 id: "FW-030"
 title: "Explore task-level event mechanism"
-status: READY
+status: COMPLETED
+completed: "2026-01-21T14:00:00Z"
 created: "2026-01-21T13:49:04Z"
-updated: "2026-01-21T13:49:04Z"
+updated: "2026-01-21T14:00:00Z"
 type: CAPABILITY
 priority: MEDIUM
 description: |
@@ -21,3 +22,10 @@ notes: |
   - Platform vs framework: should Claude Code provide TaskEnd, or can framework simulate via PostToolUse?
   - If framework-level: hook on task status change to COMPLETED/CANCELLED
   - If platform-level: would need to propose to Claude Code team
+
+  Resolution 21 January 2026:
+  - Chose Option 5: Skill guidance rather than hooks
+  - Updated log-observation, log-decision, and manage-tasks skills
+  - Added "Sharing" section with instruction to commit/push immediately
+  - Simpler than hooks, works now, explicit in skill contract
+  - Trade-off: relies on Claude following instructions (acceptable)
