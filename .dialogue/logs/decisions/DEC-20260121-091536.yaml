@@ -1,0 +1,9 @@
+id: DEC-20260121-091536
+timestamp: "2026-01-21T09:15:36Z"
+type: DESIGN
+actor: "human:pidster"
+subject: "Evolution-plugin bidirectional linking"
+outcome: "Added Implementation section to evolution doc pointing to plugin; updated plugin README to reference Evolution as conceptual basis; established unidirectional flow pattern"
+rationale: "Plugin is build output of conceptual framework; clear separation between conceptual guidance and operational tools"
+context: "FW-025; follows concepts→docs→build→plugin model"
+tags: ["documentation", "plugin", "evolution"]

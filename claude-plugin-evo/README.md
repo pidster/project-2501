@@ -242,4 +242,23 @@ Logs are written to the project directory (per-file structure):
 
 ## Part of the Dialogue Framework
 
-This plugin is the delivery mechanism for the framework's dialogue and process design capabilities. For full framework documentation, see the [project repository](https://github.com/pidster/project-2501).
+This plugin implements the **Evolution** meta-process—incremental AI adoption that preserves existing practices while adding AI capabilities.
+
+### Conceptual Basis
+
+The plugin operationalises the guidance in [dialogue-framework-evolution.md](../dialogue-framework-evolution.md), which defines:
+
+- Phase-specific document types and collaboration patterns
+- When and how to apply AI assistance at each SDLC phase
+- Transition readiness criteria between phases
+- Backward event detection and handling
+
+### Relationship
+
+| Evolution Document | This Plugin |
+|--------------------|-------------|
+| Conceptual guidance | Operational tools |
+| *What* to do | *How* to do it |
+| Phase-by-phase practices | Skills and agents |
+
+For the full conceptual framework, see [dialogue-framework-evolution.md](../dialogue-framework-evolution.md).

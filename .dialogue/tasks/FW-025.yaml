@@ -1,8 +1,9 @@
 id: "FW-025"
 title: "Link claude-plugin-evo to dialogue-framework-evolution.md"
-status: READY
+status: COMPLETED
 created: "2026-01-20T23:10:00Z"
-updated: "2026-01-20T23:10:00Z"
+updated: "2026-01-21T09:20:00Z"
+completed: "2026-01-21T09:20:00Z"
 type: DOCUMENTATION
 priority: MEDIUM
 description: |
@@ -40,5 +41,16 @@ blocks: []
 notes: |
   Created 20 January 2026.
 
-  May relate to FW-022 (Complete dialogue-framework-revolution.md) if that's
-  a related document.
+  Completed 21 January 2026:
+
+  Evolution doc changes:
+  - Added "Implementation" subsection in Overview pointing to plugin
+  - Added full "Implementation" section before "Relationship to Revolution"
+  - Includes plugin location, capabilities table, relationship table, getting started
+
+  Plugin README changes:
+  - Updated "Part of the Dialogue Framework" section
+  - Added "Conceptual Basis" subsection referencing evolution doc
+  - Added relationship table (document vs plugin)
+
+  Decision logged as DEC-20260121-091536

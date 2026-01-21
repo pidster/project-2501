@@ -15,6 +15,10 @@
 - Organisational risk tolerance favours gradual change
 - AI integration should enhance rather than disrupt current workflows
 
+### Implementation
+
+This conceptual guidance is implemented by the **claude-plugin-evo** Claude Code plugin. See [Implementation](#implementation-1) for details.
+
 ---
 
 ## Principles
@@ -2298,6 +2302,49 @@ Guidance for progressively shifting collaboration patterns while maintaining tea
 *To be developed*
 
 How to measure successful evolution without disrupting productivity.
+
+---
+
+## Implementation
+
+This document provides the conceptual guidance for the Evolution meta-process. The operational implementation is delivered through the **claude-plugin-evo** Claude Code plugin.
+
+### Plugin Location
+
+```
+claude-plugin-evo/
+```
+
+### What the Plugin Provides
+
+| Capability | Purpose |
+|------------|---------|
+| **Decision logging** | Capture rationale as decisions are made |
+| **Observation logging** | Record measurements, states, and events |
+| **Document creation** | Create THY, REF, STR, and NOT documents |
+| **Reference resolution** | Navigate framework references |
+| **Task management** | Persistent cross-session task tracking |
+| **Process architecture** | Design capability flow specifications |
+
+### Relationship Between Document and Plugin
+
+| This Document | Plugin |
+|---------------|--------|
+| Defines *what* to do at each phase | Provides *tools* to do it |
+| Explains *why* practices matter | Captures *evidence* of practice |
+| Describes collaboration patterns | Implements pattern support |
+| Lists document types per phase | Creates and manages documents |
+
+The document is conceptual guidance; the plugin is operational implementation. Together they form the Evolution meta-process.
+
+### Getting Started
+
+1. Install the plugin: `claude --plugin-dir ./claude-plugin-evo`
+2. Initialise for your project: `/init-dialogue`
+3. Use phase-specific guidance from this document
+4. Let the plugin capture decisions and observations as you work
+
+See the [plugin README](./claude-plugin-evo/README.md) for detailed installation and usage.
 
 ---
 
