@@ -51,6 +51,18 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $CLAUDE_PLUGIN_ROOT/hooks/scripts/daily-check-prompt.sh",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   }
 }

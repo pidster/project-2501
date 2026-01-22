@@ -75,7 +75,7 @@ ArtifactNode:
   id: "THY-001"
   node_type: ARTIFACT
   metadata:
-    artifact_type: DOCUMENT | DECISION | OBSERVATION | WORK_ITEM | ADR | ASSUMPTION | REQUIREMENT | TEST | IMPLEMENTATION
+    artifact_type: DOCUMENT | DECISION | OBSERVATION | WORK_ITEM | ADR | ASSUMPTION | REQUIREMENT | TEST | IMPLEMENTATION | ASSESSMENT
     temporal_class: Standing | Dynamic | Ephemeral
     content_type: "text/markdown"
     title: "Framework Theory"
@@ -202,6 +202,7 @@ Relationships for tracking validation, satisfaction, and dependency chains.
 | `TESTS` | Test verifies implementation | Test → Impl | `auth.spec.ts TESTS src/auth.ts` |
 | `COVERS` | Test covers requirement | Test → Req | `auth.spec.ts COVERS REQ-001` |
 | `DEPENDS_ON` | Hard dependency | Any → Any | `REQ-002 DEPENDS_ON REQ-001` |
+| `ASSESSES` | Assessment evaluates artifact | Assessment → Target | `ASSESS-... ASSESSES FW-023` |
 
 **Future extensions** (see FW-031):
 - `CONTRADICTS` — Evidence challenges theory/assumption
@@ -281,6 +282,12 @@ SatisfiesEdgeMetadata:
   coverage: FULL | PARTIAL  # If partial, notes explain gaps
   notes: "Core functionality implemented; edge cases deferred"
   verified_by: "human:pidster"
+
+# For ASSESSES edges
+AssessesEdgeMetadata:
+  assessment_type: DAILY_CHECK | STAKEHOLDER_ALIGNMENT | PROBLEM_FRAMING | TTKM | PHASE_READINESS
+  dimension: string | null  # Optional: which aspect was assessed
+  session_quality: 1-5 | null  # For DAILY_CHECK only
 ```
 
 ---
@@ -561,6 +568,7 @@ Edge metadata captures collaboration patterns used in creation. This enables que
 7. SATISFIES edge requires target with artifact_type REQUIREMENT
 8. TESTS edge requires source with artifact_type TEST and target with artifact_type IMPLEMENTATION
 9. COVERS edge requires source with artifact_type TEST and target with artifact_type REQUIREMENT
+10. ASSESSES edge requires source with artifact_type ASSESSMENT
 
 ---
 
@@ -570,7 +578,7 @@ Edge metadata captures collaboration patterns used in creation. This enables que
 - ✓ **Edge types**: Cover TMS relationships and information dependencies
 - ✓ **TMS operations**: Map to Wegner's directory, allocation, retrieval
 - ✓ **Storage design**: Filesystem-first with instance-per-file pattern, graph-ready
-- ✓ **Traceability edges**: VALIDATES, ASSUMES, SATISFIES, SPECIFIES, TESTS, COVERS, DEPENDS_ON
+- ✓ **Traceability edges**: VALIDATES, ASSUMES, SATISFIES, SPECIFIES, TESTS, COVERS, DEPENDS_ON, ASSESSES
 - ⚠ **Query language**: Cypher-style examples; actual implementation pending
 - ⚠ **Index structure**: Schema defined; optimisation pending
 - ⚠ **Cascade logic**: Invalidation cascades need implementation
