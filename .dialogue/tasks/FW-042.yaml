@@ -2,7 +2,7 @@ id: "FW-042"
 title: "DEFER remediation guidance using tacit percentage"
 status: READY
 created: "2026-01-22T15:20:26Z"
-updated: "2026-01-22T15:20:26Z"
+updated: "2026-01-22T15:25:00Z"
 type: CAPABILITY
 priority: MEDIUM
 description: |
@@ -13,3 +13,45 @@ blocked_by: []
 blocks: []
 notes: |
   Created 22 January 2026.
+
+  Design exploration 22 January 2026:
+
+  Two-factor model for DEFER remediation:
+
+  Factor 1: Phase Tacit Percentage
+  - Phase 1 (75%): Primarily dialogue-based remediation
+  - Phase 2 (55%): Dialogue-dominant, some artifact review
+  - Phase 3 (50%): Balanced dialogue + artifact
+  - Phase 4 (40%): Balanced, slightly artifact-weighted
+  - Phase 5 (35%): Artifact-dominant, some pairing
+  - Phase 6-7 (30%): Primarily artifact/process review
+
+  Factor 2: Gap Dimension
+  - documentation_readiness → Formal gaps → Artifact remediation
+  - knowledge_transfer_readiness → Tacit gaps → Dialogue remediation
+  - stakeholder_readiness → Alignment gaps → Facilitation remediation
+  - technical_readiness → Dependency gaps → Technical resolution
+
+  Key insight: Same dimension requires different remediation based on phase.
+  E.g., documentation gap in Phase 1 = "haven't articulated vision" (needs dialogue)
+  vs Phase 6 = "test specs incomplete" (needs artifact work).
+
+  Proposed output structure:
+  ```yaml
+  defer_guidance:
+    primary_gap: <dimension>
+    phase_tacit_percentage: <from lookup>
+    recommended_approach: DIALOGUE | MIXED | ARTIFACT
+    specific_actions: [list of recommended activities]
+    restart_point:
+      phase: <number>
+      activity: <description>
+      artifact: <if applicable>
+  ```
+
+  Implementation approach:
+  1. Add phase tacit % lookup table to script
+  2. Identify lowest-scoring dimension(s) as primary gap
+  3. Cross-reference phase tacit % with gap type
+  4. Generate recommended_approach and specific_actions
+  5. Suggest restart_point based on gap origin
