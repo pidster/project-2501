@@ -34,6 +34,18 @@ This conceptual guidance is implemented by the **claude-plugin-evo** Claude Code
 
 ## Evolution Across SDLC Phases
 
+### Phase Dynamics: Overlap and Loops
+
+While the sections below present phases sequentially for clarity, actual development involves significant overlap and feedback loops:
+
+- **Phases overlap**: Planning spans most of the project; Requirements and Design iterate together
+- **Common loops**: Requirements↔Design (mutual refinement), Implementation↔Testing (TDD), Testing→Requirements (acceptance mismatch)
+- **Backward events are valid**: Discoveries in later phases that invalidate earlier understanding trigger legitimate returns to earlier work
+
+**Key insight**: Shorter loops (adjacent phases) are low-cost and expected. Longer loops (e.g., Testing→Initiation) indicate information debt—gaps in early phases discovered late.
+
+See [concept_seven-phase-sdlc.md](./concepts/concept_seven-phase-sdlc.md) for the complete phase dynamics model including the Common Phase Loops diagram.
+
 ### Phase 1: Initiation/Conception
 
 **ISO 12207 Process**: 6.4.1 Business or Mission Analysis

@@ -140,6 +140,8 @@ The Dialogue Framework comprises interconnected concepts that together provide a
 | **6. Testing/Validation** | Verification and validation | CONFIRM |
 | **7. Deployment/Operations** | Release, operate, maintain, evolve | DELIVER |
 
+**Phase Dynamics**: Phases overlap and cycle—they are not strictly sequential. Common loops include Requirements↔Design iteration, Implementation↔Testing (TDD), and Testing→Requirements when acceptance criteria don't match intent. These loops are valid process outcomes, not failures.
+
 [→ Full concept: concept_seven-phase-sdlc.md](./concepts/concept_seven-phase-sdlc.md)
 
 ### Concept 6: Actor Model
@@ -306,8 +308,8 @@ The framework's claims are grounded in:
 
 The framework provides two meta-processes for AI-augmented development, reflecting different change strategies:
 
-- **Evolution**: Incremental adoption from current practice—adding AI capabilities to existing workflows while preserving team knowledge and organisational structures [→ `dialogue-framework-evolution.md`]
-- **Revolution**: Transformational redesign—fundamentally reconceiving work systems for joint human-AI optimisation [→ `dialogue-framework-revolution.md`]
+- **Evolution**: Incremental adoption from current practice—adding AI capabilities to existing workflows while preserving team knowledge and organisational structures [→ `dialogue-framework-evolution.md`](dialogue-framework-evolution.md)
+- **Revolution**: Transformational redesign—fundamentally reconceiving work systems for joint human-AI optimisation [→ `dialogue-framework-revolution.md`](dialogue-framework-revolution.md)
 
 The Seven-Phase SDLC provides the structural foundation; these meta-processes guide *how* organisations traverse phases with AI integration.
 

@@ -121,6 +121,77 @@ Deployment:                                           [■■■■■■■]
 
 This overlap explains why information composition within a phase may shift as the phase progresses.
 
+### Common Phase Loops
+
+While linear progression represents the "happy path", software development routinely involves feedback loops between phases. These loops are not failures—they reflect legitimate learning and course correction:
+
+```mermaid
+flowchart LR
+    subgraph "Strategic Loop"
+        P1[1. Initiation]
+    end
+
+    subgraph "Planning Loop"
+        P2[2. Planning]
+        P3[3. Requirements]
+        P4[4. Design]
+    end
+
+    subgraph "Build Loop"
+        P5[5. Implementation]
+        P6[6. Testing]
+    end
+
+    subgraph "Delivery"
+        P7[7. Deployment]
+    end
+
+    %% Forward flow
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> P5
+    P5 --> P6
+    P6 --> P7
+
+    %% Common feedback loops
+    P3 <--> P4
+    P4 --> P3
+    P5 --> P4
+    P6 --> P5
+    P6 --> P3
+    P7 --> P6
+    P7 -.-> P1
+
+    %% Style
+    linkStyle 6,7,8,9,10,11,12 stroke:#e74c3c,stroke-dasharray:5
+```
+
+**Common Loop Patterns:**
+
+| Loop | Phases | Trigger | Frequency |
+|------|--------|---------|-----------|
+| **Requirements-Design** | 3 ↔ 4 | Design reveals requirement gaps or conflicts | Very common |
+| **Design-Implementation** | 4 ← 5 | Build discovers technical constraints | Common |
+| **Implementation-Testing** | 5 ↔ 6 | Tests fail, fixes verified | Continuous (TDD) |
+| **Testing-Requirements** | 3 ← 6 | Acceptance criteria mismatch | Occasional |
+| **Deployment-Testing** | 6 ← 7 | Production issues require fixes | As needed |
+| **Strategic Reset** | 1 ← any | Market shift, stakeholder change | Rare but significant |
+
+**Loop Characteristics:**
+
+- **Short loops** (adjacent phases, e.g., 5↔6): Low cost, expected, often continuous
+- **Medium loops** (2-3 phases back, e.g., 6→3): Moderate cost, indicates earlier gaps
+- **Long loops** (to Phase 1): High cost, strategic reassessment, may reset project
+
+**Information Debt and Loop Length:**
+
+Proceeding at risk (with information debt) tends to produce longer loops:
+- Inadequate Phase 1 → discovered in Phase 5/6 → expensive reset
+- Thorough Phase 1 → issues found in Phase 3/4 → shorter, cheaper correction
+
+This explains why early phases, despite being "further" from delivery, have outsized impact on project success.
+
 ### Event Taxonomy
 
 **Forward Events (Progress Triggers):**
@@ -339,6 +410,10 @@ Research on information types validates the shift from tacit-heavy early phases 
 ---
 
 ## Document History
+
+**Version 2.1** (January 2026)
+- Added "Common Phase Loops" section with Mermaid diagram
+- Documented loop patterns, characteristics, and relationship to information debt
 
 **Version 2.0** (January 2026)
 - Added "Retrograde Navigation" section addressing backward events as valid process outcomes

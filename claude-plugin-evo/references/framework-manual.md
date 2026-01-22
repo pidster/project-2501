@@ -20,6 +20,11 @@
 | **6. Testing** | Correctness: verification | 60% formal, 30% tacit, 10% emergent |
 | **7. Operations** | Value: deploy, operate, maintain | 60% formal, 30% tacit, 10% emergent |
 
+**Phase Dynamics**: Phases overlap and cycle—not strictly sequential:
+- **Common loops**: Requirements↔Design (mutual refinement), Implementation↔Testing (TDD), Testing→Requirements (acceptance mismatch)
+- **Loop cost**: Shorter loops (adjacent phases) = low cost, expected; longer loops (e.g., Testing→Initiation) = high cost, indicates information debt
+- **Backward events are valid**: Discoveries that invalidate earlier understanding trigger legitimate returns to earlier work
+
 ### Eight Capabilities
 
 | Capability | Description |

@@ -1,0 +1,24 @@
+id: "DOC-002"
+title: "Document phase loops and cycles with Mermaid diagram"
+status: COMPLETED
+created: "2026-01-22T15:05:55Z"
+updated: "2026-01-22T15:10:00Z"
+completed: "2026-01-22T15:10:00Z"
+type: DOCUMENT
+priority: HIGH
+description: |
+  Add Mermaid diagram showing common phase loops to concept_seven-phase-sdlc.md Phase Span and Overlap section. Ensure this information is propagated to dialogue-framework.md, dialogue-framework-evolution.md, framework-manual.md, and framework-manual-source.md.
+blocked_by: []
+blocks: []
+notes: |
+  Created 22 January 2026.
+
+  Completed 22 January 2026:
+  - Added "Common Phase Loops" section to concept_seven-phase-sdlc.md with Mermaid flowchart
+  - Documented loop patterns table (Requirements-Design, Design-Implementation, etc.)
+  - Added loop characteristics and relationship to information debt
+  - Propagated phase dynamics summary to:
+    - dialogue-framework.md (Concept 5 section)
+    - dialogue-framework-evolution.md (new "Phase Dynamics" subsection)
+    - framework-manual-source.md (Quick Reference section)
+    - framework-manual.md plugin version (Quick Reference section)
