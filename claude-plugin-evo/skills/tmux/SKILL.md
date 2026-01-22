@@ -148,14 +148,67 @@ tmux has-session -t <session-name> 2>/dev/null && echo "exists" || echo "not fou
 
 ## Session Naming Conventions
 
-Use descriptive names that indicate purpose:
+Sessions are **local to each machine** (not shared across team members), so we use a naming convention rather than a registry file.
 
-| Pattern | Use Case | Example |
-|---------|----------|---------|
-| `build-<project>` | Build processes | `build-webapp` |
-| `watch-<target>` | File watchers | `watch-tests` |
-| `serve-<service>` | Running servers | `serve-api` |
-| `task-<id>` | Task-specific work | `task-FW-033` |
+### Pattern
+
+```
+<project-slug>-<purpose>
+```
+
+Where:
+- `<project-slug>` identifies the project (derived from directory name or configured)
+- `<purpose>` links to a task ID, process instance, or descriptive slug
+
+### Deriving Project Slug
+
+```bash
+# From directory name (simple)
+PROJECT_SLUG=$(basename "$CLAUDE_PROJECT_DIR" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+# Or use a configured value if available
+PROJECT_SLUG="${DIALOGUE_PROJECT_SLUG:-$(basename "$CLAUDE_PROJECT_DIR")}"
+```
+
+### Purpose Patterns
+
+| Purpose Type | Pattern | Example Session Name |
+|--------------|---------|---------------------|
+| Task-linked | `<project>-<task-id>` | `project-2501-FW-033` |
+| Process instance | `<project>-<process-id>` | `project-2501-PI-001` |
+| Build process | `<project>-build` | `project-2501-build` |
+| File watcher | `<project>-watch` | `project-2501-watch` |
+| Server | `<project>-serve` | `project-2501-serve` |
+
+### Listing Project Sessions
+
+Filter sessions belonging to the current project:
+
+```bash
+PROJECT_SLUG=$(basename "$CLAUDE_PROJECT_DIR" | tr '[:upper:]' '[:lower:]')
+tmux list-sessions -F "#{session_name}" 2>/dev/null | grep "^${PROJECT_SLUG}-" || echo "No project sessions"
+```
+
+### Framework Discovery
+
+The framework orchestrator can discover running sessions and correlate them:
+
+```bash
+# List project sessions with details
+PROJECT_SLUG=$(basename "$CLAUDE_PROJECT_DIR" | tr '[:upper:]' '[:lower:]')
+tmux list-sessions -F "#{session_name}|#{session_created}|#{session_windows}" 2>/dev/null | \
+    grep "^${PROJECT_SLUG}-" | \
+    while IFS='|' read -r name created windows; do
+        # Extract purpose (everything after project slug)
+        purpose="${name#${PROJECT_SLUG}-}"
+        echo "Session: $name | Purpose: $purpose | Windows: $windows"
+    done
+```
+
+This allows the framework to:
+1. Discover all sessions for the current project
+2. Parse the purpose suffix to identify linked tasks or processes
+3. Correlate with `.dialogue/tasks/` or process instance state
 
 ## Common Patterns
 
