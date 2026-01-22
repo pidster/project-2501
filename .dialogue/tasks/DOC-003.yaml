@@ -1,8 +1,8 @@
 id: "DOC-003"
 title: "Generate framework executive summary"
-status: READY
+status: COMPLETED
 created: "2026-01-22T15:32:42Z"
-updated: "2026-01-22T15:32:42Z"
+updated: "2026-01-22T13:30:00Z"
 type: DOCUMENT
 priority: HIGH
 description: |
@@ -12,5 +12,13 @@ rationale: |
   Framework concepts need clear communication beyond academic language to drive adoption
 blocked_by: []
 blocks: []
-notes: |
+notes: |-
   Created 22 January 2026.
+
+
+  Completed 22 January 2026:
+  - Created dialogue-framework-explained.md
+  - ~3000 words, accessible language
+  - Covers problems, theory, solutions, features
+  - Added sections on insufficient information handling and phase-specific measurement
+completed: "2026-01-22T13:30:00Z"
