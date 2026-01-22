@@ -154,8 +154,155 @@ get_phase_name() {
     esac
 }
 
+# Phase tacit knowledge percentage (from integration_phase-specific-composition.md)
+# Used to inform DEFER remediation guidance
+get_phase_tacit_pct() {
+    case "$1" in
+        1) echo 75 ;;  # Initiation: 75% tacit
+        2) echo 55 ;;  # Planning: 55% tacit
+        3) echo 50 ;;  # Requirements: 50% tacit
+        4) echo 40 ;;  # Design: 40% tacit
+        5) echo 35 ;;  # Implementation: 35% tacit
+        6) echo 30 ;;  # Testing: 30% tacit
+        7) echo 30 ;;  # Operations: 30% tacit
+        *) echo 50 ;;  # Default to balanced
+    esac
+}
+
+# Determine recommended remediation approach based on tacit % and gap type
+# Returns: DIALOGUE, MIXED, or ARTIFACT
+get_remediation_approach() {
+    local tacit_pct="$1"
+    local gap_type="$2"
+
+    # High tacit phases (>50%) bias toward dialogue
+    # Low tacit phases (<=35%) bias toward artifact
+    # Gap type modifies the base approach
+
+    if [[ "$tacit_pct" -ge 55 ]]; then
+        # High tacit phase - dialogue dominant
+        case "$gap_type" in
+            documentation) echo "MIXED" ;;      # Even doc gaps need dialogue in high-tacit
+            knowledge)     echo "DIALOGUE" ;;
+            stakeholder)   echo "DIALOGUE" ;;
+            technical)     echo "MIXED" ;;
+            *)             echo "DIALOGUE" ;;
+        esac
+    elif [[ "$tacit_pct" -ge 40 ]]; then
+        # Medium tacit phase - balanced
+        case "$gap_type" in
+            documentation) echo "MIXED" ;;
+            knowledge)     echo "DIALOGUE" ;;
+            stakeholder)   echo "MIXED" ;;
+            technical)     echo "MIXED" ;;
+            *)             echo "MIXED" ;;
+        esac
+    else
+        # Low tacit phase - artifact dominant
+        case "$gap_type" in
+            documentation) echo "ARTIFACT" ;;
+            knowledge)     echo "MIXED" ;;      # Even in low-tacit, knowledge needs some dialogue
+            stakeholder)   echo "MIXED" ;;
+            technical)     echo "ARTIFACT" ;;
+            *)             echo "ARTIFACT" ;;
+        esac
+    fi
+}
+
+# Get specific remediation actions based on approach and gap
+get_remediation_actions() {
+    local approach="$1"
+    local gap_type="$2"
+    local phase="$3"
+
+    case "$gap_type" in
+        documentation)
+            if [[ "$approach" == "DIALOGUE" || "$approach" == "MIXED" ]]; then
+                echo "Convene working session to articulate missing documentation"
+                echo "Elicit tacit understanding from key stakeholders"
+            fi
+            if [[ "$approach" == "ARTIFACT" || "$approach" == "MIXED" ]]; then
+                echo "Review and complete required artifacts"
+                echo "Update specifications with missing details"
+            fi
+            ;;
+        knowledge)
+            echo "Conduct knowledge transfer sessions with domain experts"
+            echo "Pair with experienced team members"
+            if [[ "$phase" -le 3 ]]; then
+                echo "Facilitate stakeholder interviews to capture tacit understanding"
+            else
+                echo "Review code/design with original authors"
+            fi
+            ;;
+        stakeholder)
+            echo "Convene stakeholder alignment workshop"
+            echo "Clarify and document areas of disagreement"
+            if [[ "$phase" -le 2 ]]; then
+                echo "Re-establish shared vision and success criteria"
+            else
+                echo "Review requirements with stakeholders for validation"
+            fi
+            ;;
+        technical)
+            if [[ "$approach" == "DIALOGUE" || "$approach" == "MIXED" ]]; then
+                echo "Discuss technical constraints with architecture team"
+            fi
+            echo "Resolve blocking dependencies"
+            echo "Update technical feasibility assessment"
+            ;;
+    esac
+}
+
 CURRENT_PHASE_NAME=$(get_phase_name "$CURRENT_PHASE")
 TARGET_PHASE_NAME=$(get_phase_name "$TARGET_PHASE")
+
+# If DEFER, calculate remediation guidance
+DEFER_GUIDANCE=""
+if [[ "$RECOMMENDATION" == "DEFER" ]]; then
+    # Get phase tacit percentage
+    PHASE_TACIT_PCT=$(get_phase_tacit_pct "$CURRENT_PHASE")
+
+    # Identify primary gap (lowest scoring dimension)
+    PRIMARY_GAP="documentation"
+    PRIMARY_GAP_SCORE=$DOC_READINESS
+
+    if [[ "$KNOWLEDGE_READINESS" -lt "$PRIMARY_GAP_SCORE" ]]; then
+        PRIMARY_GAP="knowledge"
+        PRIMARY_GAP_SCORE=$KNOWLEDGE_READINESS
+    fi
+    if [[ "$STAKEHOLDER_READINESS" -lt "$PRIMARY_GAP_SCORE" ]]; then
+        PRIMARY_GAP="stakeholder"
+        PRIMARY_GAP_SCORE=$STAKEHOLDER_READINESS
+    fi
+    if [[ "$TECHNICAL_READINESS" -lt "$PRIMARY_GAP_SCORE" ]]; then
+        PRIMARY_GAP="technical"
+        PRIMARY_GAP_SCORE=$TECHNICAL_READINESS
+    fi
+
+    # Identify secondary gaps (any dimension scoring <= 2)
+    SECONDARY_GAPS=""
+    if [[ "$DOC_READINESS" -le 2 && "$PRIMARY_GAP" != "documentation" ]]; then
+        SECONDARY_GAPS="${SECONDARY_GAPS}documentation,"
+    fi
+    if [[ "$KNOWLEDGE_READINESS" -le 2 && "$PRIMARY_GAP" != "knowledge" ]]; then
+        SECONDARY_GAPS="${SECONDARY_GAPS}knowledge,"
+    fi
+    if [[ "$STAKEHOLDER_READINESS" -le 2 && "$PRIMARY_GAP" != "stakeholder" ]]; then
+        SECONDARY_GAPS="${SECONDARY_GAPS}stakeholder,"
+    fi
+    if [[ "$TECHNICAL_READINESS" -le 2 && "$PRIMARY_GAP" != "technical" ]]; then
+        SECONDARY_GAPS="${SECONDARY_GAPS}technical,"
+    fi
+    # Remove trailing comma
+    SECONDARY_GAPS="${SECONDARY_GAPS%,}"
+
+    # Determine recommended approach
+    REMEDIATION_APPROACH=$(get_remediation_approach "$PHASE_TACIT_PCT" "$PRIMARY_GAP")
+
+    # Flag that we have defer guidance to output
+    DEFER_GUIDANCE="yes"
+fi
 
 # Build YAML entry
 {
@@ -222,6 +369,38 @@ TARGET_PHASE_NAME=$(get_phase_name "$TARGET_PHASE")
         printf ']\n'
     else
         echo "  risks: []"
+    fi
+    # DEFER remediation guidance (only when recommendation is DEFER)
+    if [[ -n "$DEFER_GUIDANCE" ]]; then
+        echo "  # Remediation guidance for DEFER recommendation"
+        echo "  defer_guidance:"
+        echo "    primary_gap: $PRIMARY_GAP"
+        echo "    primary_gap_score: $PRIMARY_GAP_SCORE"
+        if [[ -n "$SECONDARY_GAPS" ]]; then
+            # Convert to YAML array
+            IFS=',' read -ra SEC_GAP_ARRAY <<< "$SECONDARY_GAPS"
+            printf '    secondary_gaps: ['
+            for i in "${!SEC_GAP_ARRAY[@]}"; do
+                if [[ $i -gt 0 ]]; then printf ', '; fi
+                printf '"%s"' "${SEC_GAP_ARRAY[$i]}"
+            done
+            printf ']\n'
+        else
+            echo "    secondary_gaps: []"
+        fi
+        echo "    phase_tacit_percentage: $PHASE_TACIT_PCT"
+        echo "    recommended_approach: $REMEDIATION_APPROACH"
+        echo "    specific_actions:"
+        # Get and output remediation actions
+        while IFS= read -r action; do
+            if [[ -n "$action" ]]; then
+                echo "      - \"$action\""
+            fi
+        done < <(get_remediation_actions "$REMEDIATION_APPROACH" "$PRIMARY_GAP" "$CURRENT_PHASE")
+        echo "    restart_point:"
+        echo "      phase: $CURRENT_PHASE"
+        echo "      phase_name: \"$CURRENT_PHASE_NAME\""
+        echo "      focus: \"Address $PRIMARY_GAP gaps before re-assessing\""
     fi
     echo "  # Approval (to be filled after human review)"
     echo "  approved_by: null"

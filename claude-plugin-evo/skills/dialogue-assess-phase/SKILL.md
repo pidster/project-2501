@@ -130,6 +130,61 @@ Else:
 - Any dimension score of 1: Forces DEFER
 - Blockers present: Maximum recommendation is PROCEED_WITH_CAUTION
 
+## DEFER Remediation Guidance
+
+When the recommendation is DEFER, the assessment includes a `defer_guidance` block that provides actionable remediation advice based on two factors:
+
+### Factor 1: Phase Tacit Percentage
+
+The current phase's information composition determines remediation character:
+
+| Phase | Tacit % | Remediation Character |
+|-------|---------|----------------------|
+| 1. Initiation | 75% | Primarily dialogue-based |
+| 2. Planning | 55% | Dialogue-dominant |
+| 3. Requirements | 50% | Balanced |
+| 4. Design | 40% | Balanced, slightly artifact-weighted |
+| 5. Implementation | 35% | Artifact-dominant |
+| 6-7. Testing/Ops | 30% | Primarily artifact/process |
+
+### Factor 2: Gap Dimension
+
+The lowest-scoring dimension identifies what type of gap to address:
+
+| Gap | Meaning | Natural Remediation |
+|-----|---------|---------------------|
+| `documentation` | Artifacts incomplete | Review/create documents |
+| `knowledge` | Tacit understanding not shared | Dialogue, pairing, mentoring |
+| `stakeholder` | Alignment issues | Facilitation, workshops |
+| `technical` | Blockers, dependencies | Technical resolution |
+
+### Recommended Approach
+
+The combination produces a `recommended_approach`:
+
+- **DIALOGUE**: High-tacit phase or knowledge/stakeholder gaps → convene sessions, elicit understanding
+- **MIXED**: Medium-tacit phase or mixed gaps → balance dialogue with artifact work
+- **ARTIFACT**: Low-tacit phase with documentation/technical gaps → focus on specifications, resolution
+
+### Example DEFER Output
+
+```yaml
+defer_guidance:
+  primary_gap: knowledge
+  primary_gap_score: 2
+  secondary_gaps: []
+  phase_tacit_percentage: 75
+  recommended_approach: DIALOGUE
+  specific_actions:
+    - "Conduct knowledge transfer sessions with domain experts"
+    - "Pair with experienced team members"
+    - "Facilitate stakeholder interviews to capture tacit understanding"
+  restart_point:
+    phase: 1
+    phase_name: "Initiation/Conception"
+    focus: "Address knowledge gaps before re-assessing"
+```
+
 ## Human Approval Workflow
 
 Phase transitions require human approval:

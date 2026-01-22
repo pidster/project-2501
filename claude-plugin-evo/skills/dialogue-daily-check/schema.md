@@ -177,10 +177,43 @@ PhaseReadinessResponses:
   blockers: string[]                    # Any blocking issues
   risks: string[]                       # Identified risks to proceeding
 
+  # DEFER remediation guidance (only present when recommendation is DEFER)
+  defer_guidance:                       # Optional, only when DEFER
+    primary_gap: "documentation" | "knowledge" | "stakeholder" | "technical"
+    primary_gap_score: 1-5              # Score of the primary gap dimension
+    secondary_gaps: string[]            # Other dimensions scoring <= 2
+    phase_tacit_percentage: number      # Tacit % for current phase (30-75)
+    recommended_approach: "DIALOGUE" | "MIXED" | "ARTIFACT"
+    specific_actions: string[]          # Recommended remediation activities
+    restart_point:
+      phase: 1-7                        # Phase to restart from
+      phase_name: string
+      focus: string                     # What to address before re-assessment
+
   # Approval
   approved_by: ActorReference | null    # Human who approved (if applicable)
   approval_timestamp: ISO8601 | null
 ```
+
+**DEFER Remediation Model**:
+
+The `defer_guidance` block uses a two-factor model:
+
+1. **Phase tacit percentage**: Determines remediation character
+   - High tacit (55-75%): Remediation needs dialogue, elicitation, facilitation
+   - Medium tacit (40-50%): Balanced dialogue + artifact review
+   - Low tacit (30-35%): Remediation can focus on artifacts, process
+
+2. **Gap dimension**: Determines remediation type
+   - `documentation`: Formal gaps in artifacts
+   - `knowledge`: Tacit understanding not transferred
+   - `stakeholder`: Alignment or consensus issues
+   - `technical`: Dependencies, blockers, feasibility
+
+The combination determines `recommended_approach`:
+- **DIALOGUE**: Convene sessions, elicit understanding, facilitate alignment
+- **MIXED**: Combine dialogue with artifact review/creation
+- **ARTIFACT**: Focus on documentation, specifications, technical resolution
 
 ---
 

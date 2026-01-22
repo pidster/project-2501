@@ -1,8 +1,9 @@
 id: "FW-042"
 title: "DEFER remediation guidance using tacit percentage"
-status: READY
+status: COMPLETED
 created: "2026-01-22T15:20:26Z"
-updated: "2026-01-22T15:25:00Z"
+updated: "2026-01-22T15:35:00Z"
+completed: "2026-01-22T15:35:00Z"
 type: CAPABILITY
 priority: MEDIUM
 description: |
@@ -55,3 +56,25 @@ notes: |
   3. Cross-reference phase tacit % with gap type
   4. Generate recommended_approach and specific_actions
   5. Suggest restart_point based on gap origin
+
+  ---
+  Implementation completed 22 January 2026:
+
+  Added to log-assess-phase.sh:
+  - get_phase_tacit_pct() function with phase-specific percentages
+  - get_remediation_approach() function implementing two-factor model
+  - get_remediation_actions() function generating specific guidance
+  - defer_guidance block output when recommendation is DEFER
+
+  Updated schema.md:
+  - Added defer_guidance structure to PHASE_READINESS schema
+  - Documented DEFER Remediation Model
+
+  Updated SKILL.md:
+  - Added "DEFER Remediation Guidance" section
+  - Documented two-factor model with tables
+  - Added example DEFER output
+
+  Verified with tests:
+  - High-tacit phase (1) + knowledge gap → DIALOGUE approach
+  - Low-tacit phase (6) + documentation gap → ARTIFACT approach
