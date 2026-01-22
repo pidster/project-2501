@@ -1,0 +1,14 @@
+id: OBS-20260122-155809
+node_type: ARTIFACT
+metadata:
+  artifact_type: OBSERVATION
+  observation_type: STATE
+  temporal_class: Ephemeral
+  content_type: text/yaml
+  title: "Context graph dual tracking"
+  summary: "Context graph must track where information is explicitly recorded (documents, decisions) AND where it is associated with individuals (expertise, tacit knowledge). Not OR - both dimensions simultaneously. Observation logs can infer expertise from behavioural patterns, complementing explicit declarations."
+  location_hint: ".dialogue/logs/observations/OBS-20260122-155809.yaml"
+  observer: "human:pidster"
+created: "2026-01-22T15:58:09Z"
+updated: "2026-01-22T15:58:09Z"
+status: ACTIVE
