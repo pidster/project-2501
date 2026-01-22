@@ -1,0 +1,8 @@
+id: OBS-20260122-125229
+timestamp: "2026-01-22T12:52:29Z"
+type: STATE
+observer: "human:pidster"
+subject: "User count as feature gate"
+value: "Framework could track active users in .dialogue files; solo user gets simplified functionality, multi-user enables collaboration features (sync checks, pull reminders, transactive memory). Soft gate approach - enable/disable rather than block."
+context: "Discussing FW-038 bootstrap and earlier sync work"
+tags: ["framework", "collaboration", "feature-gating"]

@@ -1,0 +1,16 @@
+id: "FW-040"
+title: "Design solo vs multi-user feature gating"
+status: READY
+created: "2026-01-22T12:52:29Z"
+updated: "2026-01-22T12:52:29Z"
+type: CAPABILITY
+priority: MEDIUM
+description: |
+  Track active users in .dialogue files. Gate framework functionality based on user count: solo mode (simplified, relaxed sync) vs multi-user mode (full sync checks, pull reminders, transactive memory). Define what differs between modes.
+objective: "Right-size framework overhead based on team context"
+rationale: |
+  Solo users don't need collaboration overhead; multi-user needs full sync machinery
+blocked_by: []
+blocks: []
+notes: |
+  Created 22 January 2026.
