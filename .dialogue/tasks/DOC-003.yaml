@@ -1,0 +1,16 @@
+id: "DOC-003"
+title: "Generate framework executive summary"
+status: READY
+created: "2026-01-22T15:32:42Z"
+updated: "2026-01-22T15:32:42Z"
+type: DOCUMENT
+priority: HIGH
+description: |
+  Write an executive summary in simple, accessible, non-academic language covering: 1) Problems identified by research (why software projects fail despite AI), 2) Key theoretical foundations discovered and integrated (Naur, Wegner, STS), 3) How the framework addresses these problems, 4) Key features (context graph, decision/observation logging, AI collaboration informed by information composition, etc).
+objective: "Accessible explanation of framework value proposition for non-academic audience"
+rationale: |
+  Framework concepts need clear communication beyond academic language to drive adoption
+blocked_by: []
+blocks: []
+notes: |
+  Created 22 January 2026.
