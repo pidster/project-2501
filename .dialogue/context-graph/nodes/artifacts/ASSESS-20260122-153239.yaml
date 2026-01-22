@@ -1,0 +1,17 @@
+id: ASSESS-20260122-153239
+node_type: ARTIFACT
+metadata:
+  artifact_type: ASSESSMENT
+  assessment_type: PHASE_READINESS
+  temporal_class: Standing
+  content_type: text/yaml
+  title: "Phase Readiness - Initiation/Conception -> Planning"
+  summary: "Phase 1->2: DEFER, avg: 2.5/5"
+  location_hint: ".dialogue/logs/assessments/ASSESS-20260122-153239.yaml"
+  assessor: "ai:claude"
+  current_phase: 1
+  target_phase: 2
+  recommendation: DEFER
+created: "2026-01-22T15:32:39Z"
+updated: "2026-01-22T15:32:39Z"
+status: ACTIVE

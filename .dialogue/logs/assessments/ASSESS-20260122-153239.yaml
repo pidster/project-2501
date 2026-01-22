@@ -1,0 +1,50 @@
+id: ASSESS-20260122-153239
+timestamp: "2026-01-22T15:32:39Z"
+assessment_type: PHASE_READINESS
+assessor: "ai:claude"
+context: "Testing DEFER guidance"
+tags: ["test"]
+responses:
+  current_phase: 1
+  current_phase_name: "Initiation/Conception"
+  target_phase: 2
+  target_phase_name: "Planning"
+  # Component assessment references
+  component_assessments:
+    problem_framing: null
+    stakeholder_alignment: null  # FW-041 not yet implemented
+    ttkm: null  # FW-041 not yet implemented
+    daily_checks: []  # TODO: auto-populate from recent assessments
+  # Readiness scores (1-5)
+  documentation_readiness: 2
+  knowledge_transfer_readiness: 1
+  stakeholder_readiness: 3
+  technical_readiness: 4
+  # Recommendation
+  recommendation: DEFER
+  rationale: "Critical failure: one or more dimensions scored 1"
+  blockers: []
+  risks: []
+  # Remediation guidance for DEFER recommendation
+  defer_guidance:
+    primary_gap: knowledge
+    primary_gap_score: 1
+    secondary_gaps: ["documentation"]
+    phase_tacit_percentage: 75
+    recommended_approach: DIALOGUE
+    specific_actions:
+      - "Conduct knowledge transfer sessions with domain experts"
+      - "Pair with experienced team members"
+      - "Facilitate stakeholder interviews to capture tacit understanding"
+    restart_point:
+      phase: 1
+      phase_name: "Initiation/Conception"
+      focus: "Address knowledge gaps before re-assessing"
+  # Approval (to be filled after human review)
+  approved_by: null
+  approval_timestamp: null
+  approval_conditions: null
+summary:
+  average_score: "2.5"
+  recommendation: DEFER
+  transition: "Phase 1 -> Phase 2"

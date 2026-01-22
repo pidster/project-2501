@@ -1,0 +1,17 @@
+id: ASSESS-20260122-153253
+node_type: ARTIFACT
+metadata:
+  artifact_type: ASSESSMENT
+  assessment_type: PHASE_READINESS
+  temporal_class: Standing
+  content_type: text/yaml
+  title: "Phase Readiness - Testing/Validation -> Deployment/Operations"
+  summary: "Phase 6->7: DEFER, avg: 3.2/5"
+  location_hint: ".dialogue/logs/assessments/ASSESS-20260122-153253.yaml"
+  assessor: "ai:claude"
+  current_phase: 6
+  target_phase: 7
+  recommendation: DEFER
+created: "2026-01-22T15:32:53Z"
+updated: "2026-01-22T15:32:53Z"
+status: ACTIVE
