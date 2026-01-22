@@ -547,8 +547,9 @@ The Context Graph externalises Transactive Memory—making "who knows what" quer
 ```
 .dialogue/
 ├── logs/
-│   ├── decisions.yaml   # Decision records
-│   └── observations.yaml # Observation records
+│   ├── decisions/       # Decision records (per-file)
+│   └── observations/    # Observation records (per-file)
+├── tasks/               # Task records (per-file)
 └── README.md
 ```
 

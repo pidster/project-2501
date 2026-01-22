@@ -7,23 +7,25 @@ This directory contains operational logs and configuration for the AI-Augmented 
 ```
 .dialogue/
 ├── logs/
-│   ├── decisions.yaml    # Operational decision log (YAML stream)
-│   └── observations.yaml # Observation log (YAML stream)
+│   ├── decisions/       # Decision records (per-file: DEC-YYYYMMDD-HHMMSS.yaml)
+│   └── observations/    # Observation records (per-file: OBS-YYYYMMDD-HHMMSS.yaml)
+├── tasks/               # Task records (per-file: XX-NNN.yaml)
 └── README.md
 
 # Scripts are located in their respective skill directories:
-# .claude/skills/dialogue-log-decision/scripts/log-decision.sh
-# .claude/skills/dialogue-log-observation/scripts/log-observation.sh
+# claude-plugin-evo/skills/dialogue-log-decision/scripts/log-decision.sh
+# claude-plugin-evo/skills/dialogue-log-observation/scripts/log-observation.sh
 ```
 
 ## Log Format
 
-Both logs use **YAML stream format** with `---` document separators. This enables append-only operation without parsing the entire file.
+Logs use **per-file YAML structure** where each entry is stored as an individual file. This enables merge-friendly operation and avoids file locking issues.
 
 ### Decision Log Schema (v0.1)
 
+File: `.dialogue/logs/decisions/DEC-YYYYMMDD-HHMMSS.yaml`
+
 ```yaml
----
 id: DEC-20260113-143215           # Required: DEC-YYYYMMDD-HHMMSS
 timestamp: "2026-01-13T14:32:15Z" # Required: ISO 8601 UTC
 type: OPERATIONAL                 # Required: OPERATIONAL | TACTICAL
@@ -37,8 +39,9 @@ tags: ["tag1", "tag2"]            # Optional: Categorisation
 
 ### Observation Log Schema (v0.1)
 
+File: `.dialogue/logs/observations/OBS-YYYYMMDD-HHMMSS.yaml`
+
 ```yaml
----
 id: OBS-20260113-143000           # Required: OBS-YYYYMMDD-HHMMSS
 timestamp: "2026-01-13T14:30:00Z" # Required: ISO 8601 UTC
 type: EVENT                       # Required: MEASUREMENT | STATE | EVENT
@@ -75,9 +78,9 @@ Actors are identified as `type:identifier`:
 
 ## Usage
 
-Entries are appended via bash scripts located in skill directories:
-- `.claude/skills/dialogue-log-decision/scripts/log-decision.sh` — Appends a decision entry
-- `.claude/skills/dialogue-log-observation/scripts/log-observation.sh` — Appends an observation entry
+Entries are created via bash scripts located in skill directories:
+- `claude-plugin-evo/skills/dialogue-log-decision/scripts/log-decision.sh` — Creates a decision entry
+- `claude-plugin-evo/skills/dialogue-log-observation/scripts/log-observation.sh` — Creates an observation entry
 
 These scripts are wrapped by Agent Skills for use within Claude Code sessions.
 

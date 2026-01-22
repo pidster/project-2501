@@ -31,10 +31,6 @@ TASKS_DIR=".dialogue/tasks"
 PROCESSES_DEF_DIR="claude-plugin-evo/processes"
 PROCESSES_INST_DIR=".dialogue/processes"
 EXECUTIONS_DIR=".dialogue/logs/executions"
-# Legacy single-file locations (for backward compatibility)
-DECISIONS_FILE_LEGACY=".dialogue/logs/decisions.yaml"
-OBSERVATIONS_FILE_LEGACY=".dialogue/logs/observations.yaml"
-TASKS_FILE_LEGACY=".dialogue/tasks.yaml"
 
 # Validate required arguments
 if [[ $# -lt 1 ]]; then
@@ -159,60 +155,6 @@ output_invalid_id() {
   ]
 }
 EOF
-}
-
-# Helper: Extract YAML entry by ID from a file
-extract_yaml_entry() {
-    local file="$1"
-    local id="$2"
-
-    if [[ ! -f "$file" ]]; then
-        return 1
-    fi
-
-    # Use awk to extract the entry block
-    awk -v id="$id" '
-        /^---$/ { in_entry=0; buffer="" }
-        /^- id:/ {
-            if ($0 ~ "\"" id "\"" || $0 ~ id) {
-                in_entry=1
-            }
-        }
-        /^  id:/ {
-            if ($0 ~ "\"" id "\"" || $0 ~ id) {
-                in_entry=1
-            }
-        }
-        in_entry { buffer = buffer $0 "\n" }
-        /^---$/ && in_entry { print buffer; exit }
-        END { if (in_entry) print buffer }
-    ' "$file"
-}
-
-# Helper: Extract YAML entry from tasks
-extract_task() {
-    local file="$1"
-    local id="$2"
-
-    if [[ ! -f "$file" ]]; then
-        return 1
-    fi
-
-    # Use awk to find and extract the task
-    awk -v id="$id" '
-        BEGIN { found=0; depth=0 }
-        /^  - id:/ {
-            if ($0 ~ "\"" id "\"") {
-                found=1
-                depth=1
-                print
-                next
-            }
-        }
-        found && /^  - id:/ { found=0 }
-        found && /^[^ ]/ { found=0 }
-        found { print }
-    ' "$file"
 }
 
 # Resolve based on ID pattern
@@ -395,7 +337,7 @@ EOF
 
     # Decision log entries: DEC-YYYYMMDD-HHMMSS
     if [[ "$id" =~ ^DEC-[0-9]{8}-[0-9]{6}$ ]]; then
-        # Try per-file structure first (FW-017)
+        # Per-file structure (FW-017)
         local per_file="$PROJECT_ROOT/$DECISIONS_DIR/$id.yaml"
         local location="$DECISIONS_DIR/$id.yaml"
 
@@ -430,52 +372,13 @@ EOF
             return
         fi
 
-        # Fall back to legacy single-file structure
-        local log_file="$PROJECT_ROOT/$DECISIONS_FILE_LEGACY"
-        if [[ -f "$log_file" ]]; then
-            local entry
-            entry=$(awk -v id="$id" '
-                /^---$/ { if (found) exit; in_entry=0; next }
-                /^id:/ { if (index($0, id) > 0) { found=1; in_entry=1 } }
-                in_entry { print }
-            ' "$log_file")
-
-            if [[ -n "$entry" ]]; then
-                local escaped_entry
-                escaped_entry=$(json_escape "$entry")
-                if [[ "$OUTPUT_FORMAT" == "path" ]]; then
-                    echo "$DECISIONS_FILE_LEGACY#$id"
-                elif [[ "$OUTPUT_FORMAT" == "metadata" ]]; then
-                    cat <<EOF
-{
-  "status": "RESOLVED",
-  "id": "$id",
-  "type": "DECISION",
-  "location": "$DECISIONS_FILE_LEGACY#$id"
-}
-EOF
-                else
-                    cat <<EOF
-{
-  "status": "RESOLVED",
-  "id": "$id",
-  "type": "DECISION",
-  "location": "$DECISIONS_FILE_LEGACY#$id",
-  "content": "$escaped_entry"
-}
-EOF
-                fi
-                return
-            fi
-        fi
-
-        output_not_found "$id" "DECISION" "[\"$DECISIONS_DIR/$id.yaml\", \"$DECISIONS_FILE_LEGACY\"]"
+        output_not_found "$id" "DECISION" "[\"$DECISIONS_DIR/$id.yaml\"]"
         return
     fi
 
     # Observation log entries: OBS-YYYYMMDD-HHMMSS
     if [[ "$id" =~ ^OBS-[0-9]{8}-[0-9]{6}$ ]]; then
-        # Try per-file structure first (FW-017)
+        # Per-file structure (FW-017)
         local per_file="$PROJECT_ROOT/$OBSERVATIONS_DIR/$id.yaml"
         local location="$OBSERVATIONS_DIR/$id.yaml"
 
@@ -510,46 +413,7 @@ EOF
             return
         fi
 
-        # Fall back to legacy single-file structure
-        local log_file="$PROJECT_ROOT/$OBSERVATIONS_FILE_LEGACY"
-        if [[ -f "$log_file" ]]; then
-            local entry
-            entry=$(awk -v id="$id" '
-                /^---$/ { if (found) exit; in_entry=0; next }
-                /^id:/ { if (index($0, id) > 0) { found=1; in_entry=1 } }
-                in_entry { print }
-            ' "$log_file")
-
-            if [[ -n "$entry" ]]; then
-                local escaped_entry
-                escaped_entry=$(json_escape "$entry")
-                if [[ "$OUTPUT_FORMAT" == "path" ]]; then
-                    echo "$OBSERVATIONS_FILE_LEGACY#$id"
-                elif [[ "$OUTPUT_FORMAT" == "metadata" ]]; then
-                    cat <<EOF
-{
-  "status": "RESOLVED",
-  "id": "$id",
-  "type": "OBSERVATION",
-  "location": "$OBSERVATIONS_FILE_LEGACY#$id"
-}
-EOF
-                else
-                    cat <<EOF
-{
-  "status": "RESOLVED",
-  "id": "$id",
-  "type": "OBSERVATION",
-  "location": "$OBSERVATIONS_FILE_LEGACY#$id",
-  "content": "$escaped_entry"
-}
-EOF
-                fi
-                return
-            fi
-        fi
-
-        output_not_found "$id" "OBSERVATION" "[\"$OBSERVATIONS_DIR/$id.yaml\", \"$OBSERVATIONS_FILE_LEGACY\"]"
+        output_not_found "$id" "OBSERVATION" "[\"$OBSERVATIONS_DIR/$id.yaml\"]"
         return
     fi
 
@@ -558,7 +422,7 @@ EOF
         local prefix="${BASH_REMATCH[1]}"
         local num="${BASH_REMATCH[2]}"
 
-        # Try per-file structure first (FW-017)
+        # Per-file structure (FW-017)
         local per_file="$PROJECT_ROOT/$TASKS_DIR/$id.yaml"
         local location="$TASKS_DIR/$id.yaml"
 
@@ -593,42 +457,7 @@ EOF
             return
         fi
 
-        # Fall back to legacy single-file structure
-        local tasks_file="$PROJECT_ROOT/$TASKS_FILE_LEGACY"
-        if [[ -f "$tasks_file" ]]; then
-            local entry
-            entry=$(extract_task "$tasks_file" "$id")
-
-            if [[ -n "$entry" ]]; then
-                local escaped_entry
-                escaped_entry=$(json_escape "$entry")
-                if [[ "$OUTPUT_FORMAT" == "path" ]]; then
-                    echo "$TASKS_FILE_LEGACY#$id"
-                elif [[ "$OUTPUT_FORMAT" == "metadata" ]]; then
-                    cat <<EOF
-{
-  "status": "RESOLVED",
-  "id": "$id",
-  "type": "TASK",
-  "location": "$TASKS_FILE_LEGACY#$id"
-}
-EOF
-                else
-                    cat <<EOF
-{
-  "status": "RESOLVED",
-  "id": "$id",
-  "type": "TASK",
-  "location": "$TASKS_FILE_LEGACY#$id",
-  "content": "$escaped_entry"
-}
-EOF
-                fi
-                return
-            fi
-        fi
-
-        output_not_found "$id" "TASK" "[\"$TASKS_DIR/$id.yaml\", \"$TASKS_FILE_LEGACY\"]"
+        output_not_found "$id" "TASK" "[\"$TASKS_DIR/$id.yaml\"]"
         return
     fi
 

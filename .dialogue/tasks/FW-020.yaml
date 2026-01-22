@@ -53,6 +53,8 @@ notes: |
   - plugin/commands/init-dialogue.md: Updated to create directories not files
   - research/planning-future-work.md: Added note about structure evolution
 
-  Intentionally retained references (backward compatibility):
-  - plugin/skills/dialogue-resolve-reference/scripts/resolve-reference.sh: LEGACY fallback variables
-  - plugin/scripts/migrate-to-per-file.sh: Migration script from old format
+  UPDATE 22 January 2026:
+  Removed all legacy support (no longer needed during development):
+  - claude-plugin-evo/skills/dialogue-resolve-reference/scripts/resolve-reference.sh: Removed LEGACY fallback code
+  - claude-plugin-evo/scripts/migrate-to-per-file.sh: Deleted migration script
+  - Updated documentation to only show per-file structure

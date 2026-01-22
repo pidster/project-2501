@@ -217,7 +217,7 @@ Relationships between actors and artifacts.
 | `OWNS` | Actor responsible for artifact | `human:pidster OWNS ADR-001` |
 | `CONTRIBUTED` | Actor participated in creation | `ai:claude CONTRIBUTED THY-001` |
 | `KNOWS` | Actor has expertise about | `human:pidster KNOWS authentication` |
-| `CURATES` | Actor maintains artifact | `ai:claude CURATES decisions.yaml` |
+| `CURATES` | Actor maintains artifact | `ai:claude CURATES .dialogue/logs/decisions/` |
 
 #### Actor-Actor Relationships
 

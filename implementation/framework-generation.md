@@ -187,9 +187,9 @@ The `.dialogue/` directory contains runtime artifacts for framework operation:
 ```
 .dialogue/
 ├── logs/
-│   ├── decisions.yaml     # Decision log (YAML stream)
-│   └── observations.yaml  # Observation log (YAML stream)
-├── tasks.yaml        # Persistent task tracking
+│   ├── decisions/         # Decision log (per-file)
+│   └── observations/      # Observation log (per-file)
+├── tasks/                 # Task tracking (per-file)
 └── README.md              # Format specification
 ```
 
