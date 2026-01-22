@@ -1,0 +1,15 @@
+id: "FW-042"
+title: "DEFER remediation guidance using tacit percentage"
+status: READY
+created: "2026-01-22T15:20:26Z"
+updated: "2026-01-22T15:20:26Z"
+type: CAPABILITY
+priority: MEDIUM
+description: |
+  Extend phase readiness assessment to provide DEFER remediation guidance based on phase information composition. High-tacit phases should recommend dialogue-based remediation; low-tacit phases should recommend artifact/formal remediation. Include restart point identification.
+rationale: |
+  Information composition (tacit %) determines appropriate remediation strategy - tacit gaps need human dialogue, formal gaps can be addressed through documentation.
+blocked_by: []
+blocks: []
+notes: |
+  Created 22 January 2026.
