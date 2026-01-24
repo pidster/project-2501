@@ -1,0 +1,13 @@
+id: DEC-20260124-101228
+timestamp: "2026-01-24T10:12:28Z"
+type: DESIGN
+actor: "human:pidster"
+subject: "CLAUDE.md bootstrap approach"
+outcome: "Minimal CLAUDE.md (55 lines) with guided hooks providing operating instructions"
+rationale: "Clean separation: CLAUDE.md for identity/conventions/escalation, hooks for operating instructions, plugin for full guidance"
+context: "FW-038 analysis showed 386-line CLAUDE.md duplicated plugin content; guided hooks inject instructions deterministically"
+tags: ["FW-038", "bootstrap", "hooks"]
+
+# TEST ARTIFACT - Do not reference in ongoing context
+test_artifact: true
+test_context: "Hook effectiveness A/B testing (FW-038) - synthetic decision for testing"

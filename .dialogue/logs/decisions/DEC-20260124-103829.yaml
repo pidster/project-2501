@@ -1,0 +1,11 @@
+id: DEC-20260124-103829
+timestamp: "2026-01-24T10:38:29Z"
+type: OPERATIONAL
+actor: "human:pidster"
+subject: "architecture approach"
+outcome: "microservices"
+rationale: "User selected microservices architecture pattern"
+
+# TEST ARTIFACT - Do not reference in ongoing context
+test_artifact: true
+test_context: "Hook effectiveness A/B testing (FW-038) - synthetic decision for testing"

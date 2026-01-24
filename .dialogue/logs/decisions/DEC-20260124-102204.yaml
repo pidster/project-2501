@@ -1,0 +1,11 @@
+id: DEC-20260124-102204
+timestamp: "2026-01-24T10:22:04Z"
+type: OPERATIONAL
+actor: "human:pidster"
+subject: "database choice"
+outcome: "PostgreSQL"
+rationale: "User decision for database technology"
+
+# TEST ARTIFACT - Do not reference in ongoing context
+test_artifact: true
+test_context: "Hook effectiveness A/B testing (FW-038) - synthetic decision for testing"

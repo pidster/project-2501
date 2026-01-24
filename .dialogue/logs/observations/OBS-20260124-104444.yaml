@@ -1,0 +1,12 @@
+id: OBS-20260124-104444
+timestamp: "2026-01-24T10:44:44Z"
+type: MEASUREMENT
+observer: "human:pidster"
+subject: "API response time"
+value: "Increased after deploy"
+context: "Post-deployment observation"
+tags: ["performance", "api"]
+
+# TEST ARTIFACT - Do not reference in ongoing context
+test_artifact: true
+test_context: "Hook effectiveness A/B testing (FW-038) - synthetic observation for testing"

@@ -1,0 +1,11 @@
+id: DEC-20260124-104402
+timestamp: "2026-01-24T10:44:02Z"
+type: OPERATIONAL
+actor: "human:pidster"
+subject: "release timing"
+outcome: "postpone release"
+rationale: "User decision to delay release"
+
+# TEST ARTIFACT - Do not reference in ongoing context
+test_artifact: true
+test_context: "Hook effectiveness A/B testing (FW-038) - synthetic decision for testing"

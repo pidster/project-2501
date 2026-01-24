@@ -1,0 +1,17 @@
+id: DEC-20260124-100433
+node_type: ARTIFACT
+metadata:
+  artifact_type: DECISION
+  decision_type: TACTICAL
+  temporal_class: Ephemeral
+  content_type: text/yaml
+  title: "Architecture approach"
+  summary: "Microservices architecture"
+  location_hint: ".dialogue/logs/decisions/DEC-20260124-100433.yaml"
+  author: "human:pidster"
+created: "2026-01-24T10:04:33Z"
+updated: "2026-01-24T10:04:33Z"
+status: TEST_ARTIFACT
+
+# TEST ARTIFACT - Hook effectiveness A/B testing (FW-038)
+test_artifact: true

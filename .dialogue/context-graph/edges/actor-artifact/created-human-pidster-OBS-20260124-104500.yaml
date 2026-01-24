@@ -1,0 +1,12 @@
+id: created-human-pidster-OBS-20260124-104500
+source: "human:pidster"
+target: OBS-20260124-104500
+edge_type: CREATED
+metadata:
+  timestamp: "2026-01-24T10:45:00Z"
+  observation_type: EVENT
+created: "2026-01-24T10:45:00Z"
+confidence: 1.0
+
+# TEST ARTIFACT - Hook effectiveness A/B testing (FW-038)
+test_artifact: true

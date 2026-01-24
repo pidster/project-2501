@@ -1,0 +1,11 @@
+id: OBS-20260124-100437
+timestamp: "2026-01-24T10:04:37Z"
+type: STATE
+observer: "human:pidster"
+subject: "Test execution performance"
+value: "Tests running slowly"
+tags: ["baseline-test"]
+
+# TEST ARTIFACT - Do not reference in ongoing context
+test_artifact: true
+test_context: "Hook effectiveness A/B testing (FW-038) - synthetic observation for testing"

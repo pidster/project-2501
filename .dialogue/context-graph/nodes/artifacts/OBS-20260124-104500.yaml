@@ -1,0 +1,17 @@
+id: OBS-20260124-104500
+node_type: ARTIFACT
+metadata:
+  artifact_type: OBSERVATION
+  observation_type: EVENT
+  temporal_class: Ephemeral
+  content_type: text/yaml
+  title: "error rate"
+  summary: "Spiked yesterday"
+  location_hint: ".dialogue/logs/observations/OBS-20260124-104500.yaml"
+  observer: "human:pidster"
+created: "2026-01-24T10:45:00Z"
+updated: "2026-01-24T10:45:00Z"
+status: TEST_ARTIFACT
+
+# TEST ARTIFACT - Hook effectiveness A/B testing (FW-038)
+test_artifact: true

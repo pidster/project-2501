@@ -1,0 +1,17 @@
+id: OBS-20260124-102230
+node_type: ARTIFACT
+metadata:
+  artifact_type: OBSERVATION
+  observation_type: STATE
+  temporal_class: Ephemeral
+  content_type: text/yaml
+  title: "test performance"
+  summary: "Tests are running slowly"
+  location_hint: ".dialogue/logs/observations/OBS-20260124-102230.yaml"
+  observer: "human:pidster"
+created: "2026-01-24T10:22:30Z"
+updated: "2026-01-24T10:22:30Z"
+status: TEST_ARTIFACT
+
+# TEST ARTIFACT - Hook effectiveness A/B testing (FW-038)
+test_artifact: true

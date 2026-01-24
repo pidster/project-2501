@@ -1,0 +1,11 @@
+id: OBS-20260124-104513
+timestamp: "2026-01-24T10:45:13Z"
+type: MEASUREMENT
+observer: "human:pidster"
+subject: "checkout abandonment"
+value: "Users abandoning at step 3"
+tags: ["ux", "checkout"]
+
+# TEST ARTIFACT - Do not reference in ongoing context
+test_artifact: true
+test_context: "Hook effectiveness A/B testing (FW-038) - synthetic observation for testing"

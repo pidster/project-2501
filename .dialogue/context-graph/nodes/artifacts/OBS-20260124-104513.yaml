@@ -1,0 +1,17 @@
+id: OBS-20260124-104513
+node_type: ARTIFACT
+metadata:
+  artifact_type: OBSERVATION
+  observation_type: MEASUREMENT
+  temporal_class: Ephemeral
+  content_type: text/yaml
+  title: "checkout abandonment"
+  summary: "Users abandoning at step 3"
+  location_hint: ".dialogue/logs/observations/OBS-20260124-104513.yaml"
+  observer: "human:pidster"
+created: "2026-01-24T10:45:13Z"
+updated: "2026-01-24T10:45:13Z"
+status: TEST_ARTIFACT
+
+# TEST ARTIFACT - Hook effectiveness A/B testing (FW-038)
+test_artifact: true

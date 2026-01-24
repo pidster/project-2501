@@ -1,0 +1,11 @@
+id: OBS-20260124-104500
+timestamp: "2026-01-24T10:45:00Z"
+type: EVENT
+observer: "human:pidster"
+subject: "error rate"
+value: "Spiked yesterday"
+tags: ["monitoring", "errors"]
+
+# TEST ARTIFACT - Do not reference in ongoing context
+test_artifact: true
+test_context: "Hook effectiveness A/B testing (FW-038) - synthetic observation for testing"
