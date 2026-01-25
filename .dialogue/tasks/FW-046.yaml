@@ -1,0 +1,24 @@
+id: "FW-046"
+title: "Research GitHub Copilot CLI SDK for Dialogue flavour"
+status: BACKLOG
+created: "2026-01-25T11:00:00Z"
+updated: "2026-01-25T11:00:00Z"
+type: RESEARCH
+priority: MEDIUM
+description: |
+  Investigate creating a GitHub Copilot flavour of the Dialogue Framework using the Copilot CLI SDK. This would extend the framework's reach beyond Claude Code to support teams using GitHub Copilot.
+
+  Research areas:
+  - Copilot CLI SDK capabilities and extension points
+  - Command and conversation model differences
+  - Portability of framework components
+  - Shared vs platform-specific implementation
+  - Distribution through GitHub/npm ecosystem
+objective: "Determine feasibility of a Copilot-based Dialogue Framework flavour"
+rationale: |
+  Supporting multiple AI coding assistants would increase framework adoption and provide comparative insights for framework design. The core framework concepts are model-agnostic.
+blocked_by: []
+blocks: []
+notes: |
+  Created 25 January 2026.
+  See THY-005 for theoretical context.

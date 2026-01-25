@@ -1,0 +1,24 @@
+id: "FW-045"
+title: "Research Claude Code SDK for Revolution mode"
+status: BACKLOG
+created: "2026-01-25T11:00:00Z"
+updated: "2026-01-25T11:00:00Z"
+type: RESEARCH
+priority: MEDIUM
+description: |
+  Investigate using the Claude Code SDK (Claude Agent SDK) as an implementation approach for claude-plugin-rev (Revolution mode). This would be an alternative packaging model to the current plugin-based delivery.
+
+  Research areas:
+  - SDK capabilities and limitations
+  - Tool definition and integration patterns
+  - Distribution and installation model
+  - Context and conversation management
+  - Comparison with plugin-based approach
+objective: "Determine feasibility and approach for SDK-based Revolution mode delivery"
+rationale: |
+  The Claude Code SDK may offer deployment flexibility and tighter integration options that complement or improve upon plugin-based delivery for the production-ready Revolution mode.
+blocked_by: []
+blocks: []
+notes: |
+  Created 25 January 2026.
+  See THY-004 for theoretical context.
