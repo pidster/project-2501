@@ -8,13 +8,22 @@ argument-hint: [topic]
 
 You are providing help for the Dialogue Framework. Be helpful and concise.
 
+## Step 0: Read Interaction Mode
+
+Check `.dialogue/config.yaml` for `interaction_mode` setting (default: `partnership`). Adapt verbosity:
+- **human-led**: Be concise; answer directly without elaboration
+- **partnership**: Balanced; provide context and suggest next steps
+- **ai-led**: Verbose; explain concepts thoroughly and proactively offer guidance
+
+Also check the user's session memo (`.dialogue/session-memo-{username}.yaml`) for `interaction_mode_preference` which overrides project config.
+
 ## Step 1: Determine the Topic
 
 Check for a help topic in this order:
 
 1. **Explicit argument**: If `$ARGUMENTS` is provided, that's the topic
 2. **Recent context**: If the conversation makes the topic obvious, use that
-3. **Ask the user**: If neither, ask: "What would you like help with? I can explain commands, document types, phases, collaboration patterns, or help you get started."
+3. **Ask the user**: If neither, ask: "What would you like help with? I can explain commands, skills, document types, phases, or help you get started."
 
 ## Step 2: Provide Help
 
@@ -107,15 +116,46 @@ Eight framework capabilities:
 | **Generate** | Produce artefacts |
 | **Preserve** | Capture for future use |
 
+### "skills" / "list skills" / "what skills"
+
+Point the user to the quick reference:
+
+> The framework has 17 skills that activate automatically when you use trigger phrases.
+>
+> **Full list**: See `${CLAUDE_PLUGIN_ROOT}/references/quick-reference.md`
+
+Briefly summarise the skill categories:
+- **Document Creation**: Create THY, REF, STR, NOT, ADR documents
+- **Logging & Tracking**: Log decisions, observations; manage tasks; save sessions
+- **Assessment & Process**: Check phase readiness, problem framing, logging compliance
+- **Discovery & Help**: Get help, resolve reference IDs
+
+**Example triggers**: "I decided to...", "create task for...", "what's in progress", "save session"
+
+In ai-led mode, list a few example trigger phrases for each category.
+
 ### "getting started" / "start" / "how do I"
 
-1. **Initialise**: Run `/init-dialogue` to create the `.dialogue/` directory
-2. **Know your phase**: Consider which SDLC phase your work is in
-3. **Create documents**: Use `/create-*` commands as needed
-4. **Log as you go**: Say "I decided..." or "I noticed..." and the framework will capture it
-5. **Track work**: Check `.dialogue/tasks.yaml` for project tasks
+**Discovery-first approach**: Start with what the user wants to accomplish.
 
-Ask: "What are you working on? I can suggest how the framework might help."
+Ask: "What do you want to create or accomplish? I can suggest the best approach."
+
+If they need general orientation:
+
+1. **Initialise** (if needed): Run `/init-dialogue` to create `.dialogue/` directory
+2. **Just start working**: The framework captures context as you go
+3. **Natural logging**: Say "I decided..." or "I noticed..." — the framework logs automatically
+4. **Track work**: Say "status" or "create task for..." to manage tasks
+
+**Concrete examples**:
+- "I decided to use PostgreSQL instead of MongoDB" → Decision logged
+- "Create task for implementing user auth" → Task created
+- "What's in progress?" → Shows active tasks
+- "Save session" → Preserves context for next session
+
+**Quick reference**: `${CLAUDE_PLUGIN_ROOT}/references/quick-reference.md` lists all commands and skill triggers.
+
+In ai-led mode, proactively suggest: "Would you like me to show you the most common workflows?"
 
 ### Specific command help
 
@@ -132,9 +172,19 @@ If you can't find relevant information, say so and ask if they'd like help with 
 
 ---
 
-## Step 3: Offer Next Steps
+## Step 3: Offer Next Steps (Mode-Aware)
 
-After providing help, offer a relevant follow-up:
+Adapt follow-up offers based on interaction mode:
+
+**human-led**: Minimal follow-up
+- End with a brief: "Ask if you need more."
+
+**partnership**: Balanced follow-up
 - "Would you like me to explain any of these in more detail?"
 - "Want me to help you get started with [relevant action]?"
-- "Any other questions about the framework?"
+
+**ai-led**: Proactive follow-up
+- Suggest specific next actions based on context
+- "Based on what you're working on, I'd recommend..."
+- Offer to demonstrate features: "Would you like me to walk you through [feature]?"
+- Proactively mention related capabilities they might not know about

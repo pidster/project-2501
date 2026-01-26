@@ -1,5 +1,12 @@
 version: "0.1"
 
+# Interaction mode controls how Claude communicates (help verbosity, proactivity)
+# Options: human-led | partnership | ai-led
+# - human-led: Concise, on-demand help; minimal session start output
+# - partnership: Balanced help with hints; suggests next steps (default)
+# - ai-led: Verbose, proactive; recommends actions and explains features
+interaction_mode: partnership
+
 # Deployed projects would typically use docs/ instead of implementation/.
 # See schema_deployment-model.md for deployment scenarios.
 

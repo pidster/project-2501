@@ -6,6 +6,11 @@
 #
 # Design: Minimal and quiet. No output for non-framework prompts.
 
+
+# IMPORTANT: THIS IS SUPERSEDED BY user-prompt-submit-guided.sh FOR GUIDED PROMPTS
+# ALWAYS USE THE GUIDED VARIANT NO MORE MODIFICATIONS SHOULD BE MADE HERE
+
+
 set -euo pipefail
 
 # Read JSON input

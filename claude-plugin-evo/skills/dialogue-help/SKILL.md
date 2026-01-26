@@ -20,6 +20,15 @@ Activate this skill when:
 
 ## Implementation
 
+### Step 0: Check Interaction Mode
+
+Read `.dialogue/config.yaml` for `interaction_mode` (default: `partnership`). Also check user's session memo for `interaction_mode_preference`. Adapt help verbosity accordingly:
+- **human-led**: Concise, answer directly
+- **partnership**: Balanced with suggestions
+- **ai-led**: Verbose, proactive, explanatory
+
+### Step 1: Follow the /help Command
+
 **Read and follow the `/help` command** at `${CLAUDE_PLUGIN_ROOT}/commands/help.md` for:
 - Framework overview and core principles
 - Command listing with descriptions
@@ -29,16 +38,31 @@ Activate this skill when:
 
 The command contains the authoritative help content.
 
+### Quick Reference
+
+For skill discovery, point users to: `${CLAUDE_PLUGIN_ROOT}/references/quick-reference.md`
+
+This consolidated reference shows all commands and skills with trigger phrases in a scannable format.
+
 ## Contextual Help Guidance
 
 Tailor responses based on what the user is asking:
 
-### For "What can you do?" / General orientation
+### For "What can you do?" / "What can I do right now?" / General orientation
 
-Provide brief overview, then offer specific areas:
-- Document creation (THY, REF, STR, WRK)
-- Decision and observation logging
-- Process guidance
+**Discovery-first**: Start with the user's goal, not feature lists.
+
+Ask: "What do you want to create or accomplish?"
+
+If they want a capabilities overview, group by intent:
+- **Capture understanding**: Create Theory, Reference, Strategy documents
+- **Track decisions**: Say "I decided..." or use `/create-adr` for architecture decisions
+- **Manage work**: "create task", "status", "next task"
+- **Preserve context**: "save session" at end of work
+
+In **ai-led mode**, proactively demonstrate: "Try saying 'I decided to use TypeScript' and watch what happens."
+
+In **human-led mode**, point to quick reference: "See `references/quick-reference.md` for full list."
 
 ### For Command Questions
 
@@ -55,9 +79,22 @@ Explain the relevant concept. For detailed reference, consult the operational ma
 ### For "How do I..." Questions
 
 Map to the appropriate command or skill:
-- "How do I capture understanding?" → `/create-theory`
-- "How do I log a decision?" → `dialogue-log-decision` skill
-- "How do I start using this?" → `/init-dialogue`
+
+| Question | Answer |
+|----------|--------|
+| "How do I log a decision?" | Say "I decided to..." or "let's go with..." |
+| "How do I capture understanding?" | `/create-theory` for integrated knowledge |
+| "How do I document a meeting?" | `/create-note` for ephemeral outputs |
+| "How do I create a task?" | Say "create task for..." |
+| "How do I see what's in progress?" | Say "status" or "what tasks" |
+| "How do I record an observation?" | Say "I noticed..." or "log observation" |
+| "How do I save context?" | Say "save session" or "end session" |
+| "How do I check phase readiness?" | Say "assess phase" or "ready to proceed" |
+| "How do I get less/more help?" | `/set-mode human-led` or `/set-mode ai-led` |
+| "How do I start using this?" | `/init-dialogue` (if not initialised) |
+| "How do I see all capabilities?" | `/help skills` or see `references/quick-reference.md` |
+
+In **ai-led mode**, provide example trigger phrases for each.
 
 ### For AI Agents
 

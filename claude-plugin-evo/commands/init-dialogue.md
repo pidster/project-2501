@@ -35,6 +35,13 @@ Set up the Dialogue Framework for first use in this project.
    ```yaml
    version: "0.1"
 
+   # Interaction mode controls how Claude communicates (help verbosity, proactivity)
+   # Options: human-led | partnership | ai-led
+   # - human-led: Concise, on-demand help; minimal session start output
+   # - partnership: Balanced help with hints; suggests next steps (default)
+   # - ai-led: Verbose, proactive; recommends actions and explains features
+   interaction_mode: partnership
+
    # Project document locations (adjust paths to match your project)
    artifacts:
      adr:

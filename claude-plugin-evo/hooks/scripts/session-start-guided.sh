@@ -1,10 +1,10 @@
 #!/bin/bash
-# session-start-guided.sh — Guided variant: injects operating instructions
+# session-start-guided.sh — Guided variant: mode-aware operating instructions
 # Part of the Dialogue Framework plugin
-# SessionStart hook - GUIDED APPROACH
+# SessionStart hook - GUIDED APPROACH with interaction mode support
 #
-# Difference from baseline: Includes directive operating instructions,
-# not just status reporting.
+# Reads interaction_mode from config.yaml and user session-memo.
+# Adapts output verbosity: human-led (minimal), partnership (balanced), ai-led (verbose)
 
 set -euo pipefail
 
@@ -33,15 +33,32 @@ if [[ ! -d "$DIALOGUE_DIR" ]] || [[ ! -f "$CONFIG_FILE" ]]; then
     exit 0
 fi
 
+# Read interaction_mode from config.yaml (default: partnership)
+INTERACTION_MODE="partnership"
+if [[ -f "$CONFIG_FILE" ]]; then
+    mode=$(grep -m1 "^interaction_mode:" "$CONFIG_FILE" 2>/dev/null | awk '{print $2}' | tr -d '"' || echo "")
+    if [[ -n "$mode" ]]; then
+        INTERACTION_MODE="$mode"
+    fi
+fi
+
+# Check for user preference in session-memo (overrides project config)
+USERNAME="${USER:-$(whoami)}"
+SESSION_MEMO="${DIALOGUE_DIR}/session-memo-${USERNAME}.yaml"
+if [[ -f "$SESSION_MEMO" ]]; then
+    user_pref=$(grep -m1 "^interaction_mode_preference:" "$SESSION_MEMO" 2>/dev/null | awk '{print $2}' | tr -d '"' || echo "")
+    if [[ -n "$user_pref" ]]; then
+        INTERACTION_MODE="$user_pref"
+    fi
+fi
+
 # Count tasks
 in_progress=0
 ready=0
 in_progress_list=""
+ready_list=""
 
 ## Scan task files for statuses
-## TODO: should be done via a proper YAML parser as this is brittle?
-## TODO: should this use the dialogue-manage-tasks skill instead?
-
 if [[ -d "$TASKS_DIR" ]] && [[ -n "$(ls -A "$TASKS_DIR" 2>/dev/null)" ]]; then
     for task_file in "$TASKS_DIR"/*.yaml; do
         [[ -f "$task_file" ]] || continue
@@ -52,32 +69,64 @@ if [[ -d "$TASKS_DIR" ]] && [[ -n "$(ls -A "$TASKS_DIR" 2>/dev/null)" ]]; then
             [[ $in_progress -le 3 ]] && in_progress_list+="${id} "
         elif [[ "$status" == "READY" ]]; then
             ((ready++))
+            if [[ $ready -le 2 ]]; then
+                id=$(grep -m1 "^id:" "$task_file" | awk '{print $2}' | tr -d '"')
+                ready_list+="${id} "
+            fi
         fi
     done
 fi
 
-# Build GUIDED system message with operating instructions
-# Key difference: explicit directives, not just status
-
-read -r -d '' INSTRUCTIONS << EOF || true
-${BOLD_GREEN}Dialogue Framework is active.${RESET}
-
-OPERATING INSTRUCTIONS:
-1. Log decisions: Use dialogue-log-decision skill when choices are made
-2. Log observations: Use dialogue-log-observation skill for findings
-3. Track work: Use dialogue-manage-tasks skill for persistent items
-4. All other actions: Consult claude-plugin-evo/references/framework-manual.md
-EOF
-
-# Add task status
+# Build task status string
 task_status="Tasks: ${BOLD}${in_progress} in-progress${RESET}"
 if [[ -n "$in_progress_list" ]]; then
     task_status+=" [${BOLD_CYAN}${in_progress_list% }${RESET}]"
 fi
 task_status+=", ${BOLD}${ready}${RESET} ready"
 
-# Combine instructions with status
-system_msg="${INSTRUCTIONS}"$'\n\n'"${task_status}" 
+# Build system message based on interaction mode
+case "$INTERACTION_MODE" in
+    "human-led")
+        # Minimal: status only
+        system_msg="${BOLD_GREEN}Dialogue active.${RESET} ${task_status}"
+        ;;
+
+    "ai-led")
+        # Verbose: status + instructions + recommendations
+        read -r -d '' INSTRUCTIONS << EOF || true
+${BOLD_GREEN}Dialogue Framework is active.${RESET}
+
+OPERATING INSTRUCTIONS:
+1. Log decisions: Use dialogue-log-decision skill when choices are made
+2. Log observations: Use dialogue-log-observation skill for findings
+3. Track work: Use dialogue-manage-tasks skill for all work & task management
+4. All other actions: Consult claude-plugin-evo/references/framework-manual.md
+
+${task_status}
+EOF
+        # Add recommendation if there are ready tasks
+        if [[ $ready -gt 0 ]] && [[ -n "$ready_list" ]]; then
+            INSTRUCTIONS+=$'\n\n'"${BOLD}Suggestion:${RESET} Consider starting with ${BOLD_CYAN}${ready_list% }${RESET}"
+        fi
+        system_msg="${INSTRUCTIONS}"
+        ;;
+
+    *)
+        # partnership (default): status + hint
+        read -r -d '' INSTRUCTIONS << EOF || true
+${BOLD_GREEN}Dialogue Framework is active.${RESET}
+
+OPERATING INSTRUCTIONS:
+1. Log decisions: Use dialogue-log-decision skill when choices are made
+2. Log observations: Use dialogue-log-observation skill for findings
+3. Track work: Use dialogue-manage-tasks skill for all work & task management
+4. All other actions: Consult claude-plugin-evo/references/framework-manual.md
+
+${task_status}
+EOF
+        system_msg="${INSTRUCTIONS}"$'\n'"Type ${BOLD}/help skills${RESET} to see available capabilities."
+        ;;
+esac
 
 # Escape for JSON (newlines to \n)
 system_msg_escaped=$(echo "$system_msg" | jq -Rs '.')

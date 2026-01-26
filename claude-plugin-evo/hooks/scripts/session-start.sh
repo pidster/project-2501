@@ -3,6 +3,9 @@
 # Part of the Dialogue Framework plugin
 # SessionStart hook
 
+# IMPORTANT: THIS IS SUPERSEDED BY session-start-guided.sh FOR GUIDED SESSIONS
+# ALWAYS USE THE GUIDED VARIANT NO MORE MODIFICATIONS SHOULD BE MADE HERE
+
 set -euo pipefail
 
 # Use Claude's project directory

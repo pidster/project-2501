@@ -1,16 +1,53 @@
 id: "FW-035"
-title: "Define baseline project knowledge document formats"
+title: "Baseline project knowledge catalogue with phase mapping"
 status: BACKLOG
 created: "2026-01-22T12:13:53Z"
-updated: "2026-01-22T12:13:53Z"
+updated: "2026-01-26T14:00:00Z"
 type: SCHEMA
 priority: MEDIUM
 description: |
-  Define concrete formats for foundational project knowledge documents. Consider structure like .dialogue/project/{vision|objectives|principles|constraints}.md. Determine how these documents link to the context graph and how they are populated (bootstrap vs manual).
-objective: "Standardised location and format for core project knowledge that AI can reliably reference"
+  Create comprehensive catalogue of information artefacts mapped to SDLC phases.
+
+  EXPANDED SCOPE (26 Jan):
+  - Identify ALL baseline project knowledge types (not just vision/objectives)
+  - Map each artefact type to its primary phase(s)
+  - Define which artefacts can have sensible defaults
+  - Enable visualisation as:
+    * Information tree (hierarchical view)
+    * DAG with directional force aligned to SDLC phase order
+  - Support forward consistency checking (change to artefact triggers re-analysis)
+
+  ARTEFACT CATEGORIES BY PHASE:
+  Phase 1 (Initiation): Vision, objectives, stakeholders, constraints, success criteria
+  Phase 2 (Planning): Scope, WBS, schedule, resources, risks, principles
+  Phase 3 (Requirements): Requirements, user stories, acceptance criteria
+  Phase 4 (Design): Architecture patterns, interfaces, security model, data model
+  Phase 5 (Implementation): Coding standards, design patterns, git strategy, logging, error handling
+  Phase 6 (Testing): Test strategy, coverage goals, test environments
+  Phase 7 (Operations): Deployment strategy, monitoring, runbooks, SLAs
+
+  CROSS-PHASE ARTEFACTS:
+  - Principles (Phase 2 → all subsequent phases)
+  - Constraints (Phase 1 → all phases)
+  - Security requirements (Phase 4 → 5, 6, 7)
+
+objective: "Comprehensive catalogue of project knowledge types with phase mapping, defaults, and DAG visualisation support"
 rationale: |
-  Foundational project knowledge (vision, objectives, principles) should have a known location and structure rather than being scattered or implicit
+  Baseline project knowledge (coding standards, git strategy, logging approach, etc.) is typically "good practice" but overlooked. Providing defaults surfaces these for conscious decision. Phase mapping enables:
+  - Discovery dialogue to ask relevant questions per phase
+  - DAG visualisation showing information flow through SDLC
+  - Forward consistency checking when artefacts change
 blocked_by: []
 blocks: []
 notes: |
   Created 22 January 2026.
+
+  26 January - Scope expanded:
+  - From "document formats" to "comprehensive knowledge catalogue"
+  - Added phase mapping for tree/DAG visualisation
+  - Added defaults concept for overlooked best practices
+  - Connected to DOC-004 discovery dialogue work
+  - THEORY TREE: THY documents per phase form implied hierarchy over context graph
+    * Each phase has associated theories capturing "why" understanding
+    * Theories derive from/build upon earlier phase theories
+    * Forward consistency: changes to THY-Pn trigger re-analysis of THY-P(n+1..7)

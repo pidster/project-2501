@@ -1,16 +1,63 @@
 id: "DOC-004"
 title: "Improve help and instructions for better user experience"
-status: READY
+status: DONE
 created: "2026-01-26T07:36:16Z"
-updated: "2026-01-26T07:36:16Z"
+updated: "2026-01-26T17:30:00Z"
 type: DOCUMENT
 priority: HIGH
 description: |
   The current help and instructions are too literal and concept-focused. While grounding in framework concepts is partially correct, the documentation fails to guide users through how to use the framework effectively in practice.
-objective: "Create a great user experience where new users understand what Dialogue offers within minutes, can find the right skill/command easily, and documentation answers 'how do I...' questions"
+
+  EXPANDED SCOPE (26 Jan):
+  - Introduce "Interaction Mode" as a dimension separate from Process Mode
+  - Interaction Mode controls help verbosity, proactivity, and guidance style
+  - Three modes: human-led (concise), partnership (balanced), ai-led (verbose)
+  - Mode persisted per-user in session-memo, configurable via /set-mode
+  - Help content adapts based on mode
+  - Requires formal concept document (concept_interaction-mode.md)
+
+  OPEN QUESTION: Help content narrative approach needs discussion before implementation.
+objective: "Create a great user experience where new users understand what Dialogue offers within minutes, can find the right skill/command easily, documentation answers 'how do I...' questions, AND help adapts to user's preferred interaction style"
 rationale: |
   User experience is critical for adoption. Current documentation explains 'what' but not 'how', making the framework feel like studying a manual rather than an intuitive tool.
+
+  NEW INSIGHT: Interaction mode (how AI communicates) should be independent from process mode (how SDLC work executes). This enables experts to get minimal guidance while newcomers get more support, regardless of what phase they're working in.
 blocked_by: []
 blocks: []
 notes: |
   Created 26 January 2026.
+
+  26 January - Session progress:
+  - Explored current help implementation (17 skills, 50+ triggers, scattered docs)
+  - Identified core problem: discoverability and "what vs how"
+  - Key insight from user: separate interaction mode from process mode
+  - Plan expanded to include:
+    * Quick reference document
+    * Mode-aware session-start and help
+    * Interaction mode concept document
+    * Per-user mode persistence
+    * /set-mode command
+  - PENDING: Discussion on help content narrative approach
+
+  26 January - Implementation completed:
+  1. Added interaction_mode to config schema and init-dialogue template
+  2. Created references/quick-reference.md - scannable skills/commands reference
+  3. Enhanced /help command with "skills" topic and mode-awareness
+  4. Updated dialogue-help skill for discovery-driven help
+  5. Made session-start-guided.sh read interaction_mode and adapt output
+  6. Created concepts/concept_interaction-mode.md formal concept document
+  7. Added per-user mode persistence to dialogue-save-session schema
+  8. Created /set-mode command for mid-session mode switching
+
+  Files created:
+  - claude-plugin-evo/references/quick-reference.md
+  - claude-plugin-evo/commands/set-mode.md
+  - concepts/concept_interaction-mode.md
+
+  Files modified:
+  - claude-plugin-evo/commands/init-dialogue.md
+  - claude-plugin-evo/commands/help.md
+  - claude-plugin-evo/skills/dialogue-help/SKILL.md
+  - claude-plugin-evo/skills/dialogue-save-session/SKILL.md
+  - claude-plugin-evo/hooks/scripts/session-start-guided.sh
+  - .dialogue/config.yaml

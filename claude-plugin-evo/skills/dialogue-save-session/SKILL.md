@@ -34,6 +34,16 @@ open_questions:
   - "How should session memos handle task completion?"
 notes: |
   Optional freeform notes about session context.
+
+# Interaction mode preference (overrides project config.yaml)
+# Options: human-led | partnership | ai-led
+interaction_mode_preference: partnership
+
+# Feature explanation tracking (for teach-by-doing in ai-led mode)
+feature_explanations_given:
+  decision_logging: 0      # Times explained (stop after 2-3)
+  observation_logging: 0
+  task_management: 0
 ```
 
 ## To Save Session Context
@@ -65,8 +75,17 @@ open_questions:
   - "How should session memos handle multi-session context?"
 notes: |
   Completed per-file migration. Next: test with new session.
+interaction_mode_preference: partnership
+feature_explanations_given:
+  decision_logging: 2
+  observation_logging: 1
+  task_management: 0
 EOF
 ```
+
+### Updating Interaction Mode
+
+When saving a session, preserve any existing `interaction_mode_preference` unless the user has changed it during the session. If the user used `/set-mode`, update the preference accordingly.
 
 ## Multi-User Workflow
 
