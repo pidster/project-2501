@@ -186,6 +186,53 @@ collaboration_support:
       supported: true
       notes: "Conversation history serves as audit trail"
 
+environment_variables:
+  description: |
+    Environment variables available to hooks, skills, and scripts.
+    These enable portable paths and context-aware script behaviour.
+
+  framework_provided:
+    CLAUDE_PROJECT_DIR:
+      description: "Absolute path to the project root directory"
+      availability: ["hooks", "skills", "scripts", "commands"]
+      required: true
+      example: "/Users/name/projects/my-project"
+      notes: "Always use this instead of hardcoded paths or pwd"
+
+    CLAUDE_PLUGIN_ROOT:
+      description: "Absolute path to the plugin root directory"
+      availability: ["plugin hooks", "plugin skills", "plugin scripts", "plugin commands"]
+      required: false
+      example: "/Users/name/projects/my-project/.claude/plugins/my-plugin"
+      notes: "Only available within plugin context; use for plugin-relative paths"
+
+    USER:
+      description: "Current system username"
+      availability: ["all contexts"]
+      required: true
+      example: "alice"
+      notes: "Standard Unix environment variable; useful for per-user files"
+
+  hook_specific:
+    description: "Variables passed to hook scripts based on event type"
+    PreToolUse:
+      - "TOOL_NAME: Name of tool being invoked"
+      - "TOOL_INPUT: JSON string of tool parameters"
+    PostToolUse:
+      - "TOOL_NAME: Name of tool that was invoked"
+      - "TOOL_INPUT: JSON string of tool parameters"
+      - "TOOL_OUTPUT: JSON string of tool result"
+    SessionStart:
+      - "SESSION_ID: Unique session identifier (if available)"
+    UserPromptSubmit:
+      - "USER_PROMPT: The prompt text submitted by the user"
+
+  usage_guidelines:
+    - "Always use ${CLAUDE_PROJECT_DIR} instead of relative paths like './' or pwd"
+    - "Use ${CLAUDE_PLUGIN_ROOT} for paths within plugin directory structure"
+    - "Check variable availability with: ${VAR_NAME:?VAR_NAME must be set}"
+    - "Export variables when spawning subprocesses that need them"
+
 configuration:
   project_level:
     files:
@@ -228,15 +275,69 @@ extensions:
 
   rules:
     supported: true
-    format: "Markdown files"
+    format: "Markdown files with optional YAML frontmatter"
     location: ".claude/rules/"
     scope: "Project-level persistent guidance"
     auto_apply: true
+
+    path_filtering:
+      description: |
+        Rules can be conditionally applied based on file paths using globs frontmatter.
+        When globs are specified, the rule only activates when working with matching files.
+
+      frontmatter_fields:
+        globs:
+          type: "string or array of strings"
+          description: "Glob patterns that trigger this rule"
+          examples:
+            - "*.py"
+            - "src/**/*.ts"
+            - ["*.test.js", "*.spec.js"]
+
+        alwaysApply:
+          type: "boolean"
+          default: false
+          description: "If true, rule applies regardless of current file context"
+
+      glob_pattern_syntax:
+        - "* matches any characters except path separator"
+        - "** matches any characters including path separators (recursive)"
+        - "? matches single character"
+        - "[abc] matches any character in brackets"
+        - "{a,b} matches any pattern in braces"
+
+      examples:
+        - name: "Python style rule"
+          frontmatter: |
+            ---
+            globs: "**/*.py"
+            ---
+          behaviour: "Activates when editing any .py file"
+
+        - name: "Test file conventions"
+          frontmatter: |
+            ---
+            globs: ["**/*.test.ts", "**/*.spec.ts"]
+            ---
+          behaviour: "Activates when editing TypeScript test files"
+
+        - name: "Always-on rule"
+          frontmatter: |
+            ---
+            alwaysApply: true
+            ---
+          behaviour: "Applies in all contexts regardless of current file"
+
+      when_to_use:
+        rules: "Persistent guidance that should always (or conditionally) apply"
+        skills: "Contextual guidance invoked on demand or by trigger match"
+        manual_guidance: "One-time instructions in conversation"
+
     notes: |
       Rules provide standing instructions that apply across all sessions.
       Simpler than skills - no invocation needed, just persistent guidance.
       Use for: coding standards, terminology, behavioural constraints, domain conventions.
-      Rules apply automatically; skills require explicit or matched invocation.
+      Path filtering allows rules to activate only for relevant file types.
 
   custom_commands:
     supported: true

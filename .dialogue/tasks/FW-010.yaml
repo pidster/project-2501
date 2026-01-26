@@ -1,8 +1,9 @@
 id: "FW-010"
 title: "Environment Registry Improvements"
-status: READY
+status: COMPLETED
 created: "2026-01-15T09:50:00Z"
-updated: "2026-01-15T09:50:00Z"
+updated: "2026-01-26T11:15:00Z"
+completed: "2026-01-26T11:15:00Z"
 type: DOCUMENTATION
 priority: MEDIUM
 description: |
@@ -31,5 +32,14 @@ notes: |
   Created 15 January 2026 from user observation during FW-009 review.
   See OBS-20260115-085039.
 
-  # === Subagent Architecture tasks ===
+  Completed 26 January 2026:
+  - Added environment_variables section documenting:
+    - CLAUDE_PROJECT_DIR, CLAUDE_PLUGIN_ROOT, USER
+    - Hook-specific variables (TOOL_NAME, TOOL_INPUT, etc.)
+    - Usage guidelines
+  - Enhanced rules section with path_filtering documentation:
+    - globs and alwaysApply frontmatter fields
+    - Glob pattern syntax reference
+    - Examples for Python, test files, always-on rules
+    - When to use rules vs skills vs manual guidance
 
