@@ -181,43 +181,39 @@ Checks if the Dialogue Framework is initialised when a session starts. Reports s
 
 ### UserPromptSubmit: framework-context
 
-Detects framework-relevant patterns in user prompts and injects minimal signal tags. These signals help Claude recognise when to invoke framework components without verbose instructions.
+Detects framework-relevant patterns in user prompts and injects directive instructions. These instructions tell Claude explicitly which skill to use, removing ambiguity.
 
-**Signals emitted:**
+**Instructions emitted:**
 
-| Signal | Detected Pattern | Related Component |
-|--------|------------------|-------------------|
-| `decision-capture` | "I decided", "let's go with", etc. | `dialogue-log-decision` |
-| `observation-capture` | "I noticed", "I observed", etc. | `dialogue-log-observation` |
-| `task-context` | `SH-NNN`, `FW-NNN`, `CD-NNN` | `dialogue-manage-tasks` |
-| `task-candidate` | "implement feature", "investigate issue", etc. | See triage below |
-| `resolve-reference` | `THY-NNN`, `REF-NNN`, `DEC-*`, etc. | `dialogue-resolve-reference` |
-| `phase-1` to `phase-5` | Phase keywords | Phase-specific guidance |
-| `create-adr` | "create ADR", "architecture decision" | `dialogue-create-adr` |
-| `structured-elicit` | "elicit knowledge", "gather context" | `dialogue-structured-elicit` |
+| Pattern Detected | Instruction | Action |
+|------------------|-------------|--------|
+| "I decided", "let's go with", etc. | `DECISION DETECTED` | Use `dialogue-log-decision` skill |
+| "I noticed", "I observed", etc. | `OBSERVATION DETECTED` | Use `dialogue-log-observation` skill |
+| `SH-NNN`, `FW-NNN`, `CD-NNN` | `TASK REFERENCE` | Use `dialogue-manage-tasks` skill |
+| `THY-NNN`, `REF-NNN`, `DEC-*`, etc. | `REFERENCE` | Use `dialogue-resolve-reference` skill |
+| Phase keywords (initiation, planning, etc.) | `PHASE N CONTEXT` | Apply phase guidance from framework-manual.md |
+| "create ADR", "architecture decision" | `ADR REQUEST` | Use `dialogue-create-adr` skill |
+| "implement feature", "investigate issue", etc. | `TASK CANDIDATE` | Triage: session todo vs project task |
 
-**Output format:** `<dialogue-signals>signal1 signal2</dialogue-signals>`
+**Output format:** `<dialogue-instruction>INSTRUCTION: Action to take.</dialogue-instruction>`
 
 **Behaviour:** Silent when no framework relevance detected.
 
-**Signal interpretation for Claude:**
+**Example instructions:**
 
-When you see `<dialogue-signals>` in context, consider invoking the related component:
+```
+<dialogue-instruction>DECISION DETECTED: After responding, use the dialogue-log-decision skill to record this decision with rationale.</dialogue-instruction>
+```
 
-- `decision-capture` → After responding, use `dialogue-log-decision` skill to log the decision
-- `observation-capture` → After responding, use `dialogue-log-observation` skill to log the observation
-- `task-context` → Resolve the task ID to provide context
-- `task-candidate` → Triage: session todo vs project task (see below)
-- `resolve-reference` → Use `dialogue-resolve-reference` skill to look up the reference
-- `phase-N` → Apply phase-specific guidance from framework manual
-- `create-adr` → Use `dialogue-create-adr` skill for formal architecture decision
-- `structured-elicit` → Use `dialogue-structured-elicit` skill for systematic questioning
+```
+<dialogue-instruction>TASK REFERENCE: Resolve FW-047 using dialogue-manage-tasks skill to understand context.</dialogue-instruction>
+```
 
-Signals indicate *relevance*, not obligation. Use judgement about whether the component is actually needed.
+Instructions are explicit directives, not hints. When you see a `<dialogue-instruction>`, follow it.
 
 **Task candidate triage:**
 
-When you see `task-candidate`, determine if the request is:
+When you see `TASK CANDIDATE`, determine if the request is:
 
 | Type | Characteristics | Action |
 |------|-----------------|--------|
@@ -225,7 +221,7 @@ When you see `task-candidate`, determine if the request is:
 | **Project task** | Persistent, multi-session, strategic | Use `dialogue-manage-tasks` skill |
 
 Triage questions:
-1. Is this already tracked in `.dialogue/tasks.yaml`? → Use existing item
+1. Is this already tracked in `.dialogue/tasks/`? → Use existing item
 2. Will this span multiple sessions or require ongoing tracking? → Project task
 3. Is this part of the project roadmap or backlog? → Project task
 4. Is this a quick fix or one-off task? → Session todo

@@ -1,0 +1,31 @@
+id: "DOC-005"
+title: "Verify signal-to-instruction migration completeness"
+status: DONE
+created: "2026-01-26T09:24:22Z"
+updated: "2026-01-26T10:50:00Z"
+type: DOCUMENT
+priority: MEDIUM
+description: |
+  Check all docs and references have been updated from the old signal function (<dialogue-signals>) to the new instruction function (<dialogue-instruction>). Ensure consistency across hooks, skills, and documentation.
+blocked_by: []
+blocks: []
+notes: |
+  Created 26 January 2026.
+
+  26 January - Verification completed:
+
+  Files using OLD format (<dialogue-signals>):
+  - hooks/scripts/user-prompt-submit.sh - SUPERSEDED (marked in file header)
+  - tests/results/*.yaml - Historical test results, retain as baseline
+  - tests/hook-effectiveness-test.md - Documents old vs new comparison
+
+  Files using NEW format (<dialogue-instruction>):
+  - hooks/scripts/user-prompt-submit-guided.sh - Active, correctly migrated
+
+  Migration action:
+  - Updated README.md to document new instruction-based approach
+  - Changed output format documentation from signals to directives
+  - Updated example instructions and interpretation guidance
+
+  No further migration needed - deprecated files are marked, test files are
+  historical records.
