@@ -764,6 +764,47 @@ The framework occupies Layer 2 in a three-layer model:
 
 ---
 
+## Phase Transition Gates
+
+Soft gates capture "proceed at risk" decisions, making information debt conscious and tracked.
+
+### Gated Transitions (Balanced Approach)
+
+| Transition | Gate Type | Assessment | Rationale |
+|------------|-----------|------------|-----------|
+| **1→2** (Initiation→Planning) | **Soft gate required** | `dialogue-assess-framing` + `dialogue-assess-phase` | 75% tacit; highest information debt risk |
+| **2→3** (Planning→Requirements) | **Soft gate recommended** | `dialogue-assess-phase` | 55% tacit; scope decisions need validation |
+| **3→4** (Requirements→Design) | **Soft gate recommended** | `dialogue-assess-phase` | 50% tacit; requirements clarity critical |
+| **4→5** (Design→Implementation) | Optional | `dialogue-assess-phase` | Formal knowledge dominates |
+| **5→6** (Implementation→Testing) | Not required | — | Tight feedback loop corrects issues |
+| **6→7** (Testing→Operations) | Not required | — | Tight feedback loop corrects issues |
+
+### Soft Gate Outcomes
+
+| Outcome | Meaning | Action |
+|---------|---------|--------|
+| **PROCEED** | All dimensions ≥4.0, no blockers | Continue to next phase |
+| **PROCEED_WITH_CAUTION** | Dimensions ≥3.0, manageable gaps | Continue with conditions recorded |
+| **DEFER** | Significant gaps | Remediation before proceeding |
+
+### PROCEED_WITH_CAUTION Pattern
+
+When proceeding with conditions:
+1. Record the decision with `dialogue-log-decision` (type: TACTICAL)
+2. Document conditions in `approval_conditions` field
+3. Create follow-up tasks for condition resolution
+4. Conditions become input to next phase assessment
+
+### Why Not Hard Gates?
+
+Hard gates (blocking) are avoided because:
+- Context determines appropriate rigour (solo vs enterprise)
+- Human judgement required for trade-off decisions
+- Information debt is sometimes acceptable (time-to-market)
+- Soft gates make debt *visible* without blocking progress
+
+---
+
 ## Common Pitfalls
 
 1. **Overgeneralising actor suitability** — Determine at capability *instance* level, not broad categories

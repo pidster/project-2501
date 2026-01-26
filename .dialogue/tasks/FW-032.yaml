@@ -1,8 +1,9 @@
 id: "FW-032"
 title: "Revisit soft gates after assessment testing"
-status: READY
+status: COMPLETED
 created: "2026-01-21T17:23:53Z"
-updated: "2026-01-26T11:00:00Z"
+updated: "2026-01-26T11:30:00Z"
+completed: "2026-01-26T11:30:00Z"
 type: CAPABILITY
 priority: MEDIUM
 description: |
@@ -16,3 +17,11 @@ notes: |
   Created 21 January 2026.
 
   26 January 2026: Unblocked - FW-023 completed. Moved to READY.
+
+  Completed 26 January 2026:
+  - Analysed phase transitions for soft gate requirements
+  - Decision: Balanced approach - gate 1→2, 2→3, 3→4 (tacit-heavy transitions)
+  - 4→5 optional; 5→6, 6→7 not required (tight feedback loops)
+  - Added "Phase Transition Gates" section to framework-manual.md
+  - Documents soft gate outcomes (PROCEED, PROCEED_WITH_CAUTION, DEFER)
+  - Explains why soft gates over hard gates (context-dependent, human judgement)

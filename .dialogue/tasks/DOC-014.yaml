@@ -1,0 +1,26 @@
+id: "DOC-014"
+title: "Split framework-manual into usage vs engineering documents"
+status: IN_PROGRESS
+created: "2026-01-26T21:19:17Z"
+updated: "2026-01-26T21:19:17Z"
+type: DOCUMENT
+priority: MEDIUM
+description: |
+  Refocus framework-manual.md on how to USE the framework (operational guidance for practitioners). Move engineering/implementation details to a separate engineering manual in implementation/.
+objective: "framework-manual.md is practitioner-focused; engineering details live separately"
+rationale: |
+  Current manual mixes usage guidance with framework engineering details, making it harder for practitioners to find what they need
+blocked_by: []
+blocks: []
+notes: |
+  Created 26 January 2026.
+
+  Questions to clarify (from prior discussion not found in transcripts):
+  1. What should stay in the usage-focused framework-manual.md?
+  2. What should move to the engineering-focused document?
+  3. Any particular structure or audience distinction?
+
+  Known context:
+  - implementation/framework-engineering-manual-source.md already exists (renamed from framework-manual-source.md)
+  - Current framework-manual.md (in plugin/references/) mixes operational guidance with engineering details
+  - Target audiences: practitioners (usage) vs framework developers (engineering)
