@@ -203,10 +203,8 @@ Relationships for tracking validation, satisfaction, and dependency chains.
 | `COVERS` | Test covers requirement | Test → Req | `auth.spec.ts COVERS REQ-001` |
 | `DEPENDS_ON` | Hard dependency | Any → Any | `REQ-002 DEPENDS_ON REQ-001` |
 | `ASSESSES` | Assessment evaluates artifact | Assessment → Target | `ASSESS-... ASSESSES FW-023` |
-
-**Future extensions** (see FW-031):
-- `CONTRADICTS` — Evidence challenges theory/assumption
-- `RISKS` — Introduces risk to target
+| `CONTRADICTS` | Evidence challenges theory/assumption | Evidence → Target | `OBS-... CONTRADICTS ASM-001` |
+| `RISKS` | Source introduces risk to target | Any → Any | `ASM-002 RISKS REQ-001` |
 
 #### Actor-Artifact Relationships
 
@@ -288,6 +286,19 @@ AssessesEdgeMetadata:
   assessment_type: DAILY_CHECK | STAKEHOLDER_ALIGNMENT | PROBLEM_FRAMING | TTKM | PHASE_READINESS
   dimension: string | null  # Optional: which aspect was assessed
   session_quality: 1-5 | null  # For DAILY_CHECK only
+
+# For CONTRADICTS edges
+ContraddictsEdgeMetadata:
+  strength: STRONG | MODERATE | WEAK  # How directly does evidence contradict?
+  resolution_status: UNRESOLVED | ACKNOWLEDGED | RESOLVED
+  notes: string | null  # Explanation of contradiction
+
+# For RISKS edges
+RisksEdgeMetadata:
+  severity: CRITICAL | HIGH | MEDIUM | LOW  # Impact if risk materialises
+  likelihood: CERTAIN | LIKELY | POSSIBLE | UNLIKELY  # Probability of occurrence
+  mitigation_status: UNMITIGATED | MITIGATING | MITIGATED
+  mitigation_plan: string | null  # How risk is being addressed
 ```
 
 ---
@@ -468,6 +479,38 @@ WHERE a.metadata.artifact_type = "ASSUMPTION"
 RETURN n, a
 ```
 
+#### "Is this theory contradicted?"
+
+```
+MATCH (t:ARTIFACT {id: "THY-001"})<-[:CONTRADICTS]-(evidence)
+RETURN evidence, evidence.metadata.strength
+```
+
+#### "What contradicts validated theories?" (conflicted state)
+
+```
+MATCH (t:ARTIFACT)<-[:VALIDATES]-(v)
+MATCH (t)<-[:CONTRADICTS]-(c)
+WHERE c.metadata.resolution_status = "UNRESOLVED"
+RETURN t, collect(v) as validators, collect(c) as contradictors
+```
+
+#### "What risks affect this requirement?"
+
+```
+MATCH (r:ARTIFACT {id: "REQ-001"})<-[:RISKS]-(source)
+RETURN source, source.metadata.severity, source.metadata.likelihood
+```
+
+#### "Find all unmitigated risks"
+
+```
+MATCH (target)<-[r:RISKS]-(source)
+WHERE r.metadata.mitigation_status = "UNMITIGATED"
+RETURN source, target, r.metadata.severity
+ORDER BY r.metadata.severity DESC
+```
+
 ---
 
 ## Storage Considerations
@@ -569,6 +612,9 @@ Edge metadata captures collaboration patterns used in creation. This enables que
 8. TESTS edge requires source with artifact_type TEST and target with artifact_type IMPLEMENTATION
 9. COVERS edge requires source with artifact_type TEST and target with artifact_type REQUIREMENT
 10. ASSESSES edge requires source with artifact_type ASSESSMENT
+11. CONTRADICTS edge requires source with artifact_type OBSERVATION, DECISION, TEST, or ASSESSMENT; target with artifact_type DOCUMENT, ASSUMPTION, or DECISION
+12. RISKS edge requires metadata.severity and metadata.likelihood to be specified
+13. RISKS edges must not form cycles (no circular risk chains)
 
 ---
 
@@ -578,11 +624,10 @@ Edge metadata captures collaboration patterns used in creation. This enables que
 - ✓ **Edge types**: Cover TMS relationships and information dependencies
 - ✓ **TMS operations**: Map to Wegner's directory, allocation, retrieval
 - ✓ **Storage design**: Filesystem-first with instance-per-file pattern, graph-ready
-- ✓ **Traceability edges**: VALIDATES, ASSUMES, SATISFIES, SPECIFIES, TESTS, COVERS, DEPENDS_ON, ASSESSES
+- ✓ **Traceability edges**: VALIDATES, ASSUMES, SATISFIES, SPECIFIES, TESTS, COVERS, DEPENDS_ON, ASSESSES, CONTRADICTS, RISKS
 - ⚠ **Query language**: Cypher-style examples; actual implementation pending
 - ⚠ **Index structure**: Schema defined; optimisation pending
 - ⚠ **Cascade logic**: Invalidation cascades need implementation
-- ⚠ **Negative edges**: CONTRADICTS, RISKS deferred to FW-031
 
 ---
 

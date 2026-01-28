@@ -13,6 +13,10 @@
 #   unvalidated         Find all nodes with unvalidated assumptions
 #   orphans             Find artifacts with no incoming traceability edges
 #   deps <id>           What does this node depend on? (DEPENDS_ON edges)
+#   contradicts <id>    What evidence contradicts this theory/assumption?
+#   risks <id>          What introduces risk to this node?
+#   conflicted          Find theories with both VALIDATES and CONTRADICTS edges
+#   threatened          Find nodes with incoming RISKS edges
 
 set -euo pipefail
 
@@ -34,11 +38,17 @@ if [[ $# -lt 1 ]]; then
     echo "  unvalidated         Find all nodes with unvalidated assumptions" >&2
     echo "  orphans             Find artifacts with no incoming traceability edges" >&2
     echo "  deps <id>           What does this node depend on? (DEPENDS_ON edges)" >&2
+    echo "  contradicts <id>    What evidence contradicts this theory/assumption?" >&2
+    echo "  risks <id>          What introduces risk to this node?" >&2
+    echo "  conflicted          Find theories with both VALIDATES and CONTRADICTS" >&2
+    echo "  threatened          Find nodes with incoming RISKS edges" >&2
     echo "" >&2
     echo "Examples:" >&2
     echo "  graph-trace.sh validated THY-001" >&2
     echo "  graph-trace.sh assumptions DEC-20260114-091633" >&2
     echo "  graph-trace.sh unvalidated" >&2
+    echo "  graph-trace.sh contradicts ASM-001" >&2
+    echo "  graph-trace.sh threatened" >&2
     exit 1
 fi
 
@@ -429,6 +439,187 @@ query_deps() {
     fi
 }
 
+# Query: What evidence contradicts this theory/assumption?
+query_contradicts() {
+    local target="$1"
+
+    if [[ -z "$target" ]]; then
+        echo "Error: contradicts query requires a target ID" >&2
+        exit 1
+    fi
+
+    echo "Contradiction status for: $target"
+    echo "Title: $(get_node_title "$target")"
+    echo ""
+
+    # Find CONTRADICTS edges pointing to this target
+    local evidence=()
+    while IFS= read -r source; do
+        [[ -n "$source" ]] && evidence+=("$source")
+    done < <(find_edges_to "$target" "CONTRADICTS")
+
+    if [[ ${#evidence[@]} -eq 0 ]]; then
+        echo "Status: NOT CONTRADICTED"
+        echo "No CONTRADICTS edges found targeting this node."
+    else
+        echo "Status: CONTRADICTED (${#evidence[@]} contradicting source(s))"
+        echo ""
+        printf "%-25s %s\n" "EVIDENCE" "TITLE"
+        printf "%-25s %s\n" "-------------------------" "-----"
+        for e in "${evidence[@]}"; do
+            title=$(get_node_title "$e")
+            if [[ ${#title} -gt 45 ]]; then
+                title="${title:0:42}..."
+            fi
+            printf "%-25s %s\n" "$e" "$title"
+        done
+    fi
+}
+
+# Query: What introduces risk to this node?
+query_risks() {
+    local target="$1"
+
+    if [[ -z "$target" ]]; then
+        echo "Error: risks query requires a target ID" >&2
+        exit 1
+    fi
+
+    echo "Risk sources for: $target"
+    echo "Title: $(get_node_title "$target")"
+    echo ""
+
+    # Find RISKS edges pointing to this target
+    local sources=()
+    while IFS= read -r source; do
+        [[ -n "$source" ]] && sources+=("$source")
+    done < <(find_edges_to "$target" "RISKS")
+
+    if [[ ${#sources[@]} -eq 0 ]]; then
+        echo "Status: NO RISKS IDENTIFIED"
+        echo "No RISKS edges found targeting this node."
+    else
+        echo "Status: AT RISK (${#sources[@]} risk source(s))"
+        echo ""
+        printf "%-25s %s\n" "RISK SOURCE" "TITLE"
+        printf "%-25s %s\n" "-------------------------" "-----"
+        for s in "${sources[@]}"; do
+            title=$(get_node_title "$s")
+            if [[ ${#title} -gt 45 ]]; then
+                title="${title:0:42}..."
+            fi
+            printf "%-25s %s\n" "$s" "$title"
+        done
+    fi
+}
+
+# Query: Find theories with both VALIDATES and CONTRADICTS edges (conflicted state)
+query_conflicted() {
+    echo "Theories/assumptions with conflicting evidence:"
+    echo ""
+
+    [[ ! -d "$EDGES_DIR/traceability" ]] && {
+        echo "No traceability edges found."
+        exit 0
+    }
+
+    # Collect all VALIDATES and CONTRADICTS targets
+    TMPFILE_VAL=$(mktemp)
+    TMPFILE_CON=$(mktemp)
+    trap 'rm -f "$TMPFILE_VAL" "$TMPFILE_CON"' EXIT
+
+    while IFS= read -r -d '' file; do
+        local target etype
+        target=$(yaml_field "$file" "target")
+        etype=$(yaml_field "$file" "edge_type")
+
+        if [[ "$etype" == "VALIDATES" ]]; then
+            echo "$target" >> "$TMPFILE_VAL"
+        elif [[ "$etype" == "CONTRADICTS" ]]; then
+            echo "$target" >> "$TMPFILE_CON"
+        fi
+    done < <(find "$EDGES_DIR/traceability" -name "*.yaml" -print0 2>/dev/null)
+
+    # Find intersection (targets with both)
+    sort -u "$TMPFILE_VAL" > "$TMPFILE_VAL.sorted"
+    sort -u "$TMPFILE_CON" > "$TMPFILE_CON.sorted"
+    conflicted=$(comm -12 "$TMPFILE_VAL.sorted" "$TMPFILE_CON.sorted")
+
+    if [[ -z "$conflicted" ]]; then
+        echo "No conflicted theories/assumptions found."
+        echo "(No nodes have both VALIDATES and CONTRADICTS edges)"
+        exit 0
+    fi
+
+    printf "%-15s %-10s %-10s %s\n" "NODE" "VALIDATES" "CONTRADICTS" "TITLE"
+    printf "%-15s %-10s %-10s %s\n" "---------------" "----------" "-----------" "-----"
+
+    count=0
+    while IFS= read -r id; do
+        [[ -z "$id" ]] && continue
+        title=$(get_node_title "$id")
+
+        # Count VALIDATES edges
+        val_count=$(grep -c "^${id}$" "$TMPFILE_VAL" 2>/dev/null || echo "0")
+        # Count CONTRADICTS edges
+        con_count=$(grep -c "^${id}$" "$TMPFILE_CON" 2>/dev/null || echo "0")
+
+        if [[ ${#title} -gt 35 ]]; then
+            title="${title:0:32}..."
+        fi
+        printf "%-15s %-10s %-10s %s\n" "$id" "$val_count" "$con_count" "$title"
+        ((count++)) || true
+    done <<< "$conflicted"
+
+    echo ""
+    echo "Found $count conflicted node(s) requiring resolution"
+}
+
+# Query: Find nodes with incoming RISKS edges
+query_threatened() {
+    echo "Nodes with identified risks:"
+    echo ""
+
+    [[ ! -d "$EDGES_DIR/traceability" ]] && {
+        echo "No traceability edges found."
+        exit 0
+    }
+
+    TMPFILE=$(mktemp)
+    trap 'rm -f "$TMPFILE"' EXIT
+
+    # Find all RISKS edges
+    while IFS= read -r -d '' file; do
+        local source target etype
+        source=$(yaml_field "$file" "source")
+        target=$(yaml_field "$file" "target")
+        etype=$(yaml_field "$file" "edge_type")
+
+        if [[ "$etype" == "RISKS" ]]; then
+            echo "$target|$source" >> "$TMPFILE"
+        fi
+    done < <(find "$EDGES_DIR/traceability" -name "*.yaml" -print0 2>/dev/null)
+
+    if [[ ! -s "$TMPFILE" ]]; then
+        echo "No RISKS edges found."
+        exit 0
+    fi
+
+    printf "%-20s %-20s %s\n" "THREATENED NODE" "RISK SOURCE" "NODE TITLE"
+    printf "%-20s %-20s %s\n" "--------------------" "--------------------" "-----"
+
+    while IFS='|' read -r node source; do
+        title=$(get_node_title "$node")
+        if [[ ${#title} -gt 35 ]]; then
+            title="${title:0:32}..."
+        fi
+        printf "%-20s %-20s %s\n" "$node" "$source" "$title"
+    done < "$TMPFILE"
+
+    echo ""
+    echo "Found $(wc -l < "$TMPFILE" | tr -d ' ') risk relationship(s)"
+}
+
 # Dispatch query
 case "$QUERY_TYPE" in
     validated)
@@ -451,6 +642,18 @@ case "$QUERY_TYPE" in
         ;;
     deps)
         query_deps "$TARGET"
+        ;;
+    contradicts)
+        query_contradicts "$TARGET"
+        ;;
+    risks)
+        query_risks "$TARGET"
+        ;;
+    conflicted)
+        query_conflicted
+        ;;
+    threatened)
+        query_threatened
         ;;
     *)
         echo "Unknown query type: $QUERY_TYPE" >&2

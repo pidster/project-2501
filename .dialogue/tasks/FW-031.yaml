@@ -1,8 +1,9 @@
 id: "FW-031"
 title: "Add negative traceability edges (CONTRADICTS, RISKS)"
-status: READY
+status: COMPLETED
 created: "2026-01-21T13:58:38Z"
-updated: "2026-01-26T11:00:00Z"
+updated: "2026-01-28T11:00:00Z"
+completed: "2026-01-28T11:00:00Z"
 type: CAPABILITY
 priority: LOW
 description: |
@@ -16,3 +17,22 @@ notes: |
   Created 21 January 2026.
 
   26 January 2026: Unblocked - FW-028 completed. Moved to READY.
+
+  28 January 2026: Implemented negative traceability edges.
+
+  Implementation summary:
+  - Schema (schema_context-graph.md):
+    - Added CONTRADICTS and RISKS to traceability edge types table
+    - Added ContraddictsEdgeMetadata (strength, resolution_status, notes)
+    - Added RisksEdgeMetadata (severity, likelihood, mitigation_status, mitigation_plan)
+    - Added consistency rules 11-13 for new edge types
+    - Added Cypher query examples for contradiction/risk traversal
+    - Updated validation status section
+
+  - Query script (graph-trace.sh):
+    - Added `contradicts <id>` query
+    - Added `risks <id>` query
+    - Added `conflicted` query (finds nodes with both VALIDATES and CONTRADICTS)
+    - Added `threatened` query (finds nodes with RISKS edges)
+
+  All queries tested and working.
