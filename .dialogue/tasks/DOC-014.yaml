@@ -1,8 +1,9 @@
 id: "DOC-014"
 title: "Split framework-manual into usage vs engineering documents"
-status: IN_PROGRESS
+status: COMPLETED
 created: "2026-01-26T21:19:17Z"
-updated: "2026-01-26T21:19:17Z"
+updated: "2026-02-03T12:00:00Z"
+completed: "2026-02-03T12:00:00Z"
 type: DOCUMENT
 priority: MEDIUM
 description: |
@@ -15,12 +16,18 @@ blocks: []
 notes: |
   Created 26 January 2026.
 
-  Questions to clarify (from prior discussion not found in transcripts):
-  1. What should stay in the usage-focused framework-manual.md?
-  2. What should move to the engineering-focused document?
-  3. Any particular structure or audience distinction?
+  Completed 3 February 2026.
 
-  Known context:
-  - implementation/framework-engineering-manual-source.md already exists (renamed from framework-manual-source.md)
-  - Current framework-manual.md (in plugin/references/) mixes operational guidance with engineering details
-  - Target audiences: practitioners (usage) vs framework developers (engineering)
+  Split completed:
+  - Usage Manual (claude-plugin-evo/references/framework-manual.md): 470 lines
+    - Quick Reference, Skill Usage, Team Modes, Dialogue Protocol
+    - Phase 1 Guidance, Common Pitfalls
+  - Engineering Manual (implementation/framework-engineering-manual-source.md): 578 lines
+    - Core Constraints (C1-C4), Process Specification Schema
+    - ID Conventions, Work Coordination, Process Architect Workflow
+    - Information Architecture, Evidential Standards, Document Classification
+
+  Decisions:
+  - Quick Reference stays in usage manual only (not duplicated)
+  - Usage manual has no cross-reference to engineering manual (plugin deploys standalone)
+  - Engineering manual cross-references usage manual for skill commands
