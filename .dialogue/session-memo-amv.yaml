@@ -1,0 +1,29 @@
+username: "amv"
+last_session: "2026-02-03T18:45:00Z"
+active_focus: "Exploring task ID collision prevention in fork-based workflows"
+recent_tasks:
+  - "FW-051"  # Renumbered from FW-049 due to collision
+  - "FW-050"  # Auto team mode bug (tracked)
+recent_decisions:
+  - "DEC-20260203-182610"  # Task renumbering decision
+recent_observations:
+  - "OBS-20260203-184103"  # Fork workflow collision risk
+open_questions:
+  - "Should task files use timestamps like decisions/observations to avoid collisions?"
+  - "What's the intended task creation flow across forks - upstream first or reconcile at merge?"
+  - "Should .dialogue/tasks/ even be in the repo, or use GitHub Issues instead?"
+  - "How to handle multi-branch work with separate PRs from same fork?"
+notes: |
+  Session started with PR merge conflict on FW-049 - two different tasks had same ID.
+  Resolved by renumbering to FW-051, rebasing, force pushing.
+  
+  This triggered exploration of broader workflow questions:
+  - Fork topology means multiple independent .dialogue/tasks/ directories
+  - next-id.sh generates IDs locally with no remote awareness
+  - Current warning only checks origin/main, not fork relationships
+  
+  Switched to main branch on fork to explore these questions properly.
+  Need to discuss intended mental model for task management across forks.
+  
+  PR for FW-051 is ready to merge: https://github.com/pidster/project-2501/pull/1
+interaction_mode_preference: partnership
