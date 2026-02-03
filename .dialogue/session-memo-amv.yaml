@@ -1,29 +1,42 @@
 username: "amv"
-last_session: "2026-02-03T18:45:00Z"
-active_focus: "Exploring task ID collision prevention in fork-based workflows"
+last_session: "2026-02-03T19:20:00Z"
+active_focus: "FW-050 completed; FW-052 pending deeper exploration"
 recent_tasks:
-  - "FW-051"  # Renumbered from FW-049 due to collision
-  - "FW-050"  # Auto team mode bug (tracked)
+  - "FW-050"  # Completed - auto team mode fix
+  - "FW-051"  # PR ready to merge (EOF fix)
+  - "FW-052"  # Created - collision prevention workflow (needs deeper exploration)
 recent_decisions:
-  - "DEC-20260203-182610"  # Task renumbering decision
+  - "DEC-20260203-190913"  # Auto mode promotes to team permanently
+  - "DEC-20260203-182610"  # Task renumbering FW-049→FW-051
 recent_observations:
   - "OBS-20260203-184103"  # Fork workflow collision risk
 open_questions:
-  - "Should task files use timestamps like decisions/observations to avoid collisions?"
-  - "What's the intended task creation flow across forks - upstream first or reconcile at merge?"
-  - "Should .dialogue/tasks/ even be in the repo, or use GitHub Issues instead?"
-  - "How to handle multi-branch work with separate PRs from same fork?"
+  - "FW-052: How to implement task ID collision prevention in fork-based workflows?"
+  - "FW-052: Should next-id.sh fetch origin/main before generating IDs?"
+  - "FW-052: How to detect conflicts at PR creation time?"
 notes: |
-  Session started with PR merge conflict on FW-049 - two different tasks had same ID.
-  Resolved by renumbering to FW-051, rebasing, force pushing.
+  Session focused on two main areas:
   
-  This triggered exploration of broader workflow questions:
-  - Fork topology means multiple independent .dialogue/tasks/ directories
-  - next-id.sh generates IDs locally with no remote awareness
-  - Current warning only checks origin/main, not fork relationships
+  1. PR merge conflict resolution (FW-049→FW-051)
+     - Discovered task ID collision between branches
+     - Renumbered to FW-051, rebased, force pushed
+     - PR #1 now ready to merge
   
-  Switched to main branch on fork to explore these questions properly.
-  Need to discuss intended mental model for task management across forks.
+  2. FW-050: Auto team mode chicken-and-egg fix
+     - Problem: users only registered in team mode, but 2+ users needed for team mode
+     - Fix: register users if config != solo; promote auto→team permanently at 2+ users
+     - Design decision: no team→solo transition (history is permanent)
+     - PR #2 created
   
-  PR for FW-051 is ready to merge: https://github.com/pidster/project-2501/pull/1
+  3. Workflow exploration
+     - Discussed fork-based workflow complexity for task IDs
+     - Created FW-052 to track collision prevention work
+     - Principle: pull before ID generation, detect at PR creation, handle small merge window
+  
+  Current branch: feature/FW-050
+  Fork main has: FW-050, FW-051, FW-052 tasks + observations + decisions
+  
+  Open PRs:
+  - PR #1: FW-051 (EOF fix) - ready to merge
+  - PR #2: FW-050 (auto team mode) - ready for review
 interaction_mode_preference: partnership
