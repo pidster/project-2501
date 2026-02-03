@@ -1,0 +1,9 @@
+id: created-Auto team mode cannot transition from solo to team-OBS-20260203-180004
+source: "Auto team mode cannot transition from solo to team"
+target: OBS-20260203-180004
+edge_type: CREATED
+metadata:
+  timestamp: "2026-02-03T18:00:04Z"
+  observation_type: STATE
+created: "2026-02-03T18:00:04Z"
+confidence: 1.0

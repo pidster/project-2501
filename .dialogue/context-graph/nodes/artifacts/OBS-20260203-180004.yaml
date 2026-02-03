@@ -1,0 +1,14 @@
+id: OBS-20260203-180004
+node_type: ARTIFACT
+metadata:
+  artifact_type: OBSERVATION
+  observation_type: STATE
+  temporal_class: Ephemeral
+  content_type: text/yaml
+  title: "New users are not registered in solo mode, but 2+ registered users are needed to trigger team mode. This creates a chicken-and-egg problem where auto mode can never naturally transition."
+  summary: "FW-040,bug,team-mode"
+  location_hint: ".dialogue/logs/observations/OBS-20260203-180004.yaml"
+  observer: "Auto team mode cannot transition from solo to team"
+created: "2026-02-03T18:00:04Z"
+updated: "2026-02-03T18:00:04Z"
+status: ACTIVE

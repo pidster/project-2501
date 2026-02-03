@@ -1,0 +1,9 @@
+id: DEC-20260203-182610
+timestamp: "2026-02-03T18:26:10Z"
+type: OPERATIONAL
+actor: "ai:claude"
+subject: "Renumber task FW-049 to FW-051 to resolve merge conflict"
+outcome: "Task ID changed from FW-049 to FW-051"
+rationale: "Main branch already had FW-049 for a different issue (shell script code review fixes). Our EOF fix task needed a unique ID to avoid merge conflict."
+context: "PR merge conflict resolution; both branches independently created FW-049 for different issues"
+tags: ["task-management", "merge-conflict", "FW-051"]
