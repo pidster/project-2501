@@ -1,0 +1,8 @@
+id: OBS-20260203-184103
+timestamp: "2026-02-03T18:41:03Z"
+type: STATE
+observer: "ai:claude"
+subject: "Task ID collision risk in fork-based workflows"
+value: "Exploring multi-contributor workflow reveals that task ID collisions can occur across: (1) branches within same repo, (2) forks of same repo, (3) upstream vs forks. Current next-id.sh generates IDs from local files only, with no awareness of remote state or fork topology. The warning in auto-approve-skills.sh only checks origin/main, not fork relationships."
+context: "Triggered by FW-049/FW-051 collision during PR merge"
+tags: ["workflow", "forks", "task-management", "exploration"]

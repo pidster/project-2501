@@ -1,0 +1,6 @@
+id: OBS-20260203-180004
+timestamp: "2026-02-03T18:00:04Z"
+type: STATE
+observer: "Auto team mode cannot transition from solo to team"
+subject: "New users are not registered in solo mode, but 2+ registered users are needed to trigger team mode. This creates a chicken-and-egg problem where auto mode can never naturally transition."
+value: "FW-040,bug,team-mode"

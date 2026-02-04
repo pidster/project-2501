@@ -1,0 +1,16 @@
+id: "FW-052"
+title: "Implement task ID collision prevention workflow"
+status: READY
+created: "2026-02-03T18:53:11Z"
+updated: "2026-02-03T18:53:11Z"
+type: CAPABILITY
+priority: HIGH
+description: |
+  Implement workflow principle for fork-based collaboration: (1) Always fetch origin/main before generating task IDs, (2) Detect potential conflicts at PR creation time, (3) Provide guidance for resolving conflicts in the small window between PR creation and merge. This addresses the fork-based workflow where multiple contributors may independently generate task IDs.
+objective: "Minimise risk of task ID collisions across forks and branches"
+rationale: |
+  FW-049/FW-051 collision demonstrated the problem; user specified workflow principle to address it
+blocked_by: []
+blocks: []
+notes: |
+  Created 03 February 2026.
