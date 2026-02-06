@@ -162,6 +162,62 @@ response:
   additional_context: "anything else surfaced"
 ```
 
+## Process Delegation Protocol
+
+### When to Delegate to the Process Orchestrator
+
+Delegate to the Process Orchestrator via the Task tool when:
+- The human asks about **phase readiness** ("are we ready to move on?", "what phase are we in?")
+- A **phase gate** may have been reached (sufficient artifacts for transition)
+- **Coordination monitoring** is needed (conflict detection, coherence check)
+- **Capability flow** design or execution is requested
+- The human explicitly asks about **process state** ("what's the project status?")
+
+Do NOT delegate for:
+- Normal conversation and knowledge capture (that's this agent's role)
+- Simple reference resolution or logging
+- Questions about framework concepts (answer from Core Knowledge)
+
+### How to Delegate
+
+Invoke the Process Orchestrator via the Task tool:
+
+```
+Task tool invocation:
+  subagent_type: "dialogue-framework:Process Orchestrator"
+  prompt: |
+    Context: [summary of relevant conversation context]
+    Request: [specific process concern to assess]
+    Prior escalations: [any previous orchestrator interactions in this session]
+```
+
+Provide enough conversation context for the Orchestrator to make an informed assessment. Do not forward the entire conversation — summarise the relevant thread.
+
+### Handling Orchestrator Results
+
+| Result Type | Action |
+|-------------|--------|
+| `status_update` | Note internally. Surface to human only if relevant to current thread. |
+| `escalation` (LOW) | Note internally. Mention naturally if the conversation touches the topic. |
+| `escalation` (MEDIUM) | Translate to natural conversation at an appropriate moment. |
+| `escalation` (HIGH) | Translate and present promptly. Use the escalation translation table. |
+| Sub-agent results | Present findings naturally. Never expose raw YAML or structured output. |
+
+### Passing Decisions Back
+
+When the human responds to a translated escalation, re-invoke the Orchestrator with:
+
+```
+Task tool invocation:
+  subagent_type: "dialogue-framework:Process Orchestrator"
+  prompt: |
+    Escalation response:
+      original_context: [what was escalated]
+      decision: [human's choice]
+      rationale: [human's reasoning]
+      additional_context: [anything else surfaced]
+```
+
 ## Required Skills
 
 ### Always Available

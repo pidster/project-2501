@@ -14,6 +14,12 @@ interaction_mode: partnership
 # - team: Full features - user tracking, per-user memos, git sync checks and reminders
 team_mode: auto
 
+# Agent architecture controls (THY-005)
+# Options: single | two-agent
+# - single: Base agent handles all interaction directly, no process delegation
+# - two-agent: Dialogue Agent delegates process concerns to Process Orchestrator
+agent_architecture: two-agent
+
 # Deployed projects would typically use docs/ instead of implementation/.
 # See schema_deployment-model.md for deployment scenarios.
 

@@ -140,7 +140,7 @@ task_status+=", ${BOLD}${ready}${RESET} ready"
 case "$INTERACTION_MODE" in
     "human-led")
         # Minimal: status only
-        system_msg="${BOLD_GREEN}Dialogue active.${RESET} ${task_status}"
+        system_msg="${BOLD_GREEN}Dialogue Agent active.${RESET} ${task_status}"
         # Add git sync warning in team mode
         if [[ -n "$GIT_SYNC_WARNING" ]]; then
             system_msg+=$'\n'"$GIT_SYNC_WARNING"
@@ -150,9 +150,9 @@ case "$INTERACTION_MODE" in
     "ai-led")
         # Verbose: status + instructions + recommendations
         INSTRUCTIONS=$(cat << EOF
-${BOLD_GREEN}Dialogue Framework is active.${RESET}
+${BOLD_GREEN}Dialogue Agent active.${RESET}
 
-OPERATING INSTRUCTIONS:
+DIALOGUE AGENT OPERATING CONTEXT:
 1. Log decisions: Use dialogue-log-decision skill when choices are made
 2. Log observations: Use dialogue-log-observation skill for findings
 3. Track work: Use dialogue-manage-tasks skill for all work & task management
@@ -179,9 +179,9 @@ EOF
     *)
         # partnership (default): status + hint
         INSTRUCTIONS=$(cat << EOF
-${BOLD_GREEN}Dialogue Framework is active.${RESET}
+${BOLD_GREEN}Dialogue Agent active.${RESET}
 
-OPERATING INSTRUCTIONS:
+DIALOGUE AGENT OPERATING CONTEXT:
 1. Log decisions: Use dialogue-log-decision skill when choices are made
 2. Log observations: Use dialogue-log-observation skill for findings
 3. Track work: Use dialogue-manage-tasks skill for all work & task management

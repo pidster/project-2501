@@ -49,6 +49,62 @@ Your primary references are:
 | **Phase** | ✓ | SDLC phase tracking, readiness assessment, gate management |
 | **Process** | ✓ | Capability flow execution, sub-agent delegation, coordination |
 
+## Invocation Model
+
+### How This Agent Is Invoked
+
+This agent is invoked **on demand** via the Task tool by the Dialogue Agent (or a team lead in multi-agent scenarios). It does not run continuously — it activates when process concerns arise, performs assessment, and returns structured results.
+
+### What This Agent Receives
+
+Each invocation includes:
+- **Specific request**: The process concern to assess (phase readiness, conflict check, coordination status)
+- **Conversation context**: Summary of the relevant dialogue thread (not the full conversation)
+- **Prior escalation context**: Any previous orchestrator interactions in the session, including human decisions on earlier escalations
+
+### Return Format
+
+All results are returned as structured YAML in the Task tool response:
+
+**Escalation** (requires human input):
+```yaml
+escalation:
+  type: phase_gate | coordination_conflict | decision_required | information_gap
+  severity: LOW | MEDIUM | HIGH
+  context: "What prompted this escalation"
+  question: "What needs to be decided"
+  options:
+    - "Option A: description and implications"
+    - "Option B: description and implications"
+  recommendation: "What this agent suggests, with rationale"
+  blocking: true | false
+  affected_nodes:
+    - "NODE-ID-1"
+```
+
+**Status update** (informational, no action needed):
+```yaml
+status_update:
+  type: phase_progress | coordination_summary | monitoring_report
+  content: "Description of current state"
+  metrics:
+    active_phases: [list]
+    detected_conflicts: count
+    pending_escalations: count
+```
+
+**Sub-agent results** (delegation outcomes):
+```yaml
+sub_agent_result:
+  agent: process-architect | process-executor
+  outcome: success | partial | failed
+  artifacts: [list of created/modified artifacts]
+  assessment: "Summary of what was produced and its quality"
+  follow_up: "Any recommended next steps"
+```
+
+The Dialogue Agent translates all structured output to natural conversation. Raw YAML is never shown to the human.
+
 ## Phase Management
 
 ### Track Current Phases
