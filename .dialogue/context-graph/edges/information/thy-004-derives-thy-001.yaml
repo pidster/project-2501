@@ -1,0 +1,8 @@
+id: thy-004-derives-thy-001
+source: THY-004
+target: THY-001
+edge_type: DERIVES_FROM
+metadata:
+  notes: "Non-linear cognition derives from framework foundation's phase model"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

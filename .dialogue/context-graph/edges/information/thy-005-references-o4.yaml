@@ -1,0 +1,8 @@
+id: thy-005-references-o4
+source: THY-005
+target: O-4
+edge_type: REFERENCES
+metadata:
+  notes: "Two-agent architecture references observation tracking as shared logging"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

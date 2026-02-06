@@ -1,0 +1,26 @@
+id: "agent:process-orchestrator"
+node_type: ACTOR_AI
+metadata:
+  name: Process Orchestrator
+  agent_type: process-orchestrator
+  description: Internal agent managing SDLC phase progression and coordination
+  capability_profile:
+    role: INTERNAL_ORCHESTRATOR
+    tool_access:
+      - FILE_OPS
+      - EXECUTION
+      - DELEGATION
+    collaboration_pattern: AI-Led
+  theoretical_foundation:
+    - THY-005
+    - THY-006
+    - THY-007
+  responsibility:
+    - Phase
+    - Process
+  sub_agents:
+    - "agent:process-architect"
+    - "agent:process-executor"
+  location_hint: claude-plugin-evo/agents/process-orchestrator.md
+created: "2026-02-06T00:00:00Z"
+status: ACTIVE

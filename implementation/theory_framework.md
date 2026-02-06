@@ -29,6 +29,14 @@ references:
     relationship: SYNTHESISES
   - id: C-5
     relationship: SYNTHESISES
+  - id: THY-004
+    relationship: EXTENDED_BY
+  - id: THY-005
+    relationship: EXTENDED_BY
+  - id: THY-006
+    relationship: EXTENDED_BY
+  - id: THY-007
+    relationship: EXTENDED_BY
 
 thy:
   covers:

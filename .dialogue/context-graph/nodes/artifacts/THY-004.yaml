@@ -1,0 +1,14 @@
+id: THY-004
+node_type: ARTIFACT
+metadata:
+  artifact_type: DOCUMENT
+  document_type: THY
+  temporal_class: Standing
+  content_type: text/markdown
+  title: "Non-Linear Cognition and the SDLC Process Tension"
+  summary: "Theory that human cognition is non-linear and frameworks must accommodate rather than suppress this"
+  location_hint: implementation/theory_non-linear-cognition.md
+  status: DRAFT
+  author: human:pidster
+created: "2026-02-06T00:00:00Z"
+status: ACTIVE

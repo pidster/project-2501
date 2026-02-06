@@ -1,0 +1,14 @@
+id: THY-006
+node_type: ARTIFACT
+metadata:
+  artifact_type: DOCUMENT
+  document_type: THY
+  temporal_class: Standing
+  content_type: text/markdown
+  title: "Context Graph as Operational Substrate"
+  summary: "Theory that the context graph must evolve from navigation aid to operational substrate for agent coordination"
+  location_hint: implementation/theory_context-graph-substrate.md
+  status: DRAFT
+  author: human:pidster
+created: "2026-02-06T00:00:00Z"
+status: ACTIVE

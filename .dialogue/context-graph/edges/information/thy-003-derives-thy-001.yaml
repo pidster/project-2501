@@ -1,0 +1,8 @@
+id: thy-003-derives-thy-001
+source: THY-003
+target: THY-001
+edge_type: DERIVES_FROM
+metadata:
+  notes: TMS theory derives from foundation's capability model (PRESERVE)
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

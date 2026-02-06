@@ -1,0 +1,8 @@
+id: thy-005-references-c2
+source: THY-005
+target: C-2
+edge_type: REFERENCES
+metadata:
+  notes: "Two-agent architecture references capability model for sub-agent design"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

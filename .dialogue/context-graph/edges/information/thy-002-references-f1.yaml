@@ -1,0 +1,8 @@
+id: thy-002-references-f1
+source: THY-002
+target: F-1
+edge_type: REFERENCES
+metadata:
+  notes: Resilience theory references Naur's theory-building foundation
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

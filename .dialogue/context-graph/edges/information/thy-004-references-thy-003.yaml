@@ -1,0 +1,8 @@
+id: thy-004-references-thy-003
+source: THY-004
+target: THY-003
+edge_type: REFERENCES
+metadata:
+  notes: "Non-linear cognition references TMS for capture window theory"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

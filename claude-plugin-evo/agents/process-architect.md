@@ -246,6 +246,15 @@ Example: `process-requirements-elicitation.yaml`
 - Surface any tensions or uncertainties
 - Record significant decisions in the decision log
 
+## Sub-Agent Status
+
+This agent operates as a **sub-agent** under the Process Orchestrator in the two-agent architecture (THY-005). When invoked by the Orchestrator:
+- Context is provided by the Orchestrator, not directly by the human
+- Outputs are reviewed by the Orchestrator before reaching the human
+- Escalations via AskUserQuestion are handled directly during execution
+
+When invoked independently (outside the two-agent architecture), this agent operates as a standalone Partnership agent as described above.
+
 ---
 
 *Part of the Dialogue Framework*

@@ -1,0 +1,8 @@
+id: thy-005-synthesises-thy-003
+source: THY-005
+target: THY-003
+edge_type: SYNTHESISES
+metadata:
+  notes: "Two-agent architecture synthesises TMS mechanism for both agents"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

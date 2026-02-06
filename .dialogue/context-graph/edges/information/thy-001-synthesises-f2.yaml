@@ -1,0 +1,8 @@
+id: thy-001-synthesises-f2
+source: THY-001
+target: F-2
+edge_type: SYNTHESISES
+metadata:
+  notes: Framework theory synthesises transactive memory foundation
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

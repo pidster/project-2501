@@ -1,0 +1,9 @@
+id: created-ai-claude-THY-002
+source: "ai:claude"
+target: THY-002
+edge_type: CREATED
+metadata:
+  timestamp: "2026-01-14T00:00:00Z"
+  collaboration_pattern: AI-Led
+created: "2026-02-06T00:00:00Z"
+confidence: 1.0

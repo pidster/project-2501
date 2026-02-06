@@ -1,0 +1,8 @@
+id: thy-001-synthesises-c3
+source: THY-001
+target: C-3
+edge_type: SYNTHESISES
+metadata:
+  notes: Framework theory synthesises seven-phase SDLC model
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

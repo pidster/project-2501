@@ -1,0 +1,8 @@
+id: thy-007-derives-thy-006
+source: THY-007
+target: THY-006
+edge_type: DERIVES_FROM
+metadata:
+  notes: "Coordination scaling derives from context graph substrate"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

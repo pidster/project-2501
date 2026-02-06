@@ -1,0 +1,8 @@
+id: thy-003-references-f2
+source: THY-003
+target: F-2
+edge_type: REFERENCES
+metadata:
+  notes: TMS theory references Wegner's transactive memory foundation
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

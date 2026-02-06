@@ -1,0 +1,8 @@
+id: thy-007-references-c8
+source: THY-007
+target: C-8
+edge_type: REFERENCES
+metadata:
+  notes: "Coordination scaling references work coordination concept"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

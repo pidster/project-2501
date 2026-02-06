@@ -1,0 +1,8 @@
+id: thy-002-extends-thy-001
+source: THY-002
+target: THY-001
+edge_type: EXTENDS
+metadata:
+  notes: Resilience theory extends the foundation with evolution mechanisms
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

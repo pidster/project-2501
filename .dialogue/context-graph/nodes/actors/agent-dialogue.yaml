@@ -1,0 +1,24 @@
+id: "agent:dialogue"
+node_type: ACTOR_AI
+metadata:
+  name: Dialogue Agent
+  agent_type: dialogue-agent
+  description: Primary human-facing interface for the Dialogue Framework
+  capability_profile:
+    role: PRIMARY_INTERFACE
+    tool_access:
+      - FILE_OPS
+      - EXECUTION
+      - USER_INTERACTION
+    collaboration_pattern: Human-Led
+  theoretical_foundation:
+    - THY-004
+    - THY-005
+    - THY-006
+  responsibility:
+    - Scope
+    - Situation
+    - System
+  location_hint: claude-plugin-evo/agents/dialogue-agent.md
+created: "2026-02-06T00:00:00Z"
+status: ACTIVE

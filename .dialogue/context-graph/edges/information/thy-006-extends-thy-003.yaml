@@ -1,0 +1,8 @@
+id: thy-006-extends-thy-003
+source: THY-006
+target: THY-003
+edge_type: EXTENDS
+metadata:
+  notes: "Context graph substrate extends TMS externalisation into operational system"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

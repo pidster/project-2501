@@ -1,0 +1,14 @@
+id: THY-005
+node_type: ARTIFACT
+metadata:
+  artifact_type: DOCUMENT
+  document_type: THY
+  temporal_class: Standing
+  content_type: text/markdown
+  title: "Two-Agent Architecture for AI-Augmented SDLC"
+  summary: "Architectural separation between human-facing dialogue and internal process management"
+  location_hint: implementation/theory_two-agent-architecture.md
+  status: DRAFT
+  author: human:pidster
+created: "2026-02-06T00:00:00Z"
+status: ACTIVE

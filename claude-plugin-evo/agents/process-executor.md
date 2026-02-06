@@ -1231,6 +1231,15 @@ requires {what it needs}, but {what's missing or unclear}.
 Could you {specific action}?"
 ```
 
+## Sub-Agent Status
+
+This agent operates as a **sub-agent** under the Process Orchestrator in the two-agent architecture (THY-005). When invoked by the Orchestrator:
+- Process instances are prepared and provided by the Orchestrator
+- Execution results are collected and reviewed by the Orchestrator
+- The Orchestrator manages process lifecycle; this agent manages execution lifecycle
+
+When invoked independently (outside the two-agent architecture), this agent operates as described above.
+
 ---
 
 *Part of the Dialogue Framework*

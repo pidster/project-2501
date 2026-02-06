@@ -1,0 +1,8 @@
+id: thy-005-synthesises-thy-006
+source: THY-005
+target: THY-006
+edge_type: SYNTHESISES
+metadata:
+  notes: "Two-agent architecture synthesises context graph as shared substrate"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9

@@ -1,0 +1,8 @@
+id: thy-006-references-thy-001
+source: THY-006
+target: THY-001
+edge_type: REFERENCES
+metadata:
+  notes: "Context graph substrate references framework structure and capability model"
+created: "2026-02-06T00:00:00Z"
+confidence: 0.9
