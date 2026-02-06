@@ -1,0 +1,14 @@
+id: DEC-20260203-182610
+node_type: ARTIFACT
+metadata:
+  artifact_type: DECISION
+  decision_type: OPERATIONAL
+  temporal_class: Ephemeral
+  content_type: text/yaml
+  title: "Renumber task FW-049 to FW-051 to resolve merge conflict"
+  summary: "Task ID changed from FW-049 to FW-051"
+  location_hint: ".dialogue/logs/decisions/DEC-20260203-182610.yaml"
+  author: "ai:claude"
+created: "2026-02-03T18:26:10Z"
+updated: "2026-02-03T18:26:10Z"
+status: ACTIVE

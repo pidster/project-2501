@@ -1,0 +1,16 @@
+id: "FW-050"
+title: "Fix auto team mode chicken-and-egg user registration bug"
+status: READY
+created: "2026-02-03T18:02:32Z"
+updated: "2026-02-03T18:02:32Z"
+type: DEBT
+priority: HIGH
+description: |
+  Auto team mode cannot transition from solo to team because new users are only registered in team mode, but 2+ registered users are needed to trigger team mode. This creates a circular dependency where auto mode stays stuck in solo forever.
+objective: "Auto mode should register users regardless, then use user count only for feature gating (sync reminders, etc.)"
+rationale: |
+  Discovered when user amv was not registered despite working in repo. See OBS-20260203-180004.
+blocked_by: []
+blocks: []
+notes: |
+  Created 03 February 2026.
