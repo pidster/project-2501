@@ -1,12 +1,31 @@
 username: "pidster"
-last_session: "2026-01-16T18:45:00Z"
-active_focus: "FW-017 completed; FW-008 research ongoing"
-recent_tasks:
-  - "FW-017"  # Completed
-recent_decisions:
-  - "DEC-20260116-180240"
-open_questions: []
+last_session: "2026-02-07T10:45:00Z"
+active_focus: "Dialogue Agent activation and collaboration pattern rethink"
+recent_tasks: []
+recent_decisions: []
+recent_observations:
+  - "OBS-20260207-104144"  # Collaboration pattern trajectory insight
+open_questions:
+  - "Should the Dialogue Agent spec encode a collaboration trajectory (AI-Led → Partnership → Human-Led) explicitly, or should the collaboration patterns concept itself evolve to support trajectories?"
+  - "What signals mark the transition points between collaboration stages? Candidates: context graph density, user-initiated captures, reduced guidance-seeking, vocabulary adoption."
 notes: |
-  FW-017 (Merge-Friendly Artifact Structure) completed.
-  All artifacts now use per-file structure for merge-friendly multi-user workflows.
-  Session memos are per-user files read at SessionStart.
+  Implemented plan to activate Dialogue Agent as primary entry point (commit ca986cc):
+  - Created SessionStart identity hook (dialogue-agent-identity.sh)
+  - Added process delegation routing hook (process-delegation-routing.sh)
+  - Added auto-approve hook for Process Orchestrator Task invocations
+  - Updated session-start-guided.sh labels to "Dialogue Agent active"
+  - Added Agent Identity section to CLAUDE.md
+  - Added Process Delegation Protocol to dialogue-agent.md
+  - Added Invocation Model to process-orchestrator.md
+  - Added agent_architecture: two-agent config key
+
+  Then explored a theoretical question: the Dialogue Agent's collaboration pattern
+  shouldn't be fixed at Human-Led. It follows a trajectory from AI-Led (onboarding)
+  through Partnership to Human-Led as the user gains competency. This mirrors
+  progressive disclosure but extends it from vocabulary to who leads the work.
+  The two-agent architecture surfaced this tension — the agent does significant
+  autonomous work (graph mapping, delegation) that exceeds Human-Led's definition.
+
+  Open design question: localised change to agent spec vs framework-level evolution
+  of the collaboration patterns concept to support trajectories.
+interaction_mode_preference: partnership

@@ -1,0 +1,8 @@
+id: OBS-20260207-104144
+timestamp: "2026-02-07T10:41:44Z"
+type: STATE
+observer: "ai:claude"
+subject: "Collaboration pattern trajectory"
+value: "The Dialogue Agent collaboration pattern is not fixed — it follows a trajectory from AI-Led (4) through Partnership (3) to Human-Led (2) as user gains framework competency. Progressive disclosure extends beyond vocabulary to who leads the work. Current fixed Human-Led assignment only describes the end state. Transition signals: context graph density, user-initiated captures, reduced guidance-seeking, vocabulary adoption. Patterns may need to be understood as trajectories, not static assignments."
+context: "Discussion of how two-agent architecture changes collaboration pattern assignment"
+tags: ["theory", "collaboration-patterns", "dialogue-agent", "THY-005", "onboarding"]

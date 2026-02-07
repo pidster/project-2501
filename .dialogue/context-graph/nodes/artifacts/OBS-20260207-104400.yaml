@@ -1,0 +1,14 @@
+id: OBS-20260207-104400
+node_type: ARTIFACT
+metadata:
+  artifact_type: OBSERVATION
+  observation_type: STATE
+  temporal_class: Ephemeral
+  content_type: text/yaml
+  title: "Context graph minimum requirements as onboarding driver"
+  summary: "Defining explicit minimum context graph requirements for the Process Orchestrator serves triple duty: (1) prerequisites for Orchestrator functionality — what nodes, edges, and coverage it needs to orchestrate a build cycle; (2) onboarding curriculum — the Dialogue Agent in AI-Led mode guides users through populating these elements, giving onboarding a finite, concrete sequence; (3) structural transition signal — graph reaching sufficient content for orchestration marks the natural shift from AI-Led toward Partnership. This removes the need for heuristic transition signals and makes the collaboration pattern trajectory mechanistic. The requirements could live as a schema in the Orchestrator spec or as a reference document."
+  location_hint: ".dialogue/logs/observations/OBS-20260207-104400.yaml"
+  observer: "ai:claude"
+created: "2026-02-07T10:44:00Z"
+updated: "2026-02-07T10:44:00Z"
+status: ACTIVE
